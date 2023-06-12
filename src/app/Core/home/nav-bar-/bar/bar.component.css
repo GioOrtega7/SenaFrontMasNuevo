@@ -1,0 +1,137 @@
+nav{
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    margin: 0px 8px 0px 8px;
+}
+
+ul.side-menu{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.content-nav{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.content-NavBar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+}
+.NavBar{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+.NavBar picture{
+    display: flex;
+    width: 2.5vmax;
+    max-width: 30px;
+    max-height: 25px;
+    align-items: center;
+    transition: 0.5s;
+}
+.NavBar li{
+    position: relative;
+}
+
+.NavBar li:nth-child(1) .luna{
+    position: absolute;
+    opacity: 1;
+    transition: 0.5s;
+}
+.NavBar li:nth-child(1):hover .luna{
+    transition: 0.5s;
+    opacity: 0;
+    transform: scale(1.3);
+}
+.NavBar li:nth-child(1) .sol{
+    opacity: 0;
+    transform: scale(1.4);
+    transition: 0.5s;
+}
+.NavBar li:nth-child(1):hover .sol{
+    transition: 0.5s;
+    opacity: 1;
+    transform: scale(1.7);
+}
+.NavBar li:nth-child(2) picture:hover{
+    animation-name: campana;
+    animation-duration: 0.3s;
+    transform: scale(1.3);
+}
+@keyframes campana{
+    0%{
+        transform:  rotate(15deg) scale(1.3) 
+    }
+    25%{
+        transform:  rotate(-15deg) scale(1.3)
+    }
+    50%{
+        transform:  rotate(15deg)scale(1.3)
+    }
+    75%{
+        transform:  rotate(-15deg)scale(1.3)
+    }
+    100%{
+        transform:  rotate(+15deg)scale(1.3)
+    }
+}
+.NavBar li:nth-child(3) picture:hover{
+    transition: 0.5s;
+    transform: rotate(180deg) scale(1.3);
+}
+.user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 1vmax;
+    border-radius: 40px;
+    background: #161A24;
+}
+.user span{
+    max-width: 80px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2vmax;
+    
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+path{
+    fill: white;
+    stroke-width: 5%;
+}
+.NavBar picture svg{
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+}
+.content-information{
+    width: 1500px;
+    padding: 0;
+}
+ul{
+    margin: 0;
+    padding: 10px;
+    background-color: #192239;
+    border-radius: 40px;
+}
+
