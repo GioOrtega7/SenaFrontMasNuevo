@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home.component';
 import { ProgramaFormativoComponent } from 'src/app/Modules/Components/programa-formativo/programa-formativo.component';
 import { NavBarModule } from './nav-bar-/nav-bar.module';
+import { PagesModule } from 'src/app/Modules/Pages/pages.module';
 
 
 
@@ -21,14 +22,15 @@ import { NavBarModule } from './nav-bar-/nav-bar.module';
   SideMenuComponent,
   NavbarComponent,
   HomeComponent,
-  NavbarComponent
+  NavbarComponent,
+
 
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     ComponentsModule,
- 
+    PagesModule
   ],
   exports:[HomeComponent,
   NavbarComponent]

@@ -5,8 +5,8 @@ import { HomeComponent } from '../home/home.component';
 
 const routes: Routes = [
   {
-    path: 'dasborad',
-    component: HomeComponent
+    path: '',
+    component: LoginComponent
     }
 ];
 

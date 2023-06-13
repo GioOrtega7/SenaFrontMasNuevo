@@ -13,6 +13,7 @@ import { HomeComponent } from './Core/home/home.component';
 import { HomeModule } from './Core/home/home.module';
 import { HomeRoutingModule } from './Core/home/home-routing.module';
 import { NavbarComponent } from './Core/home/navbar/navbar.component';
+import { PagesModule } from './Modules/Pages/pages.module';
 
 
 
@@ -31,6 +32,7 @@ import { NavbarComponent } from './Core/home/navbar/navbar.component';
     CoreModule,
     HomeModule,
     HomeRoutingModule,
+    PagesModule
   
   ],
   providers: [

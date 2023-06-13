@@ -250,23 +250,6 @@ button.menu-container:hover {
 
 }
 
-@keyframes compress {
-    0% {
-        height: 140px;
-    }
-
-    100% {
-        height: 40px;
-    }
-
-}
-
-.compress {
-    display: flex;
-    animation-name: compress;
-    animation-duration: 0.5s;
-    overflow: hidden;
-}
 
 .hide {
     display: flex;
@@ -288,8 +271,8 @@ button.menu-container:hover {
     border-color: rgba(255, 255, 255, 0.475);
 }
 
-.dropdown.showNN.expand .dropdown-item:hover .text{
-    transform: scale(1.4);
+.dropdown.showNN.expand .dropdown-item:hover a span{
+    transform: scale(1.4) translateX(15px);
     transition: 0.2s;
 }
 
@@ -300,29 +283,15 @@ button.menu-container:hover {
 .expand {
     width: 140px;
     display: flex;
-    animation-name: open-navbar;
-    animation-duration: 0.3s;
+    transition: 0.5s;
 }
 
-@keyframes open-navbar {
-    0% {
-        width: 40px;
-        white-space: nowrap;
-    }
-
-    100% {
-        width: 140px;
-        white-space: nowrap;
-    }
-}
 
 .dropdown-item img {
     width: 30px;
     height: 50px;
     z-index: 2;
     cursor: pointer;
-    background-color: rgba(245, 245, 245, 0.692);
-    border-radius: 50%;
     padding: 0px 10px;
 }
 
@@ -331,17 +300,19 @@ button.menu-container:hover {
     animation-name: dropdown-collapse;
     animation-duration: 1s;
     overflow: hidden;
+    transition: 0.5s;
 }
 
 .showNN {
     display: flex;
     overflow: hidden;
+    transition: 0.5s;
 }
 
 a {
     display: flex;
     text-decoration: none;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding-right: 2px;
 }
@@ -350,7 +321,8 @@ a span {
     font-size: 0.7em;
     color: whitesmoke;
     text-decoration: none;
-    text-align: center;
+    animation-timing-function: ease-in-out;
+    transition: 0.5s;
 }
 
 .translate{

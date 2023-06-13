@@ -1,0 +1,25 @@
+<div class="bloque-information">
+    <div class="content-information">
+        <div class="slick-wrapper" >
+            <div class="slider" #slickElement >
+              <div class="slide-item" *ngFor="let area of areas">
+                <div class="area">
+                  <picture>
+                    <img width="64" height="64" src={{area.iconUrl}} alt="artificial-intelligence" />
+                  </picture>
+                  <div>
+                    <li>{{ area.nombreArea }}</li>
+                    <span>{{ area.codigo }}</span>
+                  </div>
+                  <div class="button">
+                    <a href=""><button>ir</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-añadir">
+            <a><button>Añadir</button></a>
+        </div>
+    </div> 
+</div>       

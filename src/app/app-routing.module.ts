@@ -5,15 +5,12 @@ import { HomeModule } from './Core/home/home.module';
 import { HomeComponent } from './Core/home/home.component';
 import { ChargeWheelComponent } from './Modules/Components/charge-wheel/charge-wheel.component';
 import { ProgramaFormativoComponent } from './Modules/Components/programa-formativo/programa-formativo.component';
+import { AreasComponent } from './Modules/Pages/areas/areas.component';
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   },
   {
     path: 'login',
@@ -24,8 +21,8 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'programa',
-        component: ProgramaFormativoComponent
+        path: 'dashboard',
+        component: AreasComponent
         /*loadChildren: () =>
           import("src/app/Modules/Components/charge-wheel/charge-wheel.component").then(
             (m) => m.ChargeWheelComponent
@@ -34,6 +31,10 @@ const routes: Routes = [
       {
         path:"proyecto",
         component: ChargeWheelComponent
+      },
+      {
+        path:"programa",
+        component: ProgramaFormativoComponent
       }
     ]
   }

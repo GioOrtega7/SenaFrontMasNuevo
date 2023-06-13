@@ -38,15 +38,16 @@ export class NavbarComponent implements OnInit {
     const menue: NavegationModel[] = [
       {
         name: 'Programas Formativos',
-        url: '/programa'
+        url: '/programa',
+
       },
       {
         name: 'Proyectos Formativos',
         url: '/proyecto'
       },
       {
-        name: 'Sedes',
-        url: 'sede'
+        name: 'Area',
+        url: '/dashboard'
       }
     ]
 
@@ -56,7 +57,7 @@ export class NavbarComponent implements OnInit {
 
 
 
-   /* this.coreService.getUserAuthenticated();*/
+   this.coreService.getUserAuthenticated();
 
     this.coreService.persona.subscribe((persona) => {
       this.persona = persona;

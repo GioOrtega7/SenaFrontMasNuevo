@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
   selectCompany(idActivationUser: number) {
 
     this._coreService.post<any>('user_company/' + idActivationUser).subscribe(res => {
-      this.router.navigate(['dasborad']);
+      this.router.navigate(['/dashboard']);
     });
   }
 
