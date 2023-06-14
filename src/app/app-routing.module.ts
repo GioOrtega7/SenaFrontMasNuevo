@@ -5,7 +5,8 @@ import { HomeModule } from './Core/home/home.module';
 import { HomeComponent } from './Core/home/home.component';
 import { ChargeWheelComponent } from './Modules/Components/charge-wheel/charge-wheel.component';
 import { ProgramaFormativoComponent } from './Modules/Components/programa-formativo/programa-formativo.component';
-import { AreasComponent } from './Modules/Pages/areas/areas.component';
+import { AreasComponent } from './Modules/Pages/areas-view/areas/areas.component';
+import { ProyectoFormativoComponent } from './Modules/Pages/proyecto-formativo-view/proyecto-formativo/proyecto-formativo.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,7 +31,7 @@ const routes: Routes = [
       },
       {
         path:"proyecto",
-        component: ChargeWheelComponent
+        component: ProyectoFormativoComponent
       },
       {
         path:"programa",

@@ -24,6 +24,15 @@ export class NavbarComponent implements OnInit {
 
   public toggle: 'Dark' | 'Light' = 'Dark';
 
+  check: boolean = false;
+  textState: boolean = false;
+  expandState: boolean = false;
+  classState: boolean = false;
+  menuState: boolean = false;
+  timeoutRef: any;
+  filler: any;
+  selectedMenuItem: string | null = null;
+
   constructor(
     private toggleService: ServicioToggleService,
     private coreService: CoreService,
@@ -37,22 +46,28 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     const menue: NavegationModel[] = [
       {
+        name: 'Areas',
+        url: 'dashboard',
+        icon:'team_dashboard'
+      },
+      {
         name: 'Programas Formativos',
         url: '/programa',
-
+        icon:'patient_list'
       },
       {
         name: 'Proyectos Formativos',
-        url: '/proyecto'
+        url: '/proyecto',
+        icon:'settings_account_box'
       },
       {
-        name: 'Area',
-        url: '/dashboard'
-      }
-    ]
+        name: 'Sedes',
+        url: 'sede',
+        icon:'holiday_village'
+      }
+    ]
 
-
-    this.filler = Array.from(menue);
+    this.filler = menue;
 
 
 
@@ -94,12 +109,8 @@ export class NavbarComponent implements OnInit {
   get imagen_perfil() {
     return this.persona ? this.persona.rutaFotoUrl : '';
   }
-  check: boolean = false;
-  textState: boolean = false;
-  expandState: boolean = false;
-  classState: boolean = false;
-  menuState: boolean = false;
-  timeoutRef: any;
+
+
 
   toggleClass() {
     var dropdown = this.dropdown.nativeElement;
@@ -125,7 +136,7 @@ export class NavbarComponent implements OnInit {
     this.expandState = true;
     this.renderer2.removeClass(dropdown, "show")
     this.renderer2.addClass(dropdown, "showNN")
-    this.adjustNavbar.Adjust_navbar("120")
+    this.adjustNavbar.Adjust_navbar("130")
   }
 
   leave() {
@@ -134,13 +145,14 @@ export class NavbarComponent implements OnInit {
     this.adjustNavbar.Adjust_navbar("70");
   }
 
+ 
 
-  filler: any;
-
-
-
+  selectMenuItem(name:string): void{
+  this.selectedMenuItem = name;
+  }
 
   ngAfterViewInit(): void {     
+
  }
 
 }

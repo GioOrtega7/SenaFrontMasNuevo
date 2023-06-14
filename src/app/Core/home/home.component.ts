@@ -22,32 +22,14 @@ export class HomeComponent {
     this.adjustNavbar.adjust$.subscribe((res:any) => {
       if (this.timeoutRef) { clearTimeout(this.timeoutRef); }
       const display = this.display.nativeElement;
+      const footer = this.footer.nativeElement;
       document.documentElement.style.setProperty("--margin", (String(res) + "px"));
       document.documentElement.style.setProperty("--margin-before", (String(this.resBefore) + "px"));
-      this.renderer2.addClass(display,"collapse")
+      this.renderer2.addClass(display,"collapse");
       this.resBefore=String(res);
       this.timeoutRef = setTimeout(() => {
         this.renderer2.removeClass(display,"collapse")
       }, 500);
-
-     /* 
-      this.barState = !this.barState;
-      if (this.barState == true) {
-        this.renderer2.removeClass(display, this.trigger)
-
-        this.trigger = "collapsed";
-        this.renderer2.addClass(display, this.trigger)
-
-      } else {
-        this.trigger = "uncollapsed"
-        this.renderer2.removeClass(display, "collapsed")
-
-        this.renderer2.addClass(display, "uncollapsed")
-      }
-      /*setTimeout(() => {
-        this.renderer2.removeClass(display, this.trigger)
-      }, 1);
-      this.renderer2.addClass(display, this.trigger)*/
 
 
     })

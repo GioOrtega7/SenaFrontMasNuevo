@@ -11,6 +11,7 @@ import { HomeComponent } from './home.component';
 import { ProgramaFormativoComponent } from 'src/app/Modules/Components/programa-formativo/programa-formativo.component';
 import { NavBarModule } from './nav-bar-/nav-bar.module';
 import { PagesModule } from 'src/app/Modules/Pages/pages.module';
+import { AreasComponent } from 'src/app/Modules/Pages/areas-view/areas/areas.component';
 
 
 
@@ -30,7 +31,7 @@ import { PagesModule } from 'src/app/Modules/Pages/pages.module';
     CommonModule,
     HomeRoutingModule,
     ComponentsModule,
-    PagesModule
+    PagesModule,
   ],
   exports:[HomeComponent,
   NavbarComponent]

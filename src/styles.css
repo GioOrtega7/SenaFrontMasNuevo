@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Roboto+Condensed&family=Vina+Sans&display=swap');
+
 body {
     position: relative;
     background-color: #161A24;
-    color: #fff;
+    color: rgb(232, 232, 232);
     font-family: 'Roboto Condensed';
     margin: 0px;
     padding: 0px;
@@ -12,36 +13,48 @@ body {
     justify-content: center;
     overflow-x: hidden;
 }
-.img-fondo{
+
+.img-fondo {
 
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    top:20px;
+    top: 20px;
     bottom: 0;
     right: 0;
     left: 0;
     z-index: -10;
 
 }
-.img-fondo svg{
+
+.img-fondo svg {
     display: flex;
     width: 100vw;
     height: 100vh;
 }
-li{
+
+li {
     list-style: none;
 }
-h1,h2,h3,h4,h5,h6,p{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     margin: 0;
 }
+
 .bloque-information {
     display: flex;
     width: 100%;
     justify-content: center;
 }
-.content{
+
+.content {
     display: flex;
     flex-direction: column;
     width: 90vw;
@@ -49,25 +62,29 @@ h1,h2,h3,h4,h5,h6,p{
     padding-right: 12px;
     justify-content: center;
 }
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
     display: none;
 }
-a{
+
+a {
     text-decoration: none;
 }
-main{
+
+main {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
 
-.snotifyToast__body{
+.snotifyToast__body {
     width: 150px;
 }
+
 .snotifyToast {
     overflow: hidden;
     position: absolute;
@@ -80,23 +97,26 @@ main{
     background-color: rgb(201, 5, 5);
     position: absolute;
     border-radius: 10px;
-  }
-  .fadeIn {
+}
+
+.fadeIn {
     position: relative;
     width: 150px;
     left: 10px;
     animation-name: fadeInAnimation;
-  }
-  @keyframes fadeInAnimation {
+}
+
+@keyframes fadeInAnimation {
     from {
-      opacity: 0;
+        opacity: 0;
     }
+
     to {
-      opacity: 1;
+        opacity: 1;
     }
 }
 
-.snotifyToast_progressBar_percentage{
+.snotifyToast_progressBar_percentage {
     display: flex;
     height: 3px;
     background: blue;
@@ -108,33 +128,76 @@ main{
     border-radius: 25px;
 }
 
-app-root, app-company{
+app-root,
+app-company {
     width: 100%;
     height: 100%;
 }
 
-app-homepage{
+app-homepage {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-app-company{
+
+app-company {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  app-navbar{
+app-navbar {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
     padding-bottom: 10px;
-  }
-  app-footer {
+}
+
+app-footer {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     padding-bottom: 10px;
 }
+
+.item-center{
+    height: 100vh;
+    align-items: center;
+}
+
+.slide-item{
+    display: flex !important;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .slick-wrapper {
+      width: 80%;
+}  
+
+.bloque-slick-information {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.content-slick-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+    padding: 0 ;
+}
+
+@media (max-width: 732px) {
+    .content-information{
+        width:80%;
+        padding-left: 50px;
+    } 
+}
+

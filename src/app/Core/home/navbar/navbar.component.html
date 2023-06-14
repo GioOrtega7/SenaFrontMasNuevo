@@ -5,9 +5,13 @@
                 src="../../../../../assets/svg/brackets-angle-thin-svgrepo-com (1).svg">
         </button>
         <ul class="dropdown" #dropdown [class.expand]="expandState"  (mouseenter)="enter()" (mouseleave)="leave()">
-            <li class="dropdown-item"  *ngFor="let nav of filler">
+            <li class="dropdown-item"  *ngFor="let nav of filler" (click)="selectMenuItem(nav.name)" [ngClass]="{'activa--li': nav.name == selectedMenuItem}">
                 <a [routerLink]="nav.url">
-                    <img src="../../../../assets/svg/menu-board-svgrepo-com.svg">
+                    <picture>
+                        <span class="material-symbols-outlined">
+                            {{nav.icon}}
+                        </span>
+                    </picture>
                     <span class="text" *ngIf="expandState">{{nav.name}}</span>
                 </a>
             </li>

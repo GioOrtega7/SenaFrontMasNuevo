@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,15 +11,23 @@ import { AuthRoutingModule } from './Core/auth/auth-routing.module';
 import { CoreModule } from './Core/core.module';
 import { HomeComponent } from './Core/home/home.component';
 import { HomeModule } from './Core/home/home.module';
+import {provideHttpClient} from '@angular/common/http';
 import { HomeRoutingModule } from './Core/home/home-routing.module';
 import { NavbarComponent } from './Core/home/navbar/navbar.component';
 import { PagesModule } from './Modules/Pages/pages.module';
+import { AreasComponent } from './Modules/Pages/areas-view/areas/areas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {Component, Inject} from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AreasComponent
+
   ],
   imports: [
     BrowserModule,
@@ -32,10 +40,17 @@ import { PagesModule } from './Modules/Pages/pages.module';
     CoreModule,
     HomeModule,
     HomeRoutingModule,
-    PagesModule
+    PagesModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+
   
   ],
   providers: [
+    MatDialog,
+
+    provideHttpClient(),
+    importProvidersFrom(MatNativeDateModule),
     {
     provide: LocationStrategy,
     useClass: HashLocationStrategy

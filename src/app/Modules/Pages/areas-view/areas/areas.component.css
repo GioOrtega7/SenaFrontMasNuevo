@@ -25,6 +25,11 @@
     transition: 0.5s;
     transform: scale(1.1)
 }
+
+.area:hover ~ .actions{
+  transition: 0.5s;
+  transform: scale(1.1)
+}
 .area picture{
     padding: 10px;
     border-radius: 50%;
@@ -62,3 +67,24 @@
 
 
 
+
+.actions button {
+  background: transparent;
+  border: none;
+}
+
+.actions {
+  width: 8px;
+  position: relative;
+  top: 18px;
+  right: 34px;
+
+}
+
+.actions button {
+  cursor: pointer;
+}
+
+.actions img {
+  width: 15px;
+}
