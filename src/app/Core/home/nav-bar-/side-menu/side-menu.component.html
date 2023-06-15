@@ -1,6 +1,0 @@
-<button class="menu-container" [class.active]="classState" (click)="toggleClass()">
-    <img class="menu" src="../../../../../assets/svg/brackets-angle-thin-svgrepo-com (1).svg">
-</button>
-<div class="dropdown"  [class.show]="classState">
-    <a [routerLink]="nav.url" *ngFor="let nav of filler" >{{nav.name}}</a>
-</div>

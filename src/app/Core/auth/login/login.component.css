@@ -33,7 +33,7 @@ input{
     height: 40px;
     width: 100%;
     border-radius: 10px;
-    border:none;
+    border: transparent solid 1px;
     color: #ffff;
     outline: none;
     text-align: center;

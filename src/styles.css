@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Roboto+Condensed&family=Vina+Sans&display=swap');
 
+* {
+    font-family: 'Roboto Condensed';
+}
+
 body {
     position: relative;
     background-color: #161A24;
     color: rgb(232, 232, 232);
-    font-family: 'Roboto Condensed';
+
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -162,22 +166,23 @@ app-footer {
     padding-bottom: 10px;
 }
 
-.item-center{
+.item-center {
     height: 100vh;
     align-items: center;
 }
 
-.slide-item{
+.slide-item {
     display: flex !important;
     justify-content: center;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
     cursor: pointer;
-  }
-  .slick-wrapper {
-      width: 80%;
-}  
+}
+
+.slick-wrapper {
+    width: 80%;
+}
 
 .bloque-slick-information {
     display: flex;
@@ -190,14 +195,96 @@ app-footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:90%;
-    padding: 0 ;
+    width: 90%;
+    padding: 0;
 }
 
 @media (max-width: 732px) {
-    .content-information{
-        width:80%;
+    .content-information {
+        width: 80%;
         padding-left: 50px;
-    } 
+    }
 }
 
+
+.mat-mdc-dialog-container {
+    --mdc-dialog-container-color: #182034;
+    /* Outer container color*/
+    --mdc-dialog-subhead-color: rgba(255, 255, 255, 0.87);
+    /*title color*/
+    --mdc-dialog-supporting-text-color: rgb(255, 255, 255);
+    /* body color*/
+    --mdc-dialog-container-shape: 7px !important;
+    /*border radius*/
+    overflow-x: hidden!important;
+}
+
+
+.mdc-dialog__surface{
+    min-width: 35vw!important;
+}
+/*
+.mat-mdc-dialog-container input{
+    background-color: white;
+    width: auto;
+    height: 2em;
+}
+
+.mat-mdc-dialog-container input:focus{
+
+    outline: none;
+}
+
+*/
+input {
+    background-color: #131A2E !important;
+
+    height: 40px;
+    width: 100%;
+    border-radius: 10px;
+    border: transparent solid 1px;
+    color: #ffff;
+    outline: none;
+    text-align: center;
+    transition: 0.5s;
+}
+
+input:hover , input:focus {
+    border: #3869B2 solid 1px;
+    transition: 0.5s;
+}
+
+
+input::placeholder {
+    color: #6b6b6b;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input[type="password"]:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white !important;
+
+
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1820347a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(245, 245, 245, 0.811);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(245, 245, 245);
+}

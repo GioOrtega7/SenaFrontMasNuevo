@@ -1,7 +1,9 @@
 .modal-body{
 
+
 }
 
-.mdc-dialog .mdc-dialog__content{
-    padding: 0 !important;
+input.success{
+    border-color: #006B00;
 }
+

@@ -5,8 +5,10 @@ import { ProyectoFormativoModel } from 'src/app/shared/models/proyecto-formativo
 import { ProgramaService } from 'src/app/shared/services/programa.service';
 import { NotificationService } from 'src/app/shared/services/notification-service';
 import { debounceTime } from 'rxjs/operators';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProyectoFormativoService } from 'src/app/shared/services/proyecto-formativo.service';
+
+
 
 
 @Component({
@@ -17,7 +19,7 @@ import { ProyectoFormativoService } from 'src/app/shared/services/proyecto-forma
 export class ProyectoFormativoModalComponent {
 
 
-  
+
 
   formProyecto!: UntypedFormGroup;
   Programas: ProgramaModel[] = [];
@@ -36,19 +38,26 @@ export class ProyectoFormativoModalComponent {
   ngOnInit(): void {
     this.traerPrograma();
     this.setProyecto();
+
   }
 
-  ngOnViewInit(){
+  ngOnViewInit() {
     this.setProyecto();
   }
-
+ 
   traerPrograma() {
+
+    
     this.programaService.traerProgramas()
       .subscribe((programa: ProgramaModel[]) => {
         this.Programas = programa;
       }, error => {
-        this.NotificationService.showNotification({message: 'Error de conexión'});
+        this.NotificationService.showNotification({ message: 'Error de conexión' });
       });
+
+
+      var a = this.Programas.map(programa => programa.nombrePrograma)
+
   }
 
   get nombreProyectoField() {
@@ -78,8 +87,6 @@ export class ProyectoFormativoModalComponent {
 
   setProyecto() {
     if (this.proyecto) {
-      console.log(this.proyecto);
-      
       this.formProyecto.patchValue({
         nombre: this.proyecto.nombre,
         codigo: this.proyecto.codigo,
@@ -102,16 +109,18 @@ export class ProyectoFormativoModalComponent {
       idCentroFormacion: ['', [Validators.required]]
     });
 
-    this.formProyecto.valueChanges
-      .pipe(
-        debounceTime(350),
-      )
-      .subscribe(data => {
-        console.log(data);
-      });
+
   }
 
-/////
+  ///////////////////////////////////////////////////
+
+
+  inputValue: string = "";
+  convertToUppercase(inputValue: string): void {
+    this.inputValue = inputValue.toUpperCase();
+  }
+
+
   eliminarProyecto(proyectoId: number) {
     this.ProyectoService.eliminarProyecto(proyectoId).subscribe(() => {
       this.getProyecto();
@@ -119,11 +128,8 @@ export class ProyectoFormativoModalComponent {
   }
 
 
-
-
-
   guardarProyecto() {
-    this.NotificationService.showNotification({message:"¡Guardado correctamente!"})
+    this.NotificationService.showNotification({ message: "¡Guardado correctamente!" })
     var proyecto = this.getProyecto();
     if (proyecto.id) {
       this.ProyectoService.actualizarProyecto(proyecto).subscribe(proyecto => {
@@ -135,12 +141,12 @@ export class ProyectoFormativoModalComponent {
       })
     }
   }
-  
-/*
-  closeModal() {
-    this.cancel.emit();
-  }
-*/
+
+  /*
+    closeModal() {
+      this.cancel.emit();
+    }
+  */
   private getControl(name: string) {
     return this.formProyecto.controls[name];
   }
@@ -154,8 +160,6 @@ export class ProyectoFormativoModalComponent {
       tiempoEstimado: this.getControl('tiempoEstimado').value,
       numeroTotalRaps: this.getControl('numeroTotalRaps').value,
       idCentroFormacion: this.getControl('idCentroFormacion').value
-
-
     }
   }
 

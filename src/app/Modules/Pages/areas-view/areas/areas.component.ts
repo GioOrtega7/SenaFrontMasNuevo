@@ -86,6 +86,7 @@ export class AreasComponent implements OnInit, AfterViewChecked, OnDestroy {
   openModalUpdate(area: AreaModel) {
     let dialogRef = this.modal.open(AreasModalComponent, {
       data: area,
+      panelClass: "foo"
 
     });
   }

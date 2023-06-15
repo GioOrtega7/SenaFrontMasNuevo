@@ -3,14 +3,5 @@ input{
 }
 
 .modal-body{
-    background-color: #192239;
-    color: white;
-}
 
-.mdc-dialog .mdc-dialog__content{
-    padding: 0 !important;
-}
-
-.mdc-dialog .mdc-dialog__content{
-    padding: 0px !important;
 }

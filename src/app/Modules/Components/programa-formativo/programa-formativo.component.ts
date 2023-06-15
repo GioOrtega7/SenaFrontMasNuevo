@@ -42,7 +42,7 @@ export class ProgramaFormativoComponent {
 
 
 
-  @Input() proyectos: ProyectoFormativoModel[] = [];
+  proyectos: ProyectoFormativoModel[] = [];
 
   @Output() update: EventEmitter<ProyectoFormativoModel> = new EventEmitter();
   @Output() delete: EventEmitter<number> = new EventEmitter();

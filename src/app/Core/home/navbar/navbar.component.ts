@@ -41,38 +41,38 @@ export class NavbarComponent implements OnInit {
     private router: Router
 
   ) { }
-  
+
 
   ngOnInit(): void {
     const menue: NavegationModel[] = [
       {
         name: 'Areas',
         url: 'dashboard',
-        icon:'team_dashboard'
+        icon: 'team_dashboard'
       },
       {
         name: 'Programas Formativos',
         url: '/programa',
-        icon:'patient_list'
+        icon: 'patient_list'
       },
       {
         name: 'Proyectos Formativos',
         url: '/proyecto',
-        icon:'settings_account_box'
+        icon: 'settings_account_box'
       },
       {
         name: 'Sedes',
         url: 'sede',
-        icon:'holiday_village'
-      }
-    ]
+        icon: 'holiday_village'
+      }
+    ]
 
     this.filler = menue;
 
 
 
 
-   this.coreService.getUserAuthenticated();
+    this.coreService.getUserAuthenticated();
 
     this.coreService.persona.subscribe((persona) => {
       this.persona = persona;
@@ -98,7 +98,7 @@ export class NavbarComponent implements OnInit {
     }
   }
   logout(): void {
-    window.location.href = '/login';
+    this.coreService.logout();
   }
   get Nombre() {
     return this.persona ? this.persona.nombre1 : '';
@@ -140,19 +140,19 @@ export class NavbarComponent implements OnInit {
   }
 
   leave() {
-    
+
     this.expandState = false;
     this.adjustNavbar.Adjust_navbar("70");
   }
 
- 
 
-  selectMenuItem(name:string): void{
-  this.selectedMenuItem = name;
+
+  selectMenuItem(name: string): void {
+    this.selectedMenuItem = name;
   }
 
-  ngAfterViewInit(): void {     
+  ngAfterViewInit(): void {
 
- }
+  }
 
 }

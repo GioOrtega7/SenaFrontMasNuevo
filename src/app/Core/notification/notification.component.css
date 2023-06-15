@@ -54,7 +54,7 @@
     padding-right: 10px;
     border-radius: 10px;
     position: fixed;
-    box-shadow: #41080881 5px 5px 5px;
+
     backdrop-filter: blur(4px);
     z-index: 1001;
     animation-name: slide-inout-left;
@@ -67,9 +67,11 @@
 
 .fail{
     background-color: #be3030;
+    box-shadow: #be3030 5px 2px 5px;
 }
 .success{
     background-color: #4d9a27;
+    box-shadow: #4d9a27 5px 2px 5px;
 }
 
 .alerts span {

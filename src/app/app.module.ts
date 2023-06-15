@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './Core/auth/auth.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule} from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { AuthRoutingModule } from './Core/auth/auth-routing.module';
 import { CoreModule } from './Core/core.module';

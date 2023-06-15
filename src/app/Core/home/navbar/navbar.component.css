@@ -259,6 +259,8 @@ button.menu-container:hover {
     animation-name: dropdown-pull;
     animation-duration: 0.5s;
     overflow: hidden;
+    user-select: none;
+    pointer-events: none;
 }
 
 .dropdown-item {

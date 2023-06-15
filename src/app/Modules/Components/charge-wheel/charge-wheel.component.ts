@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler';
 
 @Component({
   selector: 'app-charge-wheel',
@@ -8,7 +9,9 @@ import { Component } from '@angular/core';
 export class ChargeWheelComponent {
   porcentajeNumerico: number[];
   colores: string[];
+  @Input() filler: ChargeWheelFiller[] = [];
 
+  
   constructor() {
     this.porcentajeNumerico = [83, 55, 67,10,5,35];
     this.colores = [];
