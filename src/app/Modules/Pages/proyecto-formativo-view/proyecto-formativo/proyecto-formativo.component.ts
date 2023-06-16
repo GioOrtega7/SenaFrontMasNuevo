@@ -189,12 +189,13 @@ export class ProyectoFormativoComponent {
         this.filler = [
           {
 
-            fieldName: "Nombre",
-            uppercase: true
+            fieldName: "Nombrasdassde",
+            uppercase: true,
+
           },
           {
             fieldName: "Codigo",
-
+            placeholder: "qweqewq"
 
           },
           {
@@ -242,7 +243,7 @@ export class ProyectoFormativoComponent {
 
     if (this.slickElement.nativeElement.children.length > 3) {
       $(this.slickElement.nativeElement).slick({
-        rows: 3,
+        rows: 2,
         dots: false,
         arrows: true,
         infinite: true,

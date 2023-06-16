@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   showNotification():void{
-    this.notificationService.showNotification({message:"Contacte con un administrador.", position:["right", "top"]})
+    this.notificationService.showNotification({message:"Contacte con un administrador.", type : "warning",position:["right", "top"]})
   }
 
   ngOnInit(): void {

@@ -26,10 +26,6 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: AreasComponent
-        /*loadChildren: () =>
-          import("src/app/Modules/Components/charge-wheel/charge-wheel.component").then(
-            (m) => m.ChargeWheelComponent
-          ),*/
       },
       {
         path:"proyecto",
@@ -43,6 +39,10 @@ const routes: Routes = [
         path:"perfil",
         component: PerfilComponent
       },
+      {
+        path:"123123",
+        component: PerfilComponent
+      }
 
       
     ]

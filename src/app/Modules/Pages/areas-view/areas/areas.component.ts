@@ -92,6 +92,7 @@ export class AreasComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     });
   }
+/////////////////////////////////////////////
 
 
 

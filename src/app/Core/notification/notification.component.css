@@ -74,6 +74,11 @@
     box-shadow: #4d9a27 5px 2px 5px;
 }
 
+.warning{
+    background-color: yellow;
+    box-shadow: yellow 5px 2px 5px;
+}
+
 .alerts span {
     margin-left: 40px;
     padding-bottom: 4px;

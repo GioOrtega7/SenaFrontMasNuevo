@@ -8,7 +8,7 @@ export interface ExtendModalContent {
 }
 
 export interface ExtendModalFiller{
-    fieldName: string;
+    fieldName: string;  
     placeholder?: string;
     type?:string;
     class?: string;

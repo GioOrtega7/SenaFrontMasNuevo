@@ -64,6 +64,11 @@ export class NavbarComponent implements OnInit {
         name: 'Sedes',
         url: 'sede',
         icon: 'holiday_village'
+      },
+      {
+        name: 'ERWTW',
+        url: '123123',
+        icon: 'refresh'
       }
     ]
 
