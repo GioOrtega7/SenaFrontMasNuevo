@@ -1,14 +1,15 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked, OnDestroy, } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked, OnDestroy, inject } from '@angular/core';
 import { AreaModel } from 'src/app/shared/models/area.model';
 import { AreaService } from 'src/app/shared/services/area.service';
 import { NotificationService } from 'src/app/shared/services/notification-service';
 import { Subscription } from 'rxjs';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import 'slick-carousel';
 import * as $ from 'jquery';
 import { ExtendModalComponent } from '../../../Components/extend-modal/extend-modal.component';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { AreasModalComponent } from '../areas-modal/areas-modal.component';
+import { ExtendModalFiller } from 'src/app/shared/models/extend-modal-content';
 
 @Component({
   selector: 'app-areas',
@@ -27,14 +28,15 @@ export class AreasComponent implements OnInit, AfterViewChecked, OnDestroy {
   area: AreaModel | null = null;
   areas: AreaModel[] = [];
   private subscription: Subscription | undefined;
+  filler : ExtendModalFiller[] = [];
 
   constructor(
-    private dialogRef: MatDialogRef<AreasComponent>,
+    //private dialogRef: MatDialogRef<AreasComponent>,
+    //private modalRef: MatDialogRef<ExtendModalComponent>,
     private modal: MatDialog,
-
     private notificationService: NotificationService,
     private _areaService: AreaService,
-
+    
 
   ) { }
 
@@ -157,4 +159,7 @@ export class AreasComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
+
+
+
 }

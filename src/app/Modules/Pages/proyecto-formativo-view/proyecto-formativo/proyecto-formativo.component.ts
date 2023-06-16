@@ -75,7 +75,7 @@ export class ProyectoFormativoComponent {
 
   openModalUpdate(proyecto: ProyectoFormativoModel) {
     let dialogRef = this.modal.open(ProyectoFormativoModalComponent, {
-      data: proyecto, panelClass: 'dialog-panel'
+      data: proyecto,
 
 
 
@@ -95,14 +95,34 @@ export class ProyectoFormativoComponent {
     this.proyecto = {} as ProyectoFormativoModel;
     console.log("filler de abajo en boton", pass);
     dialogRef.afterClosed().subscribe(data => {
+
+      let proyecto: ProyectoFormativoModel
       console.log("Dialog output:", data);
     });
 
-    
-
   }
 
+  openModalUpdate1(proyecto: ProyectoFormativoModel) {
+    var dataPlacer: any = [proyecto.nombre, proyecto.codigo, proyecto.tiempoEstimado, proyecto.numeroTotalRaps, proyecto.idCentroFormacion]
+    this.filler.forEach((item, i) => {
+      item.dataPlacer = dataPlacer[i]; // Asignar nuevos valores a la propiedad "d"
+    });
 
+    console.log("update",this.filler)
+    var pass = { filler: this.filler, title: "Agregar proyecto formativo", update: true }
+    const dialogRef: MatDialogRef<ExtendModalComponent> = this.dialog.open(ExtendModalComponent, { data: pass });
+    this.proyecto = {} as ProyectoFormativoModel;
+    console.log("filler de abajo en boton", pass);
+
+
+    dialogRef.afterClosed().subscribe(data => {
+
+      let proyecto: ProyectoFormativoModel
+      console.log("Dialog output:", data);
+
+
+    })
+  }
 
   /////////////////////////////////////////////
   getProyecto() {
@@ -162,14 +182,14 @@ export class ProyectoFormativoComponent {
 
         let dataFill = this.programaNames.map((item, index) => ({
           data: item.toString(),
-          dataId:this.programaIds[index] 
+          dataId: this.programaIds[index]
         }));
         console.log(dataFill);
-        
+
         this.filler = [
           {
 
-            fieldName: "Proyecto",
+            fieldName: "Nombre",
             uppercase: true
           },
           {
@@ -181,7 +201,7 @@ export class ProyectoFormativoComponent {
             fieldName: "Programa",
             type: "select",
             data: dataFill
-            
+
 
           },
           {
@@ -198,17 +218,15 @@ export class ProyectoFormativoComponent {
             fieldName: "Centro de formación",
 
           }
-          ,{
-            fieldName: "Care verga",
-            placeholder: "tu madre",
-            uppercase: true,
-            
-            
+          , {
+            fieldName: "Campo que quiero",
+            placeholder: "Place holder",
+            uppercase: true
           }
 
         ]
         console.log("filler de abajo", this.filler);
-        
+
 
       }, error => {
         this.NotificationService.showNotification({ message: 'Error de conexión' });

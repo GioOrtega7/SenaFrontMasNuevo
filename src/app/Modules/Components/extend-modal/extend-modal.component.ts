@@ -20,7 +20,7 @@ export class ExtendModalComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ExtendModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public incomeData: { filler: ExtendModalFiller[], title: string, incomeId?: string },) { }
+    @Inject(MAT_DIALOG_DATA) public incomeData: { filler: ExtendModalFiller[], title: string, incomeId?: string, update?: boolean },) { }
 
 
   extendModalTitle: string = "Añadir";
@@ -34,7 +34,8 @@ export class ExtendModalComponent {
   ngOnInit() {
 
 
-
+    console.log(this.incomeData.filler);
+    
     this.filler1 = this.incomeData.filler;
     this.extendModalTitle = this.incomeData.title || "title";
     console.log("filler de arriva",this.filler1);

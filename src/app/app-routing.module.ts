@@ -7,6 +7,8 @@ import { ChargeWheelComponent } from './Modules/Components/charge-wheel/charge-w
 import { ProgramaFormativoComponent } from './Modules/Components/programa-formativo/programa-formativo.component';
 import { AreasComponent } from './Modules/Pages/areas-view/areas/areas.component';
 import { ProyectoFormativoComponent } from './Modules/Pages/proyecto-formativo-view/proyecto-formativo/proyecto-formativo.component';
+import { PerfilComponent } from './Modules/Pages/perfil/perfil.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -36,7 +38,13 @@ const routes: Routes = [
       {
         path:"programa",
         component: ProgramaFormativoComponent
-      }
+      },
+      {
+        path:"perfil",
+        component: PerfilComponent
+      },
+
+      
     ]
   }
 ];

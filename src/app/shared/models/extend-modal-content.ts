@@ -16,5 +16,5 @@ export interface ExtendModalFiller{
     ngModel?: string;
     uppercase?: boolean;
     data?: Array<{ data: string, dataId: number }>;
-    dataId?:Array<any>;
+    dataPlacer?: string | number;
 }

@@ -15,7 +15,7 @@ import {provideHttpClient} from '@angular/common/http';
 import { HomeRoutingModule } from './Core/home/home-routing.module';
 import { NavbarComponent } from './Core/home/navbar/navbar.component';
 import { PagesModule } from './Modules/Pages/pages.module';
-import { AreasComponent } from './Modules/Pages/areas-view/areas/areas.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {Component, Inject} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
@@ -26,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
-    AreasComponent
+
 
   ],
   imports: [

@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   textState: boolean = false;
   expandState: boolean = false;
   classState: boolean = false;
-  menuState: boolean = false;
+  menuState: boolean = true;
   timeoutRef: any;
   filler: any;
   selectedMenuItem: string | null = null;

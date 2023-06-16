@@ -4,7 +4,7 @@
             <img [class.animate-menu]="menuState" [class.animate-menu-back]="!menuState" [class.translate]="expandState" class="menu"
                 src="../../../../../assets/svg/brackets-angle-thin-svgrepo-com (1).svg">
         </button>
-        <ul class="dropdown" #dropdown [class.expand]="expandState"  (mouseenter)="enter()" (mouseleave)="leave()">
+        <ul class="dropdown showNN" #dropdown [class.expand]="expandState"  (mouseenter)="enter()" (mouseleave)="leave()">
             <li class="dropdown-item"  *ngFor="let nav of filler" (click)="selectMenuItem(nav.name)" [ngClass]="{'activa--li': nav.name == selectedMenuItem}">
                 <a [routerLink]="nav.url">
                     <picture>
@@ -53,15 +53,24 @@
                 <picture>
                     <img src='{{imagen_perfil}}' alt="Foto de perfil">
                 </picture>
-                <span>{{Nombre}} {{Apellido}}</span>
+                <span class="name">{{Nombre}} {{Apellido}}</span>
                 <ul #option class="optionUser">
-                    <h4>Ajustes</h4>
                     <div class="options">
-                        <li>
+                        <li routerLink="perfil">
+                            <picture>
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                            </picture>
                             <span>Perfil</span>
                         </li>
-                        <li>
-                            <span (click)="logout()" >Cerar Sesion</span>
+                        <li (click)="logout()">
+                            <picture>
+                                <span class="material-symbols-outlined">
+                                    move_item
+                                </span>
+                            </picture>
+                            <span >Salir</span>
                         </li>
                     </div>
                 </ul>

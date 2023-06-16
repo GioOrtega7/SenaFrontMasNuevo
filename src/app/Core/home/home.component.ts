@@ -19,17 +19,18 @@ export class HomeComponent {
   resBefore = "0px";
   timeoutRef: any;
   ngOnInit() {
+    document.documentElement.style.setProperty("--margin", "70px");
     this.adjustNavbar.adjust$.subscribe((res:any) => {
       if (this.timeoutRef) { clearTimeout(this.timeoutRef); }
       const display = this.display.nativeElement;
       const footer = this.footer.nativeElement;
       document.documentElement.style.setProperty("--margin", (String(res) + "px"));
-      document.documentElement.style.setProperty("--margin-before", (String(this.resBefore) + "px"));
-      this.renderer2.addClass(display,"collapse");
+      /*//document.documentElement.style.setProperty("--margin-before", (String(this.resBefore) + "px"));
+     // this.renderer2.addClass(display,"collapse");
       this.resBefore=String(res);
       this.timeoutRef = setTimeout(() => {
-        this.renderer2.removeClass(display,"collapse")
-      }, 500);
+       // this.renderer2.removeClass(display,"collapse")
+      }, 500);*/
 
 
     })

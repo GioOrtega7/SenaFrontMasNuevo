@@ -183,13 +183,13 @@ app-footer {
 .slick-wrapper {
     width: 80%;
 }
-
+/*
 .bloque-slick-information {
     display: flex;
     width: 100%;
     justify-content: center;
 }
-
+*/
 .content-slick-information {
     display: flex;
     flex-direction: column;

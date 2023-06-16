@@ -22,13 +22,13 @@
   cursor: pointer;
 }
 .area:hover{
-    transition: 0.5s;
-    transform: scale(1.1)
+    transition: 0.3s;
+    transform: scale(1.05)
 }
 
 .area:hover ~ .actions{
-  transition: 0.5s;
-  transform: scale(1.1)
+  transition: 0.3s;
+  transform: scale(1.05)
 }
 .area picture{
     padding: 10px;
@@ -41,33 +41,27 @@
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
-.button-añadir{
+.button{
   display: flex;
   justify-content: center;
-  padding: 30px;
 }
-.button-añadir button{
+.button button{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #006B00;
   border-radius: 10px;
   padding: 8px;
+  background-color: #006B00;
   border: none;
   gap: 5px;
   color: #fff;
+  cursor: pointer;
 }
-.button-añadir button::before{
+.añadir::before{
   content: "+";
   color: #fff;
   font-size: 22px;
 }
-
-
-
-
-
-
 .actions button {
   background: transparent;
   border: none;
@@ -81,10 +75,111 @@
 
 }
 
-.actions button {
-  cursor: pointer;
-}
-
 .actions img {
   width: 15px;
 }
+.barraBusqueda{
+  width: 100%;
+  max-width: 600px;
+}
+
+.container-4 {
+  overflow: hidden;
+  width: 100%;
+  height: 45px;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid #203363 ;
+  border-radius: 20px;
+  z-index: 6;
+  color: #dadada;
+}
+
+.container-4 input#search {
+  z-index: 6;
+  outline: none;
+  width: 100%;
+  height: 45px;
+  background: transparent;
+  border: none;
+  font-size: 12pt;
+  float: left;
+  color: #ffffff;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+
+.container-4 input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+
+
+.container-4 input#search::-webkit-input-placeholder {
+  color: #c7c7c7;
+}
+
+.container-4 input#search:-ms-input-placeholder {
+  color: #c7c7c7;
+}
+
+.container-4 button.icon {
+  border: none;
+  background: #192239;
+  height: 100%;
+  width: 50px;
+  color: #4f5b66;
+  opacity: 0.5;
+  font-size: 10pt;
+  border-radius: 0 10px 10px 0;
+  transition: 0.5s;
+}
+
+.container-4:hover button.icon,
+.container-4:focus button.icon {
+  outline: none;
+  opacity: 1;
+  margin-left: -50px;
+}
+.icon  span {
+  font-size: 30px;
+  border-radius: 10px;
+  transition: 0.25s;
+  color:#ffffff;
+  padding-top: 3px;
+}
+.icon  span:active {
+  transform: scale(0.7);
+  transition: all 0.25s ease;
+}
+.container-4:hover button.icon:hover {
+  background: transparent;
+  transition: 0.2s;
+}
+.container-4 button.icon img {
+  alt: "Buscar";
+}
+.descripcion{
+
+}
+
+.desc-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin:  20px 0px;
+}
+.panel-body{
+  display: block;
+  
+}
+.tex-carc{
+  height: 40px;
+  -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
+}
+
+

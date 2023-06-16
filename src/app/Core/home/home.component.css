@@ -1,12 +1,12 @@
 :root{
-    --margin: 0;
-    --margin-before:var(--margin-before);
+    --margin: 70px;
 }
 
 .home-display{
     margin-top: 100px;
     padding-bottom: 80px;
     margin-left: var(--margin);
+    transition: 0.5s;
 }
 
 .collapsed{

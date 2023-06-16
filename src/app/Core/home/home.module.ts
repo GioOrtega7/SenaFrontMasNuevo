@@ -8,7 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home.component';
 import { ProgramaFormativoComponent } from 'src/app/Modules/Components/programa-formativo/programa-formativo.component';
 import { PagesModule } from 'src/app/Modules/Pages/pages.module';
-import { AreasComponent } from 'src/app/Modules/Pages/areas-view/areas/areas.component';
+
 
 
 

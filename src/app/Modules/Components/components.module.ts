@@ -21,7 +21,8 @@ import { MatDividerModule } from '@angular/material/divider';
     ChargeWheelComponent,
     DescripcionComponent,
     ProgramaFormativoComponent,
-    ExtendModalComponent
+    ExtendModalComponent,
+    
   ],
   imports: [
     CommonModule,

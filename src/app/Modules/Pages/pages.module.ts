@@ -21,7 +21,8 @@ import { ExtendModalComponent } from '../Components/extend-modal/extend-modal.co
   declarations: [
     ProyectoFormativoComponent,
     ProyectoFormativoModalComponent,
-    AreasModalComponent,
+    AreasComponent,
+    AreasModalComponent
 
 
   ],
