@@ -16,6 +16,11 @@
                         <option *ngFor='let item of fill.data' [ngValue]="item.dataId">{{item.data}}</option>
                     </select>
                 </div>
+                <div class="form-item" *ngIf="fill.type == 'textarea'">
+                    <label [for]="fill.formControlName">{{fill.fieldName}}</label>
+                    <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true" [placeholder]="fill.placeholder">
+                    </textarea>
+                </div>
             </div>
         </div>
     </mat-dialog-content>

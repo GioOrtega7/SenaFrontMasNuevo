@@ -13,7 +13,7 @@ export class IconChartComponent {
 
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
-  filler: any
+
 
   constructor(private modal: MatDialog,){}
 
@@ -37,28 +37,29 @@ export class IconChartComponent {
   }
 
   @HostListener('window:resize')
+
   onWindowResize() {
     this.cambiarVariable(); 
   }
   cambiarVariable() {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-    if (screenWidth > 1592 ) {
+   if (screenWidth > 1633 ) {
       this.page_size = 8;
     }
-    else if (screenWidth < 1592 && screenWidth >= 1203 ){
+    else if (screenWidth < 1633 && screenWidth >=1313 ){
+      this.page_size = 8;
+    }
+    else if (screenWidth < 1313 && screenWidth >= 995) {
       this.page_size = 6;
     }
-    else if (screenWidth < 1203 && screenWidth >= 814) {
+    else if (screenWidth < 995 && screenWidth >= 814 ) {
       this.page_size = 4;
     }
-    else if (screenWidth < 814 && screenWidth >= 814 ) {
+    else if (screenWidth < 814 && screenWidth >= 673 ) {
       this.page_size = 2;
     }
-    else if (screenWidth < 814 && screenWidth >= 600 ) {
-      this.page_size = 2;
-    }
-    else if (screenWidth < 600) {
+    else if (screenWidth < 673) {
       this.page_size = 1;
     }
 

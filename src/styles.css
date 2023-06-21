@@ -175,36 +175,13 @@ app-footer {
     display: flex !important;
     justify-content: center;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+
     cursor: pointer;
 }
 
-.slick-wrapper {
-    width: 80%;
-}
-/*
-.bloque-slick-information {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-*/
-.content-slick-information {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    padding: 0;
-}
 
-@media (max-width: 732px) {
-    .content-information {
-        width: 80%;
-        padding-left: 50px;
-    }
-}
+
+
 
 
 .mat-mdc-dialog-container {
@@ -339,20 +316,19 @@ button.add{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
   }
+
   .slider{
     display: grid;
     max-width: 80%;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(12vw, 200px));
     grid-gap: 30px;
-    grid-auto-rows: minmax(100px, auto);
+
+    grid-auto-rows: minmax(20vh,25vh);
     justify-content: center
   }
-  @media (max-width: 812px) {
-    .slider{
-      display: flex;
-    }
-  }
+
 .mat-mdc-paginator-container{
     justify-content: center !important;
   }

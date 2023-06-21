@@ -15,6 +15,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { IconChartComponent } from './icon-chart/icon-chart.component';
 import { ExtendModalAlertComponent } from './extend-modal-alert/extend-modal-alert.component';
 import { ComponentsPipe } from '../components.pipe';
+import { IconChartSoleComponent } from './icon-chart-sole/icon-chart-sole.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ComponentsPipe } from '../components.pipe';
     ExtendModalAlertComponent,
     IconChartComponent,
     ComponentsPipe,
+    IconChartSoleComponent,
     
   ],
   imports: [
@@ -48,6 +50,7 @@ import { ComponentsPipe } from '../components.pipe';
     ProgramaFormativoComponent,
     ExtendModalFormComponent,
     IconChartComponent,
+    IconChartSoleComponent
   ],
   providers: [
     {

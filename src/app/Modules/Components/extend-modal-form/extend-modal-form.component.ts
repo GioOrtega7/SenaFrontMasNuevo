@@ -42,7 +42,7 @@ export class ExtendModalFormComponent {
 
     this.filler = this.filler1.map(item => ({
       fieldName: item.fieldName || "",
-      placeholder: item.placeholder || "Ingrese" + item.fieldName,
+      placeholder: item.placeholder || "Ingrese " + item.fieldName,
       uppercase: item.uppercase || false,
       type: item.type || "input",
       control: item.control || "text",

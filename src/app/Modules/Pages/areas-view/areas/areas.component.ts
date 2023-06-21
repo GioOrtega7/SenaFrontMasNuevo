@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as $ from 'jquery';
 import 'slick-carousel';
+import { IconChartSoleComponent } from 'src/app/Modules/Components/icon-chart-sole/icon-chart-sole.component';
 import { ExtendModalFormComponent } from '../../../Components/extend-modal-form/extend-modal-form.component';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { AreasModalComponent } from '../areas-modal/areas-modal.component';
@@ -33,6 +34,7 @@ export class AreasComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   area: AreaModel | null = null;
   view: Array<IconChart> = [];
+  soleView: IconChart = {} as IconChart
   areas: AreaModel[] = [];
   private subscription: Subscription | undefined;
   filler: ExtendModalFiller[] = [];
@@ -64,9 +66,12 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemOne: res.codigo
       }
       ))
+
       this.view = view;
+      this.soleView = view[2]
     });
 
+    
   }
 
   Update(data: IconChart) {
@@ -90,9 +95,8 @@ export class AreasComponent implements OnInit, OnDestroy {
     },
     {
       fieldName: "Icaono",
-      control: "date",
-      dataPlacer: data.iconUrl,
-      type: "textarea"
+      type: "input",
+      control: "date"
     }
     ]
 

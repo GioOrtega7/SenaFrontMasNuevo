@@ -8,8 +8,6 @@ div.mat-dialog-content{
     gap: 5px;
 }
 
-
-
 .form-body{
     display: flex;
     flex-direction: column;
@@ -49,7 +47,6 @@ input.success{
     border-color: #006B00;
 }
 
-
 .button-div button{
     display: flex;
     width: 30%;
@@ -64,7 +61,9 @@ input.success{
     cursor: pointer;
 }
 
-
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
 
 .mat-mdc-dialog-actions {
     justify-content: space-around;
