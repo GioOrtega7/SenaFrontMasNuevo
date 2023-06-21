@@ -275,7 +275,7 @@ button.menu-container:hover {
 .hide {
     display: flex;
     animation-name: dropdown-pull;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     overflow: hidden;
     user-select: none;
     pointer-events: none;
@@ -292,7 +292,7 @@ button.menu-container:hover {
 .expand {
     width: 160px;
     display: flex;
-    transition: 0.5s;
+    transition: 0.3s;
     padding-left: 0px;
 }
 
@@ -302,7 +302,7 @@ button.menu-container:hover {
 
 .expand a{
     padding-left: 5px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .expand li {
@@ -324,13 +324,13 @@ button.menu-container:hover {
 .show {
     display: flex;
     animation-name: dropdown-collapse;
-    animation-duration: 1s;
-    transition: 0.5s;
+    animation-duration: 0.3s;
+    transition: 0.3s;
 }
 
 .showNN {
     display: flex;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 a {
@@ -343,13 +343,13 @@ a {
     margin: 0;
     cursor: pointer;
     color: #c4c4c4;
-    transition: 0.2s;
+    transition: 0.3s;
     height: 38px;
 }
 
 a:hover {
     transform: scale(1.2) translateX(15px);
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 
@@ -379,7 +379,7 @@ span.text{
     width: 100%;
     max-width: 600px;
     padding-left: 40px;
-    transition: 0.5s;
+    transition: 0.3s;
   }
 
   

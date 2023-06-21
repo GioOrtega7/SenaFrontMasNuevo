@@ -28,7 +28,7 @@ export class IconChartComponent {
     this.dataToDelete.emit({itemId:itemID,itemName:itemName})
   }
 
-  page_size: number = 8;
+  page_size: number = 10;
   page_number: number = 1;
 
   handlePage(e: PageEvent) {
@@ -45,21 +45,21 @@ export class IconChartComponent {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
    if (screenWidth > 1633 ) {
+      this.page_size = 10;
+    }
+    else if (screenWidth < 1633 && screenWidth >=1314 ){
       this.page_size = 8;
     }
-    else if (screenWidth < 1633 && screenWidth >=1313 ){
-      this.page_size = 8;
-    }
-    else if (screenWidth < 1313 && screenWidth >= 995) {
+    else if (screenWidth < 1314 && screenWidth >= 995) {
       this.page_size = 6;
     }
-    else if (screenWidth < 995 && screenWidth >= 814 ) {
+    else if (screenWidth < 995 && screenWidth >= 800 ) {
       this.page_size = 4;
     }
-    else if (screenWidth < 814 && screenWidth >= 673 ) {
+    else if (screenWidth < 800 && screenWidth >= 675 ) {
       this.page_size = 2;
     }
-    else if (screenWidth < 673) {
+    else if (screenWidth < 675) {
       this.page_size = 1;
     }
 

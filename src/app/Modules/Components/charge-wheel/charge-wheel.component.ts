@@ -2,6 +2,7 @@ import { Component, Input, HostListener, Output, EventEmitter } from '@angular/c
 import { ChargeWheelFillerModel } from 'src/app/shared/models/charge-wheel-filler.model';
 import { IconChart } from 'src/app/shared/models/icon-chart.model';
 import { PageEvent } from '@angular/material/paginator';
+import { SimpleChanges,  } from '@angular/core';
 
 @Component({
   selector: 'app-charge-wheel',
@@ -12,7 +13,17 @@ export class ChargeWheelComponent {
   porcentajeNumerico: number[];
   colores: string[];
   @Input() view: ChargeWheelFillerModel[] = [];
-
+  generate: boolean = false;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['view']) {
+      // Realiza las acciones que deseas cuando haya un cambio en la variable de entrada
+      if(Object.keys(this.view).length !== 0){
+        this.generate= true
+        console.log("generatey");
+        
+      }
+    }
+  }
   
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();

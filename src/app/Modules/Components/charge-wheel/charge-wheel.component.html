@@ -1,4 +1,4 @@
-<div class="content-wheel">
+<div class="content-wheel" *ngIf="generate">
     <div class="charge_wheel" *ngFor="let item of  this.view; index as i">
         <div class="porcentajes" style="--porcentaje: {{porcentajeNumerico}}">
           <div class="content">

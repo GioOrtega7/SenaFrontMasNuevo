@@ -175,15 +175,10 @@ app-footer {
     display: flex !important;
     justify-content: center;
     text-align: center;
-
+    max-height: 320px;
+    min-height: 200px;
     cursor: pointer;
 }
-
-
-
-
-
-
 .mat-mdc-dialog-container {
     --mdc-dialog-container-color: #182034;
     /* Outer container color*/
@@ -324,8 +319,7 @@ button.add{
     max-width: 80%;
     grid-template-columns: repeat(auto-fit, minmax(12vw, 200px));
     grid-gap: 30px;
-
-    grid-auto-rows: minmax(20vh,25vh);
+    grid-auto-rows: minmax(25vh,35vh);
     justify-content: center
   }
 

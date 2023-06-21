@@ -138,7 +138,7 @@ export class NavbarComponent implements OnInit {
       this.adjustNavbar.Adjust_navbar("0");
       this.timeoutRef = setTimeout(() => {
         this.renderer2.removeClass(dropdown, "hide")
-      }, 450);
+      }, 300);
     }
     else {
       this.renderer2.addClass(dropdown, "show");
