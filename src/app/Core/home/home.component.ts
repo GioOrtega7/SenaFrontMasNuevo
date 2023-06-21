@@ -21,7 +21,6 @@ export class HomeComponent {
   ngOnInit() {
     document.documentElement.style.setProperty("--margin", "70px");
     this.adjustNavbar.adjust$.subscribe((res:any) => {
-      console.log("margin change");
       
       if (this.timeoutRef) { clearTimeout(this.timeoutRef); }
       const display = this.display.nativeElement;

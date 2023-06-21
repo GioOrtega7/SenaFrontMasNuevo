@@ -298,6 +298,35 @@ button.add{
     cursor: pointer;
 }
 
+button{
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: #192239;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover{
+    transform: scale(1.1);
+    background-color: #1e2842;
+}
+
+button.add:hover{
+    transform: scale(1.1);
+    background-color: #0b790b;
+}
+
+button.cancel:hover{
+    transform: scale(1.1);
+    background-color: #7f1010;
+}
+
   button.cancel::before {
     content: "🛇";
     color: #fff;
