@@ -1,21 +1,39 @@
 <li class="content-navbar">
-    <div class="side-menu">
-        <button class="menu-container" (click)="toggleClass()">
-            <img [class.animate-menu]="menuState" [class.animate-menu-back]="!menuState" [class.translate]="expandState" class="menu"
-                src="../../../../../assets/svg/brackets-angle-thin-svgrepo-com (1).svg">
-        </button>
-        <ul class="dropdown showNN" #dropdown [class.expand]="expandState"  (mouseenter)="enter()" (mouseleave)="leave()">
-            <li class="dropdown-item"  *ngFor="let nav of filler" (click)="selectMenuItem(nav.name)" [ngClass]="{'activa--li': nav.name == selectedMenuItem}">
-                <a [routerLink]="nav.url">
-                    <picture>
+    <div class="left-view">
+        <div class="side-menu">
+            <button class="menu-container" (click)="toggleClass()">
+                <img [class.animate-menu]="menuState" [class.animate-menu-back]="!menuState"
+                    [class.translate]="expandState" class="menu"
+                    src="../../../../../assets/svg/brackets-angle-thin-svgrepo-com (1).svg">
+            </button>
+            <ul class="dropdown showNN" #dropdown [class.expand]="expandState" (mouseenter)="enter()"
+                (mouseleave)="leave()">
+                <li class="dropdown-item" *ngFor="let nav of filler" (click)="selectMenuItem(nav.name)"
+                    [ngClass]="{'activa--li': nav.name == selectedMenuItem}">
+                    <a [routerLink]="nav.url">
+                        <picture>
+                            <span class="material-symbols-outlined">
+                                {{nav.icon}}
+                            </span>
+                        </picture>
+                        <span class="text" *ngIf="expandState">{{nav.name}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="barraBusqueda" [class.extend]="expandState">
+            <div class="container-4">
+                <label for="search">
+                    <input #inputBusqueda type="search" placeholder="Búsqueda en {{selectedMenuItem}}" (keyup)="engine()"
+                        [(ngModel)]="searchTerm" id="search" name="search">
+                    <button type="submit" class="icon" (click)="engine()">
                         <span class="material-symbols-outlined">
-                            {{nav.icon}}
+                            search
                         </span>
-                    </picture>
-                    <span class="text" *ngIf="expandState">{{nav.name}}</span>
-                </a>
-            </li>
-        </ul>
+                    </button>
+                </label>
+            </div>
+        </div>
     </div>
     <ul class="NavBar">
         <li (click)="Toggle()">
@@ -70,7 +88,7 @@
                                     move_item
                                 </span>
                             </picture>
-                            <span >Salir</span>
+                            <span>Salir</span>
                         </li>
                     </div>
                 </ul>

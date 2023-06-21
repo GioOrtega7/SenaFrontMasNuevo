@@ -4,8 +4,8 @@ import { CoreService } from 'src/app/shared/services/core.service';
 import { ServicioToggleService } from 'src/app/shared/services/servicio-toggle.service';
 import { NavegationModel } from 'src/app/shared/models/navegation.model';
 import { AdjustNavbarService } from 'src/app/shared/services/adjust-navbar.service';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router'
+import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 
 
 @Component({
@@ -31,20 +31,26 @@ export class NavbarComponent implements OnInit {
   menuState: boolean = true;
   timeoutRef: any;
   filler: any;
-  selectedMenuItem: string | null = null;
+  selectedMenuItem: string | null = "";
+  searchTerm: string = "";
+  modelRef: string = "";
+  optionalModelRef: string = "";
 
   constructor(
     private toggleService: ServicioToggleService,
     private coreService: CoreService,
     private adjustNavbar: AdjustNavbarService,
     private renderer2: Renderer2,
-    private router: Router
+    private router: Router,
+    private searchBar: SearchBarService
 
   ) { }
 
 
   ngOnInit(): void {
-    const menue: NavegationModel[] = [
+
+
+    const menu: NavegationModel[] = [
       {
         name: 'Areas',
         url: 'dashboard',
@@ -64,17 +70,18 @@ export class NavbarComponent implements OnInit {
         name: 'Sedes',
         url: 'sede',
         icon: 'holiday_village'
-      },
-      {
-        name: 'ERWTW',
-        url: '123123',
-        icon: 'refresh'
       }
     ]
 
-    this.filler = menue;
+    this.filler = menu;
 
-
+    this.searchBar.$getModel.subscribe(res => {
+      this.modelRef = res[0];
+      this.optionalModelRef = res[1];
+      setTimeout(() => {
+        this.engine()
+      }, 1000);
+    })
 
 
     this.coreService.getUserAuthenticated();
@@ -82,13 +89,17 @@ export class NavbarComponent implements OnInit {
     this.coreService.persona.subscribe((persona) => {
       this.persona = persona;
     });
+
   }
+
+
   optionsElen() {
     this.option.nativeElement.style.display = 'none';
   }
   options() {
     this.option.nativeElement.style.display = 'flex';
   }
+
   Toggle(): void {
     if (this.toggle === 'Dark') {
       this.toggle = 'Light';
@@ -102,6 +113,7 @@ export class NavbarComponent implements OnInit {
       this.sol.nativeElement.style.opacity = '0';
     }
   }
+
   logout(): void {
     this.coreService.logout();
   }
@@ -114,8 +126,6 @@ export class NavbarComponent implements OnInit {
   get imagen_perfil() {
     return this.persona ? this.persona.rutaFotoUrl : '';
   }
-
-
 
   toggleClass() {
     var dropdown = this.dropdown.nativeElement;
@@ -158,6 +168,33 @@ export class NavbarComponent implements OnInit {
 
   ngAfterViewInit(): void {
 
+  }
+
+
+  /*search service*/
+
+
+
+
+  engine(): void {
+
+    if (!this.searchTerm || this.searchTerm == "") {
+
+      this.coreService.get<any[]>(this.optionalModelRef).subscribe((response => {
+        this.searchBar.searchArrayUpdate(response)
+      }))
+    }
+    else {
+      this.coreService.pass<any>(this.modelRef, this.searchTerm)
+        .subscribe((response) => {
+          let resultados = response.resultados;
+          let keys = Object.keys(resultados);
+          let dato = keys.flatMap(key => resultados[Number(key)]);
+          console.log(response);
+
+          this.searchBar.searchArrayUpdate(dato);
+        });
+    }
   }
 
 }

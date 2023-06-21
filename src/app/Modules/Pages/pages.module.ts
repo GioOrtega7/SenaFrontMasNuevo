@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AreasComponent } from './areas-view/areas/areas.component';
 import { ChargeWheelComponent } from '../Components/charge-wheel/charge-wheel.component';
@@ -10,10 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AreasModalComponent } from './areas-view/areas-modal/areas-modal.component';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ComponentsPipe } from '../components.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { ExtendModalComponent } from '../Components/extend-modal/extend-modal.component';
 
 
 
@@ -22,7 +21,7 @@ import { ExtendModalComponent } from '../Components/extend-modal/extend-modal.co
     ProyectoFormativoComponent,
     ProyectoFormativoModalComponent,
     AreasComponent,
-    AreasModalComponent
+    AreasModalComponent,
 
 
   ],
@@ -31,7 +30,11 @@ import { ExtendModalComponent } from '../Components/extend-modal/extend-modal.co
     ComponentsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatButtonModule, MatDividerModule, MatIconModule
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    ComponentsModule,
+
   ]
   , exports: [
     ProyectoFormativoComponent,

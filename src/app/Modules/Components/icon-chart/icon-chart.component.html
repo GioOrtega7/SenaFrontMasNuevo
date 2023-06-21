@@ -1,0 +1,26 @@
+<div class="wallpaper">
+  <div class="slider">
+    <div class="slide-item" *ngFor="let item of view | Paginate: page_size: page_number">
+      <div class="area">
+        <picture>
+          <img width="64" height="64" src={{item.iconUrl}} alt="artificial-intelligence" />
+        </picture>
+        <div>
+          <li>{{ item.itemName }}</li>
+          <span>{{ item.itemOne }}</span>
+        </div>
+        <div class="button">
+          <a><button>ir</button></a>
+        </div>
+      </div>
+      <div class="actions">
+        <button (click)="openModalUpdate(item)"><img src="../../../assets/icons/reload.svg"></button>
+        <button (click)="deleteItem(item.itemId, item.itemName)"><img src="../../../assets/icons/delete.svg"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-paginator [length]="view.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
+  showFirstLastButtons>
+</mat-paginator>

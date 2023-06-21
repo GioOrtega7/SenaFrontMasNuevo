@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home.component';
 import { ProgramaFormativoComponent } from 'src/app/Modules/Components/programa-formativo/programa-formativo.component';
 import { PagesModule } from 'src/app/Modules/Pages/pages.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
@@ -27,6 +28,7 @@ import { PagesModule } from 'src/app/Modules/Pages/pages.module';
     HomeRoutingModule,
     ComponentsModule,
     PagesModule,
+    FormsModule
   ],
   exports:[HomeComponent,
   NavbarComponent]

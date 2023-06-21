@@ -9,7 +9,7 @@ import { ProyectoFormativoModalComponent } from '../proyecto-formativo-modal/pro
 import { ProyectoFormativoModel } from 'src/app/shared/models/proyecto-formativo.model ';
 import { ProyectoFormativoService } from 'src/app/shared/services/proyecto-formativo.service';
 import { NotificationService } from 'src/app/shared/services/notification-service';
-import { ExtendModalComponent } from 'src/app/Modules/Components/extend-modal/extend-modal.component';
+import { ExtendModalFormComponent } from 'src/app/Modules/Components/extend-modal-form/extend-modal-form.component';
 import { ExtendModalFiller } from 'src/app/shared/models/extend-modal-content';
 import { ProgramaModel } from 'src/app/shared/models/programa.model';
 import { filter } from 'rxjs/operators';
@@ -27,7 +27,7 @@ export class ProyectoFormativoComponent {
   proyectos: ProyectoFormativoModel[] = [];
   programaNames: string[] = [];
   programaIds: any[] = [];
-
+  dataFill: any[] = [];
   @ViewChild('slickElement') slickElement!: ElementRef;
   porcentajeNumericos: number[];
   colores: string[];
@@ -90,8 +90,50 @@ export class ProyectoFormativoComponent {
   }
 
   openModalCreate1() {
+
+    this.filler = [
+          {
+
+            fieldName: "Nombrasdassde",
+            uppercase: true,
+
+          },
+          {
+            fieldName: "Codigo",
+            placeholder: "qweqewq"
+
+          },
+          {
+            fieldName: "Programa",
+            type: "select",
+            data: this.dataFill
+
+
+          },  
+          {
+            fieldName: "Tiempo estimado",
+
+
+          },
+          {
+            fieldName: "Numero de raps",
+
+
+          },
+          {
+            fieldName: "Centro de formación",
+
+          }
+          , {
+            fieldName: "Campo que quiero",
+            placeholder: "Place holder",
+            uppercase: true
+          }
+
+        ]
+
     var pass = { filler: this.filler, title: "Agregar proyecto formativo" }
-    const dialogRef: MatDialogRef<ExtendModalComponent> = this.dialog.open(ExtendModalComponent, { data: pass });
+    const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.dialog.open(ExtendModalFormComponent, { data: pass });
     this.proyecto = {} as ProyectoFormativoModel;
     console.log("filler de abajo en boton", pass);
     dialogRef.afterClosed().subscribe(data => {
@@ -104,13 +146,11 @@ export class ProyectoFormativoComponent {
 
   openModalUpdate1(proyecto: ProyectoFormativoModel) {
     var dataPlacer: any = [proyecto.nombre, proyecto.codigo, proyecto.tiempoEstimado, proyecto.numeroTotalRaps, proyecto.idCentroFormacion]
-    this.filler.forEach((item, i) => {
-      item.dataPlacer = dataPlacer[i]; // Asignar nuevos valores a la propiedad "d"
-    });
+     
 
     console.log("update",this.filler)
     var pass = { filler: this.filler, title: "Agregar proyecto formativo", update: true }
-    const dialogRef: MatDialogRef<ExtendModalComponent> = this.dialog.open(ExtendModalComponent, { data: pass });
+    const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.dialog.open(ExtendModalFormComponent, { data: pass });
     this.proyecto = {} as ProyectoFormativoModel;
     console.log("filler de abajo en boton", pass);
 
@@ -180,12 +220,14 @@ export class ProyectoFormativoComponent {
         this.programaNames = this.Programas.map(programa => programa.nombrePrograma)
         this.programaIds = this.Programas.map(programa => programa.id || "")
 
-        let dataFill = this.programaNames.map((item, index) => ({
+        this.dataFill = this.programaNames.map((item, index) => ({
           data: item.toString(),
           dataId: this.programaIds[index]
         }));
-        console.log(dataFill);
 
+        
+        console.log(this.dataFill);
+        /*
         this.filler = [
           {
 
@@ -225,7 +267,7 @@ export class ProyectoFormativoComponent {
             uppercase: true
           }
 
-        ]
+        ]*/
         console.log("filler de abajo", this.filler);
 
 

@@ -5,7 +5,7 @@
             <div class="form-content" *ngFor="let fill of this.filler">
                 <div class="form-item" *ngIf="fill.type == 'input'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <input [formControlName]="fill.formControlName || ''" type="text" [(ngModel)]="fill.ngModel"
+                    <input [type]="fill.control" [formControlName]="fill.formControlName || ''" [(ngModel)]="fill.ngModel"
                         (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' " [placeholder]="fill.placeholder"
                         required />
                 </div>
@@ -21,10 +21,10 @@
     </mat-dialog-content>
     <mat-dialog-actions>
 
-            <button type="submit" [disabled]="!isFormComplete">
+            <button type="submit" class="add"  [disabled]="!isFormComplete">
                 Aceptar
             </button>
-            <button mat-dialog-close>
+            <button mat-dialog-close class="cancel">
                 Cancelar
             </button>
 

@@ -30,6 +30,8 @@ export class AreaService {
   guardarArea(area: AreaModel){
     area.nombreArea = area.nombreArea.toUpperCase();
     area.codigo = area.codigo.toUpperCase();
+    console.log("funcion:",area);
+    
     return this._coreService.post<AreaModel>('areas',area);
   }
   //actualiza un area existente

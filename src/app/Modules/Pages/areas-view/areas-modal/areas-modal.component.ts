@@ -70,6 +70,8 @@ export class AreasModalComponent {
   guardarArea() {
     this.notificationService.showNotification({message:"Cambios guardados", type:"succes"})
     var event = this.getArea()
+    console.log(event);
+    
     if (event.id) {
       this._areaService.actualizarArea(event).subscribe(() => {
 
@@ -93,7 +95,6 @@ export class AreasModalComponent {
   getArea(): AreaModel {
     return {
       id: this.area?.id,
-      iconUrl: this.area.iconUrl,
       nombreArea: this.getControl('nombreArea').value,
       codigo: this.getControl('codigo').value
     }

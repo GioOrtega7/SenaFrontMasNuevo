@@ -29,12 +29,12 @@ export class ProgramaFormativoComponent {
     this.getProyecto();
   }
   getPrograma() {
-    this._programaService.traerProgramas()
-      .subscribe(programa => {
-        this.programas = programa;
-      }, error => {
-        this.notificationService.showNotification(this.options);
-      });
+    this._programaService.traerProgramas().subscribe(programa => {
+      console.log("programa", programa)
+      this.programas = programa;
+    }, error => {
+      this.notificationService.showNotification(this.options);
+    });
   }
 
 

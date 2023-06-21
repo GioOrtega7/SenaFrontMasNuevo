@@ -39,10 +39,7 @@ const routes: Routes = [
         path:"perfil",
         component: PerfilComponent
       },
-      {
-        path:"123123",
-        component: PerfilComponent
-      }
+
 
       
     ]

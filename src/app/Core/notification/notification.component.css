@@ -54,24 +54,32 @@
     padding-right: 10px;
     border-radius: 10px;
     position: fixed;
-
+    background-color: #be3030;
+    box-shadow: #be3030 5px 2px 2px 1px  ;
     backdrop-filter: blur(4px);
     z-index: 1001;
     animation-name: slide-inout-left;
     animation-duration: var(--time);
     overflow: hidden;
 }
-.active{
+
+.active {
     display: flex;
 }
 
-.fail{
+.fail {
     background-color: #be3030;
-    box-shadow: #be3030 5px 2px 5px;
+    box-shadow: #be3030 5px 2px 2px 1px ;
 }
-.success{
+
+.success {
     background-color: #4d9a27;
-    box-shadow: #4d9a27 5px 2px 5px;
+    box-shadow: #4d9a27 5px 2px 2px 1px ;
+}
+
+.warning {
+    background-color: #969622;
+    box-shadow: #969622 5px 2px 2px 1px ;
 }
 
 .warning{
