@@ -59,7 +59,7 @@ export class ChargeWheelComponent {
     this.dataToDelete.emit({itemId:itemID,itemName:itemName})
   }
 
-  page_size: number = 8;
+  page_size: number = 1;
   page_number: number = 1;
 
   handlePage(e: PageEvent) {
@@ -68,32 +68,34 @@ export class ChargeWheelComponent {
   }
 
   @HostListener('window:resize')
+
+  ngOnInit() {
+    this.cambiarVariable()
+  }
+
   onWindowResize() {
-    this.cambiarVariable(); 
+    this.cambiarVariable();
   }
   cambiarVariable() {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-    if (screenWidth > 1592 ) {
+    if (screenWidth > 1633) {
+      this.page_size = 10;
+    }
+    else if (screenWidth < 1633 && screenWidth >= 1314) {
       this.page_size = 8;
     }
-    else if (screenWidth < 1592 && screenWidth >= 1203 ){
+    else if (screenWidth < 1314 && screenWidth >= 995) {
       this.page_size = 6;
     }
-    else if (screenWidth < 1203 && screenWidth >= 814) {
+    else if (screenWidth < 995 && screenWidth >= 800) {
       this.page_size = 4;
     }
-    else if (screenWidth < 814 && screenWidth >= 814 ) {
+    else if (screenWidth < 800 && screenWidth >= 675) {
       this.page_size = 2;
     }
-    else if (screenWidth < 814 && screenWidth >= 600 ) {
-      this.page_size = 2;
-    }
-    else if (screenWidth < 600) {
+    else if (screenWidth < 675) {
       this.page_size = 1;
     }
 
-  }
-
- 
-}
+  }}

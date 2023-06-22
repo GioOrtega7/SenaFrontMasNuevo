@@ -1,10 +1,11 @@
-.content-wheel1 {
+.content-wheel {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     gap: 50px;
     padding: 50px 0;
+    margin-top: 10px;
 }
 
 
