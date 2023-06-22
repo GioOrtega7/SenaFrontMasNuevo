@@ -34,10 +34,11 @@ export class IconChartSoleComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      // Realiza las acciones que deseas cuando haya un cambio en la variable de entrada
-      if(Object.keys(this.view as IconChart).length !== 0){
+      if(Object.keys(this.view).length !== 0){
+        console.log(Object.keys(this.view).length);
+        
         this.generate= true
-      }
+      }else{this.generate= false}
     }
   }
 

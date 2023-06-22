@@ -1,18 +1,17 @@
-import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
-import { ChargeWheelFillerModel } from 'src/app/shared/models/charge-wheel-filler.model';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { Component, Output , Input, HostListener, SimpleChanges, EventEmitter} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { SimpleChanges,  } from '@angular/core';
+import { ChargeWheelFillerModel } from 'src/app/shared/models/charge-wheel-filler.model';
 
 @Component({
-  selector: 'app-charge-wheel',
-  templateUrl: './charge-wheel.component.html',
-  styleUrls: ['./charge-wheel.component.css']
+  selector: 'app-charge-wheel-sole',
+  templateUrl: './charge-wheel-sole.component.html',
+  styleUrls: ['./charge-wheel-sole.component.css']
 })
-export class ChargeWheelComponent {
+export class ChargeWheelSoleComponent {
+
   porcentajeNumerico: number[];
   colores: string[];
-  @Input() view: ChargeWheelFillerModel[] = [];
+  @Input() view: ChargeWheelFillerModel = {} as ChargeWheelFillerModel;
   generate: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -179,6 +179,7 @@ app-footer {
     min-height: 200px;
     cursor: pointer;
 }
+
 .mat-mdc-dialog-container {
     --mdc-dialog-container-color: #182034;
     /* Outer container color*/
@@ -188,13 +189,14 @@ app-footer {
     /* body color*/
     --mdc-dialog-container-shape: 7px !important;
     /*border radius*/
-    overflow-x: hidden!important;
+    overflow-x: hidden !important;
 }
 
 
-.mdc-dialog__surface{
-    min-width: 35vw!important;
+.mdc-dialog__surface {
+    min-width: 35vw !important;
 }
+
 /*
 .mat-mdc-dialog-container input{
     background-color: white;
@@ -221,7 +223,8 @@ input {
     transition: 0.5s;
 }
 
-input:hover , input:focus {
+input:hover,
+input:focus {
     border: #3869B2 solid 1px;
     transition: 0.5s;
 }
@@ -262,125 +265,110 @@ input[type="password"]:-webkit-autofill {
 }
 
 /**************************************************/
- 
-  
-  button.add::before {
+
+
+button.add::before {
     content: "🗹";
     color: #fff;
     font-size: 15px;
     padding-right: 10px;
-  }
+}
 
-  button.cancel{
-    display: flex;
-    width: 100px;
-    justify-content: center;
-    align-items: center;
+button.cancel {
     background-color: #680c0c;
-    border-radius: 20px;
-    color: #fff;
-    border: none;
-    padding: 8px;
-    transition: 0.3s ;
-    cursor: pointer;
-}
-button.add{
-    display: flex;
-    width: 100px;
-    justify-content: center;
-    align-items: center;
-    background-color: #006b00;
-    border-radius: 20px;
-    color: #fff;
-    border: none;
-    padding: 8px;
-    transition: 0.3s ;
-    cursor: pointer;
 }
 
-button{
-    display: flex;
-    width: 100px;
-    justify-content: center;
-    align-items: center;
+
+button.add {
+
+    background-color: #006b00;
+}
+
+button {
+    text-align: center;
     background-color: #192239;
     border-radius: 20px;
     color: #fff;
     border: none;
-    padding: 8px;
+    padding: 10px 12px;
     cursor: pointer;
     transition: 0.2s;
 }
 
-button:hover{
+button:hover {
     transform: scale(1.1);
     background-color: #1e2842;
 }
 
-button.add:hover{
+button.add:hover {
     transform: scale(1.1);
     background-color: #0b790b;
 }
 
-button.cancel:hover{
+button.cancel:hover {
     transform: scale(1.1);
     background-color: #7f1010;
 }
 
-  button.cancel::before {
+button.cancel::before {
     content: "🛇";
     color: #fff;
     font-size: 15px;
     padding-right: 10px;
-  }
-  /***********************************/
+}
 
-  .wallpaper{
+/***********************************/
+
+.wallpaper {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
 
-  .slider{
+.slider {
     display: grid;
     max-width: 80%;
     grid-template-columns: repeat(auto-fit, minmax(12vw, 200px));
     grid-gap: 30px;
-    grid-auto-rows: minmax(25vh,35vh);
+    grid-auto-rows: minmax(25vh, 35vh);
     justify-content: center
-  }
+}
 
-.mat-mdc-paginator-container{
+.mat-mdc-paginator-container {
     justify-content: center !important;
-  }
-.mat-mdc-paginator-range-actions{
+}
+
+.mat-mdc-paginator-range-actions {
     position: relative;
     gap: 20px;
     justify-content: center;
-  }
-.mat-mdc-paginator{
-    background-color:transparent;
-    color: #fff; 
-  }
-.mat-mdc-paginator svg{
+}
+
+.mat-mdc-paginator {
+    background-color: transparent;
+    color: #fff;
+}
+
+.mat-mdc-paginator svg {
     fill: #fff;
-  }
-.mat-mdc-paginator button{
+}
+
+.mat-mdc-paginator button {
     background-color: #192239d4;
     border-radius: 22px;
-  }
-.mat-mdc-paginator button:hover{
+}
+
+.mat-mdc-paginator button:hover {
     border: solid #203363 1px;
-  }
-.mat-mdc-paginator-range-label{
+}
+
+.mat-mdc-paginator-range-label {
     position: absolute;
     display: flex;
     justify-content: center;
-    bottom:-30px;
+    bottom: -30px;
     left: 0;
     right: 0;
-  }
-  
-  
+}

@@ -7,12 +7,9 @@ export interface InfraestructuraModel{
     capacidad:number;
     codigoQr?:string;
     descripcion?:string;
-
     idSede?:number;
     idArea?:number;
-
     sede?:SedeModel;
     area?:AreaModel;
-
     newQr?:string;
 }

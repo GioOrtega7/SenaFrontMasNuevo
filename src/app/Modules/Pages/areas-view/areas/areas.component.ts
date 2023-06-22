@@ -24,7 +24,6 @@ import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-mod
 export class AreasComponent implements OnInit, OnDestroy {
 
 
-  @ViewChild('slickElement') slickElement!: ElementRef;
   protected cache: Map<number, { areas: AreaModel[] | null }> = new Map<number, { areas: AreaModel[] | null }>();
   protected showFormArea: boolean = false;
   protected formTitle: string = "";
@@ -35,7 +34,6 @@ export class AreasComponent implements OnInit, OnDestroy {
   area: AreaModel | null = null;
   view: Array<IconChart> = [];
   soleView: IconChart = {} as IconChart
-  areas: AreaModel[] = [];
   private subscription: Subscription | undefined;
   filler: ExtendModalFiller[] = [];
 
@@ -68,17 +66,18 @@ export class AreasComponent implements OnInit, OnDestroy {
       ))
 
       this.view = view;
-      this.soleView = view[2]
+      this.soleView = view[0]
     });
 
     
   }
 
   Update(data: IconChart) {
-    console.log("lo que trae el coso", data.itemId);
+    console.log("lo que trae el coso", data);
 
     this.filler = [{
       fieldName: "Nombre de Area",
+      type:"input",
       control: "text",
       dataPlacer: data.itemName,
       uppercase: true
@@ -89,7 +88,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       dataPlacer: data.itemOne
     },
     {
-      fieldName: "Icono",
+      fieldName: "Icono asdasd asd aqwe ",
       control: "string",
       dataPlacer: data.iconUrl
     },
@@ -101,10 +100,12 @@ export class AreasComponent implements OnInit, OnDestroy {
     ]
 
     var pass: incomeData = {
-      filler: this.filler, title: "Actualizar area", update: true
+      filler: this.filler, title: "Actualizar area"
     }
 
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
+    
+    
     dialogRef.afterClosed().subscribe(gets => {
       if (gets) {
         this.area = {
@@ -168,10 +169,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.cache.set(0, { areas: null });
   }
 
-  destroySlider() {
-    console.log("destroy")
-    $(this.slickElement.nativeElement).slick('unslick')
-  }
+
 
   getAreas() {
 

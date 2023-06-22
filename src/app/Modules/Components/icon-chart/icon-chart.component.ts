@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, HostListener } from '@angular/c
 import { IconChart } from 'src/app/shared/models/icon-chart.model';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-
+import { SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-icon-chart',
@@ -18,6 +18,16 @@ export class IconChartComponent {
   constructor(private modal: MatDialog,) { }
 
   @Input() view: IconChart[] = []
+  generate:boolean = false
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['view']) {
+
+      if(Object.keys(this.view).length !== 0){
+        this.generate= true
+      }else{this.generate= false}
+    }
+  }
 
 
   openModalUpdate(item: IconChart) {

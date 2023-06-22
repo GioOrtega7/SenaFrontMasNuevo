@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ComponentsPipe } from '../components.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { AreasTryComponent } from './areas-try/areas-try.component';
 
 
 
@@ -22,6 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ProyectoFormativoModalComponent,
     AreasComponent,
     AreasModalComponent,
+    AreasTryComponent,
 
 
   ],

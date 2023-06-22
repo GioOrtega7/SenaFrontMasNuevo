@@ -133,6 +133,7 @@ ul {
     padding: 10px;
     fill: #ffffff;
 }
+
 .user img {
     display: flex;
     width: 35px;
@@ -140,6 +141,7 @@ ul {
     border-radius: 50%;
 
 }
+
 .optionUser {
     position: absolute;
     display: none;
@@ -151,6 +153,7 @@ ul {
     padding: 10px 0px 0px;
     gap: 10px;
 }
+
 .user .optionUser .options {
     display: flex;
     flex-direction: column;
@@ -161,7 +164,8 @@ ul {
     background-color: #192239c0;
     align-items: flex-start;
 }
-.user .optionUser .options li{
+
+.user .optionUser .options li {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -170,41 +174,23 @@ ul {
     transition: 0.1s;
     gap: 15px;
 }
+
 .options li:hover {
     transform: none !important;
 }
-.options li:hover span{
+
+.options li:hover span {
     color: #2353ac;
     transition: 0.2s;
 }
+
 img.menu {
     width: 40px;
     height: 50px;
     z-index: 2;
     cursor: pointer;
 }
-.bot {
-    display: flex;
-    flex-direction: column;
-    width: 2.7rem;
-    border: 0;
-    background: transparent;
-    gap: .55rem;
-    justify-content: center;
-    margin: 17px 5px;
-    transition: 0.5s;
-}
-.bot>div {
-    display: flex;
-    background: rgb(255, 255, 255);
-    height: 2px;
-    width: 100%;
-    border-radius: 5px;
-    transition: all .5s;
-    transform-origin: left;
-    justify-content: center;
-    align-items: center;
-}
+
 
 /******************************************************************/
 .animate-menu {
@@ -284,10 +270,15 @@ button.menu-container:hover {
 .dropdown-item {
     display: flex;
     align-items: center;
-    color: #192239;
     transition: 0.3s;
 }
 
+.dropdown-item a:hover{
+    color: #006B00;
+    transform: scale(1.2) translateX(15px);
+    transition: 0.3s;
+
+}
 
 .expand {
     width: 160px;
@@ -297,10 +288,10 @@ button.menu-container:hover {
 }
 
 .extend {
- margin-left: 45px;
+    margin-left: 45px;
 }
 
-.expand a{
+.expand a {
     padding-left: 5px;
     transition: 0.3s;
 }
@@ -347,56 +338,51 @@ a {
     height: 38px;
 }
 
-a:hover {
-    transform: scale(1.2) translateX(15px);
-    transition: 0.3s;
-}
-
-
-.translate{
+.translate {
     transform: translateX(50px) rotateZ(90deg) rotateY(180deg);
 }
 
 .activa--li {
     background-color: #161a2494;
-    color: #002f86 !important;
     border-left: #002f86 solid 4px;
+    
 }
 
-span.text{
+span.text {
     font-size: 0.7em;
 }
+
 /*//////////*/
 
-.left-view{
+.left-view {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.barraBusqueda{
+.barraBusqueda {
     width: 100%;
     max-width: 600px;
     padding-left: 40px;
     transition: 0.3s;
-  }
+}
 
-  
-  .container-4 {
+
+.container-4 {
     overflow: hidden;
     width: 35vw;
     max-width: 600px;
     height: 45px;
     vertical-align: middle;
     white-space: nowrap;
-    border: 1px solid #203363 ;
+    border: 1px solid #203363;
     border-radius: 20px;
     z-index: 6;
     color: #dadada;
-  }
-  
-  .container-4 input#search {
+}
+
+.container-4 input#search {
     z-index: 6;
     outline: none;
     width: 100%;
@@ -409,26 +395,26 @@ span.text{
     color: #ffffff;
     padding-left: 15px;
     border-radius: 10px;
-  }
-  
-  .container-4 input[type="search"]::-webkit-search-cancel-button {
+}
+
+.container-4 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
     height: 0;
     width: 0;
     overflow: hidden;
-  }
-  
-  
-  
-  .container-4 input#search::-webkit-input-placeholder {
+}
+
+
+
+.container-4 input#search::-webkit-input-placeholder {
     color: #c7c7c7;
-  }
-  
-  .container-4 input#search:-ms-input-placeholder {
+}
+
+.container-4 input#search:-ms-input-placeholder {
     color: #c7c7c7;
-  }
-  
-  .container-4 button.icon {
+}
+
+.container-4 button.icon {
     border: none;
     background: #192239;
     height: 100%;
@@ -438,33 +424,37 @@ span.text{
     border-radius: 0 10px 10px 0;
     transition: 0.5s;
     margin-left: -45px;
-  }
-  
-  .container-4:hover button.icon,
-  .container-4:focus button.icon {
+    padding-left: 8px;
+}
+
+.container-4:hover button.icon,
+.container-4:focus button.icon {
     outline: none;
     opacity: 1;
     margin-left: 5px;
-  }
-  
-  .icon  span {
+}
+
+.icon span {
     font-size: 30px;
     border-radius: 10px;
     transition: 0.25s;
-    color:#ffffff;
-    padding-top: 3px;
-  }
- 
-  .container-4:hover button.icon:hover {
+    color: #ffffff;
+    padding-top: 0px;
+    
+}
+
+.container-4:hover button.icon:hover {
     background: transparent;
     transition: 0.2s;
-  }
-  .container-4 button.icon img {
-    alt: "Buscar";
-  }
+}
 
-  ::placeholder{
+.container-4 button.icon img {
+    alt: "Buscar";
+}
+
+::placeholder {
     color: rgb(173, 3, 3);
     font-size: 1em;
-  }
+}
+
 /******************************************************************/

@@ -7,6 +7,7 @@
 }
 
 .area {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -74,11 +75,11 @@
 }
 
 .actions {
-  width: 8px;
-  position: relative;
-  top: 18px;
-  right: 34px;
-
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  right: 5px;
+  top: 10px;
 }
 
 .actions img {
@@ -128,6 +129,12 @@
   position: relative;
   right: -100%;
   animation: marquee 6s linear infinite;
+}
+ 
+.animateLonger{
+  position: relative;
+  right: -100%;
+  animation: marquee 16s linear infinite;
 }
 
 @keyframes marquee {

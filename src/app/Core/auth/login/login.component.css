@@ -64,6 +64,10 @@ input::placeholder {
     
     
 }
+.password{
+    display: flex;
+    justify-content: center;
+}
 .login-button button{
     display: flex;
     width: 50%;

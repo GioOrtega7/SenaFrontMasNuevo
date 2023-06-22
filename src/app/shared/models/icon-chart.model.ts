@@ -4,5 +4,6 @@ export interface IconChart {
     itemName: string,
     itemOne: any,
     itemTwo?: any,
-    itemThree?:any
+    itemThree?:any,
+    
 }

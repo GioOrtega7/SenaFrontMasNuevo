@@ -1,111 +1,150 @@
-.bloque_areas{
-    display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 30px 0;
-  }
-  .area{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #11214963;
-    border: solid #203363 1px;
-    border-radius: 20px;
-    padding: 20px 10px;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    width: 100%;
+.bloque_areas {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 0;
+}
 
-    
-    cursor: pointer;
-  }
-  .area:hover{
-      transition: 0.3s;
-      transform: scale(1.05)
-  }
-  
-  .area:hover ~ .actions{
-    transition: 0.3s;
-    transform: scale(1.05)
-  }
-  .area picture{
-      padding: 10px;
-      border-radius: 50%;
-      text-align: center;
-      box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
-  }
-  .area .button button{
-      padding: 10px 35px;
-      border-radius: 20px;
-      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+.area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #11214963;
+  border: solid #203363 1px;
+  border-radius: 20px;
+  padding: 20px 10px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  width: 100%;
+
+
+  cursor: pointer;
+}
+
+.area:hover {
+  transition: 0.3s;
+  transform: scale(1.05)
+}
+
+.area:hover~.actions {
+  transition: 0.3s;
+  transform: scale(1.05)
+}
+
+.area picture {
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+}
+
+.area .button button {
+  padding: 10px 35px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.button button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 8px;
+  background-color: #006B00;
+  border: none;
+  gap: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.añadir::before {
+  content: "+";
+  color: #fff;
+  font-size: 22px;
+}
+
+.actions button {
+  background: transparent;
+  border: none;
+}
+
+.actions {
+  width: 8px;
+  position: relative;
+  top: 18px;
+  right: 34px;
+
+}
+
+.actions img {
+  width: 15px;
+}
+
+.icon span {
+  font-size: 30px;
+  border-radius: 10px;
+  transition: 0.25s;
+  color: #ffffff;
+  padding-top: 3px;
+}
+
+.icon span:active {
+  transform: scale(0.7);
+  transition: all 0.25s ease;
+}
+
+
+.desc-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.panel-body {
+  display: block;
+
+}
+
+.container {
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.container p {
+  text-align: center;
+
+}
+
+
+.animate {
+  position: relative;
+  right: -100%;
+  animation: marquee 6s linear infinite;
+}
+
+.animateLonger {
+  position: relative;
+  right: -100%;
+  animation: marquee 16s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
   }
 
-  .button{
-    display: flex;
-    justify-content: center;
+  100% {
+    transform: translateX(-200%);
   }
-  .button button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 8px;
-    background-color: #006B00;
-    border: none;
-    gap: 5px;
-    color: #fff;
-    cursor: pointer;
-  }
-  .añadir::before{
-    content: "+";
-    color: #fff;
-    font-size: 22px;
-  }
-  .actions button {
-    background: transparent;
-    border: none;
-  }
-  
-  .actions {
-    width: 8px;
-    position: relative;
-    top: 18px;
-    right: 34px;
-  
-  }
-  
-  .actions img {
-    width: 15px;
-  }
-
-  .icon  span {
-    font-size: 30px;
-    border-radius: 10px;
-    transition: 0.25s;
-    color:#ffffff;
-    padding-top: 3px;
-  }
-  .icon  span:active {
-    transform: scale(0.7);
-    transition: all 0.25s ease;
-  }
-
-  
-  .desc-title{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin:  20px 0px;
-  }
-  .panel-body{
-    display: block;
-    
-  }
-
- 
-  
-  
+}

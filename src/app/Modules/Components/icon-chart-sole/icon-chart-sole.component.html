@@ -1,23 +1,27 @@
-<div class="wallpaper" *ngIf="this.generate" >
-    <div class="slider">
-      <div class="slide-item" >
-        <div class="area">
-          <picture>
-            <img width="64" height="64" [src]="view.iconUrl" alt="artificial-intelligence" />
-          </picture>
-          <div>
-            <li>{{ view.itemName }}</li>
-            <span>{{ view.itemOne }}</span>
-          </div>
-          <div class="button">
-            <a><button>ir</button></a>
-          </div>
+<div class="wallpaper" *ngIf="this.generate">
+  <div class="slider">
+    <div class="slide-item">
+      <div class="area">
+        <picture>
+          <img width="64" height="64" [src]="view.iconUrl" alt="artificial-intelligence" />
+        </picture>
+        <div class="container">
+          <p [ngClass]="{
+              'animateLonger': view.itemName.length >= 20,
+              'animate': view.itemName.length < 20 && view.itemName.length > 11
+            }">{{ view.itemName }}</p>
+          <p>{{ view.itemOne }}</p>
+          <p *ngIf="view.itemTwo">{{ view.itemTwo }}</p>
+          <p *ngIf="view.itemThree">{{ view.itemThree }}</p>
         </div>
-        <div class="actions">
-          <button (click)="openModalUpdate(view)"><img src="../../../assets/icons/reload.svg"></button>
-          <button (click)="deleteItem(view.itemId, view.itemName)"><img src="../../../assets/icons/delete.svg"></button>
+        <div class="button">
+          <a><button>ir</button></a>
         </div>
+      </div>
+      <div class="actions">
+        <button (click)="openModalUpdate(view)"><img src="../../../assets/icons/reload.svg"></button>
+        <button (click)="deleteItem(view.itemId, view.itemName)"><img src="../../../assets/icons/delete.svg"></button>
       </div>
     </div>
   </div>
-  
+</div>

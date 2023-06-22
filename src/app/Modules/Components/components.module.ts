@@ -16,6 +16,10 @@ import { IconChartComponent } from './icon-chart/icon-chart.component';
 import { ExtendModalAlertComponent } from './extend-modal-alert/extend-modal-alert.component';
 import { ComponentsPipe } from '../components.pipe';
 import { IconChartSoleComponent } from './icon-chart-sole/icon-chart-sole.component';
+import { ElipseInformationComponent } from './elipse-information/elipse-information.component';
+import { RegularChartComponent } from './regular-chart/regular-chart.component';
+import { ChargeWheelSoleComponent } from './charge-wheel-sole/charge-wheel-sole.component';
+import { RegularChartSoleComponent } from './regular-chart-sole/regular-chart-sole.component';
 
 
 @NgModule({
@@ -29,7 +33,10 @@ import { IconChartSoleComponent } from './icon-chart-sole/icon-chart-sole.compon
     IconChartComponent,
     ComponentsPipe,
     IconChartSoleComponent,
-    
+    ElipseInformationComponent,
+    RegularChartComponent,
+    ChargeWheelSoleComponent,
+    RegularChartSoleComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +48,8 @@ import { IconChartSoleComponent } from './icon-chart-sole/icon-chart-sole.compon
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    
 
   ],
   exports: [
@@ -50,7 +58,9 @@ import { IconChartSoleComponent } from './icon-chart-sole/icon-chart-sole.compon
     ProgramaFormativoComponent,
     ExtendModalFormComponent,
     IconChartComponent,
-    IconChartSoleComponent
+    IconChartSoleComponent,
+    ElipseInformationComponent,
+    ChargeWheelSoleComponent
   ],
   providers: [
     {
