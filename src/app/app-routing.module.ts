@@ -38,7 +38,7 @@ const routes: Routes = [
       },
       {
         path:"perfil",
-        component: AreasTryComponent
+        component: PerfilComponent
       },
 
 
