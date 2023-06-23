@@ -3,11 +3,9 @@ export interface BoardTableFiller {
     itemId:number;
 }
 
-export interface BoardTableFillerTitles {
-    itemTitles: Array<string>;
-}
+
 
 export interface BoardTable {
-    itemTitles: BoardTableFillerTitles;
+    itemTitles: Array<string>;
     itemData: BoardTableFiller[];
 }

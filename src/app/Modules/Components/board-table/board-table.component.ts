@@ -1,6 +1,6 @@
 import { Component, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { toArray } from 'rxjs';
-import { BoardTableFiller, BoardTableFillerTitles, BoardTable } from 'src/app/shared/models/board-table.model';
+import { BoardTableFiller, BoardTable } from 'src/app/shared/models/board-table.model';
 
 @Component({
   selector: 'app-board-table',
@@ -14,7 +14,7 @@ export class BoardTableComponent {
   @Output() dataToDelete = new EventEmitter<any>();
   generate: boolean = false
   viewData:BoardTableFiller[] = []
-  viewTitles:BoardTableFillerTitles = {} as BoardTableFillerTitles
+  viewTitles:Array<string> = []
 
 
   ngOnChanges(changes: SimpleChanges): void {

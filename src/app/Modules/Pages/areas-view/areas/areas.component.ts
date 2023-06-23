@@ -14,7 +14,7 @@ import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-moda
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { IconChart } from 'src/app/shared/models/icon-chart.model';
 import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-modal-alert/extend-modal-alert.component';
-import { BoardTable, BoardTableFiller, BoardTableFillerTitles } from 'src/app/shared/models/board-table.model';
+import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
 
 
 @Component({
@@ -67,9 +67,8 @@ export class AreasComponent implements OnInit, OnDestroy {
       }
       ))
 
-      let titles: BoardTableFillerTitles = {
-        itemTitles: ["Nombre de area", "Nombre de area", "Nombre de area"]
-      } 
+      let titles =  ["Nombre de area", "Nombre de area", "Nombre de area"]
+       
 
       let tableView: BoardTableFiller[] = res.map((res:AreaModel) => ({
         itemData: [res.nombreArea, res.codigo, res.iconUrl],
