@@ -1,4 +1,4 @@
-export interface ChargeWheelFillerModel {
+export interface ChargeWheelFiller {
     itemId: number,
     itemName: string,
     itemOne: any,

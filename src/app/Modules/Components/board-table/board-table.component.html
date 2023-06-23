@@ -1,0 +1,14 @@
+<table class="container" *ngIf="generate">
+    <thead>
+        <tr>
+            <th *ngFor="let item of this.viewTitles.itemTitles">
+                <h1> {{item}} </h1>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of this.viewData">
+            <td *ngFor="let data of item.itemData"> {{data}} </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,5 +1,5 @@
 import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
-import { ChargeWheelFillerModel } from 'src/app/shared/models/charge-wheel-filler.model';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
 import { IconChart } from 'src/app/shared/models/icon-chart.model';
 import { PageEvent } from '@angular/material/paginator';
 import { SimpleChanges,  } from '@angular/core';
@@ -12,7 +12,7 @@ import { SimpleChanges,  } from '@angular/core';
 export class ChargeWheelComponent {
   porcentajeNumerico: number[];
   colores: string[];
-  @Input() view: ChargeWheelFillerModel[] = [];
+  @Input() view: ChargeWheelFiller[] = [];
   generate: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,7 +51,7 @@ export class ChargeWheelComponent {
     }
   }
 
-  openModalUpdate(item: ChargeWheelFillerModel) {
+  openModalUpdate(item: ChargeWheelFiller) {
     this.dataToUpdate.emit(item)
   }
 

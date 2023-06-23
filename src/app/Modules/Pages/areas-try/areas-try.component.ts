@@ -30,7 +30,7 @@ export class AreasTryComponent {
   ) { }
 
   ngOnInit() {
-    this.searchService.getModelName("area", "areas")
+    this.searchService.getModelName("area", "areas");
 
     this.searchService.$searchArrayService.subscribe((res: any) => {
       let view: IconChart[] = res.map((res: AreaModel) => ({
@@ -101,7 +101,7 @@ export class AreasTryComponent {
     ]
 
     var pass: incomeData = {
-      filler: this.filler, title: "Actualizar area", update: true
+      filler: this.filler, title: "Actualizar area"
     }
 
     const modalRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent,{data: pass})
@@ -113,6 +113,8 @@ export class AreasTryComponent {
         codigo:res[1]
       } 
       this.guardarArea(this.area);
+      this.searchService.getModelName("area", "areas");
+      
     })
 
 
