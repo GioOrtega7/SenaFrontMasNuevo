@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { MatDialog } from '@angular/material/dialog';
 import { isEmpty } from 'rxjs';
 
@@ -18,10 +18,10 @@ export class IconChartSoleComponent {
 
   }
 
-  @Input() view: IconChart = {} as IconChart
+  @Input() view: IconChartFiller = {} as IconChartFiller
 
 
-  openModalUpdate(item: IconChart) {
+  openModalUpdate(item: IconChartFiller) {
     this.dataToUpdate.emit(item)
   }
 

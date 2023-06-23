@@ -1,14 +1,19 @@
-<table class="container" *ngIf="generate">
-    <thead>
-        <tr>
-            <th *ngFor="let item of this.viewTitles">
-                <h1> {{item}} </h1>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of this.viewData">
-            <td *ngFor="let data of item.itemData"> {{data}} </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-container" *ngIf="generate">
+    <table class="container">
+        <thead>
+            <tr>
+                <th *ngFor="let item of this.viewTitles">
+                    <h1> {{item}} </h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of this.viewData | Paginate: page_size: page_number">
+                <td *ngFor="let data of item.itemData"> {{data}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<mat-paginator *ngIf="generate" [length]="viewData.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
+showFirstLastButtons>
+</mat-paginator>

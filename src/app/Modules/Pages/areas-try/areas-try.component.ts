@@ -5,7 +5,7 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ExtendModalAlertComponent } from '../../Components/extend-modal-alert/extend-modal-alert.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { AreaService } from 'src/app/shared/services/area.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
 
@@ -19,7 +19,7 @@ export class AreasTryComponent {
 
   area: AreaModel = {} as AreaModel;
   filler: ExtendModalFiller[] = [];
-  view: Array<IconChart> = []
+  view: Array<IconChartFiller> = []
 
   constructor(
     private _areaService: AreaService,
@@ -33,7 +33,7 @@ export class AreasTryComponent {
     this.searchService.getModelName("area", "areas");
 
     this.searchService.$searchArrayService.subscribe((res: any) => {
-      let view: IconChart[] = res.map((res: AreaModel) => ({
+      let view: IconChartFiller[] = res.map((res: AreaModel) => ({
         itemId: res.id || "",
         iconUrl: res.iconUrl,
         itemName: res.nombreArea,
@@ -74,7 +74,7 @@ export class AreasTryComponent {
   }
 
 
-  update(data: IconChart){
+  update(data: IconChartFiller){
 
     this.filler = [{
       fieldName: "Nombre de Area",

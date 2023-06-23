@@ -325,6 +325,7 @@ button.cancel::before {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .slider {
@@ -371,4 +372,9 @@ button.cancel::before {
     bottom: -30px;
     left: 0;
     right: 0;
+}
+
+mat-paginator{
+    margin-top: 20px;
+    margin-bottom: 40px;
 }

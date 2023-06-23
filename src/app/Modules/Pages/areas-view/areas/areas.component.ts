@@ -12,7 +12,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
 import { AreasModalComponent } from '../areas-modal/areas-modal.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-modal-alert/extend-modal-alert.component';
 import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
 
@@ -33,8 +33,8 @@ export class AreasComponent implements OnInit, OnDestroy {
   displayet: AreaModel[] = []
   searchTerm: string = '';
   area: AreaModel | null = null;
-  view: Array<IconChart> = [];
-  soleView: IconChart = {} as IconChart
+  view: Array<IconChartFiller> = [];
+  soleView: IconChartFiller = {} as IconChartFiller
   private subscription: Subscription | undefined;
   filler: ExtendModalFiller[] = [];
   tableView: BoardTable = {} as BoardTable;
@@ -59,17 +59,17 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.searchService.getModelName("area", "areas")
 
     this.searchService.$searchArrayService.subscribe((res: any) => {
-      let view: IconChart[] = res.map((res: AreaModel) => ({
+      let view: IconChartFiller[] = res.map((res: AreaModel) => ({
         itemId: res.id || "",
         iconUrl: res.iconUrl,
         itemName: res.nombreArea,
         itemOne: res.codigo
       }
       ))
-
-      let titles =  ["ID","Nombre de area", "Nombre de area", "Nombre de area"]
+      let as = new Date(2022, 1, 10);
+      let titles =  ["ID","Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area"]
       let tableView: BoardTableFiller[] = res.map((res:AreaModel) => ({
-        itemData: [res.id,res.nombreArea, res.codigo, res.nombreArea,res.nombreArea,res.nombreArea,],
+        itemData: [res.id,res.nombreArea, res.iconUrl, res.nombreArea ,res.nombreArea, res.iconUrl, res.iconUrl, res.iconUrl, res.iconUrl],
         itemId: res.id
       }))
       this.tableView  = {itemTitles:titles, itemData : tableView}
@@ -80,7 +80,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     
   }
 
-  Update(data: IconChart) {
+  Update(data: IconChartFiller) {
     console.log("lo que trae el coso", data);
 
     this.filler = [{

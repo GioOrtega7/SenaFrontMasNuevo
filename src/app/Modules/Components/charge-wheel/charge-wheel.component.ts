@@ -1,6 +1,6 @@
 import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
 import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { PageEvent } from '@angular/material/paginator';
 import { SimpleChanges,  } from '@angular/core';
 

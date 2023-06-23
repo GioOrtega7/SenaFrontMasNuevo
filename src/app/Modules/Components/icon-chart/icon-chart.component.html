@@ -26,6 +26,6 @@
   </div>
 </div>
 
-<mat-paginator [length]="view.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
+<mat-paginator *ngIf="this.generate" [length]="view.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
   showFirstLastButtons>
 </mat-paginator>

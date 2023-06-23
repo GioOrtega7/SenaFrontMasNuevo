@@ -1,9 +1,8 @@
-export interface IconChartFiller {
+export interface RegularChartFiller {
     itemId: number,
-    iconUrl: string,
     itemName: string,
-    itemOne: any,
+    itemOne?: any,
     itemTwo?: any,
     itemThree?:any,
-    
+    itemFour?: any
 }
