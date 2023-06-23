@@ -217,13 +217,13 @@ export class ProyectoFormativoComponent {
     this.programaService.traerProgramas()
       .subscribe((programa: ProgramaModel[]) => {
         this.Programas = programa;
-        this.programaNames = this.Programas.map(programa => programa.nombrePrograma)
-        this.programaIds = this.Programas.map(programa => programa.id || "")
 
-        this.dataFill = this.programaNames.map((item, index) => ({
-          data: item.toString(),
-          dataId: this.programaIds[index]
-        }));
+
+
+        this.dataFill = programa.map((res: ProgramaModel) =>({
+          data: res.nombrePrograma,
+          dataId: res.id
+        }))
 
         
         console.log(this.dataFill);
