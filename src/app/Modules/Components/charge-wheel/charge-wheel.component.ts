@@ -12,23 +12,16 @@ import { SimpleChanges,  } from '@angular/core';
 export class ChargeWheelComponent {
   porcentajeNumerico: number[];
   colores: string[];
+  fechaActual:Date;
   @Input() view: ChargeWheelFiller[] = [];
   generate: boolean = false;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['view']) {
-
-      if(Object.keys(this.view).length !== 0){
-        this.generate= true
-      }else{this.generate= false}
-    }
-  }
-  
-  @Output() dataToUpdate = new EventEmitter<any>();
-  @Output() dataToDelete = new EventEmitter<any>();
-
+  porsentajeDias:number[]=[]; 
+  fechainicio:Date[]=[];
+  FechaActual = new Date();
+  fechafin:Date[]=[]
   constructor() {
-    this.porcentajeNumerico = [83, 55, 67,10,5,35];
+    this.fechaActual = new Date();
+    this.porcentajeNumerico = [100, 100, 100,100,100,100];
     this.colores = [];
     for (let i = 0; i < this.porcentajeNumerico.length; i++) {
       const currentPorcentaje = this.porcentajeNumerico[i];
@@ -50,15 +43,34 @@ export class ChargeWheelComponent {
       this.colores.push(currentColor);
     }
   }
+  public getCalculatedIndex(index: number): number {
+    const calculatedIndex = index + (this.page_size * (this.page_number - 1));
+    return calculatedIndex;
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['view']) {
+      if(Object.keys(this.view).length !== 0){
+        for (let i = 0; i < this.view.length; i++) {
+          const { itemFechafin, itemFechainicio } = this.view[i];
+          const totalDias = (new Date(itemFechafin).getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
+          const diasTranscurridos = (this.fechaActual.getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
+          const porcentaje = (diasTranscurridos / totalDias) * 100;
+          const porcentajedias = Math.round(porcentaje);
+          this.view[i].itemPorcentajes = porcentajedias 
+        }
+        this.generate= true
+      }else{this.generate= false}
+    }
+  }
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
 
   openModalUpdate(item: ChargeWheelFiller) {
     this.dataToUpdate.emit(item)
   }
-
   deleteItem(itemID: number , itemName: string){
     this.dataToDelete.emit({itemId:itemID,itemName:itemName})
   }
-
   page_size: number = 1;
   page_number: number = 1;
 

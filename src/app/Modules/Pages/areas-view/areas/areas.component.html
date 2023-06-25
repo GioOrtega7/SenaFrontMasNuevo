@@ -1,10 +1,3 @@
+<app-icon-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-icon-chart>
+<a><button (click)="openModalCreate()"class="add">Añadir</button></a>
 
- 
-    <app-icon-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-icon-chart>
-    
-    <a><button (click)="openModalCreate()"class="add">Añadir</button></a>
-    <app-icon-chart-sole [view]="this.soleView" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-icon-chart-sole>
-    <app-charge-wheel [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-charge-wheel> 
-    <app-charge-wheel-sole [view]="this.soleView" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-charge-wheel-sole> 
-    <app-board-table [view]="this.tableView" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-board-table>
-    <app-board></app-board>

@@ -70,6 +70,11 @@ export class NavbarComponent implements OnInit {
         name: 'Sedes',
         url: 'sede',
         icon: 'holiday_village'
+      },
+      {
+        name: 'Grupos',
+        url: 'Grupos',
+        icon: 'holiday_village'
       }
     ]
 

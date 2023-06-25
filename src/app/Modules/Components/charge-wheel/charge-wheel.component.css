@@ -6,9 +6,6 @@
     gap: 50px;
     padding: 50px 0;
 }
-
-
-
 .container {
     width: 100px;
     overflow: hidden;
@@ -16,8 +13,7 @@
   }
   
   .container p {
-    text-align: center;
-    
+    text-align: center; 
   }
   
   .animate{

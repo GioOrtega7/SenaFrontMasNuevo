@@ -14,6 +14,7 @@ import { ComponentsPipe } from '../components.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { AreasTryComponent } from './areas-try/areas-try.component';
+import { GruposViewComponent } from './grupos-view/grupos-view.component';
 
 
 
@@ -24,6 +25,7 @@ import { AreasTryComponent } from './areas-try/areas-try.component';
     AreasComponent,
     AreasModalComponent,
     AreasTryComponent,
+    GruposViewComponent,
 
 
   ],

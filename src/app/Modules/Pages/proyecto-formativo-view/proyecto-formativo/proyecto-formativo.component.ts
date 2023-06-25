@@ -146,9 +146,6 @@ export class ProyectoFormativoComponent {
 
   openModalUpdate1(proyecto: ProyectoFormativoModel) {
     var dataPlacer: any = [proyecto.nombre, proyecto.codigo, proyecto.tiempoEstimado, proyecto.numeroTotalRaps, proyecto.idCentroFormacion]
-     
-
-    console.log("update",this.filler)
     var pass = { filler: this.filler, title: "Agregar proyecto formativo", update: true }
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.dialog.open(ExtendModalFormComponent, { data: pass });
     this.proyecto = {} as ProyectoFormativoModel;

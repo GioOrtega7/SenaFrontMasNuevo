@@ -1,6 +1,6 @@
 <div class="content-wheel" *ngIf="generate">
     <div class="charge_wheel">
-      <div class="porcentajes" style="--porcentaje: {{porcentajeNumerico}}">
+      <div class="porcentajes" style="--porcentaje: {{porsentajeDias}}">
         <div class="content">
           <div class="container">
             <p [ngClass]="{
@@ -12,7 +12,7 @@
             <p *ngIf="this.view.itemTwo"> {{this.view.itemTwo}} </p>
             <p *ngIf="this.view.itemThree"> {{this.view.itemThree}} </p>
             <p *ngIf="this.view.itemFour"> {{this.view.itemFour}} </p>
-            <p>100%</p>
+            <p>{{porsentajeDias}}%</p>
           </div>
           <div class="actions">
             <button (click)="openModalUpdate(this.view)"><img src="../../../assets/icons/reload.svg"></button>

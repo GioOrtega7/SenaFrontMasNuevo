@@ -1,6 +1,7 @@
 import { Component, Output , Input, HostListener, SimpleChanges, EventEmitter} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-charge-wheel-sole',
@@ -8,26 +9,21 @@ import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.mod
   styleUrls: ['./charge-wheel-sole.component.css']
 })
 export class ChargeWheelSoleComponent {
-
+  fechaInicio: Date;
+  fechaActual:Date;
+  fechaFinal:Date;
+  porsentajeDias:number=0; 
   porcentajeNumerico: number[];
   colores: string[];
   @Input() view: ChargeWheelFiller = {} as ChargeWheelFiller;
-  generate: boolean = false;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['view']) {
-
-      if(Object.keys(this.view).length !== 0){
-        this.generate= true
-      }else{this.generate= false}
-    }
-  }
-  
-  @Output() dataToUpdate = new EventEmitter<any>();
-  @Output() dataToDelete = new EventEmitter<any>();
+  generate: boolean = false; 
 
   constructor() {
-    this.porcentajeNumerico = [83, 55, 67,10,5,35];
+    this.fechaInicio = new Date('2023-06-01');
+    this.fechaActual = new Date();
+    this.fechaFinal = new Date('2023-09-01');
+    
+    this.porcentajeNumerico = [100, 100, 100,100,100,100];
     this.colores = [];
     for (let i = 0; i < this.porcentajeNumerico.length; i++) {
       const currentPorcentaje = this.porcentajeNumerico[i];
@@ -49,7 +45,25 @@ export class ChargeWheelSoleComponent {
       this.colores.push(currentColor);
     }
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.obtenerPorcentajeDiasTranscurridos()
+    if (changes['view']) {
 
+      if(Object.keys(this.view).length !== 0){
+        this.generate= true
+      }else{this.generate= false}
+    }
+    
+  }
+  obtenerPorcentajeDiasTranscurridos(){
+    const totalDias = (this.fechaFinal.getTime() - this.fechaInicio.getTime()) / (1000 * 3600 * 24);
+    const diasTranscurridos = (new Date().getTime() - this.fechaInicio.getTime()) / (1000 * 3600 * 24);
+    const porcentaje = (diasTranscurridos / totalDias) * 100;
+    const porcentajedias = Math.round(porcentaje)
+    this.porsentajeDias= porcentajedias
+  }  
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
   openModalUpdate(item: ChargeWheelFiller) {
     this.dataToUpdate.emit(item)
   }
