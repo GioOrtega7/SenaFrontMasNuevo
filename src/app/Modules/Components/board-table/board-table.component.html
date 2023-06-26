@@ -1,19 +1,26 @@
-<div class="table-container" *ngIf="generate">
-    <table class="container">
-        <thead>
-            <tr>
-                <th *ngFor="let item of this.viewTitles">
-                    <h1> {{item}} </h1>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of this.viewData | Paginate: page_size: page_number">
-                <td *ngFor="let data of item.itemData"> {{data}} </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="table" *ngIf="generate">
+    <div class="table-container">
+        <table class="container">
+            <thead>
+                <tr>
+                    <th *ngFor="let item of this.viewTitles">
+                        <h1> {{item}} </h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of this.viewData | Paginate: page_size: page_number">
+                    <td *ngFor="let data of item.itemData"> {{data}} </td>
+                    <div class="actions">
+                        <button (click)="openModalUpdate(item)"><img src="../../../assets/icons/reload.svg"></button>
+                        <button (click)="deleteItem(item.itemId, item.itemName)"><img
+                                src="../../../assets/icons/delete.svg"></button>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <mat-paginator *ngIf="generate" [length]="viewData.length" [pageSize]="page_size" [hidePageSize]=true
+        (page)="handlePage($event)" showFirstLastButtons>
+    </mat-paginator>
 </div>
-<mat-paginator *ngIf="generate" [length]="viewData.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
-showFirstLastButtons>
-</mat-paginator>
