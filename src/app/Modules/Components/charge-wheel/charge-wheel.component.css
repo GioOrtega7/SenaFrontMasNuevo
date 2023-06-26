@@ -1,21 +1,11 @@
-.content-wheel1 {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
-    padding: 50px 0;
-}
 .container {
     width: 100px;
     overflow: hidden;
     white-space: nowrap;
   }
-  
   .container p {
     text-align: center; 
   }
-  
   .animate{
     position: relative;
     right: -100%;
@@ -53,32 +43,25 @@ p:nth-child(1)::-webkit-scrollbar-thumb:hover {
 
     height: 2px;
 }
-
-
-
 .content-wheel {
     display: grid;
     grid-gap: 20px;
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-content: space-between;
+    justify-content: center;
     justify-items: center;
     align-items: center;
-
 }
-
 .porcentajes {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .content p:nth-child(2),
 .content p:nth-child(3) {
     color: #9C9C9C;
 }
-
 .porcentajes .content {
 
     display: flex;

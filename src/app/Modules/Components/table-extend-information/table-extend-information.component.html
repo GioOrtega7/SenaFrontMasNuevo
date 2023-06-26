@@ -1,0 +1,11 @@
+<div mat-dialog-title>{{this.extendModalTitle}} {{incomeData.Title}}</div>
+<mat-dialog-content>
+    <div class="container-datos">
+        <ul class="lista-datos">
+            <li *ngFor="let data of incomeData.itemData; index as i ">
+                <label>{{incomeData.itemTitle[i]}}</label>
+                <span>{{data}}</span>
+            </li>
+        </ul>
+    </div>
+</mat-dialog-content>

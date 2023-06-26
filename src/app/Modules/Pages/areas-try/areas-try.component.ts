@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { AreaModel } from 'src/app/shared/models/area.model';
 import { NotificationService } from 'src/app/shared/services/notification-service';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
@@ -8,7 +8,10 @@ import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { IconChart } from 'src/app/shared/models/icon-chart.model';
 import { AreaService } from 'src/app/shared/services/area.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
-
+import { BoardTable, BoardTableFiller, DateFiler } from 'src/app/shared/models/board-table.model';
+import { IconChartComponent } from '../../Components/icon-chart/icon-chart.component';
+import { TableExtendInformationComponent } from '../../Components/table-extend-information/table-extend-information.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-areas-try',
@@ -16,10 +19,14 @@ import { ExtendModalFormComponent } from '../../Components/extend-modal-form/ext
   styleUrls: ['./areas-try.component.css']
 })
 export class AreasTryComponent {
+ 
 
   area: AreaModel = {} as AreaModel;
   filler: ExtendModalFiller[] = [];
   view: Array<IconChart> = []
+  tableView: Date = {} as Date;
+  soleView: IconChart = {} as IconChart
+  DateFiller:DateFiler[] =[]
 
   constructor(
     private _areaService: AreaService,
@@ -40,29 +47,45 @@ export class AreasTryComponent {
       }
       ))
       this.view = view;
-    })
+      this.soleView = view[0]
+    });
+       
   }
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
     return await dialogRef.afterClosed().toPromise();
   }
-  delete(data:{itemId: number, itemName: string}){
+  ExtensInfo(id:number ){
+    const view = this.view.find(res=>res.itemId===id)
+    let titles = ["ID","Nombre de area", "Codigo"]
+    if(view){
+      let Date: DateFiler={ 
+        itemData:[view.itemId,view.itemName,view.itemOne],
+        itemTitle:titles,
+        itemId:view.itemId,
+        Title:view.itemName
+    };
+    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Date, })
+    }
+  }
+  delete(data: { itemId: number, itemName: string }) {
     this.showAlert("¿Desea borrar : " + data.itemName + "?").then((response: boolean) => {
       if (response) {
         this.searchService.getModelName("area", "areas");
         this.deleteArea(data.itemId);
         this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
-      } else {}
+      } else { }
     });
+    
   }
   deleteArea(event: number) {
     this._areaService.borrarArea(event).subscribe(() => {
     })
   }
-  update(data: IconChart){
+  update(data: IconChart) {
     this.filler = [{
       fieldName: "Nombre de Area",
-      type:"input",
+      type: "input",
       control: "text",
       dataPlacer: data.itemName,
       uppercase: true
@@ -73,28 +96,23 @@ export class AreasTryComponent {
       dataPlacer: data.itemOne
     },
     {
-      fieldName: "Icono asdasd asd aqwe ",
+      fieldName: "Icono",
       control: "string",
       dataPlacer: data.iconUrl
-    },
-    {
-      fieldName: "Icaono",
-      type: "input",
-      control: "date"
     }
     ]
     var pass: incomeData = {
       filler: this.filler, title: "Actualizar area"
     }
-    const modalRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent,{data: pass})
-    modalRef.afterClosed().subscribe(res =>{
-      this.area={
-        id:data.itemId,
+    const modalRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
+    modalRef.afterClosed().subscribe(res => {
+      this.area = {
+        id: data.itemId,
         nombreArea: res[0],
-        codigo:res[1]
-      } 
+        codigo: res[1]
+      }
       this.guardarArea(this.area);
-      this.searchService.getModelName("area", "areas");  
+      this.searchService.getModelName("area", "areas");
     })
   }
   guardarArea(area: AreaModel) {
@@ -120,16 +138,11 @@ export class AreasTryComponent {
     {
       fieldName: "Icono",
       control: "string",
-    },{
+    }, {
       fieldName: "textarea",
-      type:"textarea"
-    },
-    {
-      fieldName: "textarea nueco",
-      type:"input",
-      control: "number"
+      type: "textarea"
     }
-  ]
+    ]
     var pass: incomeData = {
       filler: this.filler, title: "Crear area"
     }

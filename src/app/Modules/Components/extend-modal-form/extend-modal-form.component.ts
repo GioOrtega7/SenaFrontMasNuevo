@@ -32,14 +32,8 @@ export class ExtendModalFormComponent {
 
   isFormComplete = true;
   ngOnInit() {
-
-
-    console.log(this.incomeData.filler);
-
     this.filler1 = this.incomeData.filler;
     this.extendModalTitle = this.incomeData.title || "title";
-    console.log("filler de arriva", this.filler1);
-
     this.filler = this.filler1.map(item => ({
       fieldName: item.fieldName || "",
       placeholder: item.placeholder || "Ingrese " + item.fieldName,
@@ -60,20 +54,14 @@ export class ExtendModalFormComponent {
     }
 
     this.formExtend = this.formBuilder.group({})
-
     this.filler.forEach((item) => {
       this.formExtend.addControl(item.formControlName!, new FormControl('', Validators.required));
-      console.log("filler", this.filler);
-
     });
   }
 
   private getControl(name: string) {
     return this.formExtend.controls[name];
   }
-
-
-  /////////////////
 
   saveData() {
 
