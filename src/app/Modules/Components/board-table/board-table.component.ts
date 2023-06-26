@@ -23,16 +23,10 @@ export class BoardTableComponent {
 
       if (Object.keys(this.view).length !== 0) {
         this.viewData = this.view.itemData
-        this.viewTitles = this.view.itemTitles
-
         this.generate = true
       } else { this.generate = false }
     }
-
-
   }
-
-
   openModalUpdate(id: number) {
     this.dataToUpdate.emit(id)
   }

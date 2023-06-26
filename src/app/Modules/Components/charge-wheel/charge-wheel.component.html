@@ -5,7 +5,7 @@
         <div class="content">
           <div class="container">
             <p [ngClass]="{'animateLonger': item.itemName.length >= 20,'animate': item.itemName.length < 20 && item.itemName.length > 11}">
-               {{item.itemName}}
+              Cod: {{item.itemName}}
             </p>
             <p *ngIf="item.itemCode"> Cod: {{item.itemCode}} </p>
             <p *ngIf="item.itemOne"> Cod: {{item.itemOne}} </p>

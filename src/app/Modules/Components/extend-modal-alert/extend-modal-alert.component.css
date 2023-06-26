@@ -1,37 +1,14 @@
 
+
 .mdc-dialog__title {
     text-align: center!important;
 
 }
- 
 
 .mat-mdc-dialog-actions {
     justify-content: space-around;
 }
+button{
+    width: 100px;
+}
 
-button.cancel{
-    background-color: #680c0c;
-    display: flex;
-    width: 30%;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    color: #fff;
-    border: none;
-    padding: 8px;
-    transition: 0.3s ;
-    cursor: pointer;
-}
-button.add{
-    display: flex;
-    width: 30%;
-    justify-content: center;
-    align-items: center;
-    background-color: #006b00;
-    border-radius: 20px;
-    color: #fff;
-    border: none;
-    padding: 8px;
-    transition: 0.3s ;
-    cursor: pointer;
-}

@@ -22,6 +22,7 @@ import { ChargeWheelSoleComponent } from './charge-wheel-sole/charge-wheel-sole.
 import { RegularChartSoleComponent } from './regular-chart-sole/regular-chart-sole.component';
 import { BoardTableComponent } from './board-table/board-table.component';
 import { BoardComponent } from './board/board.component';
+import { TableExtendInformationComponent } from './table-extend-information/table-extend-information.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { BoardComponent } from './board/board.component';
     ChargeWheelSoleComponent,
     RegularChartSoleComponent,
     BoardTableComponent,
-    BoardComponent
+    BoardComponent,
+    TableExtendInformationComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +68,8 @@ import { BoardComponent } from './board/board.component';
     ElipseInformationComponent,
     ChargeWheelSoleComponent,
     BoardTableComponent,
-    BoardComponent
+    BoardComponent,
+    TableExtendInformationComponent
   ],
   providers: [
     {

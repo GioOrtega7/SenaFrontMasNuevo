@@ -10,7 +10,7 @@ import { SimpleChanges } from '@angular/core';
   styleUrls: ['./icon-chart.component.css']
 })
 export class IconChartComponent {
-
+  @Output() dataInformation = new EventEmitter<any>();
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
 
@@ -28,8 +28,9 @@ export class IconChartComponent {
       }else{this.generate= false}
     }
   }
-
-
+  viewInformation(id:number){
+    this.dataInformation.emit(id)
+  }
   openModalUpdate(item: IconChartFiller) {
     this.dataToUpdate.emit(item)
   }
