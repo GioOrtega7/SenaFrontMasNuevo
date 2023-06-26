@@ -4,6 +4,5 @@ export interface IconChartFiller {
     itemName: string,
     itemOne: any,
     itemTwo?: any,
-    itemThree?:any,
-    
+    itemThree?:any, 
 }

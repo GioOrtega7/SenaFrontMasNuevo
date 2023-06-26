@@ -1,25 +1,31 @@
+.content-wheel1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 50px 0;
+}
 .container {
-  width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.container p {
-  text-align: center;
-
-}
-
-.animate {
-  position: relative;
-  right: -100%;
-  animation: marquee 6s linear infinite;
-}
-
-.animateLonger {
-  position: relative;
-  right: -100%;
-  animation: marquee 16s linear infinite;
-}
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .container p {
+    text-align: center; 
+  }
+  
+  .animate{
+    position: relative;
+    right: -100%;
+    animation: marquee 6s linear infinite;
+  }
+  .animateLonger{
+    position: relative;
+    right: -100%;
+    animation: marquee 16s linear infinite;
+  }
 
 @keyframes marquee {
   0% {

@@ -378,3 +378,21 @@ mat-paginator{
     margin-top: 20px;
     margin-bottom: 40px;
 }
+
+textarea{
+    background-color: #131A2E;
+    border-radius: 10px;
+    border: transparent 1px solid;
+    padding: 10px;
+    color: #fff;
+    outline: none;
+    transition: 0.5s;    
+}
+textarea:hover{
+    border:#3869B2 solid 1px;
+    transition: 0.5s;
+}
+textarea:focus{
+    border:#3869B2 solid 1px;
+    transition: 0.5s;
+}

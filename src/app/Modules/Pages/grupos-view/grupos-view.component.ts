@@ -1,42 +1,38 @@
 import { Component } from '@angular/core';
-import { AreaModel } from 'src/app/shared/models/area.model';
+import { GrupoModel } from 'src/app/shared/models/grupo.model';
 import { NotificationService } from 'src/app/shared/services/notification-service';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ExtendModalAlertComponent } from '../../Components/extend-modal-alert/extend-modal-alert.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
-import { AreaService } from 'src/app/shared/services/area.service';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
+import { GruposService } from 'src/app/shared/services/grupo.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
 
-
 @Component({
-  selector: 'app-areas-try',
-  templateUrl: './areas-try.component.html',
-  styleUrls: ['./areas-try.component.css']
+  selector: 'app-grupos-view',
+  templateUrl: './grupos-view.component.html',
+  styleUrls: ['./grupos-view.component.css']
 })
-export class AreasTryComponent {
-
-  area: AreaModel = {} as AreaModel;
+export class GruposViewComponent {
+  Grupos: GrupoModel = {} as  GrupoModel;
   filler: ExtendModalFiller[] = [];
-  view: Array<IconChartFiller> = []
+  view: Array<ChargeWheelFiller> = []
 
   constructor(
-    private _areaService: AreaService,
+    private _grupoService: GruposService,
     private notificationService: NotificationService,
     private searchService: SearchBarService,
     private modal: MatDialog,
-
   ) { }
-
   ngOnInit() {
-    this.searchService.getModelName("area", "areas");
+    this.searchService.getModelName("grupo", "grupos");
     this.searchService.$searchArrayService.subscribe((res: any) => {
-      let view: IconChartFiller[] = res.map((res: AreaModel) => ({
+      let view: ChargeWheelFiller[] = res.map((res: GrupoModel) => ({
         itemId: res.id || "",
-        iconUrl: res.iconUrl,
-        itemName: res.nombreArea,
-        itemOne: res.codigo
+        itemName: res.nombre,
+        itemFechainicio: res.fechaFinalGrupo,
+        itemFechafin: res.fechaInicialGrupo,
       }
       ))
       this.view = view;
@@ -49,101 +45,107 @@ export class AreasTryComponent {
   delete(data:{itemId: number, itemName: string}){
     this.showAlert("¿Desea borrar : " + data.itemName + "?").then((response: boolean) => {
       if (response) {
-        this.searchService.getModelName("area", "areas");
+        this.searchService.getModelName("grupo", "grupos");
         this.deleteArea(data.itemId);
         this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
       } else {}
     });
   }
   deleteArea(event: number) {
-    this._areaService.borrarArea(event).subscribe(() => {
+    this._grupoService.eliminarGrupo(event).subscribe(() => {
     })
   }
-  update(data: IconChart){
+  update(data: ChargeWheelFiller){
     this.filler = [{
-      fieldName: "Nombre de Area",
+      fieldName: "Numero Ficha",
       type:"input",
-      control: "text",
-      dataPlacer: data.itemName,
-      uppercase: true
+      control: "number",
+      dataPlacer: data.itemName
     }
       , {
-      fieldName: "Codigo",
-      control: "number",
+      fieldName: "Fecha inicio",
+      type:"input",
+      control: "date",
       dataPlacer: data.itemOne
     },
     {
-      fieldName: "Icono asdasd asd aqwe ",
-      control: "string",
-      dataPlacer: data.iconUrl
+      fieldName: "Fecha fin",
+      type:"input",
+      control: "date",
+      dataPlacer: data.itemTwo
     },
     {
-      fieldName: "Icaono",
-      type: "input",
-      control: "date"
+      fieldName: "Observacion",
+      type:"textarea",
+      control: "",
+      dataPlacer: data.itemThree
     }
     ]
     var pass: incomeData = {
-      filler: this.filler, title: "Actualizar area"
+      filler: this.filler, title: "Actualizar grupo"
     }
     const modalRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent,{data: pass})
     modalRef.afterClosed().subscribe(res =>{
-      this.area={
+      this.Grupos={
         id:data.itemId,
-        nombreArea: res[0],
-        codigo:res[1]
+        nombre: res[0],
+        fechaInicialGrupo:res[1],
+        fechaFinalGrupo:res[2],
+        observacion:res[3]
       } 
-      this.guardarArea(this.area);
-      this.searchService.getModelName("area", "areas");  
+      this.guardarGrupo(this.Grupos);
+      this.searchService.getModelName("grupo", "grupos");
     })
   }
-  guardarArea(area: AreaModel) {
+  guardarGrupo(grupo: GrupoModel) {
     this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
-    if (area.id) {
-      this._areaService.actualizarArea(area).subscribe(() => {
+    if (grupo.id) {
+      this._grupoService.actualizarGrupo(grupo).subscribe(() => {
       });
     } else {
-      this._areaService.guardarArea(area).subscribe(() => {
+      this._grupoService.crearGrupo(grupo).subscribe(() => {
       });
     }
   }
   openModalCreate() {
-    this.filler = [{
-      fieldName: "Nombre de Area",
-      control: "text",
-      uppercase: true
+    this.filler = [
+      { 
+      fieldName: "Numero Ficha",
+      type:"input",
+      control: "number",
     }
       , {
-      fieldName: "Codigo",
+      fieldName: "Fecha inicio",
+      type:"input",
       control: "date",
     },
     {
-      fieldName: "Icono",
-      control: "string",
-    },{
-      fieldName: "textarea",
-      type:"textarea"
+      fieldName: "Fecha fin",
+      type:"input",
+      control: "date",
     },
     {
-      fieldName: "textarea nueco",
-      type:"input",
-      control: "number"
+      fieldName: "Observacion",
+      type:"textarea",
+      control: "",
     }
   ]
     var pass: incomeData = {
-      filler: this.filler, title: "Crear area"
+      filler: this.filler, title: "Crear Grupo"
     }
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
     dialogRef.afterClosed().subscribe(gets => {
       if (gets) {
-        this.area = {
-          nombreArea: gets[0],
-          codigo: gets[1],
-          iconUrl: gets[2]
+        this.Grupos = {
+          nombre: gets[0],
+          fechaInicialGrupo:gets[1],
+          fechaFinalGrupo:gets[2],
+          observacion:gets[3]
         }
-        this.guardarArea(this.area)
-        this.searchService.getModelName("area", "areas")
+        this.guardarGrupo(this.Grupos)
+        this.searchService.getModelName("grupo", "grupos");
       }
     })
   }
+
 }

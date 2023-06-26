@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+interface board{
+  titulos:string;
+  datos:string;
+  id:number;
+}
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -7,8 +12,21 @@ import { Component } from '@angular/core';
 })
 export class BoardComponent {
 
-  titulos=['Nomber','Apellido','Cedula','fecha']
-
-  datos=['Nomber','Apellido','Cedula','fecha']
-
+  board:board[]=[
+    {
+      titulos:'Nombre',
+      datos:'adso',
+      id:1
+    },
+    {
+      titulos:'apelldo',
+      datos:'adso',
+      id:1
+    },
+    {
+      titulos:'Nombre',
+      datos:'adso',
+      id:1
+    }
+  ]
 }
