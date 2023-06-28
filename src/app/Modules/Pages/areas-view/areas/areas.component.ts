@@ -40,14 +40,12 @@ export class AreasComponent implements OnInit, OnDestroy {
   tableView: BoardTable = {} as BoardTable;
 
   constructor(
-
     //private dialogRef: MatDialogRef<AreasComponent>,
     //private modalRef: MatDialogRef<ExtendModalComponent>,
     private searchService: SearchBarService,
     private modal: MatDialog,
     private notificationService: NotificationService,
     private _areaService: AreaService,
-
   ) { }
 
 
@@ -66,7 +64,9 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemCode: res.codigo,
         itemOne: res.codigo,
         itemTwo: res.nombreArea,
-        itemThree: res.nombreArea
+        itemThree: res.nombreArea,
+        itemEnfasis: res.id,
+        itemMessage: "Horas"
         
       }
       ))
@@ -79,7 +79,6 @@ export class AreasComponent implements OnInit, OnDestroy {
       this.tableView  = {itemTitles:titles, itemData : tableView}
       this.view = view;
       this.soleView = view[0]
-
 
       
     });

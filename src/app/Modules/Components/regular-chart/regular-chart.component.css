@@ -12,20 +12,48 @@
     top: 10px;
   }
 
+  .description{
+    overflow: hidden;
+    white-space: nowrap;
+    height: max-content;
+  }
+
+  .container p {
+    text-align: center;
+    height: max-content;
+  }
+  
+  .animate{
+    position: relative;
+    right: -100%;
+    animation: marquee 6s linear infinite;
+  }
+   
+  .animateLonger{
+    position: relative;
+    right: -100%;
+    animation: marquee 16s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-200%); }
+  }
+  
 
   /*////////////////////////////////*/
 
-  
-.card-training-program{
-  display: grid;
-  grid-gap: 20px;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  justify-content: space-between;
-  justify-items: center;
-  align-items: center;
+  .slider {
+    display: grid;
+    max-width: 80%;
+    
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 300px));
+    grid-gap: 30px;
+    grid-auto-rows: minmax(240px, 35vh);
+    justify-content: center
+}  
 
-}
+
 
 .training-program:nth-child(n){
   padding: 0px 10px;
@@ -37,10 +65,11 @@
   flex-direction: row;
   width: 250px;
   height: 118px;
+  gap: 8px;
   border-radius: 15px;
   background-color: #192239;
   text-align: center;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px;
   margin: 20px;
@@ -60,6 +89,7 @@
   border-radius: 15px;
   background-color: #006B00;
   text-align: center;
+  justify-content: center;
   width: 80px;
   height: 90px;
   padding: 4px 8px;
@@ -80,6 +110,8 @@
   font-weight: 800;
   font-size: 1.2em;
 }
+
+
 .training-program .actions button{
   background: transparent;
   border: none;
