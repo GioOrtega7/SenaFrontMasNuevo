@@ -27,6 +27,7 @@ export class AreasTryComponent {
   tableView: Date = {} as Date;
   soleView: IconChart = {} as IconChart
   DateFiller:DateFiler[] =[]
+  res:any[]=[]
 
   constructor(
     private _areaService: AreaService,
@@ -47,6 +48,7 @@ export class AreasTryComponent {
       }
       ))
       this.view = view;
+      this.res = res
       this.soleView = view[0]
     });
        
@@ -57,15 +59,13 @@ export class AreasTryComponent {
   }
   ExtensInfo(id:number ){
     const view = this.view.find(res=>res.itemId===id)
-    let titles = ["ID","Nombre de area", "Codigo"]
     if(view){
-      let Date: DateFiler={ 
-        itemData:[view.itemId,view.itemName,view.itemOne],
-        itemTitle:titles,
-        itemId:view.itemId,
+      const Data =(Object(this.res.find(res=>res.id===id)))
+      let Title: DateFiler={ 
         Title:view.itemName
     };
-    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Date, })
+    console.log(Data)
+    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Data,   })
     }
   }
   delete(data: { itemId: number, itemName: string }) {
@@ -76,7 +76,6 @@ export class AreasTryComponent {
         this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
       } else { }
     });
-    
   }
   deleteArea(event: number) {
     this._areaService.borrarArea(event).subscribe(() => {

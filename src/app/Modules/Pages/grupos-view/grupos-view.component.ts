@@ -8,6 +8,8 @@ import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
 import { GruposService } from 'src/app/shared/services/grupo.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
+import { TableExtendInformationComponent } from '../../Components/table-extend-information/table-extend-information.component';
+import { BoardTable, BoardTableFiller, DateFiler } from 'src/app/shared/models/board-table.model';
 
 @Component({
   selector: 'app-grupos-view',
@@ -18,6 +20,7 @@ export class GruposViewComponent {
   Grupos: GrupoModel = {} as  GrupoModel;
   filler: ExtendModalFiller[] = [];
   view: Array<ChargeWheelFiller> = []
+  res:any[]=[]
 
   constructor(
     private _grupoService: GruposService,
@@ -36,11 +39,23 @@ export class GruposViewComponent {
       }
       ))
       this.view = view;
+      this.res = res
     })
   }
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
     return await dialogRef.afterClosed().toPromise();
+  }
+  ExtensInfo(id:number ){
+    const view = this.view.find(res=>res.itemId===id)
+    if(view){
+      const Data =(Object(this.res.find(res=>res.id===id)))
+      let Title: DateFiler={ 
+        Title:view.itemName
+    };
+    console.log(Data)
+    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Data,   })
+    }
   }
   delete(data:{itemId: number, itemName: string}){
     this.showAlert("¿Desea borrar : " + data.itemName + "?").then((response: boolean) => {

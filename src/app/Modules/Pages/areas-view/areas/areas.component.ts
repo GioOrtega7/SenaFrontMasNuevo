@@ -70,16 +70,13 @@ export class AreasComponent implements OnInit, OnDestroy {
       let titles =  ["ID","Nombre de area", "Nombre de area", "Nombre de area"]
       let tableView: BoardTableFiller[] = res.map((res:AreaModel) => ({
         itemData: [res.id,res.nombreArea, res.codigo, res.nombreArea,res.nombreArea,res.nombreArea,],
-        itemId: res.id
+        itemId: res.id,
       }))
-      this.tableView  = {itemTitles:titles, itemData : tableView}
+      this.tableView  = {itemTitles:titles, itemData : tableView,}
       this.view = view;
       this.soleView = view[0]
     });
-
-    
   }
-
   Update(data: IconChart) {
     console.log("lo que trae el coso", data);
 

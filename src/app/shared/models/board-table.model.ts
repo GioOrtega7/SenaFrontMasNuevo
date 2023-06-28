@@ -8,9 +8,6 @@ export interface BoardTable {
 }
 export interface DateFiler{
     Title:string;
-    itemData: any[];
-    itemTitle:Array<string>;
-    itemId:number
 
 
 }

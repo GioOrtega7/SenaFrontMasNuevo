@@ -62,11 +62,15 @@ export class ChargeWheelComponent {
       }else{this.generate= false}
     }
   }
+  @Output() dataInformation = new EventEmitter<any>();
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
 
   openModalUpdate(item: ChargeWheelFiller) {
     this.dataToUpdate.emit(item)
+  }
+  viewInformation(id:number){
+    this.dataInformation.emit(id)
   }
   deleteItem(itemID: number , itemName: string){
     this.dataToDelete.emit({itemId:itemID,itemName:itemName})

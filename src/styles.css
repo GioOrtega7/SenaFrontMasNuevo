@@ -378,6 +378,7 @@ button.cancel::before {
 
 textarea{
     background-color: #131A2E;
+    width: 35vw;
     border-radius: 10px;
     border: transparent 1px solid;
     padding: 10px;

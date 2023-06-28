@@ -44,7 +44,6 @@ export class ExtendModalFormComponent {
       ngModel: item.dataPlacer,
       UPCondition: item.uppercase || false,
       data: item.data || [{ data: "string", dataId: 2 }],
-
     }));
 
     if (this.incomeData.update) {
