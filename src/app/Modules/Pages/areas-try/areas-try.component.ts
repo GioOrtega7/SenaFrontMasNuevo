@@ -132,10 +132,10 @@ export class AreasTryComponent {
     }
       , {
       fieldName: "Codigo",
-      control: "date",
+      control: "number",
     },
     {
-      fieldName: "Icono",
+      fieldName: "Url de Icono",
       control: "string",
     }, {
       fieldName: "textarea",

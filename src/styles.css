@@ -394,3 +394,8 @@ textarea:focus{
     border:#3869B2 solid 1px;
     transition: 0.5s;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
