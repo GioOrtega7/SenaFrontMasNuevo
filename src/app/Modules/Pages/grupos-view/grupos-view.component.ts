@@ -5,7 +5,7 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ExtendModalAlertComponent } from '../../Components/extend-modal-alert/extend-modal-alert.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel.model';
 import { GruposService } from 'src/app/shared/services/grupo.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
 
@@ -18,6 +18,7 @@ export class GruposViewComponent {
   Grupos: GrupoModel = {} as  GrupoModel;
   filler: ExtendModalFiller[] = [];
   view: Array<ChargeWheelFiller> = []
+  soleView: ChargeWheelFiller = {} as ChargeWheelFiller
 
   constructor(
     private _grupoService: GruposService,
@@ -31,11 +32,15 @@ export class GruposViewComponent {
       let view: ChargeWheelFiller[] = res.map((res: GrupoModel) => ({
         itemId: res.id || "",
         itemName: res.nombre,
+        itemCode: res.id,
+        itemOne: res.nombre,
+        itemTwo: res.nombre,
         itemFechainicio: res.fechaFinalGrupo,
         itemFechafin: res.fechaInicialGrupo,
       }
       ))
       this.view = view;
+      this.soleView = this.view[0]
     })
   }
   async showAlert(alert: string): Promise<boolean> {
@@ -78,7 +83,7 @@ export class GruposViewComponent {
       fieldName: "Observacion",
       type:"textarea",
       control: "",
-      dataPlacer: data.itemThree
+      dataPlacer: data.itemTwo
     }
     ]
     var pass: incomeData = {

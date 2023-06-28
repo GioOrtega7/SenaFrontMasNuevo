@@ -81,7 +81,7 @@ body {
     display: flex;
     flex-direction: column;
     width: max-content;
-    max-width: 90%;
+    max-width: 100%;
     height: max-content;
     overflow-x: scroll;
     margin-bottom: 30px;
@@ -104,10 +104,10 @@ body {
 .actions {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
-    position: absolute;
-    margin-top: 10px;
-    right: 2vw;
+    padding: 4px;
+    height: 100%;
   }
   
   .actions img {

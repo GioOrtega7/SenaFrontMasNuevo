@@ -336,12 +336,14 @@ button.cancel::before {
     max-width: 80%;
     grid-template-columns: repeat(auto-fit, minmax(12vw, 200px));
     grid-gap: 30px;
-    grid-auto-rows: minmax(25vh, 35vh);
+    grid-auto-rows: minmax(240px, 35vh);
     justify-content: center
 }
 
 .mat-mdc-paginator-container {
     justify-content: center !important;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .mat-mdc-paginator-range-actions {

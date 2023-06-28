@@ -11,8 +11,8 @@
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <select [formControlName]="fill.formControlName || ''" required="true">
-                        <option selected style="color:black" [ngValue]="null"> Seleccionar {{fill.fieldName}} </option>
+                    <select [formControlName]="fill.formControlName || ''" required>
+                        <option *ngIf="fill.dataPlacer == null || fill.dataPlacer == undefined" value=""  disabled hidden [selected]=false> Seleccionar {{fill.fieldName}} </option>
                         <option *ngFor='let item of fill.data' [ngValue]="item.dataId">{{item.data}}</option>
                     </select>
                 </div>

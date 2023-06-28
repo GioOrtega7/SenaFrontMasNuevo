@@ -106,8 +106,8 @@ export class ProyectoFormativoComponent {
           {
             fieldName: "Programa",
             type: "select",
-            data: this.dataFill
-
+            data: this.dataFill,
+       
 
           },  
           {
@@ -166,6 +166,8 @@ export class ProyectoFormativoComponent {
     this.ProyectoService.traerProyecto()
       .subscribe(proyecto => {
         this.proyectos = proyecto;
+        console.log("asd",proyecto);
+        
       }, error => {
         this.NotificationService.showNotification({ message: "Error de conexión" });
       });
@@ -214,7 +216,8 @@ export class ProyectoFormativoComponent {
     this.programaService.traerProgramas()
       .subscribe((programa: ProgramaModel[]) => {
         this.Programas = programa;
-
+        console.log(programa);
+        
 
 
         this.dataFill = programa.map((res: ProgramaModel) =>({

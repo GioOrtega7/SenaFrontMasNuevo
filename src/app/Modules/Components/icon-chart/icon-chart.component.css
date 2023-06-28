@@ -9,6 +9,7 @@
 .area {
   position: relative;
   display: flex;
+  gap: 5px;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -115,14 +116,14 @@
 
  
 .container {
-  width: 100px;
   overflow: hidden;
   white-space: nowrap;
+  height: max-content;
 }
 
 .container p {
   text-align: center;
-  
+  height: max-content;
 }
 
 .animate{

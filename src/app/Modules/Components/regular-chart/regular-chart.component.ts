@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input, HostListener, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { RegularChartFiller } from 'src/app/shared/models/regular-chart.model';
 @Component({
   selector: 'app-regular-chart',
   templateUrl: './regular-chart.component.html',
@@ -7,33 +8,40 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class RegularChartComponent {
 
+  @Output() dataInformation = new EventEmitter<any>();
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
 
 
   
 
-  @Input() view: RegularChartComponent[] = []
+  @Input() view: RegularChartFiller[] = []
   generate:boolean = false
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-
+      console.log(this.view.length);
+      
       if(Object.keys(this.view).length !== 0){
         this.generate= true
+        console.log(this.view);
+        
       }else{this.generate= false}
     }
   }
 
 
-  openModalUpdate() {
-    let item
-    this.dataToUpdate.emit(item)
+  viewInformation(id:number){
+    this.dataInformation.emit(id)
+  }
+  openModalUpdate(id : number) {
+    this.dataToUpdate.emit(id)
   }
 
   deleteItem(itemID: number, itemName: string) {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
+
 
   page_size: number = 1;
   page_number: number = 1;

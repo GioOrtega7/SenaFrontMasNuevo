@@ -26,7 +26,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: AreasTryComponent
+        component: AreasComponent
       },
       {
         path:"proyecto",

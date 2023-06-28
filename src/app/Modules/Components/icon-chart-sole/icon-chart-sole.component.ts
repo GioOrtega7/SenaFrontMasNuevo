@@ -12,6 +12,7 @@ export class IconChartSoleComponent {
 
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
+  @Output() dataInformation = new EventEmitter<any>();
   generate!: boolean
 
   constructor(private modal: MatDialog,){
@@ -27,6 +28,10 @@ export class IconChartSoleComponent {
 
   deleteItem(itemID: number , itemName: string){
     this.dataToDelete.emit({itemId:itemID,itemName:itemName})
+  }
+
+  viewInformation(itemID:number){
+    this.dataInformation.emit(itemID)
   }
 
   ngOnInit(){

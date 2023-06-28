@@ -1,0 +1,24 @@
+<div class="slider" *ngIf="this.generate">
+    <div class="training-program" *ngFor="let item of view">
+        <div class="active-tokens">
+            <p>56</p>
+            <p>Fichas activas</p>
+        </div>
+        <div class="description">
+            <p>Nombre Programa</p>
+            <p>ID {{item.itemId}}</p>
+            <p *ngIf="item.itemHours">{{item.itemHours}} horas estimadas</p>
+            <p *ngIf="item.itemOne">{{item.itemOne}} Raps esperados</p>
+            <p *ngIf="item.itemTwo">{{ item.itemTwo }}</p>
+            <p *ngIf="item.itemThree">{{ item.itemThree }}</p>
+            <p *ngIf="item.itemFour">{{ item.itemFour }}</p>
+            <p *ngIf="item.itemFive">{{ item.itemFive }}</p>
+        </div>
+        <div class="actions">
+            <button (click)="openModalUpdate(item.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+        <button (click)="deleteItem(item.itemId, item.itemName)"><img src="../../../assets/icons/delete.svg"></button>
+        <button (click)="viewInformation(item.itemId)"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
+        </div>
+    </div>
+</div>

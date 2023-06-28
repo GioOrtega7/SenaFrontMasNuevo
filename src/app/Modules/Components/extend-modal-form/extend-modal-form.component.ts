@@ -4,6 +4,7 @@ import { FormControl, NgForm, FormBuilder, FormsModule, AbstractControl, NgModel
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { data } from 'jquery';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class ExtendModalFormComponent {
       ngModel: item.dataPlacer,
       UPCondition: item.uppercase || false,
       data: item.data || [{ data: "string", dataId: 2 }],
-
+      dataPlacer: item.dataPlacer || null
     }));
 
     if (this.incomeData.update) {
@@ -52,6 +53,7 @@ export class ExtendModalFormComponent {
 
       });
     }
+
 
     this.formExtend = this.formBuilder.group({})
     this.filler.forEach((item) => {
@@ -78,6 +80,16 @@ export class ExtendModalFormComponent {
     fill.ngModel = fill.ngModel!.toUpperCase();
 
   }
+
+  isSelected(dataplacer: string = "", id: number = 0): boolean {
+    if (dataplacer.toString() == id.toString()) {
+      console.log("sapo malparido", dataplacer, id); 
+      return true
+    }
+    else { console.log("sapo perro"); return false}
+  }
+  
+
 
 
 

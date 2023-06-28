@@ -23,9 +23,9 @@ export class AreasTryComponent {
 
   area: AreaModel = {} as AreaModel;
   filler: ExtendModalFiller[] = [];
-  view: Array<IconChart> = []
+  view: Array<IconChartFiller> = []
   tableView: Date = {} as Date;
-  soleView: IconChart = {} as IconChart
+  soleView: IconChartFiller = {} as IconChartFiller
   DateFiller:DateFiler[] =[]
 
   constructor(
@@ -82,7 +82,7 @@ export class AreasTryComponent {
     this._areaService.borrarArea(event).subscribe(() => {
     })
   }
-  update(data: IconChart) {
+  update(data: IconChartFiller) {
     this.filler = [{
       fieldName: "Nombre de Area",
       type: "input",

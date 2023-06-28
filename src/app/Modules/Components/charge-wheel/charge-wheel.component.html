@@ -1,23 +1,24 @@
 <div *ngIf="generate">
   <div class="content-wheel">
     <div class="charge_wheel" *ngFor="let item of  this.view | Paginate: page_size: page_number">
-      <div class="porcentajes" style="--porcentaje: {{item.itemPorcentajes}}">
+      <div class="porcentajes" style="--porcentaje: {{item.itemPercentaje}}">
         <div class="content">
           <div class="container">
-            <p [ngClass]="{'animateLonger': item.itemName.length >= 20,'animate': item.itemName.length < 20 && item.itemName.length > 11}">
-              Cod: {{item.itemName}}
+            <p
+              [ngClass]="{'animateLonger': item.itemName.length >= 20,'animate': item.itemName.length < 20 && item.itemName.length > 11}">
+              Ref: {{item.itemName}}
             </p>
             <p *ngIf="item.itemCode"> Cod: {{item.itemCode}} </p>
-            <p *ngIf="item.itemOne"> Cod: {{item.itemOne}} </p>
-            <p *ngIf="item.itemTwo"> {{item.itemTwo}} </p>
-            <p *ngIf="item.itemThree"> {{item.itemThree}} </p>
-            <p *ngIf="item.itemFour"> {{item.itemFour}} </p>
-            <p>{{item.itemPorcentajes}}%</p>
+            <p class="date"> Inicio: {{item.itemFechainicio}} </p>
+            <p class="date"> Fin: {{item.itemFechafin}} </p>
+            <p>{{item.itemPercentaje}}%</p>
           </div>
           <div class="actions">
             <button (click)="openModalUpdate(item)"><img src="../../../assets/icons/reload.svg"></button>
             <button (click)="deleteItem(item.itemId, item.itemName)"><img
                 src="../../../assets/icons/delete.svg"></button>
+            <button (click)="viewInformation(item.itemId)"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
           </div>
         </div>
         <svg width="230px" height="230px">

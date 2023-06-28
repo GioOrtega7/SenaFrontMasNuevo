@@ -11,11 +11,14 @@
             <tbody>
                 <tr *ngFor="let item of this.viewData | Paginate: page_size: page_number">
                     <td *ngFor="let data of item.itemData"> {{data}} </td>
-                    <div class="actions">
-                        <button (click)="openModalUpdate(item)"><img src="../../../assets/icons/reload.svg"></button>
-                        <button (click)="deleteItem(item.itemId, item.itemName)"><img
-                                src="../../../assets/icons/delete.svg"></button>
-                    </div>
+                    <td>
+                        <div class="actions">
+                            <button (click)="openModalUpdate(item)"><img
+                                    src="../../../assets/icons/reload.svg"></button>
+                            <button (click)="deleteItem(item.itemId, item.itemName)"><img
+                                    src="../../../assets/icons/delete.svg"></button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

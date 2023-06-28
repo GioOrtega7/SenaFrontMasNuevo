@@ -33,7 +33,7 @@ export class AreasComponent implements OnInit, OnDestroy {
   displayet: AreaModel[] = []
   searchTerm: string = '';
   area: AreaModel | null = null;
-  view: Array<IconChartFiller> = [];
+  view: Array<any> = [];
   soleView: IconChartFiller = {} as IconChartFiller
   private subscription: Subscription | undefined;
   filler: ExtendModalFiller[] = [];
@@ -63,7 +63,11 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemId: res.id || "",
         iconUrl: res.iconUrl,
         itemName: res.nombreArea,
-        itemOne: res.codigo
+        itemCode: res.codigo,
+        itemOne: res.codigo,
+        itemTwo: res.nombreArea,
+        itemThree: res.nombreArea
+        
       }
       ))
       let as = new Date(2022, 1, 10);
@@ -75,6 +79,9 @@ export class AreasComponent implements OnInit, OnDestroy {
       this.tableView  = {itemTitles:titles, itemData : tableView}
       this.view = view;
       this.soleView = view[0]
+
+
+      
     });
 
     

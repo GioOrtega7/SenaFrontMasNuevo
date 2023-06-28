@@ -2,12 +2,9 @@ export interface ChargeWheelFiller {
     itemId: number,
     itemName: string,
     itemCode?:string,
-    itemOne: any,
-    itemTwo?: any,
-    itemThree?:any,
-    itemFour?: any,
+    itemOne: string,
+    itemTwo?: string,
     itemFechainicio:Date,
     itemFechafin:Date,
-    itemPorcentajes?:number
-
+    itemPercentaje?:number
 }
