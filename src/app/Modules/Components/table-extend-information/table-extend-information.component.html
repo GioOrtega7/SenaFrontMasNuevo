@@ -1,11 +1,62 @@
-<div mat-dialog-title>{{this.extendModalTitle}} {{incomeData.Title}}</div>
+<div mat-dialog-title>
+    <h4>{{this.extendModalTitle}}</h4>
+    <h4>{{incomeData.Title}}</h4>
+</div>
 <mat-dialog-content>
     <div class="container-datos">
-        <ul class="lista-datos">
-            <li *ngFor="let data of incomeData.itemData; index as i ">
-                <label>{{incomeData.itemTitle[i]}}</label>
-                <span>{{data}}</span>
-            </li>
-        </ul>
+        <div class="container-datos">
+            <ul class="lista-datos" #relaciones>
+                <li *ngFor="let item of incomeData | keyvalue ;let i = index">
+                    <label>{{ item.key }}</label>
+                    <ng-container *ngIf="!isValueArray(item.value) && !isValueObject(item.value) ">
+                        <span>{{ item.value }}</span>
+                    </ng-container>
+                    <div *ngIf="isValueObject(item.value)  ">
+                        <button class="ver" (click)="extras(i)">ver mas</button>
+                        <div>
+                            <div class="herencias herencias{{ i }}">
+                                <div class="container-relaciones">
+                                    <button class="Close" (click)="close(i)">X</button>
+                                    <ul class="tablas-relaciones">
+                                        <mat-dialog-content>
+                                        <div *ngFor="let obj of object | keyvalue">
+                                            <ul>
+                                                <li>
+                                                    <label>{{obj.key}}</label>
+                                                    <span>{{obj.value}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </mat-dialog-content>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="isValueArray(item.value)">
+                        <button class="ver" (click)="extras(i)">ver mas</button>
+                        <div class="herencias herencias{{ i }}">
+                            <div class="container-relaciones">
+                                <button class="Close" (click)="close(i)">X</button>
+                                <div *ngFor="let obj of info | keyvalue">
+                                    <ul class="tablas-relaciones">
+                                        <mat-dialog-content>
+                                        <div *ngFor="let item of obj.value | keyvalue">
+                                            <ul>
+                                                <li>
+                                                    <label>{{ item.key }}</label>
+                                                    <span>{{ item.value }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </mat-dialog-content>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </mat-dialog-content>

@@ -1,8 +1,9 @@
-import { Component,Output,Input,EventEmitter,SimpleChanges,Inject } from '@angular/core';
+import { Component, Output, Input, EventEmitter, SimpleChanges, Inject, ViewChild, ElementRef } from '@angular/core';
 import { BoardTable } from 'src/app/shared/models/board-table.model';
 import { BoardTableFiller } from 'src/app/shared/models/board-table.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DateFiler } from 'src/app/shared/models/board-table.model';
+import { __values } from 'tslib';
 
 
 @Component({
@@ -11,11 +12,39 @@ import { DateFiler } from 'src/app/shared/models/board-table.model';
   styleUrls: ['./table-extend-information.component.css']
 })
 export class TableExtendInformationComponent {
+  @ViewChild('relaciones') relaciones!: ElementRef;
+  info: any[] = []
+  object: any[] = []
   generate: boolean = false
-  view1:Date[]=[]
-
   constructor(
-    @Inject(MAT_DIALOG_DATA) public incomeData: DateFiler) { }
-
+    @Inject(MAT_DIALOG_DATA) public incomeData: any) {
+  }
   extendModalTitle: string = "Información de";
+  isValueObject(value: any): boolean {
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      this.object = value;
+      return true;
+    }
+    return typeof value === 'object' && value !== null && !Array.isArray(value);
+  }
+  isValueArray(value: any): boolean {
+    if (Array.isArray(value)) {
+      this.info = value
+    }
+    return Array.isArray(value);
+  }
+  getObjectEntries(obj: any): any[] {
+    return Object.entries(obj);
+
+  }
+  extras(index: number) {
+    const elemento = this.relaciones.nativeElement.querySelector('.herencias'+index );
+    elemento.classList.add('relaciones');
+ 
+  }
+
+  close(index: number) {
+    const elemento = this.relaciones.nativeElement.querySelector('.herencias'+index );
+    elemento.classList.remove('relaciones');
+  }
 }
