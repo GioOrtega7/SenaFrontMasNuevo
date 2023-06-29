@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Roboto+Condensed&family=Vina+Sans&display=swap');
-
 * {
     font-family: 'Roboto Condensed';
 }
@@ -8,7 +7,6 @@ body {
     position: relative;
     background-color: #161A24;
     color: rgb(232, 232, 232);
-
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -19,7 +17,6 @@ body {
 }
 
 .img-fondo {
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +26,6 @@ body {
     right: 0;
     left: 0;
     z-index: -10;
-
 }
 
 .img-fondo svg {
@@ -84,7 +80,6 @@ main {
     gap: 30px;
 }
 
-
 .snotifyToast__body {
     width: 150px;
 }
@@ -114,7 +109,6 @@ main {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -194,14 +188,16 @@ app-footer {
     min-width: 400px !important;
 }
 
-.mat-mdc-dialog-actions{
+.mat-mdc-dialog-actions {
     gap: 10px;
 }
-app-extend-modal-alert{
+
+app-extend-modal-alert {
     display: flex;
     flex-direction: column;
     min-width: 30vw;
 }
+
 
 /*
 .mat-mdc-dialog-container input{
@@ -216,6 +212,7 @@ app-extend-modal-alert{
 }
 
 */
+
 input {
     background-color: #131A2E !important;
     height: 40px;
@@ -234,7 +231,6 @@ input:focus {
     transition: 0.5s;
 }
 
-
 input::placeholder {
     color: #6b6b6b;
 }
@@ -246,11 +242,7 @@ input:-webkit-autofill:active,
 input[type="password"]:-webkit-autofill {
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: white !important;
-
-
 }
-
-
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -269,8 +261,8 @@ input[type="password"]:-webkit-autofill {
     background: rgb(245, 245, 245);
 }
 
-/**************************************************/
 
+/**************************************************/
 
 button.add::before {
     content: "+";
@@ -283,9 +275,7 @@ button.cancel {
     background-color: #680c0c;
 }
 
-
 button.add {
-
     background-color: #006b00;
 }
 
@@ -326,6 +316,7 @@ button.cancel::before {
     padding-right: 10px;
 }
 
+
 /***********************************/
 
 .wallpaper {
@@ -339,9 +330,10 @@ button.cancel::before {
 
 .slider {
     display: grid;
-    max-width: 80%;
+    width: 80%;
     grid-template-columns: repeat(auto-fit, minmax(12vw, 200px));
     grid-gap: 30px;
+    grid-auto-rows: minmax(240px, 35vh);
     grid-auto-rows: minmax(240px, 35vh);
     justify-content: center
 }
@@ -397,13 +389,25 @@ textarea{
     padding: 10px;
     color: #fff;
     outline: none;
-    transition: 0.5s;    
-}
-textarea:hover{
-    border:#3869B2 solid 1px;
     transition: 0.5s;
 }
-textarea:focus{
-    border:#3869B2 solid 1px;
+
+textarea:hover {
+    border: #3869B2 solid 1px;
     transition: 0.5s;
+}
+
+textarea:focus {
+    border: #3869B2 solid 1px;
+    transition: 0.5s;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input::placeholder {
+    color: #8b8b8b !important;
 }

@@ -1,9 +1,5 @@
-import { Component, Output, Input, EventEmitter, SimpleChanges, Inject, ViewChild, ElementRef } from '@angular/core';
-import { BoardTable } from 'src/app/shared/models/board-table.model';
-import { BoardTableFiller } from 'src/app/shared/models/board-table.model';
+import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DateFiler } from 'src/app/shared/models/board-table.model';
-import { __values } from 'tslib';
 
 
 @Component({
@@ -44,7 +40,6 @@ export class TableExtendInformationComponent {
     elemento.classList.add('relaciones');
  
   }
-
   close(index: number) {
     const elemento = this.relaciones.nativeElement.querySelector('.herencias'+index );
     elemento.classList.remove('relaciones');

@@ -1,41 +1,33 @@
 .container {
-  width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .container p {
-  text-align: center;
+    text-align: center;
 }
-
-.container p.date {
-  font-size: 0.8em;
-  color: #9C9C9C;
-}
-
 
 .animate {
-  position: relative;
-  right: -100%;
-  animation: marquee 6s linear infinite;
+    position: relative;
+    right: -100%;
+    animation: marquee 6s linear infinite;
 }
 
 .animateLonger {
-  position: relative;
-  right: -100%;
-  animation: marquee 16s linear infinite;
+    position: relative;
+    right: -100%;
+    animation: marquee 16s linear infinite;
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-200%);
-  }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
 }
-
 
 p:nth-child(1)::-webkit-scrollbar {
   height: 5px;
@@ -46,26 +38,23 @@ p:nth-child(1)::-webkit-scrollbar-track {
 }
 
 p:nth-child(1)::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0);
-  border-radius: 10px;
-
-  height: 2px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    height: 2px;
 }
 
 p:nth-child(1)::-webkit-scrollbar-thumb:hover {
-  background: rgb(255, 255, 255);
-
-  height: 2px;
+    background: rgb(255, 255, 255);
+    height: 2px;
 }
 
 .content-wheel {
-  display: grid;
-  grid-gap: 20px;
-  width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(18vw, 240px));
+    grid-gap: 30px;
+    grid-auto-rows: minmax(230px, 35vh);
+    justify-content: center;
 }
 
 .porcentajes {
@@ -75,19 +64,22 @@ p:nth-child(1)::-webkit-scrollbar-thumb:hover {
   justify-content: center;
 }
 
+.content p:nth-child(2),
+.content p:nth-child(3) {
+    color: #9C9C9C;
+}
 
 .porcentajes .content {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #232222;
-  padding: 20px;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #232222;
+    padding: 20px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    position: absolute;
 }
 
 circle {
@@ -109,9 +101,8 @@ circle:nth-child(1) {
 }
 
 svg {
-  border-radius: 50%;
-  background-color: #192239;
-
+    border-radius: 50%;
+    background-color: #192239;
 }
 
 @keyframes rellenar {
@@ -127,18 +118,18 @@ circle:nth-child(2) {
 }
 
 .actions button {
-  background: transparent;
-  border: none;
-  padding: 2px;
+    background: transparent;
+    border: none;
+    padding: 2px;
 }
 
 .actions {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .actions img {
-  width: 15px;
+    width: 15px;
 }
