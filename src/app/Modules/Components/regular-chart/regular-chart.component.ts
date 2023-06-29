@@ -20,11 +20,9 @@ export class RegularChartComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      console.log(this.view.length);
       
       if(Object.keys(this.view).length !== 0){
         this.generate= true
-        console.log(this.view);
         
       }else{this.generate= false}
     }
@@ -67,7 +65,7 @@ export class RegularChartComponent {
       this.page_size = 10;
     }
     else if (screenWidth < 1633 && screenWidth >= 1314) {
-      this.page_size = 8;
+      this.page_size = 9;
     }
     else if (screenWidth < 1314 && screenWidth >= 995) {
       this.page_size = 6;

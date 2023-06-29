@@ -8,10 +8,11 @@
               'animate': this.view.itemName.length < 20 && this.view.itemName.length > 11
             }"> {{this.view.itemName}}
           </p>
-          <p *ngIf="this.view.itemCode"> ID: {{this.view.itemCode}} </p>
-          <p class="date"> {{view.itemFechainicio}} </p>
-          <p class="date"> {{view.itemFechafin}} </p>
-          <p>{{view.itemPercentaje}}%</p>
+          <p *ngIf="view.itemCode">{{view.itemCode}} </p>
+                        <p *ngIf="view.itemOne">{{view.itemOne}} </p>
+                        <p *ngIf="view.itemTwo"> {{view.itemTwo}} </p>
+                        <p *ngIf="view.itemThree"> {{view.itemThree}} </p>
+                        <p>{{view.itemPercentaje}}%</p>
         </div>
         <div class="actions">
           <button (click)="openModalUpdate(this.view.itemId)"><img src="../../../assets/icons/reload.svg"></button>

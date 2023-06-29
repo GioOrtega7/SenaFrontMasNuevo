@@ -1,7 +1,7 @@
 <div class="bloque-slick-information">
     <div class="content-slick-information">
         <div class="slick-wrapper">
-            <div class="slider" #slickElement>
+            
                 <div class="slide-item" *ngFor="let porcentajeNumerico of porcentajeNumericos; index as i">
                     <div class="porcentajes" style="--porcentaje: {{porcentajeNumerico}}">
                         <div class="content">
@@ -23,7 +23,6 @@
                     </div>
                     
                 </div>
-            </div>
         </div>
         <div class="button-añadir">
             <a><button  class="add" (click)="openModalCreate()">Añadir</button></a>

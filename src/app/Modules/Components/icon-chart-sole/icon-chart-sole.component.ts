@@ -39,9 +39,7 @@ export class IconChartSoleComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      if(Object.keys(this.view).length !== 0){
-        console.log(Object.keys(this.view).length);
-        
+      if(Object.keys(this.view).length !== 0){        
         this.generate= true
       }else{this.generate= false}
     }

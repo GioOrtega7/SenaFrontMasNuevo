@@ -25,8 +25,7 @@ export class ProyectoFormativoService {
     proyecto.tiempoEstimado = proyecto.tiempoEstimado;
     proyecto.numeroTotalRaps = proyecto.numeroTotalRaps;
     proyecto.idCentroFormacion = proyecto.idCentroFormacion;
-
-    console.log('llega asi', proyecto);    
+ 
     return this._coreService.post<ProyectoFormativoModel>('proyecto_formativo', proyecto);
   }
 

@@ -88,11 +88,9 @@ export class AreasComponent implements OnInit, OnDestroy {
   }
 
   Update(id : number) {
-    console.log("lo que trae el coso", id);
-    const data: AreaModel = this.res1.find(res => res.id === id)
-    console.log(data);
-    
 
+    const data: AreaModel = this.res1.find(res => res.id === id)
+   
     if(data)
     this.filler = [{
       fieldName: "Nombre de Area",
@@ -130,10 +128,7 @@ export class AreasComponent implements OnInit, OnDestroy {
         this.guardarArea(this.area)
 
         this.searchService.getModelName("area", "areas")
-        console.log("view", this.view);
-
-
-
+        
       }
     })
   }
@@ -177,7 +172,6 @@ export class AreasComponent implements OnInit, OnDestroy {
   }
 
 
-
   extendInformation(id: number) {
     let view = (this.res1.find(res => res.id === id))
     if (view) {
@@ -193,16 +187,9 @@ export class AreasComponent implements OnInit, OnDestroy {
 
 
 
-  getAreas() {
-
-
-  }
-
 
   deleteArea(event: number) {
     this._areaService.borrarArea(event).subscribe(() => {
-      this.getAreas();
-
     })
   }
   ///////////////////////////////
@@ -237,15 +224,11 @@ export class AreasComponent implements OnInit, OnDestroy {
           codigo: gets[1],
           iconUrl: gets[2]
         }
-        console.log(this.area);
+        
 
         this.guardarArea(this.area)
 
-        this.searchService.getModelName("area", "areas")
-        console.log("view", this.view);
-
-
-
+        this.searchService.getModelName("area", "areas")        
       }
     })
 

@@ -192,14 +192,12 @@ export class NavbarComponent implements OnInit {
     else {
       this.coreService.pass<any>(this.searchGetService, this.searchTerm).subscribe((response) => {
 
-        console.log("asdasd", Object.keys(response).length, response)
+        
         if (response.resultados) {
-          console.log("AAA", Object.keys(response).length, response);
-
+          
           let resultados = response.resultados;
           let keys = Object.keys(resultados);
           let dato = keys.flatMap(key => resultados[Number(key)]);
-          console.log(response);
           this.searchBar.searchArrayUpdate(dato);
         }
 

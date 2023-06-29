@@ -83,10 +83,10 @@ export class ExtendModalFormComponent {
 
   isSelected(dataplacer: string = "", id: number = 0): boolean {
     if (dataplacer.toString() == id.toString()) {
-      console.log("sapo malparido", dataplacer, id);
+     
       return true
     }
-    else { console.log("sapo perro"); return false }
+    else { return false }
   }
 
 

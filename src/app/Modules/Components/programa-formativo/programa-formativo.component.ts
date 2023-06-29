@@ -30,7 +30,6 @@ export class ProgramaFormativoComponent {
   }
   getPrograma() {
     this._programaService.traerProgramas().subscribe(programa => {
-      console.log("programa", programa)
       this.programas = programa;
     }, error => {
       this.notificationService.showNotification(this.options);
@@ -112,7 +111,6 @@ export class ProgramaFormativoComponent {
       this._proyectoService.crearProyecto(proyecto).subscribe(proyecto => {
         this.getProyecto();
         this.reset();
-        console.log('llega asi', proyecto);
       })
     }
   }

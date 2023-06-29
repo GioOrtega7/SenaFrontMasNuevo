@@ -45,11 +45,10 @@
 
   .slider {
     display: grid;
-    max-width: 80%;
-    
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(20vw, 300px));
     grid-gap: 30px;
-    grid-auto-rows: minmax(240px, 35vh);
+    grid-auto-rows: minmax(140px, 10vh);
     justify-content: center
 }  
 
@@ -69,7 +68,7 @@
   border-radius: 15px;
   background-color: #192239;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 20px;
   margin: 20px;

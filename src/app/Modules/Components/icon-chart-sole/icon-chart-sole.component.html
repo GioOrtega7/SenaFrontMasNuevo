@@ -11,6 +11,8 @@
               'animate': view.itemName.length < 20 && view.itemName.length > 11
             }">{{ view.itemName }}</p>
           <p>{{ view.itemOne }}</p>
+          <p *ngIf="view.itemCode"> {{view.itemCode}} </p>
+          <p *ngIf="view.itemOne">{{ view.itemOne }}</p>
           <p *ngIf="view.itemTwo">{{ view.itemTwo }}</p>
           <p *ngIf="view.itemThree">{{ view.itemThree }}</p>
         </div>

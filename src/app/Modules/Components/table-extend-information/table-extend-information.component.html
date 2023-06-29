@@ -7,7 +7,6 @@
         <div class="container-datos">
             <ul class="lista-datos" #relaciones>
                 <li *ngFor="let item of incomeData.data | keyvalue ;let i = index">
-                <li *ngFor="let item of incomeData.data | keyvalue ;let i = index">
                     <label>{{ item.key }}</label>
                     <ng-container *ngIf="!isValueArray(item.value) && !isValueObject(item.value) ">
                         <span>{{ item.value }}</span>

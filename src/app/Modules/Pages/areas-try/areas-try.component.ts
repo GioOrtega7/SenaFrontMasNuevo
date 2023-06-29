@@ -59,7 +59,6 @@ export class AreasTryComponent {
   }
   ExtensInfo(id: number) {
     const view = (this.view.find(res => res.itemId === id))
-    console.log(view);
     
     let titles = ["ID", "Nombre de area", "Codigo"]
     if (view) {
