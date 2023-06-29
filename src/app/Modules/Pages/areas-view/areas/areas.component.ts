@@ -87,30 +87,29 @@ export class AreasComponent implements OnInit, OnDestroy {
 
   }
 
-  Update(data: IconChartFiller) {
-    console.log("lo que trae el coso", data);
+  Update(id : number) {
+    console.log("lo que trae el coso", id);
+    const data: AreaModel = this.res1.find(res => res.id === id)
+    console.log(data);
+    
 
+    if(data)
     this.filler = [{
       fieldName: "Nombre de Area",
       type: "input",
       control: "text",
-      dataPlacer: data.itemName,
+      dataPlacer: data.nombreArea,
       uppercase: true
     }
       , {
       fieldName: "Codigo",
       control: "number",
-      dataPlacer: data.itemOne
+      dataPlacer: data.codigo
     },
     {
       fieldName: "Icono asdasd asd aqwe ",
       control: "string",
       dataPlacer: data.iconUrl
-    },
-    {
-      fieldName: "Icaono",
-      type: "input",
-      control: "date"
     }
     ]
 
@@ -124,7 +123,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(gets => {
       if (gets) {
         this.area = {
-          id: data.itemId,
+          id: id,
           nombreArea: gets[0],
           codigo: gets[1]
         }
