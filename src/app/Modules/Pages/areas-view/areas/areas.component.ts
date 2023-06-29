@@ -15,7 +15,7 @@ import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-modal-alert/extend-modal-alert.component';
 import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
-
+import { TableExtendInformationComponent } from 'src/app/Modules/Components/table-extend-information/table-extend-information.component';
 
 @Component({
   selector: 'app-areas',
@@ -32,6 +32,7 @@ export class AreasComponent implements OnInit, OnDestroy {
   protected resultadoBusqueda: AreaModel | null = null;
   displayet: AreaModel[] = []
   searchTerm: string = '';
+  res1: any[] = []
   area: AreaModel | null = null;
   view: Array<any> = [];
   soleView: IconChartFiller = {} as IconChartFiller
@@ -57,6 +58,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.searchService.getModelName("area", "areas")
 
     this.searchService.$searchArrayService.subscribe((res: any) => {
+      this.res1 = res;
       let view: IconChartFiller[] = res.map((res: AreaModel) => ({
         itemId: res.id || "",
         iconUrl: res.iconUrl,
@@ -67,23 +69,22 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemThree: res.nombreArea,
         itemEnfasis: res.id,
         itemMessage: "Horas"
-        
       }
       ))
       let as = new Date(2022, 1, 10);
-      let titles =  ["ID","Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area"]
-      let tableView: BoardTableFiller[] = res.map((res:AreaModel) => ({
-        itemData: [res.id,res.nombreArea, res.iconUrl, res.nombreArea ,res.nombreArea, res.iconUrl, res.iconUrl, res.iconUrl, res.iconUrl],
+      let titles = ["ID", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area"]
+      let tableView: BoardTableFiller[] = res.map((res: AreaModel) => ({
+        itemData: [res.id, res.nombreArea, res.iconUrl, res.nombreArea, res.nombreArea, res.iconUrl, res.iconUrl, res.iconUrl, res.iconUrl],
         itemId: res.id
       }))
-      this.tableView  = {itemTitles:titles, itemData : tableView}
+      this.tableView = { itemTitles: titles, itemData: tableView }
       this.view = view;
       this.soleView = view[0]
 
-      
+
     });
 
-    
+
   }
 
   Update(data: IconChartFiller) {
@@ -91,7 +92,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
     this.filler = [{
       fieldName: "Nombre de Area",
-      type:"input",
+      type: "input",
       control: "text",
       dataPlacer: data.itemName,
       uppercase: true
@@ -118,8 +119,8 @@ export class AreasComponent implements OnInit, OnDestroy {
     }
 
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
-    
-    
+
+
     dialogRef.afterClosed().subscribe(gets => {
       if (gets) {
         this.area = {
@@ -141,7 +142,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
-  
+
     return await dialogRef.afterClosed().toPromise();
   }
 
@@ -177,6 +178,14 @@ export class AreasComponent implements OnInit, OnDestroy {
   }
 
 
+
+  extendInformation(id: number) {
+    let view = (this.res1.find(res => res.id === id))
+    if (view) {
+      let data = {data: view, title: view.nombreArea}
+      const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: data, })
+    }
+  }
 
 
   iniciarCache() {

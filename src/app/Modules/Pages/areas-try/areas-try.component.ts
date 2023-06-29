@@ -19,14 +19,15 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./areas-try.component.css']
 })
 export class AreasTryComponent {
- 
+
 
   area: AreaModel = {} as AreaModel;
   filler: ExtendModalFiller[] = [];
   view: Array<IconChartFiller> = []
+  view1: any[] = []
   tableView: Date = {} as Date;
   soleView: IconChartFiller = {} as IconChartFiller
-  DateFiller:DateFiler[] =[]
+  DateFiller: DateFiler[] = []
 
   constructor(
     private _areaService: AreaService,
@@ -39,6 +40,7 @@ export class AreasTryComponent {
   ngOnInit() {
     this.searchService.getModelName("area", "areas");
     this.searchService.$searchArrayService.subscribe((res: any) => {
+      this.view1 = res;
       let view: IconChartFiller[] = res.map((res: AreaModel) => ({
         itemId: res.id || "",
         iconUrl: res.iconUrl,
@@ -49,23 +51,20 @@ export class AreasTryComponent {
       this.view = view;
       this.soleView = view[0]
     });
-       
+
   }
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
     return await dialogRef.afterClosed().toPromise();
   }
-  ExtensInfo(id:number ){
-    const view = this.view.find(res=>res.itemId===id)
-    let titles = ["ID","Nombre de area", "Codigo"]
-    if(view){
-      let Date: DateFiler={ 
-        itemData:[view.itemId,view.itemName,view.itemOne],
-        itemTitle:titles,
-        itemId:view.itemId,
-        Title:view.itemName
-    };
-    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Date, })
+  ExtensInfo(id: number) {
+    const view = (this.view.find(res => res.itemId === id))
+    console.log(view);
+    
+    let titles = ["ID", "Nombre de area", "Codigo"]
+    if (view) {
+
+      const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Date, })
     }
   }
   delete(data: { itemId: number, itemName: string }) {
@@ -76,7 +75,7 @@ export class AreasTryComponent {
         this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
       } else { }
     });
-    
+
   }
   deleteArea(event: number) {
     this._areaService.borrarArea(event).subscribe(() => {

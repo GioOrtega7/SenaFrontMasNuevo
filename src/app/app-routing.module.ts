@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path:"programa",
-        component: ProgramaFormativoComponent
+        component: AreasTryComponent
       },
       {
         path:"perfil",

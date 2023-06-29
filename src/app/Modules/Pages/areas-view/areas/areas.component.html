@@ -1,5 +1,8 @@
-<app-icon-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-icon-chart>
+<app-icon-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"
+    (dataInformation)="extendInformation($event)"></app-icon-chart>
 
-<app-board-table [view]="this.tableView" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-board-table>
-<app-regular-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"></app-regular-chart>
+<app-board-table [view]="this.tableView" (dataToUpdate)="Update($event)"
+    (dataToDelete)="Delete($event)"></app-board-table>
+<app-regular-chart [view]="this.view" (dataToUpdate)="Update($event)"
+    (dataToDelete)="Delete($event)"></app-regular-chart>
 <a><button (click)="openModalCreate()" class="add">Añadir</button></a>

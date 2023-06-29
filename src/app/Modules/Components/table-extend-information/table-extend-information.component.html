@@ -1,12 +1,12 @@
 <div mat-dialog-title>
-    <h4>{{this.extendModalTitle}}</h4>
-    <h4>{{incomeData.Title}}</h4>
+
+    <h4> Información de {{incomeData.title}}</h4>
 </div>
 <mat-dialog-content>
     <div class="container-datos">
         <div class="container-datos">
             <ul class="lista-datos" #relaciones>
-                <li *ngFor="let item of incomeData | keyvalue ;let i = index">
+                <li *ngFor="let item of incomeData.data | keyvalue ;let i = index">
                     <label>{{ item.key }}</label>
                     <ng-container *ngIf="!isValueArray(item.value) && !isValueObject(item.value) ">
                         <span>{{ item.value }}</span>
@@ -19,15 +19,15 @@
                                     <button class="Close" (click)="close(i)">X</button>
                                     <ul class="tablas-relaciones">
                                         <mat-dialog-content>
-                                        <div *ngFor="let obj of object | keyvalue">
-                                            <ul>
-                                                <li>
-                                                    <label>{{obj.key}}</label>
-                                                    <span>{{obj.value}}</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </mat-dialog-content>
+                                            <div *ngFor="let obj of object | keyvalue">
+                                                <ul>
+                                                    <li>
+                                                        <label>{{obj.key}}</label>
+                                                        <span>{{obj.value}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </mat-dialog-content>
                                     </ul>
                                 </div>
                             </div>
@@ -41,15 +41,15 @@
                                 <div *ngFor="let obj of info | keyvalue">
                                     <ul class="tablas-relaciones">
                                         <mat-dialog-content>
-                                        <div *ngFor="let item of obj.value | keyvalue">
-                                            <ul>
-                                                <li>
-                                                    <label>{{ item.key }}</label>
-                                                    <span>{{ item.value }}</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </mat-dialog-content>
+                                            <div *ngFor="let item of obj.value | keyvalue">
+                                                <ul>
+                                                    <li>
+                                                        <label>{{ item.key }}</label>
+                                                        <span>{{ item.value }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </mat-dialog-content>
                                     </ul>
                                 </div>
                             </div>
