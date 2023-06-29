@@ -37,8 +37,6 @@ export class BoardTableComponent {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
 
-
-
   page_size: number = 1;
   page_number: number = 1;
 

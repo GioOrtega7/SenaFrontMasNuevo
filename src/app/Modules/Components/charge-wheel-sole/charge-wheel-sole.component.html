@@ -14,7 +14,7 @@
           <p>{{view.itemPercentaje}}%</p>
         </div>
         <div class="actions">
-          <button (click)="openModalUpdate(this.view)"><img src="../../../assets/icons/reload.svg"></button>
+          <button (click)="openModalUpdate(this.view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
           <button (click)="deleteItem(this.view.itemId, this.view.itemName)"><img
               src="../../../assets/icons/delete.svg"></button>
           <button (click)="viewInformation(view.itemId)"><img

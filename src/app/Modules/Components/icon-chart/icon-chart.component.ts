@@ -31,8 +31,8 @@ export class IconChartComponent {
   viewInformation(id:number){
     this.dataInformation.emit(id)
   }
-  openModalUpdate(item: IconChartFiller) {
-    this.dataToUpdate.emit(item)
+  openModalUpdate(id: number) {
+    this.dataToUpdate.emit(id)
   }
 
   deleteItem(itemID: number, itemName: string) {
