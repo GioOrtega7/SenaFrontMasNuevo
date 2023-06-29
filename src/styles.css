@@ -190,6 +190,8 @@ app-footer {
     --mdc-dialog-container-shape: 7px !important;
     /*border radius*/
     overflow-x: hidden !important;
+
+    min-width: 400px !important;
 }
 
 .mat-mdc-dialog-actions{
@@ -217,7 +219,7 @@ app-extend-modal-alert{
 input {
     background-color: #131A2E !important;
     height: 40px;
-    width: 35vw;
+    width: 100%;
     border-radius: 10px;
     border: transparent solid 1px;
     color: #ffff;
@@ -271,10 +273,10 @@ input[type="password"]:-webkit-autofill {
 
 
 button.add::before {
-    content: "🗹";
+    content: "+";
     color: #fff;
-    font-size: 15px;
-    padding-right: 10px;
+    font-size: 18px;
+    padding: 0px 5px;
 }
 
 button.cancel {
@@ -296,6 +298,10 @@ button {
     padding: 10px 12px;
     cursor: pointer;
     transition: 0.2s;
+}
+
+button #text{
+color: red;
 }
 
 button:hover {

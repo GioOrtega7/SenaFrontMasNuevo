@@ -64,3 +64,10 @@ input.success{
     flex-direction: row;
     justify-content: space-between;
 }
+
+.update{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}

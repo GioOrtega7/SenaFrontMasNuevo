@@ -5,20 +5,25 @@
             <div class="form-content" *ngFor="let fill of this.filler">
                 <div class="form-item" *ngIf="fill.type == 'input'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <input [type]="fill.control" [formControlName]="fill.formControlName || ''" [(ngModel)]="fill.ngModel"
-                        (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' " [placeholder]="fill.placeholder"
-                        required />
+                    <input [type]="fill.control" [formControlName]="fill.formControlName || ''"
+                        [(ngModel)]="fill.ngModel" (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' "
+                        [placeholder]="fill.placeholder" required />
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <select [formControlName]="fill.formControlName || ''" required>
-                        <option *ngIf="fill.dataPlacer == null || fill.dataPlacer == undefined" value=""  disabled hidden [selected]=false> Seleccionar {{fill.fieldName}} </option>
-                        <option *ngFor='let item of fill.data' [ngValue]="item.dataId">{{item.data}}</option>
-                    </select>
+                    <div class="update">
+                        <select [formControlName]="fill.formControlName || ''" required>
+                            <option *ngIf="fill.dataPlacer == null || fill.dataPlacer == undefined" value="" disabled
+                                hidden [selected]=false> Seleccionar {{fill.fieldName}} </option>
+                            <option *ngFor='let item of fill.data' [ngValue]="item.dataId">{{item.data}}</option>
+                        </select>
+                        <button class="add" ></button>
+                    </div>
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'textarea'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true" [placeholder]="fill.placeholder">
+                    <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true"
+                        [placeholder]="fill.placeholder">
                     </textarea>
                 </div>
             </div>
@@ -26,12 +31,12 @@
     </mat-dialog-content>
     <mat-dialog-actions>
 
-            <button type="submit" class="add"  [disabled]="!isFormComplete">
-                Aceptar
-            </button>
-            <button mat-dialog-close class="cancel">
-                Cancelar
-            </button>
+        <button type="submit" class="add" [disabled]="!isFormComplete">
+            Aceptar
+        </button>
+        <button mat-dialog-close class="cancel">
+            Cancelar
+        </button>
 
     </mat-dialog-actions>
 </form>
