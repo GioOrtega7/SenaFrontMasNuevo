@@ -98,13 +98,13 @@ export class ChargeWheelComponent {
     if (screenWidth > 1633) {
       this.page_size = 10;
     }
-    else if (screenWidth < 1633 && screenWidth >= 1314) {
+    else if (screenWidth < 1633 && screenWidth >= 1245) {
       this.page_size = 8;
     }
-    else if (screenWidth < 1314 && screenWidth >= 995) {
+    else if (screenWidth < 1245 && screenWidth >= 945) {
       this.page_size = 6;
     }
-    else if (screenWidth < 995 && screenWidth >= 800) {
+    else if (screenWidth < 945 && screenWidth >= 800) {
       this.page_size = 4;
     }
     else if (screenWidth < 800 && screenWidth >= 675) {

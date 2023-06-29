@@ -13,7 +13,7 @@ export class TableExtendInformationComponent {
   object: any[] = []
   generate: boolean = false
   constructor(
-    @Inject(MAT_DIALOG_DATA) public incomeData: any) {
+    @Inject(MAT_DIALOG_DATA) public incomeData:{data: object, title:string}) {
   }
   extendModalTitle: string = "Información de";
   isValueObject(value: any): boolean {
@@ -24,10 +24,10 @@ export class TableExtendInformationComponent {
     return typeof value === 'object' && value !== null && !Array.isArray(value);
   }
   isValueArray(value: any): boolean {
-    if (Array.isArray(value)) {
+    if (Array.isArray(value) &&  value.length > 0) {
       this.info = value
     }
-    return Array.isArray(value);
+    return Array.isArray(value) &&  value.length > 0;
   }
   getObjectEntries(obj: any): any[] {
     return Object.entries(obj);

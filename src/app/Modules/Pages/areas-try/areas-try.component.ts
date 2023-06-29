@@ -58,14 +58,10 @@ export class AreasTryComponent {
     return await dialogRef.afterClosed().toPromise();
   }
   ExtensInfo(id:number ){
-    const view = this.view.find(res=>res.itemId===id)
+    const view = this.res.find(res=>res.id===id)
     if(view){
-      const Data =(Object(this.res.find(res=>res.id===id)))
-      let Title: DateFiler={ 
-        Title:view.itemName
-    };
-    console.log(Data)
-    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Data,   })
+    let data ={ data: view, title: view.nombreArea}
+    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: data   })
     }
   }
   delete(data: { itemId: number, itemName: string }) {
