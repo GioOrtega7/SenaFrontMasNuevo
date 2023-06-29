@@ -1,0 +1,22 @@
+<div class="card-header">
+  <h2>Cargar tu archivo exel </h2>
+</div>
+<div class="card-body">
+
+  <form (submit)="importarDocumetosMora($event)">
+    <div class="custom-input-file">
+      <input id="custom-input-file" type="file" name="documento">
+    </div>
+    <div class="card-footer">
+      <progress class="progress-bar" [value]="progreso" max="50"></progress>
+      <button class="add" [disabled]="cargandoArchivo" type="submit">
+        Importar
+      </button>
+    </div>
+  </form>
+</div>
+<div class="pdf" >
+  <input type="number" name="cedula" placeholder="Cedula">
+    <button class="export" (click)="descargar()">certificado sena</button>
+    <button class="export" (click)="descargar2()">certificado terceros</button>
+</div>
