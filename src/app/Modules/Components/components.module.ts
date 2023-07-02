@@ -33,7 +33,6 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     ExtendModalFormComponent,
     IconChartComponent,
     ExtendModalAlertComponent,
-    IconChartComponent,
     ComponentsPipe,
     IconChartSoleComponent,
     ElipseInformationComponent,

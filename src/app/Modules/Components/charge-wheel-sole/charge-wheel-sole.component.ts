@@ -17,6 +17,8 @@ export class ChargeWheelSoleComponent {
   colores: string[];
   @Input() view: ChargeWheelFiller = {} as ChargeWheelFiller;
   @Output() dataInformation = new EventEmitter<number>();
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
   generate: boolean = false; 
 
   constructor() {
@@ -69,8 +71,7 @@ export class ChargeWheelSoleComponent {
     const porcentajedias = Math.round(porcentaje)
     this.porsentajeDias= porcentajedias
   }  
-  @Output() dataToUpdate = new EventEmitter<any>();
-  @Output() dataToDelete = new EventEmitter<any>();
+
 
   viewInformation(id:number){
     this.dataInformation.emit(id)

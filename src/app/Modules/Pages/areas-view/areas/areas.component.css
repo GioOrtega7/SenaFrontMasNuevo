@@ -175,9 +175,5 @@
   display: block;
   
 }
-.tex-carc{
-  height: 40px;
-  -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
-}
 
 

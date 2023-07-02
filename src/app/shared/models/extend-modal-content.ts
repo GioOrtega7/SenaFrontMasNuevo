@@ -4,16 +4,15 @@ export interface ExtendModalFiller {
     type?: string;
     control?: string;
     formControlName?: string;
-    ngModel?: string;
+    ngModel?: string | number;
     uppercase?: boolean;
-    data?: Array<{ data: string, dataId: number }>;
-    dataPlacer?: any;
+    data?: { data: string, dataId: number }[];
+    dataPlacer?: any | any[];
+    extend?: incomeData
 }
 
 export interface incomeData {
     filler: ExtendModalFiller[],
     title: string,
-    incomeId?: string,
-    update?: boolean,
     dataArray?: any
 }

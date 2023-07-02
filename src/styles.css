@@ -80,51 +80,10 @@ main {
     gap: 30px;
 }
 
-.snotifyToast__body {
-    width: 150px;
-}
 
-.snotifyToast {
-    overflow: hidden;
-    position: absolute;
-    left: -200px;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: rgb(201, 5, 5);
-    position: absolute;
-    border-radius: 10px;
-}
 
-.fadeIn {
-    position: relative;
-    width: 150px;
-    left: 10px;
-    animation-name: fadeInAnimation;
-}
 
-@keyframes fadeInAnimation {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
-.snotifyToast_progressBar_percentage {
-    display: flex;
-    height: 3px;
-    background: blue;
-    transition: 0.1s;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 25px;
-}
 
 app-root,
 app-company {
@@ -175,7 +134,7 @@ app-footer {
 }
 
 .mat-mdc-dialog-container {
-    --mdc-dialog-container-color: #182034;
+    --mdc-dialog-container-color: transparent;
     /* Outer container color*/
     --mdc-dialog-subhead-color: rgba(255, 255, 255, 0.87);
     /*title color*/
@@ -187,6 +146,13 @@ app-footer {
 
     min-width: 400px !important;
 }
+
+.cdk-overlay-pane{
+    background:var(--mdc-dialog-container-color, #182034);
+    border-radius: 10px;
+}
+
+
 
 .mat-mdc-dialog-actions {
     gap: 10px;

@@ -1,5 +1,5 @@
 <div mat-dialog-title> {{this.extendModalTitle}}</div>
-<form [formGroup]="formExtend" novalidate (ngSubmit)="saveData()">
+<form [formGroup]="formExtend" novalidate>
     <mat-dialog-content>
         <div class="form-body">
             <div class="form-content" *ngFor="let fill of this.filler">
@@ -12,26 +12,44 @@
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <div class="update">
-                        <select [formControlName]="fill.formControlName || ''" required>
+                        <select [formControlName]="fill.formControlName || ''" required [(ngModel)]="fill.dataPlacer">
                             <option *ngIf="fill.dataPlacer == null || fill.dataPlacer == undefined" value="" disabled
-                                hidden [selected]=false> Seleccionar {{fill.fieldName}} </option>
-                            <option *ngFor='let item of fill.data' [ngValue]="item.dataId">{{item.data}}</option>
+                                hidden selected> Seleccionar {{fill.fieldName}} </option>
+                            <option *ngFor='let item of fill.data' [value]="item.dataId">{{item.data}}</option>
                         </select>
-                        <button class="add" ></button>
+                        <button *ngIf="fill.extend" class="add"
+                            (click)="openUpdate(fill.extend, fill.fieldName)"></button>
                     </div>
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'textarea'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true"
-                        [placeholder]="fill.placeholder">
+                        [placeholder]="fill.placeholder" [(ngModel)]="fill.dataPlacer">
                     </textarea>
+                </div>
+                <div class="form-item" *ngIf="fill.type=='radio'">
+                    <p>{{fill.fieldName}}</p>
+                    <label class="switch" [for]="fill.formControlName" *ngFor="let item of fill.data">
+                        <input type="radio" [name]="fill.formControlName!" [value]="item.dataId"
+                            [formControlName]="fill.formControlName!" [(ngModel)]="fill.dataPlacer">
+                        {{item.data}}
+                    </label>
+                </div>
+                <div class="form-item" *ngIf="fill.type=='checkbox'">
+                    <p>{{fill.fieldName}}</p>
+                    <label class="switch"> <input type="checkbox" (change)="selectAll(fill.data!)"> Seleccionar todos</label>
+                    <label class="switch" *ngFor="let item of fill.data">
+                        <input type="checkbox" [name]="item.data"
+                            [formControlName]="item.data" >
+                        {{item.data}}
+                    </label>
                 </div>
             </div>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions>
 
-        <button type="submit" class="add" [disabled]="!isFormComplete">
+        <button type="submit" class="add" [disabled]="!isFormComplete" (click)="saveData()">
             Aceptar
         </button>
         <button mat-dialog-close class="cancel">

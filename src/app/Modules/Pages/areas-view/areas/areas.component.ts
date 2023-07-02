@@ -16,6 +16,7 @@ import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-modal-alert/extend-modal-alert.component';
 import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
 import { TableExtendInformationComponent } from 'src/app/Modules/Components/table-extend-information/table-extend-information.component';
+import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
 
 @Component({
   selector: 'app-areas',
@@ -38,9 +39,11 @@ export class AreasComponent implements OnInit, OnDestroy {
   soleView: IconChartFiller = {} as IconChartFiller
   private subscription: Subscription | undefined;
   filler: ExtendModalFiller[] = [];
+  filler1: ExtendModalFiller[] = [];
   tableView: BoardTable = {} as BoardTable;
-
+  data: any[] = []
   constructor(
+    private saveData: ExtendModalSecondService,
     //private dialogRef: MatDialogRef<AreasComponent>,
     //private modalRef: MatDialogRef<ExtendModalComponent>,
     private searchService: SearchBarService,
@@ -80,36 +83,39 @@ export class AreasComponent implements OnInit, OnDestroy {
       this.tableView = { itemTitles: titles, itemData: tableView }
       this.view = view;
       this.soleView = view[0]
-
+      this.data = res.map((res: AreaModel) => ({
+        data: res.nombreArea,
+        dataId: res.id
+      }))
 
     });
 
 
   }
 
-  Update(id : number) {
+  Update(id: number) {
 
     const data: AreaModel = this.res1.find(res => res.id === id)
-   
-    if(data)
-    this.filler = [{
-      fieldName: "Nombre de Area",
-      type: "input",
-      control: "text",
-      dataPlacer: data.nombreArea,
-      uppercase: true
-    }
-      , {
-      fieldName: "Codigo",
-      control: "number",
-      dataPlacer: data.codigo
-    },
-    {
-      fieldName: "Icono asdasd asd aqwe ",
-      control: "string",
-      dataPlacer: data.iconUrl
-    }
-    ]
+
+    if (data)
+      this.filler = [{
+        fieldName: "Nombre de Area",
+        type: "input",
+        control: "text",
+        dataPlacer: data.nombreArea,
+        uppercase: true
+      }
+        , {
+        fieldName: "Codigo",
+        control: "number",
+        dataPlacer: data.codigo
+      },
+      {
+        fieldName: "Icono asdasd asd aqwe ",
+        control: "string",
+        dataPlacer: data.iconUrl
+      }
+      ]
 
     var pass: incomeData = {
       filler: this.filler, title: "Actualizar area"
@@ -128,7 +134,7 @@ export class AreasComponent implements OnInit, OnDestroy {
         this.guardarArea(this.area)
 
         this.searchService.getModelName("area", "areas")
-        
+
       }
     })
   }
@@ -156,7 +162,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
   guardarArea(area: AreaModel) {
 
-    this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
+    this.notificationService.showNotification({ message: "Cambios guardakdos", type: "success" })
 
     if (area.id) {
       this._areaService.actualizarArea(area).subscribe(() => {
@@ -175,7 +181,7 @@ export class AreasComponent implements OnInit, OnDestroy {
   extendInformation(id: number) {
     let view = (this.res1.find(res => res.id === id))
     if (view) {
-      let data = {data: view, title: view.nombreArea}
+      let data = { data: view, title: view.nombreArea }
       const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: data, })
     }
   }
@@ -198,10 +204,13 @@ export class AreasComponent implements OnInit, OnDestroy {
 
 
   openModalCreate() {
+    console.log(this.data);
+
     this.filler = [{
       fieldName: "Nombre de Area",
       control: "text",
-      uppercase: true
+      uppercase: true,
+      dataPlacer: "asd"
     }
       , {
       fieldName: "Codigo",
@@ -210,57 +219,153 @@ export class AreasComponent implements OnInit, OnDestroy {
     {
       fieldName: "Icono",
       control: "string",
-    }]
+    },
+    {
+      fieldName: "bruh",
+      type: "select",
+      data: this.data,
+      dataPlacer: 6,
+    },
+    {
+      fieldName: "bruhj",
+      type: "select",
+      data: this.data,
+      dataPlacer: this.data[2].dataId
+    },
+    {
+      fieldName: "bruh123",
+      type: "textarea",
+      dataPlacer: "6123123"
+    },
+
+    ]
+
+    var pass1: incomeData = {
+      filler: this.filler, title: "Actualizar area"
+    }
+
+
+
+    this.filler1 = [{
+      fieldName: "Nombre de Area",
+      control: "text",
+      uppercase: true,
+      dataPlacer: "asd"
+    }
+      , {
+      fieldName: "Codigo",
+      type: "checkbox",
+      data: [{ data: "a1s", dataId: 1 },
+      { data: "as", dataId: 2 },
+      { data: "asas", dataId: 3 },
+      { data: "ase", dataId: 4 },
+      { data: "asq", dataId: 5 },
+      { data: "as2", dataId: 6 }],
+      dataPlacer: [{ data: "asas", dataId: 3 }]
+    },
+    {
+      fieldName: "Icono",
+      type: "radio",
+      data: this.data,
+      dataPlacer: 1
+    },
+    {
+      fieldName: "bruh",
+      type: "select",
+      data: this.data,
+      dataPlacer: 6,
+      extend: pass1
+    },
+    {
+      fieldName: "bruhj",
+      type: "select",
+      data: this.data,
+      dataPlacer: this.data[2].dataId
+    },
+    {
+      fieldName: "bruh123",
+      type: "textarea",
+      dataPlacer: "6123123"
+    },
+
+    ]
 
     var pass: incomeData = {
-      filler: this.filler, title: "Actualizar area", update: true
+      filler: this.filler1, title: "Actualizar area"
     }
 
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
-    dialogRef.afterClosed().subscribe(gets => {
-      if (gets) {
-        this.area = {
-          nombreArea: gets[0],
-          codigo: gets[1],
-          iconUrl: gets[2]
+    this.saveData.$extendModalSecond.subscribe((res: any) => {
+      var area: AreaModel
+      var name : string = res.name;
+      var newArea: any[]
+      if (res.data) {
+        area = {
+          nombreArea: res.data[0],
+          codigo: res.data[1],
+          iconUrl: res.data[2]
         }
-        
+        console.log(area);
+        this.guardarArea(area)
+        this.searchService.getModelName("area", "areas");
 
-        this.guardarArea(this.area)
-
-        this.searchService.getModelName("area", "areas")        
-      }
-    })
-
-
-
-
+        this.searchService.$searchArrayService.subscribe((res) => 
+         { if(res){
+          newArea = res.map(res=> ({data:res.nombreArea, dataId: res.id}))
+          this.saveData.dataUpdate(newArea , name)
+         }
+        }
+        )
   }
 
+})
 
-  /////////////////////////////////////////////
+dialogRef.afterClosed().subscribe(gets => {
+  console.log("wtf", gets);
 
-
-
-
-
-  buscarArea(event: AreaModel) {
-    this.showResultadoBusqueda = true;
-    this.resultadoBusqueda = event;
-  }
-
-
-
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+  if (gets) {
+    this.area = {
+      nombreArea: gets[0],
+      codigo: gets[1],
+      iconUrl: gets[2]
     }
+
+
+    this.guardarArea(this.area)
+
+
+  }
+})
+
+
+
+
+  }
+
+
+/////////////////////////////////////////////
+
+
+
+
+
+buscarArea(event: AreaModel) {
+  this.showResultadoBusqueda = true;
+  this.resultadoBusqueda = event;
+}
+
+
+
+
+ngOnDestroy(): void {
+  if(this.subscription) {
+  this.subscription.unsubscribe();
+}
   }
 
 
 
-  ngAfterViewChecked(): void {
+ngAfterViewChecked(): void {
 
-  }
+}
 }
