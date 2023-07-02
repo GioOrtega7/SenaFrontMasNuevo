@@ -204,7 +204,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
 
   openModalCreate() {
-    console.log(this.data);
+
 
     this.filler = [{
       fieldName: "Nombre de Area",
@@ -305,7 +305,7 @@ export class AreasComponent implements OnInit, OnDestroy {
           codigo: res.data[1],
           iconUrl: res.data[2]
         }
-        console.log(area);
+
         this.guardarArea(area)
         this.searchService.getModelName("area", "areas");
 
@@ -321,7 +321,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 })
 
 dialogRef.afterClosed().subscribe(gets => {
-  console.log("wtf", gets);
+
 
   if (gets) {
     this.area = {

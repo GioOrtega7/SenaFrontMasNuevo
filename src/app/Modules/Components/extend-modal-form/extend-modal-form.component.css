@@ -77,8 +77,6 @@ input.success {
     gap: 5px;
 }
 
-input[type="radio"] {}
-
 
 .switch{
     display: flex;

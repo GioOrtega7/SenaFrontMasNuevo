@@ -73,13 +73,13 @@ export class ExtendModalFormComponent {
       } else { this.formExtend.addControl(item.formControlName!, new FormControl('', Validators.required)); }
     })
 
-    this.saveService.$extendModalUpdate.subscribe((res:any) => {
-      if (res) { 
+    this.saveService.$extendModalUpdate.subscribe((res: any) => {
+      if (res) {
         let name: string = res.name; let data: any[] = res.data
-        console.log("asdqwe", data, name);
         
-        for(let fill of this.filler){
-          if (fill.fieldName == name){
+
+        for (let fill of this.filler) {
+          if (fill.fieldName == name) {
             fill.data = data
           }
         }
@@ -89,7 +89,7 @@ export class ExtendModalFormComponent {
   }
 
   private getControl(name: string) {
-    console.log(this.formExtend.controls[name]);
+    
 
     return this.formExtend.controls[name];
   }
@@ -110,7 +110,6 @@ export class ExtendModalFormComponent {
       } else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
 
     }
-    console.log("asda", outputData);
     this.dialogRef.close(outputData)
 
   }
@@ -127,7 +126,6 @@ export class ExtendModalFormComponent {
     const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
-      console.log("xd", res)
       this.saveService.dataSave(res, name)
       document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
     }
