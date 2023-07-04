@@ -13,8 +13,9 @@
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <div class="update">
                         <select [formControlName]="fill.formControlName || ''" required>
-                            <option *ngIf="fill.dataPlacer == null || fill.dataPlacer == undefined" value="" disabled
+                            <option *ngIf="fill.dataPlacer.lenght < 2" [value]="fill.dataPlacer.lenght" disabled
                                 hidden selected> Seleccionar {{fill.fieldName}} </option>
+                          
                             <option *ngFor='let item of fill.data' [value]="item.dataId">{{item.data}}</option>
                         </select>
                         <button *ngIf="fill.extend" class="add"

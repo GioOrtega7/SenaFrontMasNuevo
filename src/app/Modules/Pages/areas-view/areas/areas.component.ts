@@ -268,15 +268,14 @@ export class AreasComponent implements OnInit, OnDestroy {
     },
     {
       fieldName: "Icono",
-      type: "radio",
-      data: this.data,
-      dataPlacer: 1
+      type: "input",
+      control: "file"
     },
     {
       fieldName: "bruh",
       type: "select",
       data: this.data,
-      dataPlacer: 6,
+      
       extend: pass1
     },
     {
@@ -316,9 +315,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
         this.searchService.$searchArrayService.subscribe((res) => {
           if (res) {
-            
             newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
-
             this.saveData.dataUpdate(newArea, name);
           }
         }
