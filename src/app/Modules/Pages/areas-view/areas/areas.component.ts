@@ -261,10 +261,10 @@ export class AreasComponent implements OnInit, OnDestroy {
       { data: "cinco", dataId: 5 },
       { data: "seis", dataId: 6 }],
       dataPlacer:
-      [{dataId: 1 },
-      {dataId: 2 },
-      {dataId: 31 },
-      {dataId: 6 },]
+        [{ dataId: 1 },
+        { dataId: 2 },
+        { dataId: 31 },
+        { dataId: 6 },]
     },
     {
       fieldName: "Icono",
@@ -284,7 +284,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       type: "select",
       data: this.data,
       dataPlacer: "4"
-     
+
     },
     {
       fieldName: "bruh123",
@@ -304,7 +304,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       var name: string = res.name;
       var newArea: any[]
       if (res.data) {
-        
+
         area = {
           nombreArea: res.data[0],
           codigo: res.data[1],
@@ -316,7 +316,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
         this.searchService.$searchArrayService.subscribe((res) => {
           if (res) {
-            
+
             newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
 
             this.saveData.dataUpdate(newArea, name);
@@ -327,7 +327,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     })
 
     dialogRef.afterClosed().subscribe(gets => {
-      
+
       if (gets) {
         this.area = {
           nombreArea: gets[0],
