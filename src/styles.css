@@ -80,11 +80,6 @@ main {
     gap: 30px;
 }
 
-
-
-
-
-
 app-root,
 app-company {
     width: 100%;
@@ -143,16 +138,13 @@ app-footer {
     --mdc-dialog-container-shape: 7px !important;
     /*border radius*/
     overflow-x: hidden !important;
-
     min-width: 400px !important;
 }
 
-.cdk-overlay-pane{
-    background:var(--mdc-dialog-container-color, #182034);
+.cdk-overlay-pane {
+    background: var(--mdc-dialog-container-color, #182034);
     border-radius: 10px;
 }
-
-
 
 .mat-mdc-dialog-actions {
     gap: 10px;
@@ -256,8 +248,8 @@ button {
     transition: 0.2s;
 }
 
-button #text{
-color: red;
+button #text {
+    color: red;
 }
 
 button:hover {
@@ -342,12 +334,12 @@ button.cancel::before {
     right: 0;
 }
 
-mat-paginator{
+mat-paginator {
     margin-top: 20px;
     margin-bottom: 40px;
 }
 
-textarea{
+textarea {
     background-color: #131A2E;
     border-radius: 10px;
     border: transparent 1px solid;
@@ -375,4 +367,19 @@ input[type=number]::-webkit-outer-spin-button {
 
 input::placeholder {
     color: #8b8b8b !important;
+}
+
+input[type=file] {
+    height: 100%;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #ffffff;
+    padding: 8px 5px;
+    border-radius: 10px;
+    color: #000000;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
 }

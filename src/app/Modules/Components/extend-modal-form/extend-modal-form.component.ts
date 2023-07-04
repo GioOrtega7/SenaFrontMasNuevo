@@ -70,9 +70,12 @@ export class ExtendModalFormComponent {
           unchecked.forEach((control: any) => {
             this.formExtend.addControl(control.data, new FormControl(false, Validators.required))
           });
-        }
+        } else { item.data?.forEach(control => { this.formExtend.addControl(control.data, new FormControl(false, Validators.required)) }) }
       } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
+    console.log(this.filler);
+    console.log(this.filler[3].dataPlacer.lenght, this.filler[0].dataPlacer.lenght)
+
 
     this.saveService.$extendModalUpdate.subscribe((res: any) => {
       if (res) {
@@ -107,6 +110,8 @@ export class ExtendModalFormComponent {
         checkbox = []
       } else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
+    console.log(outputData);
+
     this.dialogRef.close(outputData)
 
   }
