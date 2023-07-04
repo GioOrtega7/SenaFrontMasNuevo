@@ -283,6 +283,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "bruhj",
       type: "select",
       data: this.data,
+      dataPlacer: "4"
      
     },
     {

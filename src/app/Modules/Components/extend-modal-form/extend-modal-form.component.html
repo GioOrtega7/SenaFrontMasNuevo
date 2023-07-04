@@ -12,7 +12,7 @@
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <div class="update">
-                        <select [formControlName]="fill.formControlName || ''" required [(ngModel)]="fill.dataPlacer">
+                        <select [formControlName]="fill.formControlName || ''" required>
                             <option *ngIf="fill.dataPlacer == null || fill.dataPlacer == undefined" value="" disabled
                                 hidden selected> Seleccionar {{fill.fieldName}} </option>
                             <option *ngFor='let item of fill.data' [value]="item.dataId">{{item.data}}</option>
@@ -24,14 +24,14 @@
                 <div class="form-item" *ngIf="fill.type == 'textarea'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true"
-                        [placeholder]="fill.placeholder" [(ngModel)]="fill.dataPlacer">
+                        [placeholder]="fill.placeholder">
                     </textarea>
                 </div>
                 <div class="form-item" *ngIf="fill.type=='radio'">
                     <p>{{fill.fieldName}}</p>
                     <label class="switch" [for]="fill.formControlName" *ngFor="let item of fill.data">
                         <input type="radio" [name]="fill.formControlName!" [value]="item.dataId"
-                            [formControlName]="fill.formControlName!" [(ngModel)]="fill.dataPlacer">
+                            [formControlName]="fill.formControlName!">
                         {{item.data}}
                     </label>
                 </div>

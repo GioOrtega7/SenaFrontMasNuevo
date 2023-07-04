@@ -51,12 +51,12 @@ export class ExtendModalFormComponent {
       ngModel: item.dataPlacer,
       UPCondition: item.uppercase || false,
       data: item.data || [{ data: "data", dataId: 0 }],
-      dataPlacer: item.dataPlacer || null,
+      dataPlacer: item.dataPlacer || "",
       extend: item.extend || undefined
     }));
 
     this.formExtend = this.formBuilder.group({})
-        
+
     this.filler.forEach((item) => {
       if (item.type === "checkbox") {
         var checked: { dataId: number | string }[] | any = [];
@@ -71,7 +71,7 @@ export class ExtendModalFormComponent {
             this.formExtend.addControl(control.data, new FormControl(false, Validators.required))
           });
         }
-      } else { this.formExtend.addControl(item.formControlName!, new FormControl('', Validators.required)); }
+      } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
 
     this.saveService.$extendModalUpdate.subscribe((res: any) => {
@@ -106,7 +106,6 @@ export class ExtendModalFormComponent {
         outputData.push(checkbox)
         checkbox = []
       } else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
-
     }
     this.dialogRef.close(outputData)
 
