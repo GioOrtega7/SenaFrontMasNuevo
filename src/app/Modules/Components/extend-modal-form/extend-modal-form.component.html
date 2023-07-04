@@ -37,12 +37,16 @@
                 </div>
                 <div class="form-item" *ngIf="fill.type=='checkbox'">
                     <p>{{fill.fieldName}}</p>
-                    <label class="switch"> <input type="checkbox" (change)="selectAll(fill.data!)"> Seleccionar todos</label>
+                    <label class="switch"> <input type="checkbox" (change)="selectAll(fill.data!)"> Seleccionar
+                        todos</label>
                     <label class="switch" *ngFor="let item of fill.data">
-                        <input type="checkbox" [name]="item.data"
-                            [formControlName]="item.data" >
+                        <input type="checkbox" [name]="item.data" [formControlName]="item.data">
                         {{item.data}}
                     </label>
+                </div>
+                <div class="display-table" *ngIf="fill.type == 'display'">
+                    
+
                 </div>
             </div>
         </div>

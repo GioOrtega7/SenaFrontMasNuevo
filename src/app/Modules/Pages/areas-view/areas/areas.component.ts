@@ -186,7 +186,6 @@ export class AreasComponent implements OnInit, OnDestroy {
     }
   }
 
-
   iniciarCache() {
     this.cache.set(0, { areas: null });
   }
@@ -255,13 +254,17 @@ export class AreasComponent implements OnInit, OnDestroy {
       , {
       fieldName: "Codigo",
       type: "checkbox",
-      data: [{ data: "a1s", dataId: 1 },
-      { data: "as", dataId: 2 },
-      { data: "asas", dataId: 3 },
-      { data: "ase", dataId: 4 },
-      { data: "asq", dataId: 5 },
-      { data: "as2", dataId: 6 }],
-      dataPlacer: [{ data: "asas", dataId: 3 }]
+      data: [{ data: "uno", dataId: 1 },
+      { data: "dos", dataId: 2 },
+      { data: "tres", dataId: 3 },
+      { data: "cuatro", dataId: 4 },
+      { data: "cinco", dataId: 5 },
+      { data: "seis", dataId: 6 }],
+      dataPlacer:
+      [{dataId: 1 },
+      {dataId: 2 },
+      {dataId: 31 },
+      {dataId: 6 },]
     },
     {
       fieldName: "Icono",
@@ -280,7 +283,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "bruhj",
       type: "select",
       data: this.data,
-      dataPlacer: this.data[2].dataId
+     
     },
     {
       fieldName: "bruh123",
@@ -297,9 +300,10 @@ export class AreasComponent implements OnInit, OnDestroy {
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
     this.saveData.$extendModalSecond.subscribe((res: any) => {
       var area: AreaModel
-      var name : string = res.name;
+      var name: string = res.name;
       var newArea: any[]
       if (res.data) {
+        
         area = {
           nombreArea: res.data[0],
           codigo: res.data[1],
@@ -309,63 +313,49 @@ export class AreasComponent implements OnInit, OnDestroy {
         this.guardarArea(area)
         this.searchService.getModelName("area", "areas");
 
-        this.searchService.$searchArrayService.subscribe((res) => 
-         { if(res){
-          newArea = res.map(res=> ({data:res.nombreArea, dataId: res.id}))
-          this.saveData.dataUpdate(newArea , name)
-         }
+        this.searchService.$searchArrayService.subscribe((res) => {
+          if (res) {
+            
+            newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
+
+            this.saveData.dataUpdate(newArea, name);
+          }
         }
         )
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(gets => {
+      
+      if (gets) {
+        this.area = {
+          nombreArea: gets[0],
+          codigo: "asd",
+          iconUrl: gets[2]
+        }
+        this.guardarArea(this.area)
+      }
+    })
+  }
+  /////////////////////////////////////////////
+
+  buscarArea(event: AreaModel) {
+    this.showResultadoBusqueda = true;
+    this.resultadoBusqueda = event;
   }
 
-})
-
-dialogRef.afterClosed().subscribe(gets => {
 
 
-  if (gets) {
-    this.area = {
-      nombreArea: gets[0],
-      codigo: gets[1],
-      iconUrl: gets[2]
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
-
-
-    this.guardarArea(this.area)
-
-
-  }
-})
-
-
-
-
-  }
-
-
-/////////////////////////////////////////////
-
-
-
-
-
-buscarArea(event: AreaModel) {
-  this.showResultadoBusqueda = true;
-  this.resultadoBusqueda = event;
-}
-
-
-
-
-ngOnDestroy(): void {
-  if(this.subscription) {
-  this.subscription.unsubscribe();
-}
   }
 
 
 
-ngAfterViewChecked(): void {
+  ngAfterViewChecked(): void {
 
-}
+  }
 }
