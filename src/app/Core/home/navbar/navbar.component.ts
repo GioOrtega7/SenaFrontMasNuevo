@@ -75,6 +75,11 @@ export class NavbarComponent implements OnInit {
         name: 'Grupos',
         url: 'Grupos',
         icon: 'holiday_village'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'holiday_village'
       }
     ]
 

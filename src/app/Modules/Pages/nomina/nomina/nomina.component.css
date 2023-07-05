@@ -1,0 +1,46 @@
+.export {
+  display: flex;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb40a;
+  border-radius: 20px;
+  color: #fff;
+  border: none;
+  padding: 16px;
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.progress-bar {
+  width: 96%;
+  height: 43px;
+  background-color: lightgray;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.add{
+  display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: #006b00;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    padding: 16px;
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+.pdf {
+  margin: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+}

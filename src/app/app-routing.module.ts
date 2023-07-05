@@ -10,6 +10,7 @@ import { ProyectoFormativoComponent } from './Modules/Pages/proyecto-formativo-v
 import { PerfilComponent } from './Modules/Pages/perfil/perfil.component';
 import { AreasTryComponent } from './Modules/Pages/areas-try/areas-try.component';
 import { GruposViewComponent } from './Modules/Pages/grupos-view/grupos-view.component';
+import { NominaComponent } from './Modules/Pages/nomina/nomina/nomina.component';
 const routes: Routes = [
   {
     path: '',
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path:"Grupos",
         component: GruposViewComponent
+      },
+      {
+        path:"Nomina",
+        component: NominaComponent
       },
     ]
   }
