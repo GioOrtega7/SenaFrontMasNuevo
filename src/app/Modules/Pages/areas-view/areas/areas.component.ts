@@ -221,19 +221,19 @@ export class AreasComponent implements OnInit, OnDestroy {
       control: "string",
     },
     {
-      fieldName: "bruh",
+      fieldName: "Select 2",
       type: "select",
       data: this.data,
       dataPlacer: 6,
     },
     {
-      fieldName: "bruhj",
+      fieldName: "Select",
       type: "select",
       data: this.data,
       dataPlacer: this.data[2].dataId
     },
     {
-      fieldName: "bruh123",
+      fieldName: "Text area",
       type: "textarea",
       dataPlacer: "6123123"
     },
@@ -253,21 +253,12 @@ export class AreasComponent implements OnInit, OnDestroy {
       dataPlacer: "asd"
     }
       , {
-      fieldName: "Codigo",
+      fieldName: "Check",
       type: "checkbox",
       data: [{ data: "uno", dataId: 1 },
       { data: "dos", dataId: 2 },
       { data: "tres", dataId: 3 },
-      { data: "cuatro", dataId: 4 },
-      { data: "cinco", dataId: 5 },
-      { data: "seis", dataId: 6 },
-      { data: "dos123", dataId: 22 },
-      { data: "tres123", dataId: 33 },
-      { data: "cuatro123", dataId: 42 },
-      { data: "seis", dataId: 6 },
-      { data: "dos123", dataId: 22 },
-      { data: "tres123", dataId: 33 },
-      { data: "cuatro123", dataId: 42 }],
+      { data: "cuatro", dataId: 4 }],
       dataPlacer:
         [{ dataId: 1 },
         { dataId: 2 },
@@ -280,20 +271,20 @@ export class AreasComponent implements OnInit, OnDestroy {
       control: "file"
     },
     {
-      fieldName: "bruh",
+      fieldName: "Area",
       type: "select",
       data: this.data,
       extend: pass1
     },
     {
-      fieldName: "bruhj",
+      fieldName: "Area extra",
       type: "select",
       data: this.data,
       dataPlacer: "4"
 
     },
     {
-      fieldName: "bruh123",
+      fieldName: "Mostrar",
       type: "display",
       dataPlacer: "6123123",
       display: [{ title: "Sede centro", info1: "Fecha inicio: " + "878/5465/654", info2: "xd", info3: "xdd" },
@@ -302,7 +293,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       extend: pass1
     },
     {
-      fieldName: "bruh1232",
+      fieldName: "Text area",
       type: "textarea",
       dataPlacer: "6123123"
     },
@@ -318,6 +309,9 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.saveData.$extendModalSecond.subscribe((res: any) => {
       var area: AreaModel
       var name: string = res.name;
+      if(name === "Area"){
+
+      }
       var newArea: any[]
       if (res.data) {
 

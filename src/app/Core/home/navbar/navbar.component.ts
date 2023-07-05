@@ -2,11 +2,10 @@ import { Component, ViewChild, ElementRef, OnInit, Renderer2 } from '@angular/co
 import { PersonaModel } from 'src/app/shared/models/persona.model';
 import { CoreService } from 'src/app/shared/services/core.service';
 import { ServicioToggleService } from 'src/app/shared/services/servicio-toggle.service';
-import { NavegationModel } from 'src/app/shared/models/navegation.model';
 import { AdjustNavbarService } from 'src/app/shared/services/adjust-navbar.service';
-import { Router, NavigationEnd } from '@angular/router'
+import { Router } from '@angular/router'
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-
+import {menu} from './nav-material'
 
 @Component({
   selector: 'app-navbar',
@@ -50,33 +49,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
 
-    const menu: NavegationModel[] = [
-      {
-        name: 'Areas',
-        url: 'dashboard',
-        icon: 'team_dashboard'
-      },
-      {
-        name: 'Programas Formativos',
-        url: '/programa',
-        icon: 'patient_list'
-      },
-      {
-        name: 'Proyectos Formativos',
-        url: '/proyecto',
-        icon: 'settings_account_box'
-      },
-      {
-        name: 'Sedes',
-        url: 'sede',
-        icon: 'holiday_village'
-      },
-      {
-        name: 'Grupos',
-        url: 'Grupos',
-        icon: 'holiday_village'
-      }
-    ]
+     
 
     this.filler = menu;
 

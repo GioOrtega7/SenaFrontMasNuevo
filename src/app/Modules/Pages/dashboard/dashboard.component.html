@@ -1,0 +1,14 @@
+<div class="logos">
+    <img src="../../../../assets/icons/otrave.png" alt="Sofain">
+</div>
+<div class="split">
+    <div class="menu" *ngFor="let nav of menu" [routerLink]="nav.url">
+        <picture>
+            <span class="material-symbols-outlined">
+                {{nav.icon}}
+            </span>
+        </picture>
+        <span class="text">{{nav.name}}</span>
+
+    </div>
+</div>

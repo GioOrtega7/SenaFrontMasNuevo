@@ -15,6 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { AreasTryComponent } from './areas-try/areas-try.component';
 import { GruposViewComponent } from './grupos-view/grupos-view.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -26,6 +28,7 @@ import { GruposViewComponent } from './grupos-view/grupos-view.component';
     AreasModalComponent,
     AreasTryComponent,
     GruposViewComponent,
+    DashboardComponent,
 
 
   ],
@@ -37,12 +40,17 @@ import { GruposViewComponent } from './grupos-view/grupos-view.component';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    ComponentsModule,
-
+    RouterLink
   ]
   , exports: [
     ProyectoFormativoComponent,
     ProyectoFormativoModalComponent,
+    AreasComponent,
+    AreasModalComponent,
+    AreasTryComponent,
+    GruposViewComponent,
+
+
 
 
   ],
