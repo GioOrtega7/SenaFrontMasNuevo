@@ -1,5 +1,5 @@
-:root{
-    --mdc-dialog-container-color:#182034
+:root {
+    --mdc-dialog-container-color: #182034
 }
 
 .form-item {
@@ -78,7 +78,7 @@ input.success {
 }
 
 
-.switch{
+.switch {
     display: flex;
     align-items: center;
     gap: 3px;
@@ -86,13 +86,13 @@ input.success {
     white-space: break-spaces;
 }
 
-.switch input{
+.switch input {
     width: 18px;
     min-width: 18px;
 }
 
 
-.radioa{
+.radioa {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(110px, 130px));
@@ -101,14 +101,14 @@ input.success {
     justify-content: center
 }
 
-.selects{
+.selects {
     display: grid;
     width: 100%;
     justify-content: center;
 }
 
 
-.display-table{
+.display-table {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -117,16 +117,16 @@ input.success {
     width: 100%;
 }
 
-.container{
+.container {
     display: none;
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     grid-gap: 10px;
     justify-content: center;
- 
+
 }
 
-.title{
+.title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -135,7 +135,7 @@ input.success {
     width: 100%;
 }
 
-.information{
+.information {
     width: 100%;
     height: max-content;
     padding: 10px;
@@ -145,88 +145,106 @@ input.success {
     border-width: 1px;
 }
 
-.expand{
+.expand {
     display: grid;
 }
 
-.actions button.extend{
+.actions button.extend {
     background-color: aliceblue;
     color: black;
     padding: 2px 14px;
 }
 
-.information p:nth-child(1){
+.information p:nth-child(1) {
     font-weight: 600;
     font-size: 1.1em;
 }
 
-.rotate{
+.rotate {
     transform: rotate(180deg);
     transition: 1s;
 }
 
-.actions{
+.actions {
     display: flex;
     gap: 8px;
 }
 
 button:disabled {
-    /* Estilos personalizados para el botón deshabilitado */
-    opacity: 0.5; /* Ejemplo: reducir la opacidad del botón deshabilitado */
-    cursor: not-allowed; /* Ejemplo: cambiar el cursor a "no permitido" */
-    /* Otros estilos personalizados aquí */
-  }
-  
-/************
 
+    opacity: 0.5;
+    cursor: not-allowed;
+
+}
+
+/************/
 
 .switch {
-    display: inline-block;
-    height: 34px;
     position: relative;
-    width: 60px;
-  }
-  
-  .switch input {
-    display:none;
-  }
-  
-  .slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    background-color: #fff;
-    bottom: 4px;
-    content: "";
-    height: 26px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 26px;
-  }
-  
-  input:checked + .slider {
-    background-color: #66bb6a;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }*/
-    
+    display: flex;
+    gap: 20px;
+}
 
+.switch input {
+    display: none;
+}
+
+.slide {
+    background-color: #ccc;
+    cursor: pointer;
+    width: 45px;
+    height: 20px;
+    transition: .4s;
+}
+
+.slide:before {
+    background-color: #fff;
+    content: "";
+    height: 20px;
+    position: absolute;
+    transition: .4s;
+    width: 22px;
+}
+
+input:checked+.slide {
+    background-color: #006b00;
+}
+
+input:checked+.slide:before {
+    transform: translateX(23px);
+}
+
+.slide.round {
+    border-radius: 34px;
+}
+
+.slide.round:before {
+    border-radius: 50%;
+}
+
+.split {
+    display: grid;
+    gap: 4px;
+    max-height: 200px;
+    min-width: 300px;
+    /*grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+     grid-template-rows: repeat(auto-fit, minmax(2px, 25px)); */
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1820347a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(245, 245, 245, 0.811);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(245, 245, 245);
+}

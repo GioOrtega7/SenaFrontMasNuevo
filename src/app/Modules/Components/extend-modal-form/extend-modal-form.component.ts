@@ -1,11 +1,10 @@
-import { Component, NgModule, Inject, ElementRef } from '@angular/core';
-import { FormControl, NgForm, FormBuilder, FormsModule, AbstractControl, NgModel } from '@angular/forms';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Component,  Inject, ElementRef } from '@angular/core';
+import { FormControl, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators } from '@angular/forms';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { data } from 'jquery';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
-import { expand } from 'rxjs';
+
 
 
 
@@ -20,7 +19,7 @@ export class ExtendModalFormComponent {
   filler: ExtendModalFiller[] = [];
   filler1: ExtendModalFiller[] = [];
   set: boolean = true
-  expandState: boolean= true
+  expandState: boolean = true
 
   constructor(
     private saveService: ExtendModalSecondService,
@@ -57,50 +56,39 @@ export class ExtendModalFormComponent {
       display: item.display
     }));
     console.log(this.filler);
-    
+
     this.formExtend = this.formBuilder.group({})
 
     this.filler.forEach((item) => {
       if (item.type === "checkbox") {
-        var checked: { dataId: number | string }[] | any = [];
-        var unchecked: { dataId: number | string }[] | any = [];
         if (item.dataPlacer) {
-          checked = item.data?.filter((res) => item.dataPlacer.some((checked: any) => checked.dataId == res.dataId))
-          unchecked = item.data?.filter((res) => !item.dataPlacer.some((uncheck: any) => uncheck.dataId == res.dataId))
-          checked.forEach((control: any) => {
+          var checked = item.data?.filter((res) => item.dataPlacer.some((checked: any) => checked.dataId == res.dataId))
+          var unchecked = item.data?.filter((res) => !item.dataPlacer.some((uncheck: any) => uncheck.dataId == res.dataId))
+          checked!.forEach((control: any) => {
             this.formExtend.addControl(control.data, new FormControl(true, Validators.required))
           });
-          unchecked.forEach((control: any) => {
+          unchecked!.forEach((control: any) => {
             this.formExtend.addControl(control.data, new FormControl(false, Validators.required))
           });
         } else { item.data?.forEach(control => { this.formExtend.addControl(control.data, new FormControl(false, Validators.required)) }) }
       } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
 
-
-
     this.saveService.$extendModalUpdate.subscribe((res: any) => {
-      if (res && res.item === "data") {
-        let name: string = res.name; let data: any[] = res.data
+      console.log(res);
+      if (res) {
+        let name: string = res.name;
         for (let fill of this.filler) {
           if (fill.fieldName == name) {
-            fill.data = data
-          }
-        }
-      }else{
-        if(res && res.item === "display")
-        {
-          let name: string = res.name; let data: any[] = res.data
-          for (let fill of this.filler) {
-            if (fill.fieldName == name) {
-              fill.display?.push(data)
-              console.log(fill.display);
-              
+            if (res.item === "data") {
+              fill.data = res.data;
+            } else if (res.item === "display") {
+              fill.display?.push(res.data);
             }
           }
         }
       }
-    })
+    });
   }
 
   private getControl(name: string) {
@@ -110,9 +98,7 @@ export class ExtendModalFormComponent {
   }
 
   saveData() {
-
     var outputData: any[] = [];
-
     for (let item of this.filler) {
       if (item.type === "checkbox") {
         var checkbox: { value: boolean, data: string, dataId: number }[] = []
@@ -122,8 +108,8 @@ export class ExtendModalFormComponent {
         outputData.push(checkbox)
         checkbox = []
       } else
-      if(item.type==="display"){outputData.push(item.display)}
-      else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
+        if (item.type === "display") { outputData.push(item.display) }
+        else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
     console.log(outputData);
     
@@ -131,10 +117,7 @@ export class ExtendModalFormComponent {
   }
 
   convertToUppercase(fill: ExtendModalFiller): void {
-
     fill.ngModel = fill.ngModel!.toString().toUpperCase();
-
-
   }
 
   openUpdate(extend: incomeData, name: string) {
@@ -149,14 +132,13 @@ export class ExtendModalFormComponent {
   }
 
   selectAll(data: { data: string, dataId: number }[]) {
-
     for (let item of data) {
       this.formExtend.get(item.data)?.setValue(this.set)
     }
     this.set = !this.set
   }
 
-  toggleClass(){
+  toggleClass() {
     this.expandState = !this.expandState
   }
 }

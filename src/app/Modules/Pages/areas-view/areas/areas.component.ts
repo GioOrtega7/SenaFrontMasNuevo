@@ -134,7 +134,6 @@ export class AreasComponent implements OnInit, OnDestroy {
           codigo: gets[1]
         }
         this.guardarArea(this.area)
-
         this.searchService.getModelName("area", "areas")
 
       }
@@ -261,7 +260,14 @@ export class AreasComponent implements OnInit, OnDestroy {
       { data: "tres", dataId: 3 },
       { data: "cuatro", dataId: 4 },
       { data: "cinco", dataId: 5 },
-      { data: "seis", dataId: 6 }],
+      { data: "seis", dataId: 6 },
+      { data: "dos123", dataId: 22 },
+      { data: "tres123", dataId: 33 },
+      { data: "cuatro123", dataId: 42 },
+      { data: "seis", dataId: 6 },
+      { data: "dos123", dataId: 22 },
+      { data: "tres123", dataId: 33 },
+      { data: "cuatro123", dataId: 42 }],
       dataPlacer:
         [{ dataId: 1 },
         { dataId: 2 },
@@ -328,8 +334,7 @@ export class AreasComponent implements OnInit, OnDestroy {
           if (res) {
             newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
             let display = { title: "Sede centro123", info1: "Fecha ini123123io: " + "878/5465/654", info2: "xd", info3: "xdd" }
-            console.log("pasaa brooo");
-
+            this.saveData.dataUpdate(newArea, name)
             this.saveData.displayUpdate(display, "bruh123");
 
           }
@@ -346,6 +351,8 @@ export class AreasComponent implements OnInit, OnDestroy {
           codigo: "asd",
           iconUrl: gets[2]
         }
+        console.log("edasddn");
+        
         this.guardarArea(this.area)
       }
     })

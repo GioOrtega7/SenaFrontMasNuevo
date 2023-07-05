@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Roboto+Condensed&family=Vina+Sans&display=swap');
+
 * {
     font-family: 'Roboto Condensed';
 }
@@ -140,6 +141,27 @@ app-footer {
     overflow-x: hidden !important;
     min-width: 30vw !important;
 }
+
+@media (max-width: 920px) {
+    .mat-mdc-dialog-container {
+        min-width: 40vw !important;
+    }
+
+    .mdc-dialog{
+        min-width: 40vw !important;
+    }
+}
+
+@media (min-width: 921px) {
+    .mat-mdc-dialog-container {
+        min-width: 32vw !important;
+    }
+
+    .mdc-dialog{
+        min-width: 32vw !important;
+    }
+}
+
 
 .cdk-overlay-pane {
     background: var(--mdc-dialog-container-color, #182034);
