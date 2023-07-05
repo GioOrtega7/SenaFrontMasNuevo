@@ -7,6 +7,4 @@ export interface RegularChartFiller {
     itemOne?: string,
     itemTwo?: string,
     itemThree?:string,
-    itemFour?: string,
-    itemFive?: string,
 }

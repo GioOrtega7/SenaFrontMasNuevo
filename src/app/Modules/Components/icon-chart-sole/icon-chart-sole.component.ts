@@ -9,7 +9,7 @@ import { isEmpty } from 'rxjs';
   styleUrls: ['./icon-chart-sole.component.css']
 })
 export class IconChartSoleComponent {
-
+  @Input() view: IconChartFiller = {} as IconChartFiller
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
   @Output() dataInformation = new EventEmitter<any>();
@@ -19,7 +19,7 @@ export class IconChartSoleComponent {
 
   }
 
-  @Input() view: IconChartFiller = {} as IconChartFiller
+  
 
 
   openModalUpdate(id: number) {
@@ -39,7 +39,8 @@ export class IconChartSoleComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      if(Object.keys(this.view).length !== 0){        
+
+      if(Object.keys(this.view).length !== 0){
         this.generate= true
       }else{this.generate= false}
     }

@@ -14,6 +14,10 @@
     align-items: center;
     padding: 0;
   }
+
+  .container li{
+    cursor: pointer;
+  }
   .content-company{
     max-width: 100%;
     padding: 10px;

@@ -12,9 +12,6 @@ export class RegularChartComponent {
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
 
-
-  
-
   @Input() view: RegularChartFiller[] = []
   generate:boolean = false
 

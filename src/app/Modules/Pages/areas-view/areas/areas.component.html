@@ -3,6 +3,9 @@
 
 <app-icon-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"
     (dataInformation)="extendInformation($event)"></app-icon-chart>
+<app-icon-chart-sole [view]="this.soleView" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"
+(dataInformation)="extendInformation($event)"></app-icon-chart-sole>
+
 
 <app-board-table [view]="this.tableView" (dataToUpdate)="Update($event)"
     (dataToDelete)="Delete($event)"></app-board-table>
