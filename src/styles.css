@@ -138,7 +138,7 @@ app-footer {
     --mdc-dialog-container-shape: 7px !important;
     /*border radius*/
     overflow-x: hidden !important;
-    min-width: 400px !important;
+    min-width: 30vw !important;
 }
 
 .cdk-overlay-pane {

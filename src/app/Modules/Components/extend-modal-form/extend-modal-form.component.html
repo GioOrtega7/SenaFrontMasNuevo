@@ -13,8 +13,8 @@
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <div class="update">
                         <select [formControlName]="fill.formControlName || ''" required>
-                            <option  selected *ngIf="fill.dataPlacer.length < 1" value=""   disabled
-                            hidden > Seleccionar {{fill.fieldName}}
+                            <option selected *ngIf="fill.dataPlacer.length < 1" value="" disabled hidden> Seleccionar
+                                {{fill.fieldName}}
                             </option>
                             <option *ngFor='let item of fill.data' [value]="item.dataId">{{item.data}}</option>
                         </select>
@@ -30,9 +30,9 @@
                 </div>
                 <div class="form-item" *ngIf="fill.type=='radio'">
                     <p>{{fill.fieldName}}</p>
-                    <label class="switch" [for]="fill.formControlName" *ngFor="let item of fill.data">
+                    <label [for]="fill.formControlName" *ngFor="let item of fill.data">
                         <input type="radio" [name]="fill.formControlName!" [value]="item.dataId"
-                            [formControlName]="fill.formControlName!">
+                            [formControlName]="fill.formControlName!" required="true">
                         {{item.data}}
                     </label>
                 </div>
@@ -45,16 +45,28 @@
                         {{item.data}}
                     </label>
                 </div>
-                <div class="display-table" *ngIf="fill.type == 'display'">
-
-
+                <div class="display-table form-item" *ngIf="fill.type =='display'">
+                    <div class="title">
+                        <p> {{fill.fieldName}} </p>
+                        <div class="actions">
+                            <button *ngIf="fill.extend" class="add" (click)="openUpdate(fill.extend, fill.fieldName)">
+                            </button>
+                            <button (click)="toggleClass()" [class.rotate]="expandState" class="extend"> ⏷
+                            </button>
+                        </div>
+                    </div>
+                    <div class="container" [class.expand]="expandState">
+                        <div class="information" *ngFor="let display of fill.display">
+                            <p *ngFor="let item of display | keyvalue"> {{item.key}} : {{item.value}} </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions>
 
-        <button type="submit" class="add" [disabled]="!isFormComplete" (click)="saveData()">
+        <button type="submit" [disabled]="!formExtend.valid" class="add" (click)="saveData()">
             Aceptar
         </button>
         <button mat-dialog-close class="cancel">

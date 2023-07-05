@@ -71,7 +71,9 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemTwo: res.nombreArea,
         itemThree: res.nombreArea,
         itemEnfasis: res.id,
-        itemMessage: "Horas"
+        itemMessage: "Horas",
+        itemFour: "asdas",
+   
       }
       ))
       let as = new Date(2022, 1, 10);
@@ -286,9 +288,19 @@ export class AreasComponent implements OnInit, OnDestroy {
     },
     {
       fieldName: "bruh123",
+      type: "display",
+      dataPlacer: "6123123",
+      display: [{ title: "Sede centro", info1: "Fecha inicio: " + "878/5465/654", info2: "xd", info3: "xdd" },
+        { title: "Fecha de inicio", info1: "xd" }, { title: "Fecha fin", info1: "xd" }]
+      ,
+      extend: pass1
+    },
+    {
+      fieldName: "bruh1232",
       type: "textarea",
       dataPlacer: "6123123"
     },
+
 
     ]
 
@@ -315,7 +327,11 @@ export class AreasComponent implements OnInit, OnDestroy {
         this.searchService.$searchArrayService.subscribe((res) => {
           if (res) {
             newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
-            this.saveData.dataUpdate(newArea, name);
+            let display = { title: "Sede centro123", info1: "Fecha ini123123io: " + "878/5465/654", info2: "xd", info3: "xdd" }
+            console.log("pasaa brooo");
+
+            this.saveData.displayUpdate(display, "bruh123");
+
           }
         }
         )

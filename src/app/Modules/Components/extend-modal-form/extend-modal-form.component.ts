@@ -5,6 +5,7 @@ import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-moda
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { data } from 'jquery';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
+import { expand } from 'rxjs';
 
 
 
@@ -19,7 +20,7 @@ export class ExtendModalFormComponent {
   filler: ExtendModalFiller[] = [];
   filler1: ExtendModalFiller[] = [];
   set: boolean = true
-  count: number = 0
+  expandState: boolean= true
 
   constructor(
     private saveService: ExtendModalSecondService,
@@ -52,9 +53,11 @@ export class ExtendModalFormComponent {
       UPCondition: item.uppercase || false,
       data: item.data || [{ data: "data", dataId: 0 }],
       dataPlacer: item.dataPlacer || "",
-      extend: item.extend || undefined
+      extend: item.extend || undefined,
+      display: item.display
     }));
-
+    console.log(this.filler);
+    
     this.formExtend = this.formBuilder.group({})
 
     this.filler.forEach((item) => {
@@ -77,16 +80,27 @@ export class ExtendModalFormComponent {
 
 
     this.saveService.$extendModalUpdate.subscribe((res: any) => {
-      if (res) {
+      if (res && res.item === "data") {
         let name: string = res.name; let data: any[] = res.data
         for (let fill of this.filler) {
           if (fill.fieldName == name) {
             fill.data = data
           }
         }
+      }else{
+        if(res && res.item === "display")
+        {
+          let name: string = res.name; let data: any[] = res.data
+          for (let fill of this.filler) {
+            if (fill.fieldName == name) {
+              fill.display?.push(data)
+              console.log(fill.display);
+              
+            }
+          }
+        }
       }
-    }
-    )
+    })
   }
 
   private getControl(name: string) {
@@ -107,8 +121,12 @@ export class ExtendModalFormComponent {
         }
         outputData.push(checkbox)
         checkbox = []
-      } else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
+      } else
+      if(item.type==="display"){outputData.push(item.display)}
+      else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
+    console.log(outputData);
+    
     this.dialogRef.close(outputData)
   }
 
@@ -138,6 +156,7 @@ export class ExtendModalFormComponent {
     this.set = !this.set
   }
 
-
-
+  toggleClass(){
+    this.expandState = !this.expandState
+  }
 }

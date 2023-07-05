@@ -18,7 +18,11 @@ export class ExtendModalSecondService {
   }
 
   dataUpdate(data:any[], name: string){
-    this.extendModalUpdate.next({data:data, name:name})
+    this.extendModalUpdate.next({data:data, name:name, item: "data"})
+  }
+
+  displayUpdate(data:any, name: string){
+    this.extendModalUpdate.next({data:data, name:name, item: "display"})
   }
 
   

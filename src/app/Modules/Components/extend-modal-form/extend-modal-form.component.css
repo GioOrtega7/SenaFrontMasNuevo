@@ -106,6 +106,77 @@ input.success {
     width: 100%;
     justify-content: center;
 }
+
+
+.display-table{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.container{
+    display: none;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    grid-gap: 10px;
+    justify-content: center;
+ 
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.information{
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    border: solid;
+    border-color: #ffffff42;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+.expand{
+    display: grid;
+}
+
+.actions button.extend{
+    background-color: aliceblue;
+    color: black;
+    padding: 2px 14px;
+}
+
+.information p:nth-child(1){
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.rotate{
+    transform: rotate(180deg);
+    transition: 1s;
+}
+
+.actions{
+    display: flex;
+    gap: 8px;
+}
+
+button:disabled {
+    /* Estilos personalizados para el botón deshabilitado */
+    opacity: 0.5; /* Ejemplo: reducir la opacidad del botón deshabilitado */
+    cursor: not-allowed; /* Ejemplo: cambiar el cursor a "no permitido" */
+    /* Otros estilos personalizados aquí */
+  }
+  
 /************
 
 
@@ -158,3 +229,4 @@ input.success {
     border-radius: 50%;
   }*/
     
+
