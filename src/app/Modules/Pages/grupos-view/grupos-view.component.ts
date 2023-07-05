@@ -5,11 +5,9 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ExtendModalAlertComponent } from '../../Components/extend-modal-alert/extend-modal-alert.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel.model';
 import { GruposService } from 'src/app/shared/services/grupo.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
-import { TableExtendInformationComponent } from '../../Components/table-extend-information/table-extend-information.component';
-import { BoardTable, BoardTableFiller, DateFiler } from 'src/app/shared/models/board-table.model';
 
 @Component({
   selector: 'app-grupos-view',
@@ -20,7 +18,7 @@ export class GruposViewComponent {
   Grupos: GrupoModel = {} as  GrupoModel;
   filler: ExtendModalFiller[] = [];
   view: Array<ChargeWheelFiller> = []
-  res:any[]=[]
+  soleView: ChargeWheelFiller = {} as ChargeWheelFiller
 
   constructor(
     private _grupoService: GruposService,
@@ -34,28 +32,20 @@ export class GruposViewComponent {
       let view: ChargeWheelFiller[] = res.map((res: GrupoModel) => ({
         itemId: res.id || "",
         itemName: res.nombre,
+        itemCode: res.id,
+        itemOne: res.nombre,
+        itemTwo: res.nombre,
         itemFechainicio: res.fechaFinalGrupo,
         itemFechafin: res.fechaInicialGrupo,
       }
       ))
       this.view = view;
-      this.res = res
+      this.soleView = this.view[0]
     })
   }
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
     return await dialogRef.afterClosed().toPromise();
-  }
-  ExtensInfo(id:number ){
-    const view = this.view.find(res=>res.itemId===id)
-    if(view){
-      const Data =(Object(this.res.find(res=>res.id===id)))
-      let Title: DateFiler={ 
-        Title:view.itemName
-    };
-    console.log(Data)
-    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Data,   })
-    }
   }
   delete(data:{itemId: number, itemName: string}){
     this.showAlert("¿Desea borrar : " + data.itemName + "?").then((response: boolean) => {
@@ -93,7 +83,7 @@ export class GruposViewComponent {
       fieldName: "Observacion",
       type:"textarea",
       control: "",
-      dataPlacer: data.itemThree
+      dataPlacer: data.itemTwo
     }
     ]
     var pass: incomeData = {

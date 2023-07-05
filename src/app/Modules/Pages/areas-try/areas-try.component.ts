@@ -5,7 +5,7 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ExtendModalAlertComponent } from '../../Components/extend-modal-alert/extend-modal-alert.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { AreaService } from 'src/app/shared/services/area.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
 import { BoardTable, BoardTableFiller, DateFiler } from 'src/app/shared/models/board-table.model';
@@ -19,15 +19,15 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./areas-try.component.css']
 })
 export class AreasTryComponent {
- 
+
 
   area: AreaModel = {} as AreaModel;
   filler: ExtendModalFiller[] = [];
-  view: Array<IconChart> = []
+  view: Array<IconChartFiller> = []
+  view1: any[] = []
   tableView: Date = {} as Date;
-  soleView: IconChart = {} as IconChart
-  DateFiller:DateFiler[] =[]
-  res:any[]=[]
+  soleView: IconChartFiller = {} as IconChartFiller
+  DateFiller: DateFiler[] = []
 
   constructor(
     private _areaService: AreaService,
@@ -40,7 +40,8 @@ export class AreasTryComponent {
   ngOnInit() {
     this.searchService.getModelName("area", "areas");
     this.searchService.$searchArrayService.subscribe((res: any) => {
-      let view: IconChart[] = res.map((res: AreaModel) => ({
+      this.view1 = res;
+      let view: IconChartFiller[] = res.map((res: AreaModel) => ({
         itemId: res.id || "",
         iconUrl: res.iconUrl,
         itemName: res.nombreArea,
@@ -48,24 +49,21 @@ export class AreasTryComponent {
       }
       ))
       this.view = view;
-      this.res = res
       this.soleView = view[0]
     });
-       
+
   }
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
     return await dialogRef.afterClosed().toPromise();
   }
-  ExtensInfo(id:number ){
-    const view = this.view.find(res=>res.itemId===id)
-    if(view){
-      const Data =(Object(this.res.find(res=>res.id===id)))
-      let Title: DateFiler={ 
-        Title:view.itemName
-    };
-    console.log(Data)
-    const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Data,   })
+  ExtensInfo(id: number) {
+    const view = (this.view.find(res => res.itemId === id))
+    
+    let titles = ["ID", "Nombre de area", "Codigo"]
+    if (view) {
+
+      const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: Date, })
     }
   }
   delete(data: { itemId: number, itemName: string }) {
@@ -76,12 +74,13 @@ export class AreasTryComponent {
         this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
       } else { }
     });
+
   }
   deleteArea(event: number) {
     this._areaService.borrarArea(event).subscribe(() => {
     })
   }
-  update(data: IconChart) {
+  update(data: IconChartFiller) {
     this.filler = [{
       fieldName: "Nombre de Area",
       type: "input",
@@ -132,10 +131,10 @@ export class AreasTryComponent {
     }
       , {
       fieldName: "Codigo",
-      control: "date",
+      control: "number",
     },
     {
-      fieldName: "Icono",
+      fieldName: "Url de Icono",
       control: "string",
     }, {
       fieldName: "textarea",

@@ -33,7 +33,6 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     ExtendModalFormComponent,
     IconChartComponent,
     ExtendModalAlertComponent,
-    IconChartComponent,
     ComponentsPipe,
     IconChartSoleComponent,
     ElipseInformationComponent,
@@ -42,7 +41,8 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     RegularChartSoleComponent,
     BoardTableComponent,
     BoardComponent,
-    TableExtendInformationComponent
+    TableExtendInformationComponent,
+    ChargeWheelComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +69,12 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     ChargeWheelSoleComponent,
     BoardTableComponent,
     BoardComponent,
-    TableExtendInformationComponent
+    TableExtendInformationComponent,
+    ChargeWheelComponent, 
+    IconChartComponent,
+    IconChartSoleComponent,
+    ChargeWheelSoleComponent,
+    RegularChartComponent
   ],
   providers: [
     {

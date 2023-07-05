@@ -48,7 +48,6 @@ export class AreasModalComponent {
         codigo: this.area.codigo
       });
     }
-    console.log("asad",this.area);
     
   }
 
@@ -70,7 +69,6 @@ export class AreasModalComponent {
   guardarArea() {
     this.notificationService.showNotification({message:"Cambios guardados", type:"succes"})
     var event = this.getArea()
-    console.log(event);
     
     if (event.id) {
       this._areaService.actualizarArea(event).subscribe(() => {

@@ -4,6 +4,7 @@ export interface ChargeWheelFiller {
     itemCode?:string,
     itemOne: string,
     itemTwo?: string,
+    itemThree?: string,
     itemFechainicio:Date,
     itemFechafin:Date,
     itemPercentaje?:number

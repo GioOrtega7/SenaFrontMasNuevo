@@ -1,8 +1,10 @@
-export interface IconChart {
+export interface IconChartFiller {
     itemId: number,
     iconUrl: string,
     itemName: string,
-    itemOne: any,
-    itemTwo?: any,
-    itemThree?:any, 
+    itemCode: number,
+    itemOne: string,
+    itemTwo?: string,
+    itemThree?:string, 
+
 }

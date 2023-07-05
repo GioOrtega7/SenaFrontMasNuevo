@@ -26,7 +26,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: AreasTryComponent
+        component: AreasComponent
       },
       {
         path:"proyecto",
@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path:"programa",
-        component: ProgramaFormativoComponent
+        component: AreasTryComponent
       },
       {
         path:"perfil",

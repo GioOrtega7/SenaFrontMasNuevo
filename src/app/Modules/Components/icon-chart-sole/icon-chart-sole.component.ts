@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { MatDialog } from '@angular/material/dialog';
 import { isEmpty } from 'rxjs';
 
@@ -12,21 +12,26 @@ export class IconChartSoleComponent {
 
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
+  @Output() dataInformation = new EventEmitter<any>();
   generate!: boolean
 
   constructor(private modal: MatDialog,){
 
   }
 
-  @Input() view: IconChart = {} as IconChart
+  @Input() view: IconChartFiller = {} as IconChartFiller
 
 
-  openModalUpdate(item: IconChart) {
-    this.dataToUpdate.emit(item)
+  openModalUpdate(id: number) {
+    this.dataToUpdate.emit(id)
   }
 
   deleteItem(itemID: number , itemName: string){
     this.dataToDelete.emit({itemId:itemID,itemName:itemName})
+  }
+
+  viewInformation(itemID:number){
+    this.dataInformation.emit(itemID)
   }
 
   ngOnInit(){
@@ -34,9 +39,7 @@ export class IconChartSoleComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      if(Object.keys(this.view).length !== 0){
-        console.log(Object.keys(this.view).length);
-        
+      if(Object.keys(this.view).length !== 0){        
         this.generate= true
       }else{this.generate= false}
     }

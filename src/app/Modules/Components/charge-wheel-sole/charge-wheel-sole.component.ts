@@ -1,6 +1,6 @@
 import { Component, Output , Input, HostListener, SimpleChanges, EventEmitter} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel.model';
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -16,6 +16,9 @@ export class ChargeWheelSoleComponent {
   porcentajeNumerico: number[];
   colores: string[];
   @Input() view: ChargeWheelFiller = {} as ChargeWheelFiller;
+  @Output() dataInformation = new EventEmitter<number>();
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
   generate: boolean = false; 
 
   constructor() {
@@ -50,6 +53,12 @@ export class ChargeWheelSoleComponent {
     if (changes['view']) {
 
       if(Object.keys(this.view).length !== 0){
+        const { itemFechafin,itemFechainicio } = this.view;
+          const totalDias = (new Date(itemFechafin).getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
+          const diasTranscurridos = (this.fechaActual.getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
+          const porcentaje = (diasTranscurridos / totalDias) * 100;
+          const porcentajedias = Math.round(porcentaje);
+          this.view.itemPercentaje = porcentajedias 
         this.generate= true
       }else{this.generate= false}
     }
@@ -62,16 +71,18 @@ export class ChargeWheelSoleComponent {
     const porcentajedias = Math.round(porcentaje)
     this.porsentajeDias= porcentajedias
   }  
-  @Output() dataToUpdate = new EventEmitter<any>();
-  @Output() dataToDelete = new EventEmitter<any>();
-  openModalUpdate(item: ChargeWheelFiller) {
-    this.dataToUpdate.emit(item)
+
+
+  viewInformation(id:number){
+    this.dataInformation.emit(id)
+  }
+  openModalUpdate(id: number) {
+    this.dataToUpdate.emit(id)
   }
 
-  deleteItem(itemID: number , itemName: string){
-    this.dataToDelete.emit({itemId:itemID,itemName:itemName})
+  deleteItem(itemID: number, itemName: string) {
+    this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
-
   page_size: number = 8;
   page_number: number = 1;
 

@@ -1,6 +1,6 @@
 import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
-import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel-filler.model';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { PageEvent } from '@angular/material/paginator';
 import { SimpleChanges,  } from '@angular/core';
 
@@ -14,6 +14,9 @@ export class ChargeWheelComponent {
   colores: string[];
   fechaActual:Date;
   @Input() view: ChargeWheelFiller[] = [];
+  @Output() dataInformation = new EventEmitter<any>();
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
   generate: boolean = false;
   porsentajeDias:number[]=[]; 
   fechainicio:Date[]=[];
@@ -51,29 +54,28 @@ export class ChargeWheelComponent {
     if (changes['view']) {
       if(Object.keys(this.view).length !== 0){
         for (let i = 0; i < this.view.length; i++) {
-          const { itemFechafin, itemFechainicio } = this.view[i];
+          const { itemFechafin,itemFechainicio } = this.view[i];
           const totalDias = (new Date(itemFechafin).getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
           const diasTranscurridos = (this.fechaActual.getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
           const porcentaje = (diasTranscurridos / totalDias) * 100;
           const porcentajedias = Math.round(porcentaje);
-          this.view[i].itemPorcentajes = porcentajedias 
+          this.view[i].itemPercentaje = porcentajedias 
         }
         this.generate= true
       }else{this.generate= false}
     }
   }
-  @Output() dataInformation = new EventEmitter<any>();
-  @Output() dataToUpdate = new EventEmitter<any>();
-  @Output() dataToDelete = new EventEmitter<any>();
 
-  openModalUpdate(item: ChargeWheelFiller) {
-    this.dataToUpdate.emit(item)
-  }
+
   viewInformation(id:number){
     this.dataInformation.emit(id)
   }
-  deleteItem(itemID: number , itemName: string){
-    this.dataToDelete.emit({itemId:itemID,itemName:itemName})
+  openModalUpdate(id: number) {
+    this.dataToUpdate.emit(id)
+  }
+
+  deleteItem(itemID: number, itemName: string) {
+    this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
   page_size: number = 1;
   page_number: number = 1;
@@ -98,13 +100,13 @@ export class ChargeWheelComponent {
     if (screenWidth > 1633) {
       this.page_size = 10;
     }
-    else if (screenWidth < 1633 && screenWidth >= 1314) {
+    else if (screenWidth < 1633 && screenWidth >= 1245) {
       this.page_size = 8;
     }
-    else if (screenWidth < 1314 && screenWidth >= 995) {
+    else if (screenWidth < 1245 && screenWidth >= 945) {
       this.page_size = 6;
     }
-    else if (screenWidth < 995 && screenWidth >= 800) {
+    else if (screenWidth < 945 && screenWidth >= 800) {
       this.page_size = 4;
     }
     else if (screenWidth < 800 && screenWidth >= 675) {

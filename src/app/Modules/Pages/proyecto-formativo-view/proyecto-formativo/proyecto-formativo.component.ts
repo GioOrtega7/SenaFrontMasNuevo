@@ -106,8 +106,8 @@ export class ProyectoFormativoComponent {
           {
             fieldName: "Programa",
             type: "select",
-            data: this.dataFill
-
+            data: this.dataFill,
+       
 
           },  
           {
@@ -135,11 +135,9 @@ export class ProyectoFormativoComponent {
     var pass = { filler: this.filler, title: "Agregar proyecto formativo" }
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.dialog.open(ExtendModalFormComponent, { data: pass });
     this.proyecto = {} as ProyectoFormativoModel;
-    console.log("filler de abajo en boton", pass);
     dialogRef.afterClosed().subscribe(data => {
 
       let proyecto: ProyectoFormativoModel
-      console.log("Dialog output:", data);
     });
 
   }
@@ -149,13 +147,11 @@ export class ProyectoFormativoComponent {
     var pass = { filler: this.filler, title: "Agregar proyecto formativo", update: true }
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.dialog.open(ExtendModalFormComponent, { data: pass });
     this.proyecto = {} as ProyectoFormativoModel;
-    console.log("filler de abajo en boton", pass);
 
 
     dialogRef.afterClosed().subscribe(data => {
 
       let proyecto: ProyectoFormativoModel
-      console.log("Dialog output:", data);
 
 
     })
@@ -165,7 +161,7 @@ export class ProyectoFormativoComponent {
   getProyecto() {
     this.ProyectoService.traerProyecto()
       .subscribe(proyecto => {
-        this.proyectos = proyecto;
+        this.proyectos = proyecto;       
       }, error => {
         this.NotificationService.showNotification({ message: "Error de conexión" });
       });
@@ -189,7 +185,6 @@ export class ProyectoFormativoComponent {
       this.ProyectoService.crearProyecto(proyecto).subscribe(proyecto => {
         this.getProyecto();
         this.reset();
-        console.log('llega asi', proyecto);
       })
     }
   }
@@ -213,61 +208,13 @@ export class ProyectoFormativoComponent {
   getPrograma() {
     this.programaService.traerProgramas()
       .subscribe((programa: ProgramaModel[]) => {
-        this.Programas = programa;
-        this.programaNames = this.Programas.map(programa => programa.nombrePrograma)
-        this.programaIds = this.Programas.map(programa => programa.id || "")
-
-        this.dataFill = this.programaNames.map((item, index) => ({
-          data: item.toString(),
-          dataId: this.programaIds[index]
-        }));
+        this.Programas = programa;       
+        this.dataFill = programa.map((res: ProgramaModel) =>({
+          data: res.nombrePrograma,
+          dataId: res.id
+        }))
 
         
-        console.log(this.dataFill);
-        /*
-        this.filler = [
-          {
-
-            fieldName: "Nombrasdassde",
-            uppercase: true,
-
-          },
-          {
-            fieldName: "Codigo",
-            placeholder: "qweqewq"
-
-          },
-          {
-            fieldName: "Programa",
-            type: "select",
-            data: dataFill
-
-
-          },
-          {
-            fieldName: "Tiempo estimado",
-
-
-          },
-          {
-            fieldName: "Numero de raps",
-
-
-          },
-          {
-            fieldName: "Centro de formación",
-
-          }
-          , {
-            fieldName: "Campo que quiero",
-            placeholder: "Place holder",
-            uppercase: true
-          }
-
-        ]*/
-        console.log("filler de abajo", this.filler);
-
-
       }, error => {
         this.NotificationService.showNotification({ message: 'Error de conexión' });
       });

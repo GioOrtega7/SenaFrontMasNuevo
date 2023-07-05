@@ -1,17 +1,8 @@
-.content-wheel {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
-    padding: 50px 0;
-    margin-top: 10px;
-}
 
 
 
 .container {
-    width: 100px;
+    width: 150px;
     overflow: hidden;
     white-space: nowrap;
   }
@@ -69,7 +60,8 @@ p:nth-child(1)::-webkit-scrollbar-thumb:hover {
     justify-content: space-between;
     justify-items: center;
     align-items: center;
-
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .porcentajes {
@@ -77,11 +69,6 @@ p:nth-child(1)::-webkit-scrollbar-thumb:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.content p:nth-child(2),
-.content p:nth-child(3) {
-    color: #9C9C9C;
 }
 
 .porcentajes .content {
@@ -92,10 +79,11 @@ p:nth-child(1)::-webkit-scrollbar-thumb:hover {
     justify-content: center;
     background-color: #232222;
     padding: 20px;
-    width: 110px;
-    height: 110px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     position: absolute;
+    font-size: 1.3em;
 }
 
 circle {
@@ -105,7 +93,7 @@ circle {
     bottom: 0%;
     right: 0%;
     fill: none;
-    stroke-width: 15px;
+    stroke-width: 18px;
     transform: rotate(-90deg);
     transform-origin: 50%;
     stroke-dasharray: 100 100;
@@ -149,4 +137,9 @@ circle:nth-child(2) {
   
   .actions img {
     width: 15px;
+  }
+
+  .container p.date {
+    font-size: 0.8em;
+    color: #9C9C9C;
   }

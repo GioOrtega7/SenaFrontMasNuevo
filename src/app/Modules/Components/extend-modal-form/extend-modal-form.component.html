@@ -1,35 +1,65 @@
 <div mat-dialog-title> {{this.extendModalTitle}}</div>
-<form [formGroup]="formExtend" novalidate (ngSubmit)="saveData()">
+<form [formGroup]="formExtend" novalidate>
     <mat-dialog-content>
         <div class="form-body">
             <div class="form-content" *ngFor="let fill of this.filler">
                 <div class="form-item" *ngIf="fill.type == 'input'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <input [type]="fill.control" [formControlName]="fill.formControlName || ''" [(ngModel)]="fill.ngModel"
-                        (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' " [placeholder]="fill.placeholder"
-                        required />
+                    <input [type]="fill.control" [formControlName]="fill.formControlName || ''"
+                        [(ngModel)]="fill.ngModel" (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' "
+                        [placeholder]="fill.placeholder" required />
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <select [formControlName]="fill.formControlName || ''" required="true">
-                        <option selected style="color:black" [ngValue]="null"> Seleccionar {{fill.fieldName}} </option>
-                        <option *ngFor='let item of fill.data' [ngValue]="item.dataId">{{item.data}}</option>
-                    </select>
+                    <div class="update">
+                        <select [formControlName]="fill.formControlName || ''" required>
+                            <option  selected *ngIf="fill.dataPlacer.length < 1" value=""   disabled
+                            hidden > Seleccionar {{fill.fieldName}}
+                            </option>
+                            <option *ngFor='let item of fill.data' [value]="item.dataId">{{item.data}}</option>
+                        </select>
+                        <button *ngIf="fill.extend" class="add"
+                            (click)="openUpdate(fill.extend, fill.fieldName)"></button>
+                    </div>
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'textarea'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-                    <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true" [placeholder]="fill.placeholder">
+                    <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true"
+                        [placeholder]="fill.placeholder">
                     </textarea>
+                </div>
+                <div class="form-item" *ngIf="fill.type=='radio'">
+                    <p>{{fill.fieldName}}</p>
+                    <label class="switch" [for]="fill.formControlName" *ngFor="let item of fill.data">
+                        <input type="radio" [name]="fill.formControlName!" [value]="item.dataId"
+                            [formControlName]="fill.formControlName!">
+                        {{item.data}}
+                    </label>
+                </div>
+                <div class="form-item" *ngIf="fill.type=='checkbox'">
+                    <p>{{fill.fieldName}}</p>
+                    <label class="switch"> <input type="checkbox" (change)="selectAll(fill.data!)"> Seleccionar
+                        todos</label>
+                    <label class="switch" *ngFor="let item of fill.data">
+                        <input type="checkbox" [name]="item.data" [formControlName]="item.data">
+                        {{item.data}}
+                    </label>
+                </div>
+                <div class="display-table" *ngIf="fill.type == 'display'">
+
+
                 </div>
             </div>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions>
-            <button type="submit" class="add"  [disabled]="!isFormComplete">
-                Aceptar
-            </button>
-            <button mat-dialog-close class="cancel">
-                Cancelar
-            </button>
+
+        <button type="submit" class="add" [disabled]="!isFormComplete" (click)="saveData()">
+            Aceptar
+        </button>
+        <button mat-dialog-close class="cancel">
+            Cancelar
+        </button>
+
     </mat-dialog-actions>
 </form>

@@ -1,2 +1,4 @@
-<app-charge-wheel [view]="this.view" (dataToDelete)="delete($event)" (dataToUpdate)="update($event)"(dataInformation)="ExtensInfo($event)"></app-charge-wheel>
+<app-charge-wheel [view]="this.view" (dataToDelete)="delete($event)" (dataToUpdate)="update($event)"></app-charge-wheel>
+<app-charge-wheel-sole [view]="this.soleView" (dataToUpdate)="update($event)" (dataToDelete)="delete($event)"></app-charge-wheel-sole>
+
 <a><button (click)="openModalCreate()"class="add">Añadir</button></a>

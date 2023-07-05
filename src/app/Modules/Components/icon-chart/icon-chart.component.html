@@ -3,14 +3,15 @@
     <div class="slide-item" *ngFor="let item of view | Paginate: page_size: page_number">
       <div class="area">
         <picture>
-          <img width="64" height="64" src={{item.iconUrl}} alt="artificial-intelligence" />
+          <img width="64" height="64" src={{item.iconUrl}} alt="Icono" />
         </picture>
         <div class="container">
           <p [ngClass]="{
             'animateLonger': item.itemName.length >= 20,
             'animate': item.itemName.length < 20 && item.itemName.length > 11
           }">{{ item.itemName }}</p>
-          <p>{{ item.itemOne }}</p>
+          <p *ngIf="item.itemCode"> {{item.itemCode}} </p>
+          <p *ngIf="item.itemOne">{{ item.itemOne }}</p>
           <p *ngIf="item.itemTwo">{{ item.itemTwo }}</p>
           <p *ngIf="item.itemThree">{{ item.itemThree }}</p>
         </div>
@@ -18,7 +19,7 @@
           <a><button>ir</button></a>
         </div>
         <div class="actions">
-          <button (click)="openModalUpdate(item)"><img src="../../../assets/icons/reload.svg"></button>
+          <button (click)="openModalUpdate(item.itemId)"><img src="../../../assets/icons/reload.svg"></button>
           <button (click)="deleteItem(item.itemId, item.itemName)"><img src="../../../assets/icons/delete.svg"></button>
           <button (click)="viewInformation(item.itemId)"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
         </div>
@@ -27,6 +28,6 @@
   </div>
 </div>
 
-<mat-paginator [length]="view.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
+<mat-paginator *ngIf="this.generate" [length]="view.length" [pageSize]="page_size" [hidePageSize]=true (page)="handlePage($event)"
   showFirstLastButtons>
 </mat-paginator>

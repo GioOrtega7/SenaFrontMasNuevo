@@ -12,10 +12,11 @@ import { MatDialogConfig } from '@angular/material/dialog';
 import { AreasModalComponent } from '../areas-modal/areas-modal.component';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
-import { IconChart } from 'src/app/shared/models/icon-chart.model';
+import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-modal-alert/extend-modal-alert.component';
 import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
-
+import { TableExtendInformationComponent } from 'src/app/Modules/Components/table-extend-information/table-extend-information.component';
+import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
 
 @Component({
   selector: 'app-areas',
@@ -32,22 +33,23 @@ export class AreasComponent implements OnInit, OnDestroy {
   protected resultadoBusqueda: AreaModel | null = null;
   displayet: AreaModel[] = []
   searchTerm: string = '';
+  res1: any[] = []
   area: AreaModel | null = null;
-  view: Array<IconChart> = [];
-  soleView: IconChart = {} as IconChart
+  view: Array<any> = [];
+  soleView: IconChartFiller = {} as IconChartFiller
   private subscription: Subscription | undefined;
   filler: ExtendModalFiller[] = [];
+  filler1: ExtendModalFiller[] = [];
   tableView: BoardTable = {} as BoardTable;
-
+  data: any[] = []
   constructor(
-
+    private saveData: ExtendModalSecondService,
     //private dialogRef: MatDialogRef<AreasComponent>,
     //private modalRef: MatDialogRef<ExtendModalComponent>,
     private searchService: SearchBarService,
     private modal: MatDialog,
     private notificationService: NotificationService,
     private _areaService: AreaService,
-
   ) { }
 
 
@@ -59,71 +61,79 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.searchService.getModelName("area", "areas")
 
     this.searchService.$searchArrayService.subscribe((res: any) => {
-      let view: IconChart[] = res.map((res: AreaModel) => ({
+      this.res1 = res;
+      let view: IconChartFiller[] = res.map((res: AreaModel) => ({
         itemId: res.id || "",
         iconUrl: res.iconUrl,
         itemName: res.nombreArea,
-        itemOne: res.codigo
+        itemCode: res.codigo,
+        itemOne: res.codigo,
+        itemTwo: res.nombreArea,
+        itemThree: res.nombreArea,
+        itemEnfasis: res.id,
+        itemMessage: "Horas"
       }
       ))
-
-      let titles =  ["ID","Nombre de area", "Nombre de area", "Nombre de area"]
-      let tableView: BoardTableFiller[] = res.map((res:AreaModel) => ({
-        itemData: [res.id,res.nombreArea, res.codigo, res.nombreArea,res.nombreArea,res.nombreArea,],
-        itemId: res.id,
+      let as = new Date(2022, 1, 10);
+      let titles = ["ID", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area"]
+      let tableView: BoardTableFiller[] = res.map((res: AreaModel) => ({
+        itemData: [res.id, res.nombreArea, res.iconUrl, res.nombreArea, res.nombreArea, res.iconUrl, res.iconUrl, res.iconUrl, res.iconUrl],
+        itemId: res.id
       }))
-      this.tableView  = {itemTitles:titles, itemData : tableView,}
+      this.tableView = { itemTitles: titles, itemData: tableView }
       this.view = view;
       this.soleView = view[0]
-    });
-  }
-  Update(data: IconChart) {
-    console.log("lo que trae el coso", data);
+      this.data = res.map((res: AreaModel) => ({
+        data: res.nombreArea,
+        dataId: res.id
+      }))
 
-    this.filler = [{
-      fieldName: "Nombre de Area",
-      type:"input",
-      control: "text",
-      dataPlacer: data.itemName,
-      uppercase: true
-    }
-      , {
-      fieldName: "Codigo",
-      control: "number",
-      dataPlacer: data.itemOne
-    },
-    {
-      fieldName: "Icono asdasd asd aqwe ",
-      control: "string",
-      dataPlacer: data.iconUrl
-    },
-    {
-      fieldName: "Icaono",
-      type: "input",
-      control: "date"
-    }
-    ]
+    });
+
+
+  }
+
+  Update(id: number) {
+
+    const data: AreaModel = this.res1.find(res => res.id === id)
+
+    if (data)
+      this.filler = [{
+        fieldName: "Nombre de Area",
+        type: "input",
+        control: "text",
+        dataPlacer: data.nombreArea,
+        uppercase: true
+      }
+        , {
+        fieldName: "Codigo",
+        control: "number",
+        dataPlacer: data.codigo
+      },
+      {
+        fieldName: "Icono asdasd asd aqwe ",
+        control: "string",
+        dataPlacer: data.iconUrl
+      }
+      ]
 
     var pass: incomeData = {
       filler: this.filler, title: "Actualizar area"
     }
 
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
-    
-    
+
+
     dialogRef.afterClosed().subscribe(gets => {
       if (gets) {
         this.area = {
-          id: data.itemId,
+          id: id,
           nombreArea: gets[0],
           codigo: gets[1]
         }
         this.guardarArea(this.area)
 
         this.searchService.getModelName("area", "areas")
-        console.log("view", this.view);
-
-
 
       }
     })
@@ -132,7 +142,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
   async showAlert(alert: string): Promise<boolean> {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
-  
+
     return await dialogRef.afterClosed().toPromise();
   }
 
@@ -152,7 +162,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
   guardarArea(area: AreaModel) {
 
-    this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })
+    this.notificationService.showNotification({ message: "Cambios guardakdos", type: "success" })
 
     if (area.id) {
       this._areaService.actualizarArea(area).subscribe(() => {
@@ -168,7 +178,13 @@ export class AreasComponent implements OnInit, OnDestroy {
   }
 
 
-
+  extendInformation(id: number) {
+    let view = (this.res1.find(res => res.id === id))
+    if (view) {
+      let data = { data: view, title: view.nombreArea }
+      const modalRef: MatDialogRef<TableExtendInformationComponent> = this.modal.open(TableExtendInformationComponent, { data: data, })
+    }
+  }
 
   iniciarCache() {
     this.cache.set(0, { areas: null });
@@ -176,16 +192,9 @@ export class AreasComponent implements OnInit, OnDestroy {
 
 
 
-  getAreas() {
-
-
-  }
-
 
   deleteArea(event: number) {
     this._areaService.borrarArea(event).subscribe(() => {
-      this.getAreas();
-
     })
   }
   ///////////////////////////////
@@ -194,10 +203,13 @@ export class AreasComponent implements OnInit, OnDestroy {
 
 
   openModalCreate() {
+
+
     this.filler = [{
       fieldName: "Nombre de Area",
       control: "text",
-      uppercase: true
+      uppercase: true,
+      dataPlacer: "asd"
     }
       , {
       fieldName: "Codigo",
@@ -206,43 +218,123 @@ export class AreasComponent implements OnInit, OnDestroy {
     {
       fieldName: "Icono",
       control: "string",
-    }]
+    },
+    {
+      fieldName: "bruh",
+      type: "select",
+      data: this.data,
+      dataPlacer: 6,
+    },
+    {
+      fieldName: "bruhj",
+      type: "select",
+      data: this.data,
+      dataPlacer: this.data[2].dataId
+    },
+    {
+      fieldName: "bruh123",
+      type: "textarea",
+      dataPlacer: "6123123"
+    },
+
+    ]
+
+    var pass1: incomeData = {
+      filler: this.filler, title: "Actualizar area"
+    }
+
+
+
+    this.filler1 = [{
+      fieldName: "Nombre de Area",
+      control: "text",
+      uppercase: true,
+      dataPlacer: "asd"
+    }
+      , {
+      fieldName: "Codigo",
+      type: "checkbox",
+      data: [{ data: "uno", dataId: 1 },
+      { data: "dos", dataId: 2 },
+      { data: "tres", dataId: 3 },
+      { data: "cuatro", dataId: 4 },
+      { data: "cinco", dataId: 5 },
+      { data: "seis", dataId: 6 }],
+      dataPlacer:
+      [{dataId: 1 },
+      {dataId: 2 },
+      {dataId: 31 },
+      {dataId: 6 },]
+    },
+    {
+      fieldName: "Icono",
+      type: "input",
+      control: "file"
+    },
+    {
+      fieldName: "bruh",
+      type: "select",
+      data: this.data,
+      extend: pass1
+    },
+    {
+      fieldName: "bruhj",
+      type: "select",
+      data: this.data,
+      dataPlacer: "4"
+     
+    },
+    {
+      fieldName: "bruh123",
+      type: "textarea",
+      dataPlacer: "6123123"
+    },
+
+    ]
 
     var pass: incomeData = {
-      filler: this.filler, title: "Actualizar area", update: true
+      filler: this.filler1, title: "Actualizar area"
     }
 
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
-    dialogRef.afterClosed().subscribe(gets => {
-      if (gets) {
-        this.area = {
-          nombreArea: gets[0],
-          codigo: gets[1],
-          iconUrl: gets[2]
+    this.saveData.$extendModalSecond.subscribe((res: any) => {
+      var area: AreaModel
+      var name: string = res.name;
+      var newArea: any[]
+      if (res.data) {
+        
+        area = {
+          nombreArea: res.data[0],
+          codigo: res.data[1],
+          iconUrl: res.data[2]
         }
-        console.log(this.area);
 
-        this.guardarArea(this.area)
+        this.guardarArea(area)
+        this.searchService.getModelName("area", "areas");
 
-        this.searchService.getModelName("area", "areas")
-        console.log("view", this.view);
-
-
-
+        this.searchService.$searchArrayService.subscribe((res) => {
+          if (res) {
+            newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
+            this.saveData.dataUpdate(newArea, name);
+          }
+        }
+        )
       }
     })
 
-
-
-
+    dialogRef.afterClosed().subscribe(gets => {
+      
+      if (gets) {
+        this.area = {
+          nombreArea: gets[0],
+          codigo: "asd",
+          iconUrl: gets[2]
+        }
+        this.guardarArea(this.area)
+      }
+    })
   }
-
-
   /////////////////////////////////////////////
-
-
-
-
 
   buscarArea(event: AreaModel) {
     this.showResultadoBusqueda = true;
