@@ -37,7 +37,7 @@ export class NominaComponent {
     };
     reader.onprogress = (event) => {
       if (event.lengthComputable) {
-        this.progreso = Math.round((event.loaded / event.total) *48 );
+        this.progreso = Math.round((event.loaded / event.total) *100 );
       }
     };
     this._importarExcel.importarExcel(archivo).subscribe(

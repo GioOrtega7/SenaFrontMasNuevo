@@ -79,8 +79,63 @@ export class NavbarComponent implements OnInit {
       {
         name: 'Nomina',
         url: 'Nomina',
-        icon: 'holiday_village'
-      }
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'Nomina',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
+      {
+        name: 'dasdasd',
+        url: 'Nomina',
+        icon: 'currency_exchange'
+      },
     ]
 
     this.filler = menu;
