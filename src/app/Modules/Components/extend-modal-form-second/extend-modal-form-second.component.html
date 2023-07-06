@@ -1,0 +1,64 @@
+<div mat-dialog-title> {{this.extendModalTitle}}</div>
+<form [formGroup]="formExtend" novalidate>
+    <mat-dialog-content>
+        <div class="form-body">
+            <div class="form-content" *ngFor="let fill of this.filler">
+                <div class="form-item" *ngIf="fill.type == 'input'">
+                    <label [for]="fill.formControlName">{{fill.fieldName}}</label>
+                    <input [type]="fill.control" [formControlName]="fill.formControlName || ''"
+                        [(ngModel)]="fill.ngModel" (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' "
+                        [placeholder]="fill.placeholder" required />
+                </div>
+                <div class="form-item" *ngIf="fill.type == 'select'">
+                    <label [for]="fill.formControlName">{{fill.fieldName}}</label>
+                    <div class="update">
+                        <select [formControlName]="fill.formControlName || ''" required>
+                            <option selected *ngIf="fill.dataPlacer.length < 1" value="" disabled hidden> Seleccionar
+                                {{fill.fieldName}}
+                            </option>
+                            <option *ngFor='let item of fill.data' [value]="item.dataId">{{item.data}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-item" *ngIf="fill.type == 'textarea'">
+                    <label [for]="fill.formControlName">{{fill.fieldName}}</label>
+                    <textarea [formControlName]="fill.formControlName || ''" rows="4" cols="40" required="true"
+                        [placeholder]="fill.placeholder">
+                    </textarea>
+                </div>
+                <div class="form-item" *ngIf="fill.type=='radio'">
+                    <p>{{fill.fieldName}}</p>
+                    <label [for]="fill.formControlName" *ngFor="let item of fill.data">
+                        <input type="radio" [name]="fill.formControlName!" [value]="item.dataId"
+                            [formControlName]="fill.formControlName!" required="true">
+                        {{item.data}}
+                    </label>
+                </div>
+                <div class="form-item" *ngIf="fill.type=='checkbox'">
+                    <p>{{fill.fieldName}}</p>
+                    <label class="switch"> <input type="checkbox" (change)="selectAll(fill.data!)">
+                        <div class="slide round"></div>
+                        <p>Seleccionar todos</p>
+                    </label>
+                    <div class="split">
+                        <label class="switch" *ngFor="let item of fill.data">
+                            <input type="checkbox" [name]="item.data" [formControlName]="item.data">
+                            <div class="slide round"></div>
+                            <p>{{item.data}}</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+
+        <button type="submit" [disabled]="!formExtend.valid" class="add" (click)="saveData()">
+            Aceptar
+        </button>
+        <button mat-dialog-close class="cancel">
+            Cancelar
+        </button>
+
+    </mat-dialog-actions>
+</form>

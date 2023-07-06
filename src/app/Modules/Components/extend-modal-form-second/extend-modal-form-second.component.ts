@@ -4,16 +4,15 @@ import { UntypedFormGroup, Validators } from '@angular/forms';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
-import { ExtendModalFormSecondComponent } from '../extend-modal-form-second/extend-modal-form-second.component';
 
 
 
 @Component({
-  selector: 'app-extend-modal',
-  templateUrl: './extend-modal-form.component.html',
-  styleUrls: ['./extend-modal-form.component.css']
+  selector: 'app-extend-modal-form-second',
+  templateUrl: './extend-modal-form-second.component.html',
+  styleUrls: ['./extend-modal-form-second.component.css']
 })
-export class ExtendModalFormComponent {
+export class ExtendModalFormSecondComponent {
   formExtend!: UntypedFormGroup;
   extendModalForm: FormControl = {} as FormControl;
   filler: ExtendModalFiller[] = [];
@@ -24,10 +23,8 @@ export class ExtendModalFormComponent {
 
   constructor(
     private saveService: ExtendModalSecondService,
-    private elementRef: ElementRef,
     private formBuilder: FormBuilder,
-    private modal: MatDialog,
-    private dialogRef: MatDialogRef<ExtendModalFormComponent>,
+    private dialogRef: MatDialogRef<ExtendModalFormSecondComponent>,
     @Inject(MAT_DIALOG_DATA) public incomeData: incomeData,) { }
 
 
@@ -74,35 +71,16 @@ export class ExtendModalFormComponent {
       } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
 
-    this.filler.forEach((item)=>{
-      if(item.display){
-        item.display.map((res)=>{
-          res.inc = item.display?.length || 0          
+    this.filler.forEach((item) => {
+      if (item.display) {
+        item.display.map((res) => {
+          res.inc = item.display?.length || 0
         })
       }
     })
-
-
-    this.saveService.$extendModalUpdate.subscribe((res: any) => {
-      if (res) {
-        let name: string = res.name;
-        for (let fill of this.filler) {
-          if (fill.fieldName == name) {
-            if (res.item === "data") {
-              fill.data = res.data;
-            } else if (res.item === "display") {
-              res.data.inc = fill.display?.length || 0;
-              fill.display?.push(res.data);
-            }
-          }
-        }
-      }
-    });
   }
 
   private getControl(name: string) {
-
-
     return this.formExtend.controls[name];
   }
 
@@ -126,18 +104,6 @@ export class ExtendModalFormComponent {
 
   convertToUppercase(fill: ExtendModalFiller): void {
     fill.ngModel = fill.ngModel!.toString().toUpperCase();
-  }
-
-  openUpdate(extend: incomeData, name: string) {
-    extend.title = "⇌ " + extend.title;
-    const extendRef: MatDialogRef<ExtendModalFormSecondComponent> = this.modal.open(ExtendModalFormSecondComponent, { data: extend })
-    document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
-    extendRef.afterClosed().subscribe((res) => {
-      extend.title = "";
-      this.saveService.dataSave(res, name);
-      document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
-    }
-    )
   }
 
   selectAll(data: { data: string, dataId: number }[]) {
