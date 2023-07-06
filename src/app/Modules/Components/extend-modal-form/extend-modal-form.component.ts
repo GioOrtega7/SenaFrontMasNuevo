@@ -20,7 +20,7 @@ export class ExtendModalFormComponent {
   filler1: ExtendModalFiller[] = [];
   set: boolean = true;
   expandState: boolean = true;
-  inc: number = 0;
+  inc: number = 1;
 
   constructor(
     private saveService: ExtendModalSecondService,
@@ -73,6 +73,16 @@ export class ExtendModalFormComponent {
         } else { item.data?.forEach(control => { this.formExtend.addControl(control.data, new FormControl(false, Validators.required)) }) }
       } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
+
+    this.filler.forEach((item)=>{
+      if(item.display){
+        item.display.map((item)=>{
+          item.inc = this.inc;
+          this.inc = this.inc+1;           
+        })
+      }
+    })
+
 
     this.saveService.$extendModalUpdate.subscribe((res: any) => {
       if (res) {
@@ -145,7 +155,7 @@ export class ExtendModalFormComponent {
   deleteItem(inc: number, name: string) {
     this.filler.forEach(res => {
       if (res.display && res.fieldName == name) {
-        res.display = res.display.filter(res => (res.id !== inc))
+        res.display = res.display.filter(res => (res.inc !== inc))
       }
     });
   }

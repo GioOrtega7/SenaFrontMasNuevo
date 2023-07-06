@@ -288,7 +288,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "Mostrar",
       type: "display",
       dataPlacer: "6123123",
-      display: [ 
+      display: [ {id:2, data:[{title:"a", desc:"a"}]}
       ],
        
       extend: pass1
@@ -308,9 +308,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     var id1 : number = 0;
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
     this.saveData.$extendModalSecond.subscribe((res: any) => {
-      console.log("mostrar",res)
       var display = {}
-      console.log("init",display);
       
       var area: AreaModel
       var name: string = res.name;
@@ -325,9 +323,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
         this.guardarArea(area)
         this.searchService.getModelName(" ", "areas");
-        id1= id1+1;
-        console.log("asdasdq",id1);
-        
+        id1= id1+1;        
         var id: number = 1;
         this.searchService.$searchArrayService.subscribe((res) => {
           if (res) {
@@ -336,9 +332,7 @@ export class AreasComponent implements OnInit, OnDestroy {
             display =  {id: id , data:[{title: "Area añadida", desc: area.nombreArea}]}
             id = id +1;
             this.saveData.dataUpdate(newArea, name)
-            this.saveData.displayUpdate(display, "Mostrar");
-            console.log("asd",display);
-            
+            this.saveData.displayUpdate(display, "Mostrar");            
           }
         }
         )
@@ -352,9 +346,7 @@ export class AreasComponent implements OnInit, OnDestroy {
           nombreArea: gets[0],
           codigo: "asd",
           iconUrl: gets[2]
-        }
-        console.log("watafac");
-        
+        }        
         this.guardarArea(this.area)
       }
     })
