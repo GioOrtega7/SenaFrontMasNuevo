@@ -141,4 +141,12 @@ export class ExtendModalFormComponent {
   toggleClass() {
     this.expandState = !this.expandState
   }
+
+  deleteItem(id: number, name: string){
+    this.filler.forEach(res => {
+      if(res.display && res.fieldName== name){
+        res.display = res.display.filter(res=> (res.id !== id))
+      }
+    });
+  }
 }

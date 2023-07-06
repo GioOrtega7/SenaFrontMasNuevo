@@ -113,17 +113,17 @@ input.success {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 30px;
     width: 100%;
 }
 
 .container {
     display: none;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    grid-gap: 10px;
-    justify-content: center;
-
+    grid-gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
 .title {
@@ -136,17 +136,46 @@ input.success {
 }
 
 .information {
-    width: 100%;
+    width: 80%;
     height: max-content;
-    padding: 10px;
-    border: solid;
+    border: none;
+    padding-bottom: 10px;
+    border-bottom: solid;
     border-color: #ffffff42;
-    border-radius: 10px;
     border-width: 1px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
 }
 
+.information button{
+    padding:16px;
+    width: 10px;
+    padding-top: 0;
+    background: transparent;
+}
+
+.display-table button{
+    width: max-content;
+}
+
+.display-table button.add{
+    width: max-content;
+    align-self: center;
+}
+
+button img{
+    width: 18px;
+}
 .expand {
-    display: grid;
+    display: flex;
+}
+
+.data-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap:5px;
 }
 
 .actions button.extend {
@@ -155,15 +184,16 @@ input.success {
     padding: 2px 14px;
 }
 
+.actions button.extend:hover {
+    transform: scale(1.2);
+    transition: 0.4s;
+}
+
 .information p:nth-child(1) {
     font-weight: 600;
     font-size: 1.1em;
 }
 
-.rotate {
-    transform: rotate(180deg);
-    transition: 1s;
-}
 
 .actions {
     display: flex;
@@ -247,4 +277,11 @@ input:checked+.slide:before {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(245, 245, 245);
+}
+
+.data{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
 }

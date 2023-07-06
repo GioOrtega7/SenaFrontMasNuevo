@@ -54,17 +54,24 @@
                     <div class="title">
                         <p> {{fill.fieldName}} </p>
                         <div class="actions">
-                            <button *ngIf="fill.extend" class="add" (click)="openUpdate(fill.extend, fill.fieldName)">
-                            </button>
-                            <button (click)="toggleClass()" [class.rotate]="expandState" class="extend"> ⏷
+                            <button (click)="toggleClass()" class="extend"> ⏷
                             </button>
                         </div>
                     </div>
                     <div class="container" [class.expand]="expandState">
                         <div class="information" *ngFor="let display of fill.display">
-                            <p *ngFor="let item of display | keyvalue"> {{item.key}} : {{item.value}} </p>
+                            <button (click)="deleteItem(display.id, fill.fieldName)"><img src="../../../assets/icons/delete.svg"></button>
+                            <div class="data-container">
+                                <div class="data" *ngFor="let item of display.data">
+                                    <p> {{item.title}} : </p>
+                                    <p> {{item.desc}} </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <button *ngIf="fill.extend" class="add" (click)="openUpdate(fill.extend, fill.fieldName)"> Añadir {{fill.fieldName}}
+                    </button>
+                   
                 </div>
             </div>
         </div>

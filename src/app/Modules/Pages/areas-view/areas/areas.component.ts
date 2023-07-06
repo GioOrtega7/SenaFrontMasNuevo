@@ -73,7 +73,7 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemEnfasis: res.id,
         itemMessage: "Horas",
         itemFour: "asdas",
-   
+
       }
       ))
       let as = new Date(2022, 1, 10);
@@ -287,9 +287,14 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "Mostrar",
       type: "display",
       dataPlacer: "6123123",
-      display: [{ title: "Sede centro", info1: "Fecha inicio: " + "878/5465/654", info2: "xd", info3: "xdd" },
-        { title: "Fecha de inicio", info1: "xd" }, { title: "Fecha fin", info1: "xd" }]
-      ,
+      display: [
+        {id:2 , data:[{title: "fecha de inicio", desc: "45/8/899"},
+        {title: "fecha de inicio", desc: "45/8/899"},{title: "fecha de inicio", desc: "45/8/899"}]},
+        {id:3 , data:[{title: "fecha de inicio", desc: "45/8/899"}]},
+        {id:4 , data:[{title: "fecha de inicio", desc: "45/8/899"}]},
+        {id:5 , data:[{title: "fecha de inicio", desc: "45/8/899"}]}
+      ],
+       
       extend: pass1
     },
     {
@@ -309,7 +314,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     this.saveData.$extendModalSecond.subscribe((res: any) => {
       var area: AreaModel
       var name: string = res.name;
-      if(name === "Area"){
+      if (name === "Area") {
 
       }
       var newArea: any[]
@@ -346,7 +351,7 @@ export class AreasComponent implements OnInit, OnDestroy {
           iconUrl: gets[2]
         }
         console.log("edasddn");
-        
+
         this.guardarArea(this.area)
       }
     })
