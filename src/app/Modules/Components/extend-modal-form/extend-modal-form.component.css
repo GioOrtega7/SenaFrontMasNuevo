@@ -115,6 +115,7 @@ input.success {
     justify-content: center;
     gap: 30px;
     width: 100%;
+    font-size: 0.8em;
 }
 
 .container {

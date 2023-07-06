@@ -1,4 +1,4 @@
-import { Component,  Inject, ElementRef } from '@angular/core';
+import { Component, Inject, ElementRef } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { UntypedFormGroup, Validators } from '@angular/forms';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
@@ -55,7 +55,6 @@ export class ExtendModalFormComponent {
       extend: item.extend || undefined,
       display: item.display
     }));
-    console.log(this.filler);
 
     this.formExtend = this.formBuilder.group({})
 
@@ -75,7 +74,6 @@ export class ExtendModalFormComponent {
     })
 
     this.saveService.$extendModalUpdate.subscribe((res: any) => {
-      console.log(res);
       if (res) {
         let name: string = res.name;
         for (let fill of this.filler) {
@@ -83,6 +81,7 @@ export class ExtendModalFormComponent {
             if (res.item === "data") {
               fill.data = res.data;
             } else if (res.item === "display") {
+
               fill.display?.push(res.data);
             }
           }
@@ -111,8 +110,7 @@ export class ExtendModalFormComponent {
         if (item.type === "display") { outputData.push(item.display) }
         else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
-    console.log(outputData);
-    
+
     this.dialogRef.close(outputData)
   }
 
@@ -125,7 +123,8 @@ export class ExtendModalFormComponent {
     const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
-      this.saveService.dataSave(res, name)
+      extend.title = "";
+      this.saveService.dataSave(res, name);
       document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
     }
     )
@@ -142,10 +141,10 @@ export class ExtendModalFormComponent {
     this.expandState = !this.expandState
   }
 
-  deleteItem(id: number, name: string){
+  deleteItem(id: number, name: string) {
     this.filler.forEach(res => {
-      if(res.display && res.fieldName== name){
-        res.display = res.display.filter(res=> (res.id !== id))
+      if (res.display && res.fieldName == name) {
+        res.display = res.display.filter(res => (res.id !== id))
       }
     });
   }

@@ -17,6 +17,7 @@ import { ExtendModalAlertComponent } from 'src/app/Modules/Components/extend-mod
 import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
 import { TableExtendInformationComponent } from 'src/app/Modules/Components/table-extend-information/table-extend-information.component';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
+import { EmptyExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-areas',
@@ -135,7 +136,7 @@ export class AreasComponent implements OnInit, OnDestroy {
         }
         this.guardarArea(this.area)
         this.searchService.getModelName("area", "areas")
-
+        
       }
     })
   }
@@ -287,12 +288,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "Mostrar",
       type: "display",
       dataPlacer: "6123123",
-      display: [
-        {id:2 , data:[{title: "fecha de inicio", desc: "45/8/899"},
-        {title: "fecha de inicio", desc: "45/8/899"},{title: "fecha de inicio", desc: "45/8/899"}]},
-        {id:3 , data:[{title: "fecha de inicio", desc: "45/8/899"}]},
-        {id:4 , data:[{title: "fecha de inicio", desc: "45/8/899"}]},
-        {id:5 , data:[{title: "fecha de inicio", desc: "45/8/899"}]}
+      display: [ 
       ],
        
       extend: pass1
@@ -309,14 +305,15 @@ export class AreasComponent implements OnInit, OnDestroy {
     var pass: incomeData = {
       filler: this.filler1, title: "Actualizar area"
     }
-
+    var id1 : number = 0;
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
     this.saveData.$extendModalSecond.subscribe((res: any) => {
+      console.log("mostrar",res)
+      var display = {}
+      console.log("init",display);
+      
       var area: AreaModel
       var name: string = res.name;
-      if (name === "Area") {
-
-      }
       var newArea: any[]
       if (res.data) {
 
@@ -327,15 +324,21 @@ export class AreasComponent implements OnInit, OnDestroy {
         }
 
         this.guardarArea(area)
-        this.searchService.getModelName("area", "areas");
-
+        this.searchService.getModelName(" ", "areas");
+        id1= id1+1;
+        console.log("asdasdq",id1);
+        
+        var id: number = 1;
         this.searchService.$searchArrayService.subscribe((res) => {
           if (res) {
+            
             newArea = res.map(res => ({ data: res.nombreArea, dataId: res.id }));
-            let display = { title: "Sede centro123", info1: "Fecha ini123123io: " + "878/5465/654", info2: "xd", info3: "xdd" }
+            display =  {id: id , data:[{title: "Area añadida", desc: area.nombreArea}]}
+            id = id +1;
             this.saveData.dataUpdate(newArea, name)
-            this.saveData.displayUpdate(display, "bruh123");
-
+            this.saveData.displayUpdate(display, "Mostrar");
+            console.log("asd",display);
+            
           }
         }
         )
@@ -350,8 +353,8 @@ export class AreasComponent implements OnInit, OnDestroy {
           codigo: "asd",
           iconUrl: gets[2]
         }
-        console.log("edasddn");
-
+        console.log("watafac");
+        
         this.guardarArea(this.area)
       }
     })
