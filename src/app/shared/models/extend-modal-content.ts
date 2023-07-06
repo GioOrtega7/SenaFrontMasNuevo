@@ -9,7 +9,7 @@ export interface ExtendModalFiller {
     data?: { data: string, dataId: number }[];
     dataPlacer?:{dataId: number | string}[] |  any  ;
     extend?: incomeData
-    display?:  {id: number,data :{title: string, desc: string}[]}[]
+    display?:  {inc? :number ,id?: number,data :{title: string, desc: string}[]}[]
 }
 
 export interface incomeData {

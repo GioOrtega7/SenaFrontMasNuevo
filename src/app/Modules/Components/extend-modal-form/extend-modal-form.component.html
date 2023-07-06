@@ -60,7 +60,7 @@
                     </div>
                     <div class="container" [class.expand]="expandState">
                         <div class="information" *ngFor="let display of fill.display">
-                            <button (click)="deleteItem(display.id, fill.fieldName)"><img src="../../../assets/icons/delete.svg"></button>
+                            <button (click)="deleteItem(display.inc!, fill.fieldName)"><img src="../../../assets/icons/delete.svg"></button>
                             <div class="data-container">
                                 <div class="data" *ngFor="let item of display.data">
                                     <p> {{item.title}} : </p>

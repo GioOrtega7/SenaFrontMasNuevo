@@ -18,8 +18,9 @@ export class ExtendModalFormComponent {
   extendModalForm: FormControl = {} as FormControl;
   filler: ExtendModalFiller[] = [];
   filler1: ExtendModalFiller[] = [];
-  set: boolean = true
-  expandState: boolean = true
+  set: boolean = true;
+  expandState: boolean = true;
+  inc: number = 0;
 
   constructor(
     private saveService: ExtendModalSecondService,
@@ -81,7 +82,7 @@ export class ExtendModalFormComponent {
             if (res.item === "data") {
               fill.data = res.data;
             } else if (res.item === "display") {
-
+              res.data.inc = this.inc +1;
               fill.display?.push(res.data);
             }
           }
@@ -141,10 +142,10 @@ export class ExtendModalFormComponent {
     this.expandState = !this.expandState
   }
 
-  deleteItem(id: number, name: string) {
+  deleteItem(inc: number, name: string) {
     this.filler.forEach(res => {
       if (res.display && res.fieldName == name) {
-        res.display = res.display.filter(res => (res.id !== id))
+        res.display = res.display.filter(res => (res.id !== inc))
       }
     });
   }
