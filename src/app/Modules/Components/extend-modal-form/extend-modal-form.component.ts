@@ -1,11 +1,9 @@
 import { Component, Inject, ElementRef } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { UntypedFormGroup, Validators } from '@angular/forms';
-import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
-
-
+import { ExtendModalFiller, incomeData } from 'src/app/shared/services/extend-modal-second.service';
+import { ExtendModalSecondService } from 'src/app/shared/models/extend-modal-content';
 
 
 @Component({
@@ -74,11 +72,11 @@ export class ExtendModalFormComponent {
       } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
 
-    this.filler.forEach((item)=>{
-      if(item.display){
-        item.display.map((item)=>{
+    this.filler.forEach((item) => {
+      if (item.display) {
+        item.display.map((item) => {
           item.inc = this.inc;
-          this.inc = this.inc+1;           
+          this.inc = this.inc + 1;
         })
       }
     })
@@ -92,7 +90,7 @@ export class ExtendModalFormComponent {
             if (res.item === "data") {
               fill.data = res.data;
             } else if (res.item === "display") {
-              res.data.inc = fill.display?.length;
+              res.data.inc = this.inc + 1;
               fill.display?.push(res.data);
             }
           }
@@ -135,7 +133,10 @@ export class ExtendModalFormComponent {
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
       extend.title = "";
-      this.saveService.dataSave(res, name);
+      console.log(extend.update);
+
+      if (extend.update) { this.saveService.dataUpdateService(res, name); } else { console.log("xD");
+       this.saveService.dataSaveService(res, name) }
       document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
     }
     )
@@ -160,3 +161,4 @@ export class ExtendModalFormComponent {
     });
   }
 }
+
