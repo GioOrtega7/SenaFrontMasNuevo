@@ -92,7 +92,7 @@ export class ExtendModalFormComponent {
             if (res.item === "data") {
               fill.data = res.data;
             } else if (res.item === "display") {
-              res.data.inc = this.inc +1;
+              res.data.inc = fill.display?.length;
               fill.display?.push(res.data);
             }
           }
