@@ -307,7 +307,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     }
     var id1 : number = 0;
     const dialogRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
-    this.saveData.$extendModalSecond.subscribe((res: any) => {
+    this.saveData.$extendModalSecondSave.subscribe((res: any) => {
       var display = {}
       
       var area: AreaModel

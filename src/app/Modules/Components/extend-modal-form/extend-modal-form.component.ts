@@ -2,8 +2,8 @@ import { Component, Inject, ElementRef } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ExtendModalFiller, incomeData } from 'src/app/shared/services/extend-modal-second.service';
-import { ExtendModalSecondService } from 'src/app/shared/models/extend-modal-content';
+import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
+import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
 
 
 @Component({

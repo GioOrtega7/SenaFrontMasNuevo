@@ -1,21 +1,38 @@
+import { Injectable } from '@angular/core';
+import { Observable, Subject, subscribeOn } from 'rxjs';
 
-export interface ExtendModalFiller {
-  fieldName: string;
-  placeholder?: string;
-  type?: string;
-  control?: string;
-  formControlName?: string;
-  ngModel?: string | number;
-  uppercase?: boolean;
-  data?: { data: string, dataId: number }[];
-  dataPlacer?:{dataId: number | string}[] |  any  ;
-  extend?: incomeData
-  display?:  {inc? :number ,id?: number,data :{title: string, desc: string}[]}[]
-}
+@Injectable({
+  providedIn: 'root'
+})
+export class ExtendModalSecondService {
 
-export interface incomeData {
-filler: ExtendModalFiller[],
-title: string,
-update?: boolean,
-dataArray?: any
+  constructor() { }
+
+  private extendModalSecondSave= new Subject();
+  $extendModalSecondSave = this.extendModalSecondSave.asObservable();
+  private extendModalSecondUpdate = new Subject();
+  $extendModalSecondUpdate = this.extendModalSecondUpdate.asObservable();
+  private extendModalUpdate = new Subject();
+  $extendModalUpdate = this.extendModalUpdate.asObservable();
+
+  dataSaveService(data:any[], name: string){
+    this.extendModalSecondUpdate.next({data:data, name:name});
+    console.log("save");
+    
+  }
+
+  dataUpdateService(data:any[], name: string){
+    this.extendModalSecondSave.next({data:data, name:name})
+    console.log("update");
+  }
+
+  dataUpdate(data:any[], name: string){
+    this.extendModalUpdate.next({data:data, name:name, item: "data"})
+  }
+
+  displayUpdate(data:any, name: string){
+    this.extendModalUpdate.next({data:data, name:name, item: "display"})
+  }
+
+  
 }

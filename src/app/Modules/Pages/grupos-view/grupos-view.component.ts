@@ -3,7 +3,7 @@ import { GrupoModel } from 'src/app/shared/models/grupo.model';
 import { NotificationService } from 'src/app/shared/services/notification-service';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ExtendModalAlertComponent } from '../../Components/extend-modal-alert/extend-modal-alert.component';
-import { ExtendModalFiller, incomeData } from 'src/app/shared/services/extend-modal-second.service';
+import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { ChargeWheelFiller } from 'src/app/shared/models/charge-wheel.model';
 import { GruposService } from 'src/app/shared/services/grupo.service';
