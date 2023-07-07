@@ -23,7 +23,6 @@ import { RegularChartSoleComponent } from './regular-chart-sole/regular-chart-so
 import { BoardTableComponent } from './board-table/board-table.component';
 import { BoardComponent } from './board/board.component';
 import { TableExtendInformationComponent } from './table-extend-information/table-extend-information.component';
-import { ExtendModalFormSecondComponent } from './extend-modal-form-second/extend-modal-form-second.component';
 
 
 @NgModule({
@@ -43,8 +42,7 @@ import { ExtendModalFormSecondComponent } from './extend-modal-form-second/exten
     BoardTableComponent,
     BoardComponent,
     TableExtendInformationComponent,
-    ChargeWheelComponent,
-    ExtendModalFormSecondComponent
+    ChargeWheelComponent
   ],
   imports: [
     CommonModule,

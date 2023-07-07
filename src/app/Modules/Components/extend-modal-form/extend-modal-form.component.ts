@@ -4,7 +4,7 @@ import { UntypedFormGroup, Validators } from '@angular/forms';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
-import { ExtendModalFormSecondComponent } from '../extend-modal-form-second/extend-modal-form-second.component';
+
 
 
 
@@ -76,8 +76,9 @@ export class ExtendModalFormComponent {
 
     this.filler.forEach((item)=>{
       if(item.display){
-        item.display.map((res)=>{
-          res.inc = item.display?.length || 0          
+        item.display.map((item)=>{
+          item.inc = this.inc;
+          this.inc = this.inc+1;           
         })
       }
     })
@@ -91,7 +92,7 @@ export class ExtendModalFormComponent {
             if (res.item === "data") {
               fill.data = res.data;
             } else if (res.item === "display") {
-              res.data.inc = fill.display?.length || 0;
+              res.data.inc = this.inc +1;
               fill.display?.push(res.data);
             }
           }
@@ -130,7 +131,7 @@ export class ExtendModalFormComponent {
 
   openUpdate(extend: incomeData, name: string) {
     extend.title = "⇌ " + extend.title;
-    const extendRef: MatDialogRef<ExtendModalFormSecondComponent> = this.modal.open(ExtendModalFormSecondComponent, { data: extend })
+    const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
       extend.title = "";
