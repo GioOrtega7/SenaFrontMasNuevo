@@ -1,9 +1,11 @@
 import { Component, Inject, ElementRef } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { UntypedFormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
+
+
 
 
 @Component({
@@ -69,8 +71,8 @@ export class ExtendModalFormComponent {
             this.formExtend.addControl(control.data, new FormControl(false, Validators.required))
           });
         } else { item.data?.forEach(control => { this.formExtend.addControl(control.data, new FormControl(false, Validators.required)) }) }
-      } else if(item.type === "display"){}
-      else{ this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
+      } else if (item.type === "display") { }
+      else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
 
     this.filler.forEach((item) => {
@@ -121,7 +123,12 @@ export class ExtendModalFormComponent {
         else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
 
-    this.dialogRef.close(outputData)
+
+
+
+    if (this.formExtend.valid) {
+      this.dialogRef.close(outputData)
+    } else { this.dialogRef.close() }
   }
 
   convertToUppercase(fill: ExtendModalFiller): void {
@@ -130,15 +137,17 @@ export class ExtendModalFormComponent {
 
   openUpdate(extend: incomeData, name: string) {
     extend.title = "⇌ " + extend.title;
+ 
     const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
-      extend.title = "";
-      console.log(extend.update);
+      if(res){extend.title = "";
 
-      if (extend.update) { this.saveService.dataUpdateService(res, name); } else { console.log("xD");
-       this.saveService.dataSaveService(res, name) }
+      if (extend.update) { this.saveService.dataUpdateService(res, name); } else {
+        this.saveService.dataSaveService(res, name)
+      }
       document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
+}
     }
     )
   }
@@ -162,4 +171,3 @@ export class ExtendModalFormComponent {
     });
   }
 }
-
