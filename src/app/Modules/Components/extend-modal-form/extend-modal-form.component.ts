@@ -69,7 +69,8 @@ export class ExtendModalFormComponent {
             this.formExtend.addControl(control.data, new FormControl(false, Validators.required))
           });
         } else { item.data?.forEach(control => { this.formExtend.addControl(control.data, new FormControl(false, Validators.required)) }) }
-      } else { this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
+      } else if(item.type === "display"){}
+      else{ this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required)); }
     })
 
     this.filler.forEach((item) => {
