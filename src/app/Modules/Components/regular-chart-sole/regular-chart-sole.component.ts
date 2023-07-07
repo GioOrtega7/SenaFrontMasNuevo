@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, Input, EventEmitter, SimpleChanges } from '@angular/core';
+import { RegularChartFiller } from 'src/app/shared/models/regular-chart.model';
 
 @Component({
   selector: 'app-regular-chart-sole',
@@ -7,4 +8,29 @@ import { Component } from '@angular/core';
 })
 export class RegularChartSoleComponent {
 
+  @Output() dataInformation = new EventEmitter<any>();
+  @Input() view: RegularChartFiller  = {} as RegularChartFiller 
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
+  generate: boolean = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['view']) {
+      if (Object.keys(this.view).length !== 0) {
+        this.generate = true
+      } else { this.generate = false }
+    }
+  }
+  
+  openModalUpdate(id: number) {
+    this.dataToUpdate.emit(id)
+  }
+
+  deleteItem(itemID: number, itemName: string = "este elemento") {
+    this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
+  }
+
+  viewInformation(id:number){
+    this.dataInformation.emit(id)
+  }
 }

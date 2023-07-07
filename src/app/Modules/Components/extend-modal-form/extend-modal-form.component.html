@@ -1,4 +1,4 @@
-<div mat-dialog-title> {{this.extendModalTitle}}</div>
+<div mat-dialog-title> {{this.extendModalTitle}} <button class="close" mat-dialog-close>⦻</button></div>
 <form [formGroup]="formExtend" novalidate>
     <mat-dialog-content>
         <div class="form-body">
@@ -60,18 +60,20 @@
                     </div>
                     <div class="container" [class.expand]="expandState">
                         <div class="information" *ngFor="let display of fill.display">
-                            <button (click)="deleteItem(display.inc!, fill.fieldName)"><img src="../../../assets/icons/delete.svg"></button>
+                            <button (click)="deleteItem(display.inc!, fill.fieldName)"><img
+                                    src="../../../assets/icons/delete.svg"></button>
                             <div class="data-container">
                                 <div class="data" *ngFor="let item of display.data">
-                                    <p> {{item.title}} : </p>
-                                    <p> {{item.desc}} </p>
+                                    <p *ngIf="item.title !== 'id'"> {{item.title}} : </p>
+                                    <p *ngIf="item.title !== 'id'"> {{item.desc}} </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button *ngIf="fill.extend" class="add" (click)="openUpdate(fill.extend, fill.fieldName)"> Añadir {{fill.fieldName}}
+                    <button *ngIf="fill.extend" class="add" (click)="openUpdate(fill.extend, fill.fieldName)"> Añadir
+                        {{fill.fieldName}}
                     </button>
-                   
+
                 </div>
             </div>
         </div>
@@ -84,6 +86,5 @@
         <button mat-dialog-close class="cancel">
             Cancelar
         </button>
-
     </mat-dialog-actions>
 </form>

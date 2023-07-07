@@ -122,10 +122,6 @@ export class ExtendModalFormComponent {
         if (item.type === "display") { outputData.push(item.display) }
         else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
-
-
-
-
     if (this.formExtend.valid) {
       this.dialogRef.close(outputData)
     } else { this.dialogRef.close() }

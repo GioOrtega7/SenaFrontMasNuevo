@@ -18,6 +18,7 @@ import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.
 import { TableExtendInformationComponent } from 'src/app/Modules/Components/table-extend-information/table-extend-information.component';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
 import { EmptyExpr } from '@angular/compiler';
+import { Board } from 'src/app/shared/models/board.model';
 
 @Component({
   selector: 'app-areas',
@@ -42,6 +43,7 @@ export class AreasComponent implements OnInit, OnDestroy {
   filler: ExtendModalFiller[] = [];
   filler1: ExtendModalFiller[] = [];
   tableView: BoardTable = {} as BoardTable;
+  boardView: Board = {} as Board
   data: any[] = []
   constructor(
     private saveData: ExtendModalSecondService,
@@ -75,8 +77,13 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemMessage: "Horas",
         itemFour: "asdas",
 
+      }))
+
+      this.boardView ={
+        itemId: res[0].id,
+        data: [{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area", itemData: res[0].nombreArea }]
       }
-      ))
+      
       let as = new Date(2022, 1, 10);
       let titles = ["ID", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area", "Nombre de area"]
       let tableView: BoardTableFiller[] = res.map((res: AreaModel) => ({

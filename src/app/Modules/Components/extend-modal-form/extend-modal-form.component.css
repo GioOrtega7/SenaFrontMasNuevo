@@ -149,34 +149,35 @@ input.success {
     align-items: flex-start;
 }
 
-.information button{
-    padding:16px;
+.information button {
+    padding: 16px;
     width: 10px;
     padding-top: 0;
     background: transparent;
 }
 
-.display-table button{
+.display-table button {
     width: max-content;
 }
 
-.display-table button.add{
+.display-table button.add {
     width: max-content;
     align-self: center;
 }
 
-button img{
+button img {
     width: 18px;
 }
+
 .expand {
     display: flex;
 }
 
-.data-container{
+.data-container {
     display: flex;
     width: 100%;
     flex-direction: column;
-    gap:5px;
+    gap: 5px;
 }
 
 .actions button.extend {
@@ -280,9 +281,24 @@ input:checked+.slide:before {
     background: rgb(245, 245, 245);
 }
 
-.data{
+.data {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
+}
+
+button.close {
+    background: none;
+    font-size: 1.2em;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    transition: 0.5s;
+    padding: 0px;
+    animation-timing-function: ease-in-out;
+}
+
+button.close:hover{
+    transform: rotateZ(180deg);
 }

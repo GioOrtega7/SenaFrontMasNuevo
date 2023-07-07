@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Board } from 'src/app/shared/models/board.model';
 
 interface board{
   titulos:string;
@@ -12,21 +13,26 @@ interface board{
 })
 export class BoardComponent {
 
-  board:board[]=[
-    {
-      titulos:'Nombre',
-      datos:'adso',
-      id:1
-    },
-    {
-      titulos:'apelldo',
-      datos:'adso',
-      id:1
-    },
-    {
-      titulos:'Nombre',
-      datos:'adso',
-      id:1
+
+  @Input() view: Board  = {} as Board 
+  @Output() dataToUpdate = new EventEmitter<any>();
+  @Output() dataToDelete = new EventEmitter<any>();
+  generate: boolean = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['view']) {
+      if (Object.keys(this.view).length !== 0) {
+        this.generate = true
+      } else { this.generate = false }
     }
-  ]
+  }
+  
+  openModalUpdate(id: number) {
+    this.dataToUpdate.emit(id)
+  }
+
+  deleteItem(itemID: number, itemName: string = "este elemento") {
+    this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
+  }
+
 }

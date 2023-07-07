@@ -30,7 +30,6 @@ import { RouterLink } from '@angular/router';
     GruposViewComponent,
     DashboardComponent,
 
-
   ],
   imports: [
     CommonModule,

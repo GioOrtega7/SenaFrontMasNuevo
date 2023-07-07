@@ -314,7 +314,7 @@ button.cancel::before {
     width: 80%;
     grid-template-columns: repeat(auto-fit, minmax(12vw, 200px));
     grid-gap: 30px;
-    grid-auto-rows: minmax(240px, 36vh);
+    grid-auto-rows: minmax(240px, 40vh);
     justify-content: center
 }
 

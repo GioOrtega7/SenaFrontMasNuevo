@@ -12,3 +12,9 @@
 <app-regular-chart [view]="this.view" (dataToUpdate)="Update($event)"
     (dataToDelete)="Delete($event)"></app-regular-chart>
 
+<app-regular-chart-sole [view]="this.view[0]" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"
+(dataInformation)="extendInformation($event)"></app-regular-chart-sole>
+
+<app-board [view]="this.boardView" (dataToUpdate)="Update($event)"
+(dataToDelete)="Delete($event)"></app-board>
+

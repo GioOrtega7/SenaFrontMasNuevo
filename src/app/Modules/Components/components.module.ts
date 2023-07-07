@@ -74,7 +74,8 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     IconChartComponent,
     IconChartSoleComponent,
     ChargeWheelSoleComponent,
-    RegularChartComponent
+    RegularChartComponent,
+    RegularChartSoleComponent
   ],
   providers: [
     {
