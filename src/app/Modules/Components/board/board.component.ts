@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { Board } from 'src/app/shared/models/board.model';
+import { BoardFiller } from 'src/app/shared/models/board.model';
 
 interface board{
   titulos:string;
@@ -14,7 +14,7 @@ interface board{
 export class BoardComponent {
 
 
-  @Input() view: Board  = {} as Board 
+  @Input() view: BoardFiller  = {} as BoardFiller
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
   generate: boolean = false;

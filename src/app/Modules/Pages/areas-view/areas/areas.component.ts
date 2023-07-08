@@ -18,7 +18,8 @@ import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.
 import { TableExtendInformationComponent } from 'src/app/Modules/Components/table-extend-information/table-extend-information.component';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
 import { EmptyExpr } from '@angular/compiler';
-import { Board } from 'src/app/shared/models/board.model';
+import { BoardFiller } from 'src/app/shared/models/board.model';
+import { DescriptionFiller } from 'src/app/shared/models/description.model';
 
 @Component({
   selector: 'app-areas',
@@ -43,8 +44,9 @@ export class AreasComponent implements OnInit, OnDestroy {
   filler: ExtendModalFiller[] = [];
   filler1: ExtendModalFiller[] = [];
   tableView: BoardTable = {} as BoardTable;
-  boardView: Board = {} as Board
+  boardView: BoardFiller = {} as BoardFiller
   data: any[] = []
+  description: DescriptionFiller = {} as DescriptionFiller
   constructor(
     private saveData: ExtendModalSecondService,
     //private dialogRef: MatDialogRef<AreasComponent>,
@@ -100,7 +102,16 @@ export class AreasComponent implements OnInit, OnDestroy {
 
     });
 
-
+    this.description = {
+      itemTitle: "Titulo",
+      itemTitleOne: "asd",
+      itemMesgOne: "asdas",
+      itemTitleTwo: "asdas",
+      itemMesgTwo: "asdas",
+      itemTitleThree: "asdas",
+      itemMesgThree: "asdas",
+      itemDescription: "asdas",
+    }
   }
 
   Update(id: number) {

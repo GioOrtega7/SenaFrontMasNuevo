@@ -1,0 +1,31 @@
+<div class="display-description">
+    <div class="des-content">
+        <div class="title">
+            <h4> {{view.itemTitle}}</h4>
+            <h4 *ngIf="view.itemTitleB"> {{view.itemTitleB}}</h4>
+        </div>
+    </div>
+    <div class="Description" *ngIf="view.itemDescription">
+        <p>{{view.itemDescription}}</p>
+    </div>
+    <div class="circles">
+        <div class="des-content" *ngIf="view.itemTitleOne">
+            <div class="des-circle">
+                <p>{{view.itemTitleOne}}</p>
+                <p>{{view.itemMesgOne}}</p>
+            </div>
+        </div>
+        <div class="des-content" *ngIf="view.itemTitleTwo">
+            <div class="des-circle dos">
+                <p>{{view.itemTitleTwo}}</p>
+                <p>{{view.itemMesgTwo}}</p>
+            </div>
+        </div>
+        <div class="des-content" *ngIf="view.itemTitleThree">
+            <div class="des-circle">
+                <p>{{view.itemTitleThree}}</p>
+                <p>{{view.itemMesgThree}}</p>
+            </div>
+        </div>
+    </div>
+</div>

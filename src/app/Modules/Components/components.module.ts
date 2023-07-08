@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentesRoutingModule } from './components-routing.module';
 import { ChargeWheelComponent } from './charge-wheel/charge-wheel.component';
-import { DescripcionComponent } from './descripcion/descripcion.component';
+import { DescriptionComponent } from './description/description.component';
 import { ProgramaFormativoComponent } from './programa-formativo/programa-formativo.component';
 import { ExtendModalFormComponent } from './extend-modal-form/extend-modal-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,12 +23,11 @@ import { RegularChartSoleComponent } from './regular-chart-sole/regular-chart-so
 import { BoardTableComponent } from './board-table/board-table.component';
 import { BoardComponent } from './board/board.component';
 import { TableExtendInformationComponent } from './table-extend-information/table-extend-information.component';
-
+ 
 
 @NgModule({
   declarations: [
     ChargeWheelComponent,
-    DescripcionComponent,
     ProgramaFormativoComponent,
     ExtendModalFormComponent,
     IconChartComponent,
@@ -42,7 +41,8 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     BoardTableComponent,
     BoardComponent,
     TableExtendInformationComponent,
-    ChargeWheelComponent
+    ChargeWheelComponent,
+    DescriptionComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +60,6 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
   ],
   exports: [
     ChargeWheelComponent,
-    DescripcionComponent,
     ProgramaFormativoComponent,
     ExtendModalFormComponent,
     IconChartComponent,
@@ -75,7 +74,8 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     IconChartSoleComponent,
     ChargeWheelSoleComponent,
     RegularChartComponent,
-    RegularChartSoleComponent
+    RegularChartSoleComponent,
+    DescriptionComponent
   ],
   providers: [
     {
