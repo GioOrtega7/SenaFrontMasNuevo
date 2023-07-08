@@ -97,3 +97,9 @@ h4{
 .des-circle p:nth-child(2){
     font-size: 0.8em;
 }
+
+.des-circle p {
+    width: max-content;
+    text-align: center;
+}
+

@@ -2,7 +2,7 @@ export interface IconChartFiller {
     itemId: number,
     iconUrl: string,
     itemName: string,
-    itemCode: number,
+    itemCode: string,
     itemOne: string,
     itemTwo?: string,
     itemThree?:string, 

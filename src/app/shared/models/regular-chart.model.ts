@@ -1,8 +1,8 @@
 export interface RegularChartFiller {
     itemId: number,
     itemName: string,
-    itemCode: number,
-    itemEnfasis: number,
+    itemCode: string,
+    itemEnfasis: string,
     itemMessagge: string,
     itemOne?: string,
     itemTwo?: string,
