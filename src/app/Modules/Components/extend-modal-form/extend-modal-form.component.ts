@@ -1,11 +1,10 @@
-import { Component, Inject, ElementRef } from '@angular/core';
+import { Component, Inject, ElementRef, OnDestroy } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { UntypedFormGroup, Validators } from '@angular/forms';
 import { ExtendModalFiller, incomeData } from 'src/app/shared/models/extend-modal-content';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-second.service';
-
-
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,6 +13,7 @@ import { ExtendModalSecondService } from 'src/app/shared/services/extend-modal-s
   styleUrls: ['./extend-modal-form.component.css']
 })
 export class ExtendModalFormComponent {
+  private extendModalUpdateSubscription!: Subscription;
   formExtend!: UntypedFormGroup;
   extendModalForm: FormControl = {} as FormControl;
   filler: ExtendModalFiller[] = [];
@@ -85,7 +85,7 @@ export class ExtendModalFormComponent {
     })
 
 
-    this.saveService.$extendModalUpdate.subscribe((res: any) => {
+    this.extendModalUpdateSubscription =  this.saveService.$extendModalUpdate.subscribe((res: any) => {
       if (res) {
         let name: string = res.name;
         for (let fill of this.filler) {
@@ -93,7 +93,7 @@ export class ExtendModalFormComponent {
             if (res.item === "data") {
               fill.data = res.data;
             } else if (res.item === "display") {
-              res.data.inc = this.inc + 1;
+              res.data.inc = (fill.display?.length!) + 1
               fill.display?.push(res.data);
             }
           }
@@ -133,17 +133,16 @@ export class ExtendModalFormComponent {
 
   openUpdate(extend: incomeData, name: string) {
     extend.title = "⇌ " + extend.title;
- 
     const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
-      if(res){extend.title = "";
-
-      if (extend.update) { this.saveService.dataUpdateService(res, name); } else {
-        this.saveService.dataSaveService(res, name)
+      extend.title = "";
+      if (res) {
+        if (extend.update) { this.saveService.dataUpdateService(res, name); } else {
+          this.saveService.dataSaveService(res, name)
+        }
+        document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
       }
-      document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
-}
     }
     )
   }
@@ -166,4 +165,9 @@ export class ExtendModalFormComponent {
       }
     });
   }
+
+  ngOnDestroy(){
+    this.extendModalUpdateSubscription.unsubscribe();
+  }
+
 }
