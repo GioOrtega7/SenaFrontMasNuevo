@@ -52,7 +52,7 @@ export class ChargeWheelComponent {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      if(Object.keys(this.view).length !== 0){
+      if(this.view[0]?.itemId !== undefined && this.view[0].itemId !== -1){
         for (let i = 0; i < this.view.length; i++) {
           const { itemFechafin,itemFechainicio } = this.view[i];
           const totalDias = (new Date(itemFechafin).getTime() - new Date(itemFechainicio).getTime()) / (1000 * 3600 * 24);
@@ -89,6 +89,20 @@ export class ChargeWheelComponent {
 
   ngOnInit() {
     this.cambiarVariable()
+    this.view = []
+    for (let index = 0; index < 9; index++) {
+      this.view.push({
+        itemId: -1,
+        itemName: "  ",
+        itemCode: "  ",
+        itemOne: "  ",
+        itemTwo: "  ",
+        itemThree: "  ",
+        itemFechafin: new Date(2023, 6, 9),
+        itemFechainicio: new Date(2023, 6, 9),
+        itemPercentaje: 0
+      })
+    }
   }
 
   onWindowResize() {

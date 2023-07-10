@@ -133,3 +133,12 @@ circle:nth-child(2) {
 .actions img {
     width: 15px;
 }
+
+
+p.unloaded{
+  background: #273350;
+  border-radius: 10px;
+  height: 15px !important; 
+  width: 100%;
+  margin: 9px 0px !important;
+}
