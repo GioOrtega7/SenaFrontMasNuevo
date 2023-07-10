@@ -11,25 +11,23 @@ export class RegularChartComponent {
   @Output() dataInformation = new EventEmitter<any>();
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
-
+  @Output() redirectData = new EventEmitter<number>();
   @Input() view: RegularChartFiller[] = []
-  generate:boolean = false
+  generate: boolean = false
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      
-      if(Object.keys(this.view).length !== 0){
-        this.generate= true
-        
-      }else{this.generate= false}
+      if (this.view[0]?.itemId !== undefined && this.view[0].itemId !== -1) {
+        this.generate = true
+      }
     }
   }
 
 
-  viewInformation(id:number){
+  viewInformation(id: number) {
     this.dataInformation.emit(id)
   }
-  openModalUpdate(id : number) {
+  openModalUpdate(id: number) {
     this.dataToUpdate.emit(id)
   }
 
@@ -37,6 +35,9 @@ export class RegularChartComponent {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
 
+  redirect(id: number){
+    this.redirectData.emit(id)
+  }
 
   page_size: number = 1;
   page_number: number = 1;
@@ -46,15 +47,30 @@ export class RegularChartComponent {
     this.page_number = e.pageIndex + 1
   }
 
-  @HostListener('window:resize')
+  
 
   ngOnInit() {
-    this.cambiarVariable()
+    this.onWindowResize();
+    this.view = []
+    for (let index = 0; index < 9; index++) {
+      this.view.push({
+        itemId: -1,
+        itemName: " ",
+        itemCode: " ",
+        itemEnfasis: " ",
+        itemMessagge: " ",
+        itemOne: " ",
+        itemTwo: " ",
+      })
+    }
+    console.log(this.view);
   }
 
   onWindowResize() {
     this.cambiarVariable();
   }
+
+  @HostListener('window:resize')
   cambiarVariable() {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 

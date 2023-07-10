@@ -1,28 +1,25 @@
-<div class="wallpaper" *ngIf="this.generate">
- 
-        <div class="training-program">
-            <div class="active-tokens">
-                <p>{{view.itemEnfasis}}</p>
-                <p> {{view.itemMessagge}}</p>
-            </div>
-            <div class="description">
-                <p [ngClass]="{
+<div class="wallpaper">
+    <div class="training-program">
+        <div class="active-tokens">
+            <p [ngClass]="{'unloaded': !this.generate}">{{view.itemEnfasis}}</p>
+            <p> {{view.itemMessagge}}</p>
+        </div>
+        <div class="description">
+            <p [ngClass]="{
                     'animateLonger': view.itemName.length >= 20,
                     'animate': view.itemName.length < 20 && view.itemName.length > 11
-                  }">{{view.itemName}}</p>
-                <p>{{view.itemCode}}</p>
-                <p *ngIf="view.itemOne">{{view.itemOne}}</p>
-                <p *ngIf="view.itemTwo">{{ view.itemTwo }}</p>
-                <p *ngIf="view.itemThree">{{ view.itemThree }}</p>
-            </div>
-            <div class="actions">
-                <button (click)="openModalUpdate(view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
-                <button (click)="deleteItem(view.itemId, view.itemName)"><img
-                        src="../../../assets/icons/delete.svg"></button>
-                <button (click)="viewInformation(view.itemId)"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
-            </div>
+                    , 'unloaded': !this.generate}">{{view.itemName}}</p>
+            <p [ngClass]="{'unloaded': !this.generate}">{{view.itemCode}}</p>
+            <p [ngClass]="{'unloaded': !this.generate}" *ngIf="view.itemOne">{{view.itemOne}}</p>
+            <p [ngClass]="{'unloaded': !this.generate}" *ngIf="view.itemTwo">{{ view.itemTwo }}</p>
+            <p [ngClass]="{'unloaded': !this.generate}" *ngIf="view.itemThree">{{ view.itemThree }}</p>
         </div>
- 
+        <div class="actions">
+            <button (click)="openModalUpdate(view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+            <button (click)="deleteItem(view.itemId, view.itemName)"><img
+                    src="../../../assets/icons/delete.svg"></button>
+            <button (click)="viewInformation(view.itemId)"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
+        </div>
+    </div>
 </div>
- 

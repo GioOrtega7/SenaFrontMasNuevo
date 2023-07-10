@@ -140,3 +140,11 @@ button {
   0% { transform: translateX(0); }
   100% { transform: translateX(-200%); }
 }
+
+p.unloaded{
+  background: #273350;
+  border-radius: 10px;
+  height: 15px !important; 
+  width: 100%;
+  margin: 9px 0px !important;
+}

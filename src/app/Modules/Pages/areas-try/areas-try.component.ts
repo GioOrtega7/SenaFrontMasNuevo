@@ -59,7 +59,7 @@ export class AreasTryComponent {
   }
   ExtensInfo(id: number) {
     const view = (this.view.find(res => res.itemId === id))
-    
+
     let titles = ["ID", "Nombre de area", "Codigo"]
     if (view) {
 
@@ -80,38 +80,8 @@ export class AreasTryComponent {
     this._areaService.borrarArea(event).subscribe(() => {
     })
   }
-  update(data: IconChartFiller) {
-    this.filler = [{
-      fieldName: "Nombre de Area",
-      type: "input",
-      control: "text",
-      dataPlacer: data.itemName,
-      uppercase: true
-    }
-      , {
-      fieldName: "Codigo",
-      control: "number",
-      dataPlacer: data.itemOne
-    },
-    {
-      fieldName: "Icono",
-      control: "string",
-      dataPlacer: data.iconUrl
-    }
-    ]
-    var pass: incomeData = {
-      filler: this.filler, title: "Actualizar area"
-    }
-    const modalRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: pass })
-    modalRef.afterClosed().subscribe(res => {
-      this.area = {
-        id: data.itemId,
-        nombreArea: res[0],
-        codigo: res[1]
-      }
-      this.guardarArea(this.area);
-      this.searchService.getModelName("area", "areas");
-    })
+  update(id: number) {
+
   }
   guardarArea(area: AreaModel) {
     this.notificationService.showNotification({ message: "Cambios guardados", type: "success" })

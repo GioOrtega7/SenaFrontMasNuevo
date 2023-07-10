@@ -9,19 +9,32 @@ import { RegularChartFiller } from 'src/app/shared/models/regular-chart.model';
 export class RegularChartSoleComponent {
 
   @Output() dataInformation = new EventEmitter<any>();
-  @Input() view: RegularChartFiller  = {} as RegularChartFiller 
+  @Input() view: RegularChartFiller = {} as RegularChartFiller
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
   generate: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
-      if (Object.keys(this.view).length !== 0) {
+      if (this.view?.itemId !== undefined && this.view.itemId !== -1) {
         this.generate = true
       } else { this.generate = false }
     }
   }
-  
+
+  ngOnInit() {
+    this.view = {} as RegularChartFiller
+    this.view = {
+      itemId: -1,
+      itemName: " ",
+      itemCode: " ",
+      itemEnfasis: " ",
+      itemMessagge: " ",
+      itemOne: " ",
+      itemTwo: " ",
+ 
+    }
+  }
   openModalUpdate(id: number) {
     this.dataToUpdate.emit(id)
   }
@@ -30,7 +43,7 @@ export class RegularChartSoleComponent {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
 
-  viewInformation(id:number){
+  viewInformation(id: number) {
     this.dataInformation.emit(id)
   }
 }

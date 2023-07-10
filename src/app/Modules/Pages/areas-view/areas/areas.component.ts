@@ -94,7 +94,7 @@ export class AreasComponent implements OnInit, OnDestroy {
       }))
       this.tableView = { itemTitles: titles, itemData: tableView }
       this.view = view;
-      this.soleView = view[0]
+      this.soleView = view[1]
       this.data = res.map((res: AreaModel) => ({
         data: res.nombreArea,
         dataId: res.id
