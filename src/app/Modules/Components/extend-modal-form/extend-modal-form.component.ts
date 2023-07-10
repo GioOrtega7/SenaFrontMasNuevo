@@ -21,7 +21,7 @@ export class ExtendModalFormComponent {
   set: boolean = true;
   expandState: boolean = true;
   inc: number = 1;
-
+  files: { file: any, fieldName: string }[] = []
   constructor(
     private saveService: ExtendModalSecondService,
     private elementRef: ElementRef,
@@ -85,7 +85,7 @@ export class ExtendModalFormComponent {
     })
 
 
-    this.extendModalUpdateSubscription =  this.saveService.$extendModalUpdate.subscribe((res: any) => {
+    this.extendModalUpdateSubscription = this.saveService.$extendModalUpdate.subscribe((res: any) => {
       if (res) {
         let name: string = res.name;
         for (let fill of this.filler) {
@@ -102,10 +102,12 @@ export class ExtendModalFormComponent {
     });
   }
 
-  private getControl(name: string) {
 
-
-    return this.formExtend.controls[name];
+  onFileChangeDoc(event: Event, fieldName: string) {
+    const files = (event.target as HTMLInputElement).files;
+    if (files && files.length > 0) {
+      this.files.push({ file: files[0], fieldName: fieldName })
+    }
   }
 
   saveData() {
@@ -120,7 +122,9 @@ export class ExtendModalFormComponent {
         checkbox = []
       } else
         if (item.type === "display") { outputData.push(item.display) }
-        else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
+        else if (item.control === "file") {
+          outputData.push(this.files.find((res)=>res.fieldName == item.fieldName)?.file)
+        } else { outputData.push(this.formExtend.controls[item.formControlName!].value) }
     }
     if (this.formExtend.valid) {
       this.dialogRef.close(outputData)
@@ -166,7 +170,7 @@ export class ExtendModalFormComponent {
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.extendModalUpdateSubscription.unsubscribe();
   }
 
