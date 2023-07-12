@@ -85,7 +85,6 @@ export class ChargeWheelComponent {
     this.page_number = e.pageIndex + 1
   }
 
-  @HostListener('window:resize')
 
   ngOnInit() {
     this.cambiarVariable()
@@ -104,6 +103,7 @@ export class ChargeWheelComponent {
       })
     }
   }
+  @HostListener('window:resize')
 
   onWindowResize() {
     this.cambiarVariable();
