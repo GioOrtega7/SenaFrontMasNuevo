@@ -92,7 +92,7 @@ export class ExtendModalFormComponent {
             });
           }
           break;
-          
+
         case "display":
 
           break;
@@ -100,6 +100,10 @@ export class ExtendModalFormComponent {
         case "timestamp":
           this.formExtend.addControl(item.fieldName! + '_start', new FormControl(item.dataPlacer.start, [Validators.required]));
           this.formExtend.addControl(item.fieldName! + '_end', new FormControl(item.dataPlacer.end, [Validators.required]));
+          if(item.dataPlacer.end)
+          this.formExtend.get(item.fieldName! + '_start')?.markAsDirty()
+          if(item.dataPlacer.end)
+          this.formExtend.get(item.fieldName! + '_end')?.markAsDirty()
           break;
 
         default:
@@ -132,6 +136,8 @@ export class ExtendModalFormComponent {
         case "date":
           var dateStart: Date = new Date(this.formExtend.controls[formControlName + '_start'].value)
           var dateEnd: Date = new Date(this.formExtend.controls[formControlName + '_end'].value)
+          console.log(dateStart,this.formExtend.controls[formControlName + '_start'], "asdasd" );
+          
           var diffHours: number = (dateEnd.getTime() - dateStart.getTime()) / (3600000 * 24);
           for (let item of this.filler) {
             if (item.fieldName == formControlName) {
@@ -161,7 +167,7 @@ export class ExtendModalFormComponent {
           for (let item of this.filler) {
             if (item.fieldName == formControlName) {
               if (diffHours < 1) {
-                item.info = "Selección inválida";
+                item.info = "Selección inválida";                
                 this.formExtend.get(item.fieldName + '_end')?.setErrors({ "badstamp": true })
                 this.formExtend.get(item.fieldName + '_start')?.setErrors({ "badstamp": true })
               } else if (diffHours >= 1 && diffHours < 60) {
@@ -223,6 +229,8 @@ export class ExtendModalFormComponent {
     }
 
     if (this.formExtend.valid) {
+      console.log(outputData);
+      
       this.dialogRef.close(outputData)
     } else { this.dialogRef.close() }
   }

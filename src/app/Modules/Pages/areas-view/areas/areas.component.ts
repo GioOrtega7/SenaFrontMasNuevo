@@ -164,7 +164,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     const dialogRef: MatDialogRef<ExtendModalAlertComponent> = this.modal.open(ExtendModalAlertComponent, { data: alert });
 
     return await dialogRef.afterClosed().toPromise();
-  }
+  } 
 
   Delete(data: { itemId: number, itemName: string }) {
 
@@ -290,13 +290,13 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "Icono",
       type: "timestamp",
       control: "time",
-      dataPlacer:{start: new Date(2023,10,3), end: new Date(2023,10,3)}
+      dataPlacer:{start: "12:33", end: new Date(2023,10,3)}
      },
      {
       fieldName: "Icono2",
       type: "timestamp",
       control: "date",
-      dataPlacer:{start: new Date(2023,10,3), end: new Date(2023,10,3)}
+      dataPlacer:{start: "2023-07-11", end: new Date(2023,10,3)}
      },
     {
       fieldName: "Icono3",
