@@ -8,7 +8,7 @@ import { SearchBarService } from 'src/app/shared/services/search-bar.service';
 import { IconChartFiller } from 'src/app/shared/models/icon-chart.model';
 import { AreaService } from 'src/app/shared/services/area.service';
 import { ExtendModalFormComponent } from '../../Components/extend-modal-form/extend-modal-form.component';
-import { BoardTable, BoardTableFiller, DateFiler } from 'src/app/shared/models/board-table.model';
+import { BoardTable, BoardTableFiller } from 'src/app/shared/models/board-table.model';
 import { IconChartComponent } from '../../Components/icon-chart/icon-chart.component';
 import { TableExtendInformationComponent } from '../../Components/table-extend-information/table-extend-information.component';
 import { Title } from '@angular/platform-browser';
@@ -27,8 +27,7 @@ export class AreasTryComponent {
   view1: any[] = []
   tableView: Date = {} as Date;
   soleView: IconChartFiller = {} as IconChartFiller
-  DateFiller: DateFiler[] = []
-
+ 
   constructor(
     private _areaService: AreaService,
     private notificationService: NotificationService,

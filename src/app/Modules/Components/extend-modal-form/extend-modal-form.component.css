@@ -87,17 +87,11 @@ input.ng-invalid {
 }
 
 
-.switch {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    max-width: 400px;
-    white-space: break-spaces;
-}
-
+ 
 .switch input {
     width: 18px;
     min-width: 18px;
+    display: none;
 }
 
 
@@ -224,12 +218,12 @@ button:disabled {
     position: relative;
     display: flex;
     gap: 20px;
+    align-items: center;
+    max-width: 400px;
+    white-space: break-spaces;
 }
 
-.switch input {
-    display: none;
-}
-
+ 
 .slide {
     background-color: #ccc;
     cursor: pointer;

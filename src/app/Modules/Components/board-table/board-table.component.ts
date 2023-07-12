@@ -13,6 +13,7 @@ export class BoardTableComponent {
   @Input() view: BoardTable = {} as BoardTable
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
+  @Output() checkState = new EventEmitter<any>();
   generate: boolean = false
   viewData:BoardTableFiller[] = []
   viewTitles:Array<string> = []
@@ -35,6 +36,10 @@ export class BoardTableComponent {
 
   deleteItem(itemID: number, itemName: string) {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
+  }
+
+  checkStateCapture(id: number, check: Event){
+    this.checkState.emit({itemId: id, checkState:(check.target as HTMLInputElement).checked})
   }
 
   page_size: number = 1;
