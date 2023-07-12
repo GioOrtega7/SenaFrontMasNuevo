@@ -15,9 +15,6 @@ export class IconChartComponent {
   @Output() dataToDelete = new EventEmitter<{ itemId: number, itemName: string }>();
   @Output() redirectData = new EventEmitter<number>();
 
-
-  constructor(private modal: MatDialog,) { }
-
   @Input() view: IconChartFiller[] = []
   generate: boolean = false
 

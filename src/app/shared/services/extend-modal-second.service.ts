@@ -16,14 +16,11 @@ export class ExtendModalSecondService {
   $extendModalUpdate = this.extendModalUpdate.asObservable();
 
   dataSaveService(data:any[], name: string){
-    this.extendModalSecondUpdate.next({data:data, name:name});
-    console.log("save");
-    
+    this.extendModalSecondSave.next({data:data, name:name});
   }
 
   dataUpdateService(data:any[], name: string){
-    this.extendModalSecondSave.next({data:data, name:name})
-    console.log("update");
+    this.extendModalSecondUpdate.next({data:data, name:name})
   }
 
   dataUpdate(data:any[], name: string){

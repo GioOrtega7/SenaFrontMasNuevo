@@ -331,8 +331,8 @@ button.cancel::before {
 }
 
 .mat-mdc-paginator {
-    background-color: transparent;
-    color: #fff;
+    background-color: transparent !important;
+    color: #fff !important;
 }
 
 .mat-mdc-paginator svg {

@@ -1,0 +1,19 @@
+<div class="split">
+    <div class="content" (click)="redirect(view.itemId)">
+        <div class="container">
+            <p [ngClass]="{
+                'animateLonger': view.itemName.length >= 20,
+                'animate': view.itemName.length < 20 && view.itemName.length > 11
+              , 'unloaded': !this.generate}">{{view.itemName}}</p>
+            <p *ngIf="view.itemOne" [ngClass]="{'unloaded': !this.generate}">{{view.itemOne}}</p>
+            <p *ngIf="view.itemTwo" [ngClass]="{'unloaded-special': !this.generate}">{{view.itemTwo}}</p>
+            <div class="actions" [ngClass]="{'hidden': !this.generate}">
+                <button *ngIf="!view.updateHidden" (click)="openModalUpdate(view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+                <button *ngIf="!view.deleteHidden" (click)="deleteItem(view.itemId, view.itemName)"><img
+                        src="../../../assets/icons/delete.svg"></button>
+                <button *ngIf="!view.infoHidden" (click)="viewInformation(view.itemId)"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
+            </div>
+        </div>
+    </div>
+</div>
+ 

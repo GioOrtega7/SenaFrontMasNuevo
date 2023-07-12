@@ -1,32 +1,29 @@
-import { Component, Output, EventEmitter, Input, HostListener, SimpleChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, SimpleChanges, HostListener } from '@angular/core';
+import { SimpleChartFiller } from 'src/app/shared/models/simple-chart.model';
 import { PageEvent } from '@angular/material/paginator';
-import { RegularChartFiller } from 'src/app/shared/models/regular-chart.model';
 @Component({
-  selector: 'app-regular-chart',
-  templateUrl: './regular-chart.component.html',
-  styleUrls: ['./regular-chart.component.css']
+  selector: 'app-simple-chart',
+  templateUrl: './simple-chart.component.html',
+  styleUrls: ['./simple-chart.component.css']
 })
-export class RegularChartComponent {
-
-  @Output() dataInformation = new EventEmitter<any>();
-  @Output() dataToUpdate = new EventEmitter<any>();
-  @Output() dataToDelete = new EventEmitter<any>();
+export class SimpleChartComponent {
+  @Output() dataToUpdate = new EventEmitter<number>();
+  @Output() dataToDelete = new EventEmitter<{ itemId: number, itemName: string }>();
   @Output() redirectData = new EventEmitter<number>();
-  @Input() view: RegularChartFiller[] = []
+  @Output() dataInformation = new EventEmitter<number>();
+
+  @Input() view: SimpleChartFiller[] = []
   generate: boolean = false
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['view']) {
+
       if (this.view[0]?.itemId !== undefined && this.view[0].itemId !== -1) {
         this.generate = true
-      }
+      } else { this.generate = false }
     }
   }
 
-
-  viewInformation(id: number) {
-    this.dataInformation.emit(id)
-  }
   openModalUpdate(id: number) {
     this.dataToUpdate.emit(id)
   }
@@ -39,6 +36,11 @@ export class RegularChartComponent {
     this.redirectData.emit(id)
   }
 
+  viewInformation(id: number) {
+    this.dataInformation.emit(id)
+  }
+
+  
   page_size: number = 1;
   page_number: number = 1;
 
@@ -47,22 +49,20 @@ export class RegularChartComponent {
     this.page_number = e.pageIndex + 1
   }
 
-  
+ 
 
   ngOnInit() {
-    this.onWindowResize();
+    this.cambiarVariable()
     this.view = []
-    for (let index = 0; index < 9; index++) {
+    for (let index = 0; index < 15; index++) {
       this.view.push({
         itemId: -1,
         itemName: " ",
-        itemCode: " ",
-        itemEnfasis: " ",
-        itemMessagge: " ",
-        itemOne: " ",
-        itemTwo: " ",
+        itemOne: "  ",
+        itemTwo: "  ",
       })
     }
+
   }
 
   onWindowResize() {
@@ -74,19 +74,19 @@ export class RegularChartComponent {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
     if (screenWidth > 1633) {
-      this.page_size = 10;
+      this.page_size = 25;
     }
     else if (screenWidth < 1633 && screenWidth >= 1314) {
-      this.page_size = 9;
+      this.page_size = 10;
     }
-    else if (screenWidth < 1314 && screenWidth >= 995) {
+    else if (screenWidth < 1314 && screenWidth >= 1030) {
+      this.page_size = 8;
+    }
+    else if (screenWidth < 1030 && screenWidth >= 800) {
       this.page_size = 6;
     }
-    else if (screenWidth < 995 && screenWidth >= 800) {
-      this.page_size = 4;
-    }
     else if (screenWidth < 800 && screenWidth >= 675) {
-      this.page_size = 2;
+      this.page_size = 4;
     }
     else if (screenWidth < 675) {
       this.page_size = 1;

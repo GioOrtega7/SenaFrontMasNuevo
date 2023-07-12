@@ -41,7 +41,6 @@ select option:focus {
     background: #0a9e56;
     border: none;
     color: white;
-
 }
 
 select {
@@ -54,7 +53,17 @@ input.success {
     border-color: #006B00;
 }
 
+input.ng-invalid {
+    border-color: #680c0c;
+}
 
+.error{
+    color: #ff5151;
+}
+
+.success{
+    color: #0a9e56;
+}
 
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -285,6 +294,7 @@ input:checked+.slide:before {
     display: flex;
     flex-direction: row;
     width: 100%;
+    gap: 10px;
     justify-content: space-between;
 }
 

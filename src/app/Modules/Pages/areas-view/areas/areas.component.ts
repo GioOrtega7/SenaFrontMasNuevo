@@ -78,7 +78,7 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemEnfasis: res.id,
         itemMessage: "Horas",
         itemFour: "asdas",
-
+ 
       }))
 
       this.boardView ={
@@ -233,11 +233,13 @@ export class AreasComponent implements OnInit, OnDestroy {
     }
       , {
       fieldName: "Codigo",
-      control: "number",
+      control: "timestamp",
+      dataPlacer:{start: new Date(2023,10,3), end: new Date(2023,10,3)}
     },
     {
       fieldName: "Icono",
-      control: "string",
+      control: "date",
+      dataPlacer: new Date(2023,10,3)
     },
     {
       fieldName: "Select 2",
@@ -286,8 +288,20 @@ export class AreasComponent implements OnInit, OnDestroy {
     },
     {
       fieldName: "Icono",
-      type: "input",
-      control: "file"
+      type: "timestamp",
+      control: "time",
+      dataPlacer:{start: new Date(2023,10,3), end: new Date(2023,10,3)}
+     },
+     {
+      fieldName: "Icono2",
+      type: "timestamp",
+      control: "date",
+      dataPlacer:{start: new Date(2023,10,3), end: new Date(2023,10,3)}
+     },
+    {
+      fieldName: "Icono3",
+      control: "date",
+      dataPlacer: new Date(2023,10,3)
     },
     {
       fieldName: "Area",

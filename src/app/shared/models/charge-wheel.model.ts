@@ -8,4 +8,7 @@ export interface ChargeWheelFiller {
     itemFechainicio:Date,
     itemFechafin:Date,
     itemPercentaje?:number
+    updateHidden?: boolean,
+    deleteHidden?: boolean,
+    infoHidden?: boolean
 }

@@ -23,6 +23,9 @@ import { RegularChartSoleComponent } from './regular-chart-sole/regular-chart-so
 import { BoardTableComponent } from './board-table/board-table.component';
 import { BoardComponent } from './board/board.component';
 import { TableExtendInformationComponent } from './table-extend-information/table-extend-information.component';
+import { SimpleChartComponent } from './simple-chart/simple-chart.component';
+import { SimpleChartSoleComponent } from './simple-chart-sole/simple-chart-sole.component';
+import { BrowserModule } from '@angular/platform-browser';
  
 
 @NgModule({
@@ -42,7 +45,9 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     BoardComponent,
     TableExtendInformationComponent,
     ChargeWheelComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    SimpleChartComponent,
+    SimpleChartSoleComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +55,6 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-    ReactiveFormsModule,
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
@@ -75,7 +79,9 @@ import { TableExtendInformationComponent } from './table-extend-information/tabl
     ChargeWheelSoleComponent,
     RegularChartComponent,
     RegularChartSoleComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    SimpleChartComponent,
+    SimpleChartSoleComponent
   ],
   providers: [
     {

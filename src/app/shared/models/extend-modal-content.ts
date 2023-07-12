@@ -1,6 +1,6 @@
 export interface ExtendModalFiller {
   fieldName: string;
-  placeholder?: string;
+  placeholder?: string ;
   type?: string;
   control?: string;
   formControlName?: string;
@@ -8,8 +8,9 @@ export interface ExtendModalFiller {
   uppercase?: boolean;
   data?: { data: string, dataId: number }[];
   dataPlacer?:{dataId: number | string}[] |  any  ;
-  extend?: incomeData
-  display?:  {inc? :number ,id?: number,data :{title: string, desc: string}[]}[]
+  extend?: incomeData;
+  display?:  {inc? :number ,id?: number,data :{title: string, desc: string}[]}[];
+  info?: string;
 }
 
 export interface incomeData {

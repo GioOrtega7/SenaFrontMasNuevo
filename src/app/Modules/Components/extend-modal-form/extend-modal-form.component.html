@@ -1,5 +1,5 @@
 <div mat-dialog-title> {{this.extendModalTitle}} <button class="close" mat-dialog-close>⦻</button></div>
-<form [formGroup]="formExtend" novalidate>
+<form [formGroup]="formExtend">
     <mat-dialog-content>
         <div class="form-body">
             <div class="form-content" *ngFor="let fill of this.filler">
@@ -12,8 +12,23 @@
                 <div class="form-item" *ngIf="fill.type == 'input' &&  fill.control == 'file'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <input type="file" [formControlName]="fill.formControlName || ''"
-                         (change)="fill.control ? onFileChangeDoc($event, fill.fieldName) : ''"  />
-                </div>  
+                        (change)="fill.control ? onFileChangeDoc($event, fill.fieldName) : ''" />
+                </div>
+                <div class="form-item" *ngIf="fill.type == 'timestamp'">
+                    <label [for]="fill.formControlName">{{fill.fieldName}}</label>
+
+                    <div class="data">
+                        <label [for]="fill.fieldName + '_start'">Inicio<input [type]="fill.control"
+                                [formControlName]="fill.fieldName + '_start' || ''"
+                                (input)="onDateChange(fill.fieldName, fill.control)" required="true" /></label>
+
+                        <label [for]="fill.fieldName+ '_end'">Fin<input [type]="fill.control"
+                                [formControlName]="fill.fieldName + '_end'|| ''"
+                                (input)="onDateChange(fill.fieldName,  fill.control)" required="true" /></label>
+                        
+                    </div>
+                    <p style="font-size: 0.8em; text-align: center;" [ngClass]="this.formExtend.get(fill.fieldName + '_end')?.invalid ? 'error': 'success'"> {{fill.info}}</p>
+                </div>
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
                     <div class="update">

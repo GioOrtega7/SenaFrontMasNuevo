@@ -20,9 +20,9 @@
       </div>
     </div>
     <div class="actions">
-      <button (click)="openModalUpdate(view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
-      <button (click)="deleteItem(view.itemId, view.itemName)"><img src="../../../assets/icons/delete.svg"></button>
-      <button (click)="viewInformation(view.itemId)"><img
+      <button *ngIf="!view.updateHidden" (click)="openModalUpdate(view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+      <button *ngIf="!view.deleteHidden" (click)="deleteItem(view.itemId, view.itemName)"><img src="../../../assets/icons/delete.svg"></button>
+      <button *ngIf="!view.infoHidden" (click)="viewInformation(view.itemId)"><img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
     </div>
   </div>

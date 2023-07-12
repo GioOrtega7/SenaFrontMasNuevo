@@ -6,5 +6,7 @@ export interface IconChartFiller {
     itemOne: string,
     itemTwo?: string,
     itemThree?:string, 
-
+    updateHidden?: boolean,
+    deleteHidden?: boolean,
+    infoHidden?: boolean
 }

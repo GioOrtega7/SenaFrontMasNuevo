@@ -7,4 +7,7 @@ export interface RegularChartFiller {
     itemOne?: string,
     itemTwo?: string,
     itemThree?:string,
+    updateHidden?: boolean,
+    deleteHidden?: boolean,
+    infoHidden?: boolean
 }

@@ -16,10 +16,10 @@
                 <p *ngIf="item.itemThree" [ngClass]="{'unloaded': !this.generate}">{{ item.itemThree }}</p>
             </div>
             <div class="actions">
-                <button (click)="openModalUpdate(item.itemId)"><img src="../../../assets/icons/reload.svg"></button>
-                <button (click)="deleteItem(item.itemId, item.itemName)"><img
+                <button *ngIf="!item.updateHidden" (click)="openModalUpdate(item.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+                <button *ngIf="!item.deleteHidden" (click)="deleteItem(item.itemId, item.itemName)"><img
                         src="../../../assets/icons/delete.svg"></button>
-                <button (click)="viewInformation(item.itemId)"><img
+                <button *ngIf="!item.infoHidden" (click)="viewInformation(item.itemId)"><img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
             </div>
         </div>

@@ -1,0 +1,21 @@
+<div class="split">
+    <div class="content" *ngFor="let item of view | Paginate: page_size: page_number" (click)="redirect(item.itemId)">
+        <div class="container">
+            <p [ngClass]="{
+                'animateLonger': item.itemName.length >= 20,
+                'animate': item.itemName.length < 20 && item.itemName.length > 11
+              , 'unloaded': !this.generate}">{{item.itemName}}</p>
+            <p *ngIf="item.itemOne" [ngClass]="{'unloaded': !this.generate}">{{item.itemOne}}</p>
+            <p *ngIf="item.itemTwo" [ngClass]="{'unloaded-special': !this.generate}">{{item.itemTwo}}</p>
+            <div class="actions" [ngClass]="{'hidden': !this.generate}">
+                <button *ngIf="!item.updateHidden" (click)="openModalUpdate(item.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+                <button *ngIf="!item.deleteHidden" (click)="deleteItem(item.itemId, item.itemName)"><img
+                        src="../../../assets/icons/delete.svg"></button>
+                <button *ngIf="!item.infoHidden" (click)="viewInformation(item.itemId)"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator *ngIf="this.generate" [length]="view.length" [pageSize]="page_size" [hidePageSize]=true
+    (page)="handlePage($event)" showFirstLastButtons>
+</mat-paginator>
