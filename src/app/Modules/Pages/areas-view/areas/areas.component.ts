@@ -292,7 +292,6 @@ export class AreasComponent implements OnInit, OnDestroy {
       fieldName: "Icono",
       type: "timestamp",
       control: "time",
-      dataPlacer:{start: "12:33", end: new Date(2023,10,3)}
      },
      {
       fieldName: "Icono2",

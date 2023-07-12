@@ -292,6 +292,10 @@ input:checked+.slide:before {
     justify-content: space-between;
 }
 
+.data label{
+    width: 100%;
+}
+
 button.close {
     background: none;
     font-size: 1.2em;
