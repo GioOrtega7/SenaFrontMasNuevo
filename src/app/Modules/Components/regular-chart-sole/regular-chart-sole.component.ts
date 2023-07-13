@@ -23,7 +23,7 @@ export class RegularChartSoleComponent {
   }
 
   ngOnInit() {
-    this.view = {} as RegularChartFiller
+   if(!this.view)
     this.view = {
       itemId: -1,
       itemName: " ",

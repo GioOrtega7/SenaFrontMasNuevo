@@ -88,7 +88,7 @@ export class ChargeWheelComponent {
 
   ngOnInit() {
     this.cambiarVariable()
-    this.view = []
+    if(this.view.length < 1)
     for (let index = 0; index < 9; index++) {
       this.view.push({
         itemId: -1,
