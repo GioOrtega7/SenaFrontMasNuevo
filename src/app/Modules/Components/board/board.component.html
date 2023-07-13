@@ -6,9 +6,9 @@
 				<p>{{item.itemData}}</p>
 			</li>
 			<div class="actions">
-				<button (click)="openModalUpdate(view.itemId)"><img
+				<button *ngIf="!view.updateHidden" (click)="openModalUpdate(view.itemId)"><img
 						src="../../../assets/icons/reload.svg"></button>
-				<button (click)="deleteItem(view.itemId)"><img
+				<button *ngIf="!view.deleteHidden" (click)="deleteItem(view.itemId)"><img
 						src="../../../assets/icons/delete.svg"></button>
 			</div>
 		</ul>
