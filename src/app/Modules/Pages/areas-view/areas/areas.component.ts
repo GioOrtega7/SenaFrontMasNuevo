@@ -73,7 +73,7 @@ export class AreasComponent implements OnInit, OnDestroy {
         itemName: res.nombreArea,
         itemCode: res.codigo,
         itemOne: res.codigo,
-        itemTwo: res.nombreArea,
+        itemTwo: "",
         itemThree: res.nombreArea,
         itemEnfasis: res.id,
         itemMessage: "Horas",

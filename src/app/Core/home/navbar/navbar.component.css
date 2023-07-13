@@ -15,7 +15,6 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-
 .NavBar {
     display: flex;
     flex-direction: row;
@@ -124,11 +123,6 @@
     padding: 2px;
 }
 
-.content-information {
-    width: 1500px;
-    padding: 0;
-}
-
 ul {
     margin: 0;
     padding: 10px;
@@ -192,8 +186,6 @@ img.menu {
     cursor: pointer;
 }
 
-
-/******************************************************************/
 .animate-menu {
     transform: rotate(90deg);
     transition: 0.5s;
@@ -204,15 +196,12 @@ img.menu {
     transition: 0.5s;
 }
 
-
-
 button.menu-container {
     position: relative;
     border: none;
     background: none;
     transition: 0.3s;
 }
-
 
 button.menu-container:hover {
     animation: ease-in-out;
@@ -365,8 +354,6 @@ span.text {
     font-size: 0.7em;
 }
 
-/*//////////*/
-
 .left-view {
     display: flex;
     flex-direction: row;
@@ -380,7 +367,6 @@ span.text {
     padding-left: 40px;
     transition: 0.3s;
 }
-
 
 .container-4 {
     overflow: hidden;
@@ -416,8 +402,6 @@ span.text {
     width: 0;
     overflow: hidden;
 }
-
-
 
 .container-4 input#search::-webkit-input-placeholder {
     color: #c7c7c7;
@@ -469,5 +453,3 @@ span.text {
     color: rgb(173, 3, 3);
     font-size: 1em;
 }
-
-/******************************************************************/

@@ -6,7 +6,7 @@
                 'animate': item.itemName.length < 20 && item.itemName.length > 11
               , 'unloaded': !this.generate}">{{item.itemName}}</p>
             <p *ngIf="item.itemOne" [ngClass]="{'unloaded': !this.generate}">{{item.itemOne}}</p>
-            <p *ngIf="item.itemTwo" [ngClass]="{'unloaded-special': !this.generate}">{{item.itemTwo}}</p>
+            <p [ngClass]="{'unloaded-special': !this.generate}">{{item.itemTwo || " "}}</p>
         </div>
         <div class="actions" [ngClass]="{'hidden': !this.generate}">
             <button *ngIf="!item.updateHidden" (click)="openModalUpdate(item.itemId)"><img
