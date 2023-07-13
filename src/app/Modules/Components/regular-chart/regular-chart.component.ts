@@ -77,7 +77,7 @@ export class RegularChartComponent {
       this.page_size = 10;
     }
     else if (screenWidth < 1633 && screenWidth >= 1314) {
-      this.page_size = 9;
+      this.page_size = 8;
     }
     else if (screenWidth < 1314 && screenWidth >= 995) {
       this.page_size = 6;

@@ -73,10 +73,10 @@ export class SimpleChartComponent {
   cambiarVariable() {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-    if (screenWidth >= 1540) {
+    if (screenWidth >= 1520) {
       this.page_size = 12;
     }
-    else if (screenWidth < 1540 && screenWidth >= 1314) {
+    else if (screenWidth < 1520 && screenWidth >= 1314) {
       this.page_size = 10;
     }
     else if (screenWidth < 1314 && screenWidth >= 1030) {
