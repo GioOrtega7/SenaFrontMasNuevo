@@ -48,6 +48,22 @@ export class ChargeWheelSoleComponent {
       this.colores.push(currentColor);
     }
   }
+
+  ngOnInit() {
+    if(Object(this.view).keys.length < 1)
+    this.view = {
+      itemId: -1,
+      itemName: "  ",
+      itemCode: "  ",
+      itemOne: "  ",
+      itemTwo: "  ",
+      itemThree: "  ",
+      itemFechafin: new Date(2023, 6, 9),
+      itemFechainicio: new Date(2023, 6, 9),
+      itemPercentaje: 0
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.obtenerPorcentajeDiasTranscurridos()
     if (changes['view']) {

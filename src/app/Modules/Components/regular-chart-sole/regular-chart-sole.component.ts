@@ -23,7 +23,7 @@ export class RegularChartSoleComponent {
   }
 
   ngOnInit() {
-   if(!this.view)
+    if(Object(this.view).keys.length < 1)
     this.view = {
       itemId: -1,
       itemName: " ",

@@ -28,7 +28,7 @@
   transform: scale(1.05)
 }
 
-.area:hover~.actions {
+.area:hover~ .actions {
   transition: 0.3s;
   transform: scale(1.05)
 }
@@ -76,7 +76,7 @@ button {
   display: flex;
   position: absolute;
   flex-direction: column;
-  right: 5px;
+  right: -22px;
   top: 10px;
 }
 
