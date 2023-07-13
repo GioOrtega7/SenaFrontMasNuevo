@@ -98,8 +98,8 @@ export class ExtendModalFormComponent {
           break;
 
         case "timestamp":
-          this.formExtend.addControl(item.fieldName! + '_start', new FormControl(item.dataPlacer.start, [Validators.required]));
-          this.formExtend.addControl(item.fieldName! + '_end', new FormControl(item.dataPlacer.end, [Validators.required]));
+          this.formExtend.addControl(item.fieldName! + '_start', new FormControl(item.dataPlacer.start, Validators.required));
+          this.formExtend.addControl(item.fieldName! + '_end', new FormControl(item.dataPlacer.end, Validators.required));
           if(item.dataPlacer.end)
           this.formExtend.get(item.fieldName! + '_start')?.markAsDirty()
           if(item.dataPlacer.end)
@@ -236,16 +236,17 @@ export class ExtendModalFormComponent {
   }
 
   openUpdate(extend: incomeData, name: string) {
-    extend.title = "⇌ " + extend.title;
     const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
+    this.extendModalTitle = "⇌ " + this.extendModalTitle;
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
-      extend.title = "";
+      document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
+      this.extendModalTitle = ""
       if (res) {
         if (extend.update) { this.saveService.dataUpdateService(res, name); } else {
           this.saveService.dataSaveService(res, name)
         }
-        document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
+        
       }
     }
     )

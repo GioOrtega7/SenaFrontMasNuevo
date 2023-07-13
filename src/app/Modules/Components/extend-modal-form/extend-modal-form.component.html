@@ -20,11 +20,11 @@
                     <div class="data">
                         <label [for]="fill.fieldName + '_start'">Inicio<input [type]="fill.control"
                                 [formControlName]="fill.fieldName + '_start' || ''"
-                                (input)="onDateChange(fill.fieldName, fill.control)" required="true" /></label>
+                                (input)="onDateChange(fill.fieldName, fill.control)"   /></label>
 
                         <label [for]="fill.fieldName+ '_end'">Fin<input [type]="fill.control"
                                 [formControlName]="fill.fieldName + '_end'|| ''"
-                                (input)="onDateChange(fill.fieldName,  fill.control)" required="true" /></label>
+                                (input)="onDateChange(fill.fieldName,  fill.control)"   /></label>
                         
                     </div>
                     <p style="font-size: 0.8em; text-align: center;" [ngClass]="this.formExtend.get(fill.fieldName + '_end')?.invalid ? 'error': 'success'"> {{fill.info}}</p>

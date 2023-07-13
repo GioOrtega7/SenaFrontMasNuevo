@@ -49,20 +49,17 @@ select {
     border-radius: 10px;
 }
 
-input.success {
-    border-color: #006B00;
-}
-
-input.ng-invalid {
+.ng-invalid {
     border-color: #680c0c;
 }
 
-.error{
-    color: #ff5151;
+.ng-valid {
+    border-color: #006B00;
+    
 }
 
-.success{
-    color: #0a9e56;
+select{
+    border-width: 3px;
 }
 
 ::-webkit-calendar-picker-indicator {

@@ -83,7 +83,7 @@ export class AreasComponent implements OnInit, OnDestroy {
 
       this.boardView ={
         itemId: res[0].id,
-        data: [{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area", itemData: res[0].nombreArea }]
+        data: [{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area", itemData: res[0].nombreArea },{itemTitle:"Nombre de area de daqwe dasdasd qweqweq ", itemData: res[0].nombreArea },{itemTitle:"Nombre de area", itemData: res[0].nombreArea }]
       }
       
       let as = new Date(2022, 1, 10);
