@@ -50,8 +50,10 @@ export class NotificationComponent {
       if (this.timeoutRef) { clearTimeout(this.timeoutRef); }
 
     })
+  }
 
-
+  clear(){
+    this.notificationService.clearNotification()
   }
 
 }

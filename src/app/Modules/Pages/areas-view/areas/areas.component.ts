@@ -116,6 +116,10 @@ export class AreasComponent implements OnInit, OnDestroy {
     }
   }
 
+  notification(){
+    this.notificationService.showNotification({message:"a"})
+  }
+
   Update(id: number) {
 
     const data: AreaModel = this.res1.find(res => res.id === id)

@@ -41,11 +41,13 @@
 
 .notification {
     display: none;
+    cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: max-content;
-    max-width: 240px;
+    max-width: 250px;
+    min-width: 180px;
     min-height: 50px;
     height: max-content;
     padding-left: 12px;

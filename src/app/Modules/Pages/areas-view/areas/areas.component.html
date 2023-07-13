@@ -2,6 +2,8 @@
 <app-simple-chart [view]="this.view"></app-simple-chart>
 <app-simple-chart-sole></app-simple-chart-sole>
 <a><button (click)="openModalCreate()" class="add">Añadir</button></a>
+<a><button (click)="notification()" class="add">Añadir</button></a>
+
 
 <app-icon-chart [view]="this.view" (dataToUpdate)="Update($event)" (dataToDelete)="Delete($event)"
     (dataInformation)="extendInformation($event)"></app-icon-chart>
