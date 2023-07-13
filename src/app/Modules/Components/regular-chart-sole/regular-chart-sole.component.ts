@@ -12,6 +12,8 @@ export class RegularChartSoleComponent {
   @Input() view: RegularChartFiller = {} as RegularChartFiller
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
+  @Output() redirectData = new EventEmitter<number>();
+
   generate: boolean = false;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -23,7 +25,7 @@ export class RegularChartSoleComponent {
   }
 
   ngOnInit() {
-    if(Object(this.view).keys.length < 1)
+    if(this.view == undefined || this.view == {} as RegularChartFiller || !Object(this.view).keys)
     this.view = {
       itemId: -1,
       itemName: " ",
@@ -45,5 +47,8 @@ export class RegularChartSoleComponent {
 
   viewInformation(id: number) {
     this.dataInformation.emit(id)
+  }
+  redirect(id: number){
+    this.redirectData.emit(id)
   }
 }

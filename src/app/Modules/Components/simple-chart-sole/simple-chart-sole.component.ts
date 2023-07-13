@@ -46,7 +46,7 @@ export class SimpleChartSoleComponent {
 
 
   ngOnInit() {
-    if(Object(this.view).keys.length < 1)
+    if(this.view == undefined || this.view == {} as SimpleChartFiller || !Object(this.view).keys)
     this.view = {
       itemId: -1,
       itemName: " ",

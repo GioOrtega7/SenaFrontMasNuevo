@@ -1,4 +1,4 @@
-<div class="wallpaper" *ngIf="this.generate">
+<div class="wallpaper">
   <div class="slide-item">
     <div class="area">
       <picture>
@@ -16,12 +16,14 @@
         <p *ngIf="view.itemThree" [ngClass]="{'unloaded': !this.generate}">{{ view.itemThree }}</p>
       </div>
       <div class="button">
-        <a><button>ir</button></a>
+        <a><button (click)="redirect(view.itemId)">ir</button></a>
       </div>
     </div>
     <div class="actions">
-      <button *ngIf="!view.updateHidden" (click)="openModalUpdate(view.itemId)"><img src="../../../assets/icons/reload.svg"></button>
-      <button *ngIf="!view.deleteHidden" (click)="deleteItem(view.itemId, view.itemName)"><img src="../../../assets/icons/delete.svg"></button>
+      <button *ngIf="!view.updateHidden" (click)="openModalUpdate(view.itemId)"><img
+          src="../../../assets/icons/reload.svg"></button>
+      <button *ngIf="!view.deleteHidden" (click)="deleteItem(view.itemId, view.itemName)"><img
+          src="../../../assets/icons/delete.svg"></button>
       <button *ngIf="!view.infoHidden" (click)="viewInformation(view.itemId)"><img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_eye-progressive.svg/20px-OOjs_UI_icon_eye-progressive.svg.png"></button>
     </div>

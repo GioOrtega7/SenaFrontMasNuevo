@@ -26,11 +26,6 @@
 
 
 
-.area:hover~.actions {
-  transition: 0.3s;
-  transform: scale(1.05)
-}
-
 .area picture {
   padding: 10px;
   border-radius: 50%;
@@ -98,6 +93,11 @@
   transition: all 0.25s ease;
 }
 
+button {
+  display: flex;
+  justify-content: center;
+  padding: 8px 12px;
+}
 
 .desc-title {
   display: flex;
@@ -153,4 +153,10 @@ p.unloaded{
   height: 15px !important; 
   width: 100%;
   margin: 9px 0px !important;
+}
+.slide-item:hover{
+  transform: scale(1.05);
+}
+.slide-item{
+  transition: 0.5s;
 }

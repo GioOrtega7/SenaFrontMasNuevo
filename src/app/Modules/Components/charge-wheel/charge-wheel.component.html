@@ -2,7 +2,7 @@
     <div class="charge_wheel" *ngFor="let item of  this.view | Paginate: page_size: page_number">
         <div class="porcentajes" style="--porcentaje: {{item.itemPercentaje}}">
             <div class="content">
-                <div class="container">
+                <div class="container" (click)="redirect(item.itemId)">
                     <p
                         [ngClass]="{'animateLonger': item.itemName.length >= 20,'animate': item.itemName.length < 20 && item.itemName.length > 11, 'unloaded': !this.generate}">
                         {{item.itemName}}

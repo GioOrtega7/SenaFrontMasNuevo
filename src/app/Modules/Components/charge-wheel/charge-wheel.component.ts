@@ -17,6 +17,8 @@ export class ChargeWheelComponent {
   @Output() dataInformation = new EventEmitter<any>();
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
+  @Output() redirectData = new EventEmitter<number>();
+
   generate: boolean = false;
   porsentajeDias:number[]=[]; 
   fechainicio:Date[]=[];
@@ -77,6 +79,11 @@ export class ChargeWheelComponent {
   deleteItem(itemID: number, itemName: string) {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
+
+  redirect(id: number){   
+    this.redirectData.emit(id)
+  }
+  
   page_size: number = 1;
   page_number: number = 1;
 

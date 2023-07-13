@@ -135,9 +135,7 @@ export class ExtendModalFormComponent {
       switch (control) {
         case "date":
           var dateStart: Date = new Date(this.formExtend.controls[formControlName + '_start'].value)
-          var dateEnd: Date = new Date(this.formExtend.controls[formControlName + '_end'].value)
-          console.log(dateStart,this.formExtend.controls[formControlName + '_start'], "asdasd" );
-          
+          var dateEnd: Date = new Date(this.formExtend.controls[formControlName + '_end'].value)          
           var diffHours: number = (dateEnd.getTime() - dateStart.getTime()) / (3600000 * 24);
           for (let item of this.filler) {
             if (item.fieldName == formControlName) {
@@ -228,9 +226,7 @@ export class ExtendModalFormComponent {
       }
     }
 
-    if (this.formExtend.valid) {
-      console.log(outputData);
-      
+    if (this.formExtend.valid) {      
       this.dialogRef.close(outputData)
     } else { this.dialogRef.close() }
   }

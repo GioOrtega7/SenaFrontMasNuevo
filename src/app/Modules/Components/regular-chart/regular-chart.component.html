@@ -1,22 +1,25 @@
 <div class="wallpaper">
     <div class="slider">
-        <div class="training-program" *ngFor="let item of view | Paginate: page_size: page_number" (click)="redirect(item.itemId)">
-            <div class="active-tokens">
-                <p [ngClass]="{'unloaded': !this.generate}">{{item.itemEnfasis}}</p>
-                <p> {{item.itemMessagge}}</p>
-            </div>
-            <div class="description">
-                <p [ngClass]="{
+        <div class="relative" *ngFor="let item of view | Paginate: page_size: page_number">
+            <div class="training-program" (click)="redirect(item.itemId)">
+                <div class="active-tokens">
+                    <p [ngClass]="{'unloaded': !this.generate}">{{item.itemEnfasis}}</p>
+                    <p> {{item.itemMessagge}}</p>
+                </div>
+                <div class="description">
+                    <p [ngClass]="{
                     'animateLonger': item.itemName.length >= 20,
                     'animate': item.itemName.length < 20 && item.itemName.length > 11
                   , 'unloaded': !this.generate}">{{item.itemName}}</p>
-                <p [ngClass]="{'unloaded': !this.generate}">{{item.itemCode}}</p>
-                <p *ngIf="item.itemOne" [ngClass]="{'unloaded': !this.generate}">{{item.itemOne}}</p>
-                <p *ngIf="item.itemTwo" [ngClass]="{'unloaded': !this.generate}">{{ item.itemTwo }}</p>
-                <p *ngIf="item.itemThree" [ngClass]="{'unloaded': !this.generate}">{{ item.itemThree }}</p>
+                    <p [ngClass]="{'unloaded': !this.generate}">{{item.itemCode}}</p>
+                    <p *ngIf="item.itemOne" [ngClass]="{'unloaded': !this.generate}">{{item.itemOne}}</p>
+                    <p *ngIf="item.itemTwo" [ngClass]="{'unloaded': !this.generate}">{{ item.itemTwo }}</p>
+                    <p *ngIf="item.itemThree" [ngClass]="{'unloaded': !this.generate}">{{ item.itemThree }}</p>
+                </div>
             </div>
             <div class="actions">
-                <button *ngIf="!item.updateHidden" (click)="openModalUpdate(item.itemId)"><img src="../../../assets/icons/reload.svg"></button>
+                <button *ngIf="!item.updateHidden" (click)="openModalUpdate(item.itemId)"><img
+                        src="../../../assets/icons/reload.svg"></button>
                 <button *ngIf="!item.deleteHidden" (click)="deleteItem(item.itemId, item.itemName)"><img
                         src="../../../assets/icons/delete.svg"></button>
                 <button *ngIf="!item.infoHidden" (click)="viewInformation(item.itemId)"><img

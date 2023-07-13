@@ -37,7 +37,7 @@ export class IconChartComponent {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
 
-  redirect(id: number){
+  redirect(id: number){   
     this.redirectData.emit(id)
   }
 

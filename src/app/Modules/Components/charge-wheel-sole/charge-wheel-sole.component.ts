@@ -19,6 +19,8 @@ export class ChargeWheelSoleComponent {
   @Output() dataInformation = new EventEmitter<number>();
   @Output() dataToUpdate = new EventEmitter<any>();
   @Output() dataToDelete = new EventEmitter<any>();
+  @Output() redirectData = new EventEmitter<number>();
+
   generate: boolean = false; 
 
   constructor() {
@@ -50,7 +52,7 @@ export class ChargeWheelSoleComponent {
   }
 
   ngOnInit() {
-    if(Object(this.view).keys.length < 1)
+    if(this.view == undefined || this.view == {} as ChargeWheelFiller || !Object(this.view).keys)
     this.view = {
       itemId: -1,
       itemName: "  ",
@@ -99,6 +101,11 @@ export class ChargeWheelSoleComponent {
   deleteItem(itemID: number, itemName: string) {
     this.dataToDelete.emit({ itemId: itemID, itemName: itemName })
   }
+
+  redirect(id: number){   
+    this.redirectData.emit(id)
+  }
+
   page_size: number = 8;
   page_number: number = 1;
 
