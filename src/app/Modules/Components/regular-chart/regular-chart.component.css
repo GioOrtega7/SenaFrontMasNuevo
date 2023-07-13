@@ -39,14 +39,10 @@
     0% {
         transform: translateX(0);
     }
-
     100% {
         transform: translateX(-200%);
     }
 }
-
-
-/*////////////////////////////////*/
 
 .slider {
     display: grid;
@@ -60,7 +56,6 @@
 .training-program:nth-child(n) {
     padding: 0px 10px;
 }
-
 
 .training-program {
     position: relative;
@@ -87,7 +82,6 @@
     padding: 0;
     margin: 0;
 }
-
 .training-program .active-tokens {
     position: relative;
     display: flex;
@@ -136,16 +130,12 @@
     right: 4px;
     color: #ee3f3f;
 }
-
 .actions button {
     cursor: pointer;
 }
-
 .actions img {
     width: 15px;
 }
-
-
 .display {
     padding: 15px;
     display: flex;
@@ -154,7 +144,6 @@
     justify-content: center;
     gap: 20px;
 }
-
 p.unloaded {
     background: #273350;
     border-radius: 10px;
@@ -162,7 +151,6 @@ p.unloaded {
     width: 100%;
     margin: 9px 0px !important;
 }
-
 .active-tokens p:nth-child(1).unloaded {
     background: #228922;
     width: 100%;
