@@ -121,6 +121,10 @@ export class ExtendModalFormComponent {
           if (fill.fieldName == name) {
             if (res.item === "data") {
               fill.data = res.data;
+              if(fill.type == "datalist")
+              {
+                this.formExtend.setControl(fill.formControlName!, new FormControl(fill.dataPlacer, [Validators.required, dataListCheck(fill.data, fill.formControlName!)]))
+              }
             } else if (res.item === "display") {
               res.data.inc = (fill.display?.length!) + 1
               fill.display?.push(res.data);
