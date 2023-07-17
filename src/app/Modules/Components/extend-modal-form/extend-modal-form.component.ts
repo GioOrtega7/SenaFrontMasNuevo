@@ -62,14 +62,12 @@ export class ExtendModalFormComponent {
 
     this.formExtend = this.formBuilder.group({})
 
-    function dateStamp(nameRe: string, nameRt: string): ValidatorFn {
+    function dataListCheck(formControlData: any, formControlName: string): ValidatorFn {
       return (control: AbstractControl): ValidationErrors | null => {
-        let date: Date = new Date(control.parent?.get(nameRe)?.value)
-        let date1: Date = new Date(control.parent?.get(nameRt)?.value)
-
-        if (date1.getTime() <= date.getTime()) {
-           return date ? { forbiddenName: true } : null;
-        }
+        let fieldData: string = control.parent?.get(formControlName)?.value
+        if (formControlData.some((res: { data: string, dataId: number }) => res.data == fieldData)) {
+          return null;
+        } else { return { notInDatalist: true } }
         return null;
       };
     }
@@ -100,11 +98,15 @@ export class ExtendModalFormComponent {
         case "timestamp":
           this.formExtend.addControl(item.fieldName! + '_start', new FormControl(item.dataPlacer.start, Validators.required));
           this.formExtend.addControl(item.fieldName! + '_end', new FormControl(item.dataPlacer.end, Validators.required));
-          if(item.dataPlacer.end)
-          this.formExtend.get(item.fieldName! + '_start')?.markAsDirty()
-          if(item.dataPlacer.end)
-          this.formExtend.get(item.fieldName! + '_end')?.markAsDirty()
+          if (item.dataPlacer.start)
+            this.formExtend.get(item.fieldName! + '_start')?.markAsDirty()
+          if (item.dataPlacer.end)
+            this.formExtend.get(item.fieldName! + '_end')?.markAsDirty()
           break;
+
+        case "datalist":
+          this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, [Validators.required, dataListCheck(item.data, item.formControlName!)]));
+          break
 
         default:
           this.formExtend.addControl(item.formControlName!, new FormControl(item.dataPlacer, Validators.required));
@@ -135,7 +137,7 @@ export class ExtendModalFormComponent {
       switch (control) {
         case "date":
           var dateStart: Date = new Date(this.formExtend.controls[formControlName + '_start'].value)
-          var dateEnd: Date = new Date(this.formExtend.controls[formControlName + '_end'].value)          
+          var dateEnd: Date = new Date(this.formExtend.controls[formControlName + '_end'].value)
           var diffHours: number = (dateEnd.getTime() - dateStart.getTime()) / (3600000 * 24);
           for (let item of this.filler) {
             if (item.fieldName == formControlName) {
@@ -165,7 +167,7 @@ export class ExtendModalFormComponent {
           for (let item of this.filler) {
             if (item.fieldName == formControlName) {
               if (diffHours < 1) {
-                item.info = "Selección inválida";                
+                item.info = "Selección inválida";
                 this.formExtend.get(item.fieldName + '_end')?.setErrors({ "badstamp": true })
                 this.formExtend.get(item.fieldName + '_start')?.setErrors({ "badstamp": true })
               } else if (diffHours >= 1 && diffHours < 60) {
@@ -190,7 +192,11 @@ export class ExtendModalFormComponent {
   onFileChangeDoc(event: Event, fieldName: string) {
     const files = (event.target as HTMLInputElement).files;
     if (files && files.length > 0) {
-      this.files.push({ file: files[0], fieldName: fieldName })
+      this.files.map(res => {
+        if (res.fieldName = fieldName) {
+          res.file = files[0]
+        } else this.files.push({ file: files[0], fieldName: fieldName })
+      })
     }
   }
 
@@ -218,6 +224,9 @@ export class ExtendModalFormComponent {
           outputData.push({ start: this.formExtend?.controls[item.fieldName! + '_start']?.value, end: this.formExtend.get(item.fieldName! + '_end')?.value })
           break
 
+        case "datalist":
+          outputData.push(item.data!.find(res => res.data == this.formExtend.controls[item.formControlName!].value)?.dataId)
+          break
 
         default:
           outputData.push(this.formExtend.controls[item.formControlName!].value)
@@ -246,7 +255,6 @@ export class ExtendModalFormComponent {
         if (extend.update) { this.saveService.dataUpdateService(res, name); } else {
           this.saveService.dataSaveService(res, name)
         }
-        
       }
     }
     )

@@ -307,3 +307,15 @@ button.close {
 button.close:hover{
     transform: rotateZ(180deg);
 }
+
+
+.update button{
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 11px;
+}
+
+.ng-pristine{
+    border-color: #182034;
+}
