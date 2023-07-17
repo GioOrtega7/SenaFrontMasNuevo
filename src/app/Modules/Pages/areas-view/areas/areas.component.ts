@@ -310,7 +310,7 @@ export class AreasComponent implements OnInit, OnDestroy {
     },
     {
       fieldName: "Area",
-      type: "select",
+      type: "datalist",
       data: this.data,
       extend: pass1
     },

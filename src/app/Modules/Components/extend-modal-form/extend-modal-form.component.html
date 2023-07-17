@@ -16,18 +16,17 @@
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'timestamp'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
-
                     <div class="data">
                         <label [for]="fill.fieldName + '_start'">Inicio<input [type]="fill.control"
                                 [formControlName]="fill.fieldName + '_start' || ''"
-                                (input)="onDateChange(fill.fieldName, fill.control)"   /></label>
-
+                                (input)="onDateChange(fill.fieldName, fill.control)" /></label>
                         <label [for]="fill.fieldName+ '_end'">Fin<input [type]="fill.control"
                                 [formControlName]="fill.fieldName + '_end'|| ''"
-                                (input)="onDateChange(fill.fieldName,  fill.control)"   /></label>
-                        
+                                (input)="onDateChange(fill.fieldName,  fill.control)" /></label>
                     </div>
-                    <p style="font-size: 0.8em; text-align: center;" [ngClass]="this.formExtend.get(fill.fieldName + '_end')?.invalid ? 'error': 'success'"> {{fill.info}}</p>
+                    <p style="font-size: 0.8em; text-align: center;"
+                        [ngClass]="this.formExtend.get(fill.fieldName + '_end')?.invalid ? 'error': 'success'">
+                        {{fill.info}}</p>
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'select'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
@@ -41,6 +40,15 @@
                         <button *ngIf="fill.extend" class="add"
                             (click)="openUpdate(fill.extend, fill.fieldName)"></button>
                     </div>
+                </div>
+                <div class="form-item" *ngIf="fill.type == 'datalist'">
+                    <label [for]="fill.formControlName">{{fill.fieldName}}</label>
+                    <input [formControlName]="fill.formControlName || ''" [type]="fill.control"
+                        [(ngModel)]="fill.ngModel" (keyup)="  fill.uppercase ? convertToUppercase(fill) : '' "
+                        [placeholder]="fill.placeholder" required [attr.list]="fill.fieldName"/>
+                    <datalist [id]="fill.fieldName">
+                        <option *ngFor='let item of fill.data' [value]="item.data"> </option>
+                    </datalist>
                 </div>
                 <div class="form-item" *ngIf="fill.type == 'textarea'">
                     <label [for]="fill.formControlName">{{fill.fieldName}}</label>
