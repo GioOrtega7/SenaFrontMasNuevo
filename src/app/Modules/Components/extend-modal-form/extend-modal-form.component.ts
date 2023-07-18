@@ -44,7 +44,7 @@ export class ExtendModalFormComponent {
   isFormComplete = true;
   ngOnInit() {
     this.filler1 = this.incomeData.filler;
-    this.extendModalTitle = this.incomeData.title || "title";
+    this.extendModalTitle = this.incomeData.title || "Título";
     this.filler = this.filler1.map(item => ({
       fieldName: item.fieldName || "",
       placeholder: item.placeholder || "Ingrese " + item.fieldName,
@@ -249,12 +249,12 @@ export class ExtendModalFormComponent {
   }
 
   openUpdate(extend: incomeData, name: string) {
+    extend.title = "⇌ " + extend.title 
     const extendRef: MatDialogRef<ExtendModalFormComponent> = this.modal.open(ExtendModalFormComponent, { data: extend })
-    this.extendModalTitle = "⇌ " + this.extendModalTitle;
     document.documentElement.style.setProperty("--mdc-dialog-container-color", "#131e3b");
     extendRef.afterClosed().subscribe((res) => {
+      extend.title = extend.title.replace("⇌ ", "")
       document.documentElement.style.setProperty("--mdc-dialog-container-color", "#182034");
-      this.extendModalTitle = ""
       if (res) {
         if (extend.update) { this.saveService.dataUpdateService(res, name); } else {
           this.saveService.dataSaveService(res, name)
