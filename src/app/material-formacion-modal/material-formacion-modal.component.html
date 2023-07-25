@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Modal de Material de Formación</h2>
+<div mat-dialog-content>
+  <form [formGroup]="formMaterialFormacion">
+    <mat-form-field>
+      <input matInput formControlName="codigoMF" placeholder="Código del material" />
+      <mat-error *ngIf="codigoField?.invalid && codigoField?.touched">
+        Código requerido
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <textarea matInput formControlName="descripcion" placeholder="Descripción del material"></textarea>
+      <mat-error *ngIf="descripcionField?.invalid && descripcionField?.touched">
+        Descripción requerida
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardarMaterialFormacion()" [disabled]="formMaterialFormacion.invalid">
+    Guardar
+  </button>
+</div>

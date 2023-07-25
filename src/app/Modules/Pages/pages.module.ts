@@ -16,8 +16,7 @@ import { AreasTryComponent } from './areas-try/areas-try.component';
 import { GruposViewComponent } from './grupos-view/grupos-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterLink } from '@angular/router';
-
-
+import { SubirArchivosComponent } from './subir-archivos/subir-archivos.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +27,7 @@ import { RouterLink } from '@angular/router';
     AreasTryComponent,
     GruposViewComponent,
     DashboardComponent,
+    SubirArchivosComponent
 
   ],
   imports: [

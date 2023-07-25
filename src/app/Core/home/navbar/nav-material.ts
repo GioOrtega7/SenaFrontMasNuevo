@@ -33,6 +33,22 @@ export const menu: NavegationModel[] = [
         icon: 'holiday_village'
     },
     {
+        name: 'Material_Formacion',
+        url: '/prueba',
+        icon: 'holiday_village'
+    },
+    {
+        name: 'Material_Formacion_CRUD',
+        url: '/CRUD',
+        icon: 'holiday_village'
+    },
+    {
+        name: 'Material_Formacion_MODAL',
+        url: '/modalprueba',
+        icon: 'holiday_village'
+    },
+
+    {
         name: 'Nomina',
         url: '/Nomina',
         icon: 'currency_exchange'

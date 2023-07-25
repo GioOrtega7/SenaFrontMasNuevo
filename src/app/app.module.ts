@@ -12,12 +12,23 @@ import { HomeModule } from './Core/home/home.module';
 import { HomeRoutingModule } from './Core/home/home-routing.module';
 import { PagesModule } from './Modules/Pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MaterialFormacionListComponent } from './material-formacion-list/material-formacion-list.component';
+import { MaterialFormacionCreateComponent } from './material-formacion-create/material-formacion-create.component';
+import { MaterialFormacionEditComponent } from './material-formacion-edit/material-formacion-edit.component';
+import { MaterialFormacionModalComponent } from './material-formacion-modal/material-formacion-modal.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field'; // Importa MatFormFieldModule
+import { MatInputModule } from '@angular/material/input'; // Importa MatInputModule
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MaterialFormacionListComponent,
+    MaterialFormacionCreateComponent,
+    MaterialFormacionEditComponent,
+    MaterialFormacionModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +43,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeRoutingModule,
     PagesModule,
     BrowserAnimationsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
   ],
   providers: [
   ],

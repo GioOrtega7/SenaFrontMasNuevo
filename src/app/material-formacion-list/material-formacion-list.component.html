@@ -1,0 +1,20 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Ruta archivo</th>
+        <!-- Otras columnas -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let materialFormacion of materialFormaciones">
+        <td>{{ materialFormacion.id }}</td>
+        <td>{{ materialFormacion.codigoMF }}</td>
+        <td>{{ materialFormacion.descripcion }}</td>
+        <td>{{ materialFormacion.rutaarchivo }}</td>
+        <!-- Otras celdas -->
+      </tr>
+    </tbody>
+  </table>
