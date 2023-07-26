@@ -47,6 +47,11 @@ export const menu: NavegationModel[] = [
         url: '/modalprueba',
         icon: 'holiday_village'
     },
+    {
+        name: 'MF',
+        url: '/MatFormacion',
+        icon: 'holiday_village'
+    },
 
     {
         name: 'Nomina',

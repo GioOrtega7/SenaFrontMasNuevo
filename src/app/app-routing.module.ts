@@ -14,6 +14,7 @@ import { DashboardComponent } from './Modules/Pages/dashboard/dashboard.componen
 import { SubirArchivosComponent } from './Modules/Pages/subir-archivos/subir-archivos.component';
 import { MaterialFormacionListComponent } from './material-formacion-list/material-formacion-list.component';
 import { MaterialFormacionModalComponent } from './material-formacion-modal/material-formacion-modal.component';
+import { MaterialFormacionCreateComponent } from './Modules/Pages/material-formacion-create/material-formacion-create.component';
 const routes: Routes = [
   {
     path: '',
@@ -64,6 +65,11 @@ const routes: Routes = [
         path:"modalprueba",
         component: MaterialFormacionModalComponent
       },
+      {
+        path:"MatFormacion",
+        component: MaterialFormacionCreateComponent
+      },
+
 
     ]
   }

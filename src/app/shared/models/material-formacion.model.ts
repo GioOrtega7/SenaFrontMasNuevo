@@ -1,5 +1,5 @@
 export interface MaterialFormacion {
-    id: number;
+    id?: number;
     codigoMF: string | null;
     descripcion: string | null;
     rutaarchivo: string | null;
