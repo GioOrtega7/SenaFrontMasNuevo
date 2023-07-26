@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterLink } from '@angular/router';
 import { SubirArchivosComponent } from './subir-archivos/subir-archivos.component';
 
+
 @NgModule({
   declarations: [
     ProyectoFormativoComponent,
@@ -27,7 +28,9 @@ import { SubirArchivosComponent } from './subir-archivos/subir-archivos.componen
     AreasTryComponent,
     GruposViewComponent,
     DashboardComponent,
-    SubirArchivosComponent
+    SubirArchivosComponent,
+   
+    
 
   ],
   imports: [
@@ -46,6 +49,7 @@ import { SubirArchivosComponent } from './subir-archivos/subir-archivos.componen
     AreasModalComponent,
     AreasTryComponent,
     GruposViewComponent,
+ 
   ],
   providers: [
     {

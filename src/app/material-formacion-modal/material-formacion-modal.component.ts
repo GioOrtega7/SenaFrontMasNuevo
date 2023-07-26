@@ -17,7 +17,7 @@ import { MaterialFormacionService } from '../shared/services/material-formacion.
 
 
 export class MaterialFormacionModalComponent {
-  formMaterialFormacion: FormGroup;
+/*   formMaterialFormacion: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<MaterialFormacionModalComponent>,
@@ -85,5 +85,5 @@ export class MaterialFormacionModalComponent {
       
       //idAA: null, // Puedes ajustar esta propiedad según tus necesidades
     };
-  }
+  } */
 }

@@ -7,8 +7,8 @@ import { MaterialFormacionService } from '../shared/services/material-formacion.
   templateUrl: './material-formacion-list.component.html',
   styleUrls: ['./material-formacion-list.component.css'],
 })
-export class MaterialFormacionListComponent implements OnInit {
-  materialFormaciones: MaterialFormacion[] = [];
+export class MaterialFormacionListComponent {
+/*   materialFormaciones: MaterialFormacion[] = [];
 
   constructor(private materialFormacionService: MaterialFormacionService) {}
 
@@ -30,7 +30,7 @@ export class MaterialFormacionListComponent implements OnInit {
 
 
 
-/*   loadMaterialFormaciones(): void {
+  loadMaterialFormaciones(): void {
     this.materialFormacionService.getMaterialFormaciones().subscribe((data) => {
       this.materialFormaciones = data;
     });

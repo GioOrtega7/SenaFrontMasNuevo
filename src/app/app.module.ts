@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input'; // Importa MatInputMod
 import { MatDialogModule } from '@angular/material/dialog';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MaterialFormacionCreateComponent,
     MaterialFormacionEditComponent,
     MaterialFormacionModalComponent,
+    
   ],
   imports: [
     BrowserModule,

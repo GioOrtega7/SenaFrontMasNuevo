@@ -1,8 +1,9 @@
 export interface MaterialFormacion {
     id?: number;
-    codigoMF: string | null;
-    descripcion: string | null;
-    rutaarchivo: string | null;
+    codigoMF: string;
+    descripcion: string ;
+    rutaarchivo: string ;
+    file:File
     // Otras propiedades del modelo MaterialFormacion
   }
   
